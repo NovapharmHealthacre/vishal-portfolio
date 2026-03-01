@@ -1,15 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
   <url>
     <loc>https://vishal.novapharmhealthcare.com/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/about.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Companies -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/companies.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Essays index -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/essays.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Essay: How to Win When the Odds Are Against You -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/essays/how-to-win-when-odds-are-against-you/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb"
+      href="https://vishal.novapharmhealthcare.com/essays/how-to-win-when-odds-are-against-you/"/>
+  </url>
+
+  <!-- Essay: Regulated Industries -->
   <url>
     <loc>https://vishal.novapharmhealthcare.com/essays/regulated-industries/</loc>
     <lastmod>2026-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb"
+      href="https://vishal.novapharmhealthcare.com/essays/regulated-industries/"/>
+  </url>
+
+  <!-- Essay: What Parallel Import Actually Means -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/essays/what-parallel-import-actually-means/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb"
+      href="https://vishal.novapharmhealthcare.com/essays/what-parallel-import-actually-means/"/>
+  </url>
+
+  <!-- Essay: Why I Left Swiggy -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/essays/why-i-left-swiggy/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb"
+      href="https://vishal.novapharmhealthcare.com/essays/why-i-left-swiggy/"/>
+  </url>
+
+  <!-- Publications -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/publications.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb"
+      href="https://vishal.novapharmhealthcare.com/publications.html"/>
+    <xhtml:link rel="alternate" hreflang="ja"
+      href="https://vishal.novapharmhealthcare.com/publications.html"/>
+  </url>
+
+  <!-- Profiles -->
+  <url>
+    <loc>https://vishal.novapharmhealthcare.com/profiles.html</loc>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
 </urlset>

@@ -1,4 +1,39 @@
+# robots.txt — vishal.novapharmhealthcare.com
+# Last updated: March 2026
+
+# ── All crawlers ──────────────────────────────────────────
 User-agent: *
 Allow: /
 
+# Block build/config artefacts
+Disallow: /FETCH_HEAD
+Disallow: /googlef9cdfdd63c360d56.html
+
+# ── Google ────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+# ── Bing ──────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# ── AI training crawlers (opt-out) ────────────────────────
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+# ── Sitemap ───────────────────────────────────────────────
 Sitemap: https://vishal.novapharmhealthcare.com/sitemap.xml
