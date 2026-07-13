@@ -1,0 +1,29 @@
+{
+  "name": "vishal-chakravarty-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "preview": "node scripts/dev.mjs --dist",
+    "clean": "node scripts/clean.mjs",
+    "lint": "node scripts/lint.mjs",
+    "format:check": "node scripts/format-check.mjs",
+    "typecheck": "node scripts/validate-content.mjs",
+    "test": "node --test tests/unit/*.test.mjs",
+    "test:links": "node scripts/check-links.mjs",
+    "test:schema": "node scripts/check-schema.mjs",
+    "test:claims": "node scripts/check-claims.mjs",
+    "test:routes": "node scripts/check-routes.mjs",
+    "test:browser": "node tests/browser/run.mjs",
+    "test:visual": "node tests/browser/run.mjs",
+    "test:a11y": "node scripts/check-accessibility.mjs",
+    "test:performance": "node scripts/check-performance.mjs",
+    "test:security": "node scripts/check-security.mjs",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run build && npm test && npm run test:links && npm run test:schema && npm run test:claims && npm run test:routes && npm run test:a11y && npm run test:performance && npm run test:security"
+  }
+}
