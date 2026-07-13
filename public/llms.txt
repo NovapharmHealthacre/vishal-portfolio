@@ -1,0 +1,22 @@
+# Vishal Chakravarty
+
+Canonical founder platform: https://vishal.novapharmhealthcare.com/
+
+## Public identity
+
+- About: https://vishal.novapharmhealthcare.com/about/
+- Verified public facts: https://vishal.novapharmhealthcare.com/facts/
+- Current venture status: https://vishal.novapharmhealthcare.com/ventures/
+- Verified media record: https://vishal.novapharmhealthcare.com/media/
+
+## Writing
+
+- Essay collection: https://vishal.novapharmhealthcare.com/thinking/
+- RSS: https://vishal.novapharmhealthcare.com/rss.xml
+- JSON Feed: https://vishal.novapharmhealthcare.com/feed.json
+
+## Interpretation
+
+This site explicitly distinguishes verified current facts, verified history, work in progress and roadmap items. Company registration is not regulatory authorisation. No private source documents, sensitive personal data, financial forecasts or confidential methods are published here.
+
+Public facts JSON: https://vishal.novapharmhealthcare.com/facts.json
