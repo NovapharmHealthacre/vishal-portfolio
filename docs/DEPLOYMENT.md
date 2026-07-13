@@ -37,7 +37,7 @@ If the implemented script names differ, update this runbook and `README.md` in t
 1. Review every item under “Required before production approval” in `docs/NEEDS_APPROVAL.md`.
 2. Confirm the founder portrait may be published and transformed, or release without it.
 3. Confirm `vishal@novapharmhealthcare.com` is the intended public inbox, or remove the address pending confirmation.
-4. Re-authenticate GitHub through the owner's normal secure method. Never paste or commit a token.
+4. Confirm the owner can review and merge through GitHub; re-authenticate the CLI only if command-line access is needed. Never paste or commit a token.
 5. Confirm the repository Settings → Pages page still represents the audited production site.
 6. Confirm Actions are enabled and the `github-pages` environment is available.
 7. Choose a monitored deployment window and identify who can perform the rollback.

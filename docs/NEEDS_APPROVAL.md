@@ -85,8 +85,8 @@ The build continues autonomously with conservative omissions. Items below are no
 ### A-014 — GitHub authentication
 
 - Issue: GitHub CLI is installed but its stored `NovapharmHealthacre` token is invalid.
-- Needed: Owner re-authenticates with `gh auth login -h github.com`, or pushes the branch through their normal Git client.
-- Current action: Build, test and commit locally. Do not request or store a token.
+- Needed: Re-authenticate with `gh auth login -h github.com` only if command-line GitHub work is required later; browser/connector access is sufficient for PR review and merge.
+- Current action: The review branch and draft PR are published through the authenticated GitHub connector. No token was requested, exposed or stored.
 
 ### A-015 — GitHub Pages source switch
 
