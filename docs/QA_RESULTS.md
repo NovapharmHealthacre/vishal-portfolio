@@ -4,6 +4,7 @@ Evidence date: 13 July 2026
 Candidate branch: `rebuild/world-class-portfolio`
 Baseline: `1ae1ff5c43123f2c3f5be78f0e37da144f460f06`
 Production origin: `https://vishal.novapharmhealthcare.com/`
+Draft pull request: `https://github.com/NovapharmHealthacre/vishal-portfolio/pull/1`
 Release decision: **NOT READY FOR PRODUCTION**
 
 The static production candidate is internally consistent and reproducible. Production remains blocked by owner-controlled content approvals, Pages-source coordination, ordinary-browser identity/domain verification and the browser/axe/Lighthouse/screenshot matrix described below.
@@ -80,7 +81,8 @@ Direct web checks reached Companies House, all six Yakuji Nippo article pages an
 | Keyboard, VoiceOver and Safari review | BLOCKED | Requires interactive macOS browser testing. Complete the manual checklist in `docs/QA_PLAN.md`. |
 | Live HTTP 404/canonical validation | BLOCKED | Requires an authorised preview or production-like host. Validate the deployed preview before merge. |
 | Schema.org Validator / Google Rich Results Test | NOT RUN | Requires an accessible preview URL. Save the final validation evidence before merge. |
-| GitHub Actions / Pages workflow | PENDING | The review branch was published through the authenticated GitHub connector after local evidence was recorded. Use the draft PR checks as the authoritative hosted result; the production deploy job remains main-only. |
+| GitHub Actions quality workflow | PASS | Draft PR #1 is open and mergeable. Hosted run `29228579529` completed successfully, including checkout, Node setup, locked install and `npm run check`. Re-run this gate after any candidate change. |
+| GitHub Pages production workflow | NOT RUN | Correctly main-only. Production remains unchanged; the workflow must not run until owner approvals, browser evidence and the coordinated Pages-source switch are complete. |
 
 The Playwright harness is now configured for all canonical essays and compatibility routes, exact desktop/mobile screenshot viewports, per-route console/request/image checks, skip-link and menu focus, desktop/mobile no-JavaScript passes, nine responsive viewports, reduced motion, Save-Data, low memory, low concurrency, narrow screens, canvas failure and lattice-module failure. This configuration has only passed JavaScript syntax validation here. It still requires execution plus axe, Lighthouse, VoiceOver, full keyboard traversal, 200%/400% zoom, slow-network testing, visibility/off-screen pause checks and a human-reviewed visual baseline. `test:visual` invokes the same screenshot harness; it does not calculate a pixel diff.
 
@@ -90,13 +92,13 @@ No site screenshots were produced, `artifacts/browser-results.json` contains an 
 
 The ledger contains 40 claims: 14 `VERIFIED_CURRENT`, 1 `VERIFIED_HISTORICAL`, 1 `IN_PROGRESS`, 5 `PLANNED`, 4 `PRIVATE_DO_NOT_PUBLISH`, 10 `UNSUPPORTED_REMOVE` and 5 `NEEDS_OWNER_APPROVAL`. The candidate publishes only the verified set and carefully labelled selected roadmap/in-progress wording. The other 19 claims remain absent.
 
-Production content approval still requires A-001 (portrait rights), A-002 (public inbox) and A-005 (conservative SyriMed wording). All other disputed/private claims are omitted and are not release blockers unless someone proposes adding them.
+Production content approval still requires A-001 (portrait rights), A-002 (public inbox), A-005 (conservative SyriMed wording) and A-019 (operational privacy position for email enquiries). All other disputed/private claims are omitted and are not release blockers unless someone proposes adding them.
 
 ## Release decision
 
 The code and static artifact are ready for browser QA, not production deployment. The owner must:
 
-1. confirm A-001, A-002 and A-005;
+1. confirm A-001, A-002, A-005 and A-019;
 2. complete A-017 and A-018 against the exact candidate commit;
 3. review the draft PR and coordinate the Pages source switch (A-015);
 4. merge and deploy only after every production gate is recorded as passed.
