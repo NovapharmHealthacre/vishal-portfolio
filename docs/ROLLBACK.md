@@ -1,6 +1,6 @@
 # Rollback runbook
 
-Last reviewed: 12 July 2026
+Last reviewed: 13 July 2026
 Protected baseline: `1ae1ff5c43123f2c3f5be78f0e37da144f460f06`
 
 ## Purpose
@@ -69,12 +69,17 @@ For a merge commit, first confirm parent ordering, then use `git revert -m 1 <me
 
 Use this when the first GitHub Actions deployment is unsafe and there is no earlier known-good Actions release.
 
-1. Revert the rebuild merge through a reviewed rollback commit, restoring the baseline root static files and `CNAME`.
-2. Verify the resulting tree contains the baseline homepage, legacy pages, preserved essays, `robots.txt`, `sitemap.xml`, `CNAME` and Google verification file.
-3. Push and merge the rollback without force.
-4. In Settings → Pages, the owner selects **Deploy from a branch**, branch `main`, folder `/(root)`.
-5. Keep the custom-domain field unchanged and do not edit DNS.
-6. Wait for the Pages deployment, then validate production.
+This is an owner-authorised emergency procedure only; it is not authorised by the post-merge hardening task itself.
+
+1. Record the current `main`, the hardening release commit or merge, the active deployment and the owner's rollback authorisation.
+2. Create a rollback branch from current `main`; never reset or force-push.
+3. Revert the post-merge hardening change first if it has been merged. If it is a squash/normal commit, use a normal `git revert`; if it is a merge commit, inspect its parents before choosing `-m 1`.
+4. Revert squash commit `a577f3a85f9f9839d5fda1dd2b8be5bdf374c40a` with a normal `git revert`—it is not a merge commit, so do not use `-m`.
+5. Resolve any conflict conservatively and run the full checks. Verify the resulting root tree restores the protected baseline site and contains its homepage, legacy pages, preserved essays, `robots.txt`, `sitemap.xml`, `CNAME` and Google verification file before switching the publishing source.
+6. Open and merge the reviewed rollback PR without force.
+7. In Settings → Pages, the owner selects **Deploy from a branch**, branch `main`, folder `/(root)`.
+8. Save or preserve `vishal.novapharmhealthcare.com` as the custom domain, keep HTTPS enforcement and do not edit DNS.
+9. Wait for the legacy Pages deployment, then validate production.
 
 The original static baseline contains known content-quality issues. Path B is an emergency availability restoration only. Reapply the safe claim removals in a follow-up release as soon as practical.
 

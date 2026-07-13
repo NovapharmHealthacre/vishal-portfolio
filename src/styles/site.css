@@ -147,6 +147,7 @@
     text-transform: uppercase;
   }
   .section-number { color: var(--signal); }
+  .evidence > .section-number { color: #df5965; }
   .button {
     display: inline-flex;
     min-height: 3.1rem;
@@ -326,6 +327,7 @@
   .collection-summary span:not(:last-child)::after { margin-left: 2rem; color: var(--signal); content: "·"; }
   .essay-list-large .essay-card { padding-block: clamp(2rem, 4vw, 4rem); }
   .editorial-policy { width: 100%; max-width: none; padding-inline: max(4vw, calc((100vw - 1440px) / 2)); background: var(--ivory); color: var(--ink); }
+  .editorial-policy > .eyebrow { color: var(--oxblood); }
   .editorial-policy h2 { margin-top: 1rem; font-size: clamp(3rem, 6vw, 6.5rem); }
   .editorial-policy > p:last-child { max-width: 40rem; margin: 2rem 0 0 auto; }
 
@@ -459,7 +461,8 @@
     .js .nav-contact { border: 0; border-radius: 0; }
     .hero { grid-template-columns: 1fr .75fr; }
     .hero h1 { font-size: clamp(4.7rem, 10vw, 8rem); }
-    .statement-grid, .venture-grid, .evidence-grid, .publication-series { grid-template-columns: 1fr; }
+    .statement-grid, .evidence-grid, .publication-series { grid-template-columns: 1fr; }
+    .venture-grid { grid-template-columns: minmax(0, 1fr); }
     .statement-copy, .withheld > p:last-child, .media-note > p:last-child { margin-left: 0; }
     .venture-copy { max-width: 45rem; }
     .profile-spread { gap: 4rem; }
@@ -481,11 +484,12 @@
     .hero-proposition { max-width: 30rem; }
     .hero-visual { margin-top: 2rem; min-height: 32rem; }
     .hero-visual .portrait-frame { width: 88%; margin: 0; }
-    .lattice-shell { inset: 5% -10% -3% 8%; }
+    .lattice-shell { inset: 5% 0 -3% 8%; }
     .hero-proof { position: static; flex-wrap: wrap; margin-top: 2.2rem; }
     .hero-proof span:not(:last-child)::after { display: none; }
     .section-heading { align-items: flex-start; flex-direction: column; }
     .statement-grid { gap: 2.5rem; }
+    .venture-grid h2 { font-size: clamp(3rem, 16vw, 4rem); overflow-wrap: anywhere; }
     .principle-list article, .topic-list article { grid-template-columns: 2.2rem 1fr; gap: 1rem; }
     .principle-list article p, .topic-list article p { grid-column: 2; }
     .essay-card { grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; }

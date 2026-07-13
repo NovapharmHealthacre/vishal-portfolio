@@ -19,6 +19,45 @@ test('essential homepage content exists before JavaScript', () => {
   assert.doesNotMatch(html, /loading screen/i);
 });
 
+test('content security policy permits only same-origin connections', () => {
+  const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
+  assert.match(html, /connect-src &#39;self&#39;; frame-src &#39;none&#39;/);
+  assert.doesNotMatch(html, /connect-src (?:\*|https?:|&#39;none&#39;)/);
+});
+
+test('public facts expose only approved public-safe records', () => {
+  const facts = JSON.parse(fs.readFileSync(path.resolve('dist/facts.json'), 'utf8'));
+  assert.deepEqual(facts.person.sameAs, ['https://www.linkedin.com/in/vishal-chakravarty']);
+  assert.equal(facts.facts.length, 5);
+  assert.equal(facts.facts.every((fact) => fact.publicSafe === true), true);
+  assert.equal(
+    facts.facts.find((fact) => fact.id === 'P-008')?.approvedWording,
+    'His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.',
+  );
+  assert.equal(facts.facts.find((fact) => fact.id === 'P-008')?.status, 'VERIFIED_HISTORICAL');
+  assert.doesNotMatch(JSON.stringify(facts), /passport|birthDate|residential address|\bvisa\b|\bimmigration\b/i);
+});
+
+test('privacy output matches the approved minimal email flow', () => {
+  const html = fs.readFileSync(path.resolve('dist/privacy/index.html'), 'utf8');
+  assert.match(html, /does not include analytics, advertising trackers, a contact form or non-essential cookies/);
+  assert.match(
+    html,
+    /Email enquiries are sent through your email provider and processed through the owner&#39;s business email provider so the enquiry can be read, answered and managed\./,
+  );
+  assert.doesNotMatch(
+    html,
+    /(?:we|the owner) (?:retain|delete|never share|do not share)|(?:is|are) stored for \d+|will be automatically deleted|(?:our|the) (?:lawful|legal) basis is|we will not (?:disclose|share)/i,
+  );
+});
+
+test('contact output uses the approved public inbox', () => {
+  const html = fs.readFileSync(path.resolve('dist/contact/index.html'), 'utf8');
+  assert.match(html, /mailto:vishal@novapharmhealthcare\.com/);
+  assert.match(html, />vishal@novapharmhealthcare\.com</);
+  assert.doesNotMatch(html, /vishal@novapharmhealthcare\.co\.uk/i);
+});
+
 test('generated portrait files are metadata-stripped derivatives', () => {
   const privateMetadataMarkers = ['Canon', 'LensSerialNumber', 'CameraSerialNumber', 'Snapseed', '2024:12:10'];
   const source = fs.readFileSync(path.resolve('src/assets/vishal-headshot-original.jpg'));

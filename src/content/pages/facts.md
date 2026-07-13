@@ -26,7 +26,7 @@ This page is the public reference for journalists, collaborators, search systems
 ## Verified professional history
 
 - Pharmaceutical experience predates NovaPharm.
-- Work with SyriMed is documented between 2020 and 2025.
+- His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.
 - No public title is assigned to that work because the available sources conflict on the formal relationship.
 - Vishal is a current Yakuji Nippo contributor.
 

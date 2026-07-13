@@ -55,7 +55,7 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs npm run test:browser
 
 ## Deployment
 
-The current production origin is preserved through `public/CNAME`. The rebuild deploys `dist/` with GitHub Pages Actions after owner approval. See:
+The intended canonical origin is generated into `dist/CNAME` from `public/CNAME`. GitHub Pages must also have `vishal.novapharmhealthcare.com` saved as its custom domain; the post-merge audit found that repository setting empty. The rebuild deploys `dist/` with GitHub Pages Actions only after owner approval. See:
 
 - `docs/DEPLOYMENT.md`
 - `docs/ROLLBACK.md`

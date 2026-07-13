@@ -1,6 +1,6 @@
 # Security and privacy guide
 
-Last reviewed: 12 July 2026
+Last reviewed: 13 July 2026
 
 ## Security posture
 
@@ -73,11 +73,13 @@ script-src 'self';
 style-src 'self';
 img-src 'self' data:;
 font-src 'self';
-connect-src 'none';
+connect-src 'self';
 frame-src 'none';
 form-action 'none';
 upgrade-insecure-requests
 ```
+
+`connect-src 'self'` permits only same-origin fetches, including standards and audit tooling that reads `/robots.txt`; it does not permit analytics, external APIs or third-party data exfiltration.
 
 Do not add `'unsafe-inline'` casually. If implementation constraints require a CSP exception, document the exact source and remove it when possible.
 

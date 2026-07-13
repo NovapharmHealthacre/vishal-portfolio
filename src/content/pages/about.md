@@ -9,7 +9,7 @@ public: true
 
 ## The work
 
-Vishal's pharmaceutical experience predates NovaPharm and includes work with SyriMed between 2020 and 2025. Reviewed evidence supports that period of work, but not a specific public job title or the publication of confidential responsibilities.
+His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. Reviewed evidence supports that period of work, but not a specific public job title or the publication of confidential responsibilities.
 
 **In progress — not an operating claim.** He founded NovaPharm Healthcare Ltd in 2025. The company is developing a compliance-led model focused on specialist-medicine access and the systems around pharmaceutical licensing, sourcing and supply.
 

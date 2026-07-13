@@ -1,12 +1,12 @@
 # Quality assurance and release-gate plan
 
 Plan date: 13 July 2026
-Applies to: `rebuild/world-class-portfolio`
+Applies to: `release/post-merge-hardening`, based on merged main `a577f3a85f9f9839d5fda1dd2b8be5bdf374c40a`
 Production origin: `https://vishal.novapharmhealthcare.com`
 
 ## Release rule
 
-A release candidate passes only when every automated gate and every applicable manual gate below has been run against the same commit and recorded in `docs/QA_RESULTS.md`. A skipped test is a failure unless the reason, risk, owner and retest date are recorded in `docs/NEEDS_APPROVAL.md`.
+A release candidate passes only when every automated gate and every applicable manual gate below has been run against the same source tree and recorded in `docs/POST_MERGE_RELEASE_REPORT.md`. A skipped test is a failure unless the reason, risk, owner and retest condition are recorded in `docs/NEEDS_APPROVAL.md`.
 
 Privacy, unsupported-claim, canonical, broken-route and serious accessibility failures cannot be waived for production. The build must not deploy automatically from this branch.
 
@@ -33,18 +33,18 @@ Before release, `package.json` must expose the following non-interactive command
 | Axe (external release gate) | Run current axe-core through Playwright against the required routes and retain machine-readable evidence. The static preflight does not replace this gate. |
 | `npm run check` | Runs formatting, lint, content contracts, build, unit, link, schema, claim, route, static accessibility, deterministic performance and security checks. |
 
-CI must use Node 22 or the exact version declared by the project. The release record must include `node --version`, the package-lock hash, Git commit and operating system. Browser, axe and Lighthouse gates remain production blockers until a locked release environment can run them; see `docs/QA_RESULTS.md` and A-017 in `docs/NEEDS_APPROVAL.md`.
+CI must use Node 22 or the exact version declared by the project. The release record must include `node --version`, the package-lock hash, Git commit and operating system. The final Mac browser, axe and Lighthouse evidence is recorded in `docs/POST_MERGE_RELEASE_REPORT.md`; A-017 in `docs/NEEDS_APPROVAL.md` records its disposition.
 
 ## Test environments
 
 Automated browser coverage:
 
-- Chromium desktop at 1440 x 900.
+- Chromium desktop at 1440 x 1000.
 - Chromium mobile at 390 x 844 with touch enabled.
-- Firefox desktop at 1440 x 900.
-- WebKit desktop at 1440 x 900.
+- Firefox desktop at 1440 x 1000.
+- WebKit desktop at 1440 x 1000.
 - WebKit mobile at 390 x 844.
-- Chromium with JavaScript disabled at 390 x 844 and 1440 x 900.
+- Chromium with JavaScript disabled at 390 x 844 and 1440 x 1000.
 - Chromium and WebKit with `prefers-reduced-motion: reduce`.
 - Chromium with canvas context creation forced to fail.
 
@@ -176,7 +176,7 @@ At every inspection width:
 - At 400% browser zoom on a 1280-pixel viewport, content reflows to a usable single-column reading experience.
 - A browser console error, uncaught exception, CSP violation, failed first-party request or hydration-style error does not occur on any canonical route.
 
-Chromium visual baselines are required for `/`, `/about/`, `/ventures/`, `/thinking/`, one essay, `/facts/`, `/contact/` and `/404.html` at 390 x 844 and 1440 x 900. Pixel changes above `0.5%` require an intentional baseline update and human review. Firefox and WebKit receive functional and manual visual checks rather than cross-engine pixel comparison.
+Chromium visual baselines are required for `/`, `/about/`, `/ventures/`, `/thinking/`, one essay, `/facts/`, `/contact/` and `/404.html` at 390 x 844 and 1440 x 1000. Pixel changes above `0.5%` require an intentional baseline update and human review. Firefox and WebKit receive functional and manual visual checks rather than cross-engine pixel comparison.
 
 ## Reduced-motion gates
 

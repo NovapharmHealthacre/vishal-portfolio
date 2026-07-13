@@ -1,6 +1,6 @@
 # Deployment runbook
 
-Last reviewed: 12 July 2026
+Last reviewed: 13 July 2026
 Production origin: `https://vishal.novapharmhealthcare.com/`
 Target host: GitHub Pages through GitHub Actions
 
@@ -8,14 +8,14 @@ Target host: GitHub Pages through GitHub Actions
 
 This runbook prepares and deploys the generated `dist/` directory. It does not authorise a production release, DNS change, registrar change, hosting migration, merge to `main`, or use of a paid service.
 
-Production deployment requires the owner to approve the pull request, the release window and the GitHub Pages source switch recorded as A-015 in `docs/NEEDS_APPROVAL.md`. The existing `CNAME` and Google verification file must be preserved.
+The rebuild source was squash-merged as `a577f3a85f9f9839d5fda1dd2b8be5bdf374c40a`, but Pages still publishes `main/(root)`. Production deployment now requires the owner to approve the hardening pull request, the release window, the GitHub Pages source switch and the custom-domain setting recorded as A-015 in `docs/NEEDS_APPROVAL.md`. The generated `CNAME` and Google verification file must be preserved.
 
 ## Current and target states
 
 | State | Pages source | Published content |
 |---|---|---|
-| Phase 0 baseline | `main` / repository root | Hand-authored static files at commit `1ae1ff5` |
-| Rebuild target | GitHub Actions | Generated `dist/` artifact |
+| Post-merge state audited 13 July 2026 | Legacy `main/(root)` | Branch-root Jekyll artifact from merged source; this superseded the successful `dist` deployment and the custom domain is not configured in Pages |
+| Approved release target | GitHub Actions | Reviewed hardening commit's generated `dist/` artifact at `vishal.novapharmhealthcare.com` |
 
 The migration changes the Pages publishing mechanism, not the production hostname. Do not edit DNS during this release.
 
@@ -35,8 +35,8 @@ If the implemented script names differ, update this runbook and `README.md` in t
 ## Owner-controlled prerequisites
 
 1. Review every item under “Required before production approval” in `docs/NEEDS_APPROVAL.md`.
-2. Confirm the founder portrait may be published and transformed, or release without it.
-3. Confirm `vishal@novapharmhealthcare.com` is the intended public inbox, or remove the address pending confirmation.
+2. Confirm recorded approvals A-001, A-002, A-005 and A-019 still match the release candidate; they were owner-approved on 13 July 2026.
+3. Recheck the public inbox only for deliverability during the monitored release window; do not send a message during build validation.
 4. Confirm the owner can review and merge through GitHub; re-authenticate the CLI only if command-line access is needed. Never paste or commit a token.
 5. Confirm the repository Settings → Pages page still represents the audited production site.
 6. Confirm Actions are enabled and the `github-pages` environment is available.
@@ -93,7 +93,7 @@ Do not merge while a release-blocking check, owner approval or claim classificat
 
 ## GitHub Pages workflow contract
 
-The workflow should live at `.github/workflows/deploy-pages.yml` and use the official Pages actions. Its security-sensitive properties are:
+The workflow lives at `.github/workflows/deploy-pages.yml` and uses the official Pages actions. Its security-sensitive properties are:
 
 - trigger on approved pushes to `main`, plus a manual `workflow_dispatch` recovery path;
 - `contents: read`, `pages: write`, and `id-token: write` permissions only;
@@ -103,22 +103,25 @@ The workflow should live at `.github/workflows/deploy-pages.yml` and use the off
 - the protected `github-pages` environment and deployment URL output;
 - no repository secrets, cloud tokens, analytics identifiers or external deploy service.
 
+The audited `github-pages` environment permits only `main`, but has no required reviewer or wait timer and permits administrator bypass. Therefore a merge to `main` is the effective production authorisation once Pages is set to GitHub Actions; keep the hardening PR unmerged until the owner explicitly authorises deployment.
+
 Actions should be pinned and updated deliberately. A Pages artifact must never be created from the repository root.
 
-## First production switch
+## Post-merge production switch
 
 The initial switch must be coordinated because serving the rebuild source root directly would be incorrect.
 
-1. Freeze changes to `main` for the release window.
-2. Record the current production state and baseline commit `1ae1ff5`.
-3. Confirm the approved pull request's head SHA and passing checks.
-4. In Settings → Pages, the owner selects **GitHub Actions** as the build and deployment source. Do not change the custom domain.
-5. Merge the approved rebuild pull request into `main` without force-pushing.
-6. Watch the `Deploy production site` workflow. If the push did not start it, use the documented manual dispatch on `main`.
-7. Record the workflow run URL, deployed commit SHA and GitHub Pages environment URL.
-8. Complete production validation before ending the release window.
+1. Freeze changes to `main` for the release window and record the active legacy Pages deployment.
+2. Confirm the hardening pull request's exact head SHA, passing checks, release evidence and the owner's explicit production authorisation.
+3. In Settings → Pages, change Source from **Deploy from a branch** to **GitHub Actions**.
+4. Save `vishal.novapharmhealthcare.com` as the custom domain. Do not edit DNS; the existing CNAME record is already correct.
+5. Retain or enable HTTPS enforcement when GitHub makes the control available.
+6. Merge only the approved hardening pull request into `main`, without force-pushing. The push will automatically run `Deploy production site`.
+7. If the merge push did not start the workflow, manually dispatch `Deploy production site` on `main`. Do not dispatch it pre-emptively.
+8. Confirm the successful deployment uses the reviewed `dist` artifact and that no later dynamic legacy Pages deployment supersedes it.
+9. Record the workflow run URL, deployment URL and deployed commit SHA, then complete production validation before ending the release window.
 
-If the owner cannot coordinate the source switch and merge, stop. Do not merge a generator-only source tree while Pages still publishes `main/(root)`.
+If the owner cannot coordinate the source switch and hardening merge, stop. Because no environment reviewer blocks `main`, do not merge the hardening PR while Pages still publishes `main/(root)` or before production is expressly authorised.
 
 ## Production validation
 

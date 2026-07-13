@@ -18,7 +18,7 @@ An earlier version of this page told a clean story: technology first, pharmaceut
 
 It was dramatic. It was also too simple.
 
-My pharmaceutical experience predates NovaPharm Healthcare. It includes work with SyriMed between 2020 and 2025. The surviving evidence does not support the old claim that I entered the sector with no previous pharmaceutical background, and I will not keep a better story at the expense of a truer one.
+The public record is now deliberately precise: His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. The surviving evidence does not support the old claim that I entered the sector with no previous pharmaceutical background, and I will not keep a better story at the expense of a truer one.
 
 This is the correction.
 
@@ -36,8 +36,7 @@ The old version leaned on contrast: fast technology, slow pharmaceuticals; naïv
 
 The public-safe record is narrower:
 
-- My pharmaceutical experience predates NovaPharm.
-- It includes work with SyriMed between 2020 and 2025.
+- His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.
 - NovaPharm Healthcare Ltd was incorporated on 15 September 2025.
 - I am its founder and chief executive.
 - The company's regulated operating capabilities remain under development.

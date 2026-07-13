@@ -77,7 +77,7 @@ const overflowViewports = [
   { width: 768, height: 1024, mobile: false, label: '768x1024' },
   { width: 1024, height: 768, mobile: false, label: '1024x768' },
   { width: 1280, height: 800, mobile: false, label: '1280x800' },
-  { width: 1440, height: 900, mobile: false, label: '1440x900' },
+  { width: 1440, height: 1000, mobile: false, label: '1440x1000' },
   { width: 1920, height: 1080, mobile: false, label: '1920x1080' },
   { width: 844, height: 390, mobile: true, label: '844x390-landscape' },
 ];
@@ -193,7 +193,7 @@ const assertNoJavaScriptRoutes = async (browser, browserName, viewport, label) =
   }
 };
 
-const assertDisabledLattice = async (browser, browserName, label, initScript, viewport = { width: 1440, height: 900 }) => {
+const assertDisabledLattice = async (browser, browserName, label, initScript, viewport = { width: 1440, height: 1000 }) => {
   const context = await browser.newContext({ viewport });
   await installImmediateIdleCallback(context);
   if (initScript) await context.addInitScript(initScript);
@@ -213,7 +213,7 @@ const assertDisabledLattice = async (browser, browserName, label, initScript, vi
 };
 
 const runBrowserSuite = async (browser, browserName) => {
-  const desktop = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
+  const desktop = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'no-preference' });
   try {
     const page = await desktop.newPage();
     const diagnostics = diagnosticsFor(page);
@@ -306,10 +306,10 @@ const runBrowserSuite = async (browser, browserName) => {
     }
   }
 
-  await assertNoJavaScriptRoutes(browser, browserName, { width: 1440, height: 900 }, 'desktop');
+  await assertNoJavaScriptRoutes(browser, browserName, { width: 1440, height: 1000 }, 'desktop');
   await assertNoJavaScriptRoutes(browser, browserName, { width: 390, height: 844 }, 'mobile');
 
-  const reduced = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
+  const reduced = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
   await installImmediateIdleCallback(reduced);
   try {
     const page = await reduced.newPage();
@@ -338,7 +338,7 @@ const runBrowserSuite = async (browser, browserName) => {
   });
   await assertDisabledLattice(browser, browserName, 'narrow-screen fallback', undefined, { width: 390, height: 844 });
 
-  const noCanvas = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const noCanvas = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await installImmediateIdleCallback(noCanvas);
   await noCanvas.addInitScript(() => {
     HTMLCanvasElement.prototype.getContext = () => null;
@@ -353,7 +353,7 @@ const runBrowserSuite = async (browser, browserName) => {
     await noCanvas.close();
   }
 
-  const moduleFailure = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const moduleFailure = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await installImmediateIdleCallback(moduleFailure);
   try {
     const page = await moduleFailure.newPage();
