@@ -129,11 +129,12 @@ Automated matching is a guardrail, not editorial approval. Every match for MHRA,
 
 ## Owner-controlled release items
 
-Before production approval, obtain and record:
+The owner recorded the following approvals on 13 July 2026; see `docs/NEEDS_APPROVAL.md` and `docs/POST_MERGE_RELEASE_REPORT.md`:
 
 1. Portrait ownership/licence and transformation consent (A-001).
-2. Confirmation that the `.com` email is the preferred deliverable public inbox (A-002).
-3. Confirmation of the conservative 2020-2025 SyriMed wording, with no invented title (A-005).
+2. Confirmation that the `.com` email is the preferred public inbox (A-002).
+3. The exact conservative 2020-2025 SyriMed wording, with no invented title (A-005).
+4. The minimal no-form/no-tracking email-enquiry privacy position, without undocumented processing promises (A-019).
 
 The unresolved India entity, Polar Speed status, social profiles, Wikidata, current location, longer biography, event/media history, MHRA status, customers and deployed technology are not release blockers because they are omitted. They become blockers only if someone proposes adding them.
 

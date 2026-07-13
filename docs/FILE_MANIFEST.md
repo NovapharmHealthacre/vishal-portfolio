@@ -19,7 +19,7 @@ Every path returned by `git ls-files` at the Phase 0 baseline is classified belo
 | `essays/what-parallel-import-actually-means/index.html` | Migrate | Preserve URL; migrate to collection and verify all pharmaceutical guidance against current primary sources. |
 | `essays/why-i-left-swiggy/index.html` | Migrate | Preserve existing URL; reconcile canonical mismatch and remove “no pharma background” implications. |
 | `googlef9cdfdd63c360d56.html` | Keep | Preserve verified Google ownership token byte-for-byte in the public root. Do not disallow it in robots. |
-| `images/vishal-headshot.jpg` | Migrate | Retain as source portrait only; strip EXIF, create responsive formats, confirm public-use rights. |
+| `images/vishal-headshot.jpg` | Migrate | Retain as source portrait only; strip EXIF and create responsive formats. Public-use and transformation rights were owner-confirmed as A-001 on 13 July 2026. |
 | `index.html` | Rewrite | Replace the monolithic homepage with generated semantic HTML, verified claims, shared layout and progressive canvas enhancement. |
 | `profiles.html` | Redirect | Replace with compatibility page for `/facts/`; remove unverified profiles and knowledge-panel manipulation language. |
 | `publications.html` | Redirect | Replace with compatibility page for `/media/`; use verified Yakuji publications only. |

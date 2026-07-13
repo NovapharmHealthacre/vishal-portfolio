@@ -88,7 +88,7 @@ export const renderPage = ({
     "font-src 'self'",
     "style-src 'self'",
     `script-src 'self'${hashes.length ? ` ${hashes.map((hash) => `'${hash}'`).join(' ')}` : ''}`,
-    "connect-src 'none'",
+    "connect-src 'self'",
     "frame-src 'none'",
     "form-action 'none'",
     'upgrade-insecure-requests',

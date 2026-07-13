@@ -6,6 +6,8 @@ import { organisationSchema, personSchema } from '../../src/lib/schema.mjs';
 test('entity facts match the verified ledger', () => {
   assert.equal(company.companyNumber, '16716501');
   assert.equal(company.incorporationDate, '2025-09-15');
+  assert.equal(site.email, 'vishal@novapharmhealthcare.com');
+  assert.equal(site.correctionEmail, site.email);
   assert.deepEqual(person.sameAs, [site.linkedIn]);
   assert.equal(publications.length, 3);
 });
@@ -13,6 +15,10 @@ test('entity facts match the verified ledger', () => {
 test('approved biography labels match their exact word counts', () => {
   assert.equal(person.shortBio.trim().split(/\s+/).length, 40);
   assert.equal(person.mediumBio.trim().split(/\s+/).length, 100);
+  assert.match(
+    person.mediumBio,
+    /His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025\./,
+  );
 });
 
 test('schema omits private and unsupported identity properties', () => {

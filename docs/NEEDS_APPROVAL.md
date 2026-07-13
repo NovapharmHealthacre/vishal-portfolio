@@ -1,20 +1,20 @@
 # Owner approvals and unresolved evidence
 
-The build continues autonomously with conservative omissions. Items below are not blockers for a safe preview, but they must not be published as affirmative facts without the named approval/evidence.
+Owner approvals A-001, A-002, A-005 and A-019 were recorded on 13 July 2026 from the owner's explicit post-merge release instruction. Every other disputed, regulatory, customer, financial, immigration, technology-deployment or partnership claim remains unapproved and omitted.
 
 ## Required before production approval
 
 ### A-001 — Founder portrait rights
 
-- Issue: The repository contains an authentic portrait, but the site has no explicit rights/consent record.
-- Needed: Confirm Vishal owns or is licensed to publish and transform the photograph on the personal site, facts page and social cards.
-- Current action: Optimised derivatives may be created in the branch; press-kit download remains withheld.
+- Status: **APPROVED — 13 July 2026**.
+- Owner statement: Vishal confirms that he owns or has permission to publish, crop, optimise and transform the selected founder portrait on his personal website and social cards.
+- Release effect: The existing optimised derivatives and social cards may be published. This approval does not grant third-party press-kit redistribution rights beyond the website unless separately stated.
 
 ### A-002 — Contact email deliverability
 
-- Issue: The public Yakuji author profile supports `vishal@novapharmhealthcare.com`, but deliverability cannot be tested safely.
-- Needed: Owner confirms it is the preferred public inbox.
-- Current action: Use the independently published `.com` address and record this release check.
+- Status: **APPROVED — 13 July 2026**.
+- Owner statement: `vishal@novapharmhealthcare.com` is the correct preferred public contact inbox.
+- Release effect: The `.com` address may remain on the contact, privacy and footer surfaces. Delivery still requires a release-window smoke test; no alternate address is inferred.
 
 ### A-003 — Current India entity
 
@@ -30,9 +30,9 @@ The build continues autonomously with conservative omissions. Items below are no
 
 ### A-005 — Pharmaceutical employment wording
 
-- Issue: Authoritative private evidence supports work with SyriMed from 2020 to 2025 but does not support a public title or more specific relationship label.
-- Needed: Owner confirms the relationship and preferred public wording, ideally with employment evidence.
-- Current action: Use only “work with SyriMed between 2020 and 2025” and no title.
+- Status: **APPROVED — 13 July 2026**.
+- Approved wording: “His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.”
+- Release effect: Use that sentence without a job title, confidential responsibility or stronger employment/legal relationship claim.
 
 ## Optional identity approvals
 
@@ -84,15 +84,15 @@ The build continues autonomously with conservative omissions. Items below are no
 
 ### A-014 — GitHub authentication
 
-- Issue: GitHub CLI is installed but its stored `NovapharmHealthacre` token is invalid.
-- Needed: Re-authenticate with `gh auth login -h github.com` only if command-line GitHub work is required later; browser/connector access is sufficient for PR review and merge.
-- Current action: The review branch and draft PR are published through the authenticated GitHub connector. No token was requested, exposed or stored.
+- Status: **AUTHENTICATED — 13 July 2026**.
+- Evidence: GitHub CLI 2.87.3 reports an active keychain session for `NovapharmHealthacre` with repository and workflow access. No token value was printed, requested or stored in the repository.
+- Release effect: The reviewed hardening branch may be pushed and a draft PR may be opened. Authentication does not authorise merging or deployment.
 
 ### A-015 — GitHub Pages source switch
 
-- Issue: The rebuild requires GitHub Actions to publish `dist/` rather than serving source files directly from `main/(root)`.
-- Needed: Owner reviews the draft PR, then selects GitHub Actions in repository Pages settings during an approved deployment window.
-- Current action: Provide workflow and rollback instructions; do not change production settings.
+- Issue: Post-merge audit confirms Pages still uses legacy `main/(root)`. The intended `dist` workflow succeeded, but a later legacy Jekyll deployment superseded it.
+- Needed: After every release gate passes and deployment is explicitly authorised, select **GitHub Actions** in repository Pages settings and save `vishal.novapharmhealthcare.com` as the custom domain. Existing DNS is already correct and must not be changed.
+- Current action: Leave settings unchanged. Keep the hardening PR unmerged because a merge to `main` will automatically run the production workflow.
 
 ### A-016 — DNS and hosting
 
@@ -101,27 +101,26 @@ The build continues autonomously with conservative omissions. Items below are no
 
 ### A-017 — Browser, axe, Lighthouse and screenshot evidence
 
-- Issue: The managed build environment has no installed browser binaries, cannot download them, and rejects local loopback listeners. The in-app browser also blocks local `file:` pages. Playwright route/interaction tests, axe, Lighthouse and representative page screenshots therefore could not be completed here.
-- Needed: Run the documented browser matrix in a network-enabled release environment against the exact candidate commit; retain desktop/mobile screenshots, axe output, Lighthouse JSON/HTML and manual keyboard/Safari notes.
-- Current action: Deterministic static gates pass, but production release remains blocked. Do not treat the static accessibility or size checks as substitutes for browser evidence.
-- Owner: Release owner or engineer running the approved preview environment.
-- Retest condition: Before merge; repeat after any source, style, asset or dependency change. Target date is the owner-selected release window.
+- Status: **PASSED — 13 July 2026**.
+- Evidence: Playwright 1.61.1 completed Chromium 149, Firefox 151 and WebKit/Safari 26.5 with zero failures and 73 uniquely named screenshots. Per engine, 30 desktop checks, 29 mobile checks, 13 tablet routes, 14 axe pages, no-JavaScript, reduced-motion, canvas-unavailable, keyboard, focus, skip-link, mobile-menu and 200%/400%-reflow checks passed. Axe reported zero violations.
+- Lighthouse: Three mobile cold-cache runs scored 99 Performance and 100 Accessibility, Best Practices and SEO; desktop scored 100 in all four categories. Mobile LCP was approximately 1.80 seconds, CLS 0.032 and TBT 0; desktop LCP was 0.48 seconds, CLS 0 and TBT 0.
+- Safari note: Native Safari 26.5.2 WebDriver was attempted, but “Allow remote automation” is disabled and enabling it requires the owner's macOS password, which was neither requested nor captured. The matching WebKit 26.5 engine completed the full matrix.
+- Evidence location: ignored local `artifacts/release-qa/`; the durable summary is `docs/POST_MERGE_RELEASE_REPORT.md`.
+- Retest condition: Repeat after any source, style, asset, dependency or deployment-origin change.
 
 ### A-018 — Ordinary-browser check of the official company domain
 
-- Issue: The `.com` company domain is independently corroborated by Yakuji Nippo and the verified LinkedIn result, but the managed web client's URL-safety layer rejected a direct fetch. LinkedIn also needs a final ordinary-browser identity check.
-- Needed: Open `https://novapharmhealthcare.com/` and `https://www.linkedin.com/in/vishal-chakravarty` in an ordinary browser, confirm the correct company/person identity and record the final URLs/status before release.
-- Current action: Retain the corroborated `.com` link in the candidate, but do not release until this direct check and the public-inbox check in A-002 are complete.
-- Owner: Vishal or the NovaPharm domain administrator.
+- Status: **PASSED — 13 July 2026**.
+- Evidence: An ordinary browser opened `https://novapharmhealthcare.com/` with the title “NovaPharm Healthcare | UK Pharmaceutical Distribution Strategy”, NovaPharm branding and company number 16716501. It also opened `https://www.linkedin.com/in/vishal-chakravarty` with the title “Vishal Chakravarty - Novapharm Healthcare | LinkedIn” and a current-company link to NovaPharm Healthcare.
+- Release effect: Retain those exact company and LinkedIn URLs. No additional profile, location, regulatory or operational claim is approved by this identity check.
 - Retest condition: Before merge and again in the production validation window.
 
 ### A-019 — Inbox privacy handling
 
-- Issue: The static site can describe its own no-form/no-tracking mechanics, but it cannot prove how external email or LinkedIn enquiries are retained, disclosed or deleted.
-- Needed: Owner approves an operational privacy position before adding retention, legal-basis, non-sale or disclosure commitments to the public notice.
-- Current action: The candidate notice is limited to verified website mechanics and sends no sensitive-data handling promise.
-- Owner: Vishal or the designated privacy owner.
-- Retest condition: Before production and before any analytics, form, CRM, newsletter or additional processor is introduced.
+- Status: **APPROVED — 13 July 2026**.
+- Approved position: The website has no contact form, analytics or tracking. Email enquiries are sent through the visitor's email provider and processed through the owner's business email provider for reading, responding to and managing the enquiry.
+- Boundary: Do not promise a specific retention period, automatic deletion, legal basis, non-disclosure or non-sharing policy unless those processes are implemented and documented.
+- Retest condition: Review before adding analytics, a form, CRM, newsletter or another processor, and whenever the real inbox workflow changes.
 
 ## Explicitly not approvable through this file alone
 

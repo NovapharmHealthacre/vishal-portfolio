@@ -11,9 +11,9 @@ This is a static personal website. It does not include analytics, advertising tr
 
 ## Information you choose to send
 
-The contact and LinkedIn links open services outside this static website. Those providers may process the information you choose to send under their own terms. The website itself does not collect or store the contents of those messages.
+The contact and LinkedIn links open services outside this static website. Email enquiries are sent through your email provider and processed through the owner's business email provider so the enquiry can be read, answered and managed. Those providers may also process the information you choose to send under their own terms. The website itself does not operate a contact-form database or store the contents of those messages.
 
-Do not send patient information, special-category personal data, passwords or confidential material through an ordinary first-contact message. Any inbox retention or disclosure practice is outside this website and requires a separately approved operating policy.
+Do not send patient information, special-category personal data, passwords or confidential material through an ordinary first-contact message. This notice does not promise a specific inbox retention period, automatic deletion, legal basis, non-disclosure or non-sharing practice that has not been implemented and documented.
 
 ## Hosting data
 

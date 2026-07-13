@@ -1,5 +1,7 @@
 # Quality-assurance results
 
+> Historical note: this file records the pre-merge PR-candidate evidence. The authoritative post-merge state, owner approvals and release decision are maintained in `docs/POST_MERGE_RELEASE_REPORT.md`.
+
 Evidence date: 13 July 2026
 Candidate branch: `rebuild/world-class-portfolio`
 Baseline: `1ae1ff5c43123f2c3f5be78f0e37da144f460f06`
