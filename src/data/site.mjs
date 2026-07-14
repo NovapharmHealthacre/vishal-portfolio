@@ -20,6 +20,18 @@ export const canonicalRoutes = Object.freeze([
   '/privacy/',
 ]);
 
+export const routeModified = Object.freeze({
+  '/': '2026-07-14',
+  '/about/': '2026-07-14',
+  '/ventures/': '2026-07-14',
+  '/thinking/': '2026-07-12',
+  '/media/': '2026-07-12',
+  '/speaking-partnerships/': '2026-07-12',
+  '/facts/': '2026-07-14',
+  '/contact/': '2026-07-12',
+  '/privacy/': '2026-07-13',
+});
+
 export const legacyRedirects = Object.freeze({
   '/about.html': '/about/',
   '/companies.html': '/ventures/',
@@ -41,12 +53,14 @@ export const pageMeta = Object.freeze({
     description:
       'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, working on access, licensing and supply systems in regulated healthcare markets.',
     path: '/',
+    modified: routeModified['/'],
   },
   thinking: {
     title: 'Thinking — Essays by Vishal Chakravarty',
     description:
       'Essays on regulated markets, pharmaceutical access, resilience and the operating choices behind company building.',
     path: '/thinking/',
+    modified: routeModified['/thinking/'],
   },
 });
 
