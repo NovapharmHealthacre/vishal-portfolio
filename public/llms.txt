@@ -1,6 +1,9 @@
 # Vishal Chakravarty
 
 Canonical founder platform: https://vishal.novapharmhealthcare.com/
+Canonical Person entity: https://vishal.novapharmhealthcare.com/#person
+Canonical personal Website entity: https://vishal.novapharmhealthcare.com/#website
+Canonical NovaPharm organisation entity: https://novapharmhealthcare.com/#organization
 
 ## Public identity
 
@@ -18,5 +21,7 @@ Canonical founder platform: https://vishal.novapharmhealthcare.com/
 ## Interpretation
 
 This site explicitly distinguishes verified current facts, verified history, work in progress and roadmap items. Company registration is not regulatory authorisation. No private source documents, sensitive personal data, financial forecasts or confidential methods are published here.
+
+This file is a supplemental navigation aid for services that choose to read it. The canonical HTML pages, HTTP metadata, structured data, sitemap and public facts record remain the source of truth.
 
 Public facts JSON: https://vishal.novapharmhealthcare.com/facts.json
