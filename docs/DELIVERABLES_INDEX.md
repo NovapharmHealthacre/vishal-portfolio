@@ -37,13 +37,16 @@ Reviewed: 14 July 2026
 | Unverifiable items | `UNVERIFIABLE_ITEMS.md` |
 | Remaining owner actions | `REMAINING_OWNER_ACTIONS.md` |
 | Actions-runtime audit | `ACTIONS_RUNTIME_AUDIT.md` |
+| Acceptance report | `ACCEPTANCE_REPORT.md` |
+| Hosted test evidence | `POST_LAUNCH_SEO_TEST_RESULTS.md` |
+| Complete file-change summary | `FILE_CHANGE_SUMMARY.md` |
 | Claim governance | Updated `FACT_LEDGER.md` |
 | Automated SEO authority gate | `scripts/check-seo-authority.mjs` |
 | Entity/schema implementation | `src/data/entity.mjs`, `src/data/site.mjs`, `src/lib/schema.mjs` |
 | Generated facts/sitemap implementation | `scripts/build.mjs` |
 | Crawler and supplemental records | `public/robots.txt`, `public/llms.txt` |
-| Regression tests | `tests/unit/entity.test.mjs`, `tests/unit/output.test.mjs`, `scripts/check-schema.mjs` |
+| Regression tests | `tests/unit/entity.test.mjs`, `tests/unit/output.test.mjs`, `scripts/check-schema.mjs`, `scripts/check-routes.mjs` |
 | SEO draft PR | GitHub PR #3 |
 | Separate Actions maintenance PR | GitHub PR #4 |
 
-Test results and exact changed-file lists are recorded through the pull-request checks and final implementation handoff. Screenshots are required only when visible output changes; this phase intentionally makes no visual design change.
+Screenshots are required only when visible output changes. This phase intentionally makes no visual design change; the existing release browser and Lighthouse baselines remain the regression reference.
