@@ -1,5 +1,7 @@
 # Vishal Chakravarty — crawler policy
-# Reviewed 12 July 2026. Search/retrieval is allowed; known training crawlers are declined.
+# Reviewed 14 July 2026 against current official crawler documentation.
+# Public search and retrieval are allowed. Automatic model-training crawlers are declined.
+# User-triggered agents may not apply robots.txt rules; their entries below document intent only.
 
 User-agent: *
 Allow: /
@@ -10,33 +12,43 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+# ChatGPT automatic search discovery.
 User-agent: OAI-SearchBot
 Allow: /
 
+# ChatGPT user-triggered retrieval. OpenAI states robots.txt may not apply.
 User-agent: ChatGPT-User
 Allow: /
 
+# OpenAI foundation-model training crawler.
 User-agent: GPTBot
 Disallow: /
 
+# Claude automatic search discovery.
 User-agent: Claude-SearchBot
 Allow: /
 
+# Claude user-triggered retrieval.
 User-agent: Claude-User
 Allow: /
 
+# Anthropic model-development crawler.
 User-agent: ClaudeBot
 Disallow: /
 
+# Perplexity automatic search discovery.
 User-agent: PerplexityBot
 Allow: /
 
+# Perplexity user-triggered retrieval. Perplexity states it generally ignores robots.txt.
 User-agent: Perplexity-User
 Allow: /
 
+# Google control for Gemini model grounding/training uses, separate from Google Search.
 User-agent: Google-Extended
 Disallow: /
 
+# Common Crawl is not required for the site's search-discovery objective.
 User-agent: CCBot
 Disallow: /
 
