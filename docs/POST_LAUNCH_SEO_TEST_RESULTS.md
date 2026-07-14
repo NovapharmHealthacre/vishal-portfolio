@@ -29,11 +29,14 @@ Passed:
 
 The earlier failure was not waived. `scripts/check-routes.mjs` still expected `facts.json` schema version 1 after the intentional entity-contract upgrade to version 2. The route test now validates version 2 and its canonical Person and Organization identifiers.
 
-### Restored combined workflow run
+### Restored combined workflow runs
 
-After diagnosis, `.github/workflows/ci.yml` was restored to its standard `npm run check` workflow. GitHub Actions run `29358076802` completed successfully on commit `c7e55b412866e72ae2b1dcbd99ed6927b59ae492`.
+After diagnosis, `.github/workflows/ci.yml` was restored to its standard `npm run check` workflow.
 
-The final documentation commits must also receive a successful combined workflow before merge review is complete.
+- Run `29358076802` passed on commit `c7e55b412866e72ae2b1dcbd99ed6927b59ae492`.
+- Run `29358215121` passed after the complete test and file-summary records were added, on commit `487acebe925437908f2fe644bb30dda6486d96cd`.
+
+The final closure-note commit must receive the same successful combined workflow before merge.
 
 ## Visible-output testing decision
 
