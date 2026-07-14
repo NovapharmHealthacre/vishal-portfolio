@@ -21,29 +21,5 @@ jobs:
           cache: npm
       - name: Install locked toolchain
         run: npm ci
-      - name: Format
-        run: npm run format:check
-      - name: Lint
-        run: npm run lint
-      - name: Content contracts
-        run: npm run typecheck
-      - name: Build
-        run: npm run build
-      - name: Unit tests
-        run: npm test
-      - name: Links
-        run: npm run test:links
-      - name: Schema
-        run: npm run test:schema
-      - name: Claims
-        run: npm run test:claims
-      - name: Routes
-        run: npm run test:routes
-      - name: SEO authority
-        run: npm run test:seo-authority
-      - name: Accessibility preflight
-        run: npm run test:a11y
-      - name: Performance budget
-        run: npm run test:performance
-      - name: Security
-        run: npm run test:security
+      - name: Run release checks
+        run: npm run check
