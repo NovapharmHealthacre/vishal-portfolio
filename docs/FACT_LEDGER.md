@@ -2,7 +2,7 @@
 
 Statuses: `VERIFIED_CURRENT`, `VERIFIED_HISTORICAL`, `IN_PROGRESS`, `PLANNED`, `PROJECTION`, `PRIVATE_DO_NOT_PUBLISH`, `UNSUPPORTED_REMOVE`, `NEEDS_OWNER_APPROVAL`.
 
-Verification date for public-record checks: 12 July 2026. Private source documents are research evidence only and must not be copied to the repository or build.
+Verification date for public-record checks: 12 July 2026. Entity-architecture review: 14 July 2026. Private source documents are research evidence only and must not be copied to the repository or build.
 
 | ID | Subject | Exact claim under review | Status | Source | Source date | Last verified | Public-safe | Approved wording | Notes / contradiction | Intended pages |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -28,7 +28,7 @@ Verification date for public-record checks: 12 July 2026. Private source documen
 | C-004 | Company | Incorporated on 15 September 2025. | VERIFIED_CURRENT | Companies House, checked 12 Jul 2026 | 12 Jul 2026 | 12 Jul 2026 | Yes | Incorporated on 15 September 2025. | Replaces incorrect 2024 schema date. | Ventures, facts, schema |
 | C-005 | Company | SIC codes 21100 and 46460. | VERIFIED_CURRENT | Companies House, checked 12 Jul 2026 | 12 Jul 2026 | 12 Jul 2026 | Yes, with caveat | Companies House records SIC codes 21100 and 46460. | Do not convert SIC selection into proof of manufacturing, wholesale activity or licence. | Facts only |
 | C-006 | Company | Official domain is novapharmhealthcare.com. | VERIFIED_CURRENT | Yakuji author profile, 6 Feb 2026; first-party LinkedIn search result, checked 12 Jul 2026 | 6 Feb and 12 Jul 2026 | 12 Jul 2026 | Yes | https://novapharmhealthcare.com/ | `.co.uk` is excluded from new copy. | Ventures, facts, schema |
-| C-007 | Company | Founder email is vishal@novapharmhealthcare.com. | VERIFIED_CURRENT | Yakuji author profile, 6 Feb 2026 | 6 Feb 2026 | 12 Jul 2026 | Yes | vishal@novapharmhealthcare.com | Replace mixed `.co.uk` addresses. Owner should confirm deliverability before production. | Contact, footer |
+| C-007 | Company | Founder email is vishal@novapharmhealthcare.com. | VERIFIED_CURRENT | Yakuji author profile, 6 Feb 2026 | 6 Feb 2026 | 12 Jul 2026 | Yes | vishal@novapharmhealthcare.com | Replace mixed `.co.uk` addresses. Owner confirmed it as the preferred public inbox. | Contact, footer |
 | C-008 | Company | NovaPharm is an MHRA-licensed wholesaler. | UNSUPPORTED_REMOVE | No official MHRA public entry found 12 Jul 2026; no current public operating evidence | 12 Jul 2026 | 12 Jul 2026 | No | NovaPharm does not currently claim an MHRA wholesale authorisation on this site. | Never use “licensed”, “approved” or equivalent without a live official record. | Ventures status note |
 | C-009 | Company | NovaPharm has GDP-certified infrastructure. | UNSUPPORTED_REMOVE | Existing site only; no certificate evidence | Legacy copy, date unknown | 12 Jul 2026 | No | The company is developing a compliance-led operating model; regulated activity depends on required permissions and qualified partners. | Avoid implying certification. | Ventures |
 | C-010 | Company | NovaPharm serves NHS trusts, pharmacies and wholesalers. | UNSUPPORTED_REMOVE | Existing site; no current public contract/customer evidence | Legacy copy | 12 Jul 2026 | No | Omit | Do not convert experience or ambition into a company-customer claim. | None |
@@ -46,6 +46,9 @@ Verification date for public-record checks: 12 July 2026. Private source documen
 | M-003 | Media | Existing portfolio essays are medical advice. | UNSUPPORTED_REMOVE | Existing essays | Legacy copy, date unknown | 12 Jul 2026 | No | Essays are general analysis and do not provide patient-specific medical advice. | Add editorial disclaimer and primary sources. | Thinking, essays |
 | E-001 | Entity | Canonical personal origin is vishal.novapharmhealthcare.com. | VERIFIED_CURRENT | CNAME, production, Yakuji author profile, checked 12 Jul 2026 | 6 Feb and 12 Jul 2026 | 12 Jul 2026 | Yes | https://vishal.novapharmhealthcare.com/ | Use stable `#person` and `#website` identifiers. | All metadata/schema |
 | E-002 | Entity | Preferred role description. | VERIFIED_CURRENT | Synthesis of verified role and public work | 12 Jul 2026 | 12 Jul 2026 | Yes | Founder and operator working on more resilient access, licensing and supply systems for regulated healthcare markets. | “Working on” avoids implying licensed or deployed company capabilities. | Home, about, facts, metadata |
+| E-003 | Entity | NovaPharm's canonical Organization identifier belongs to the corporate domain. | VERIFIED_CURRENT | Official company domain plus entity-architecture review | 14 Jul 2026 | 14 Jul 2026 | Yes | https://novapharmhealthcare.com/#organization | Replaces the competing personal-domain company identifier. The corporate site should publish the same `@id`. | Ventures, facts, schema, llms |
+| E-004 | Entity | The personal WebSite is published by Vishal, not NovaPharm. | VERIFIED_CURRENT | Site scope and editorial ownership | 14 Jul 2026 | 14 Jul 2026 | Yes | Personal WebSite publisher → Vishal Person | Personal essays remain authored and published by Vishal. | Home, thinking, essays, schema |
+| E-005 | Entity | Structured job title is Chief Executive Officer while founder status is represented separately. | VERIFIED_CURRENT | Approved visible role and Schema.org relationship model | 14 Jul 2026 | 14 Jul 2026 | Yes | Chief Executive Officer | Visible role remains “Founder & CEO”; Organization founder → Person carries the founder relationship. | Person schema |
 
 ## Controlled publication rules
 
@@ -54,3 +57,4 @@ Verification date for public-record checks: 12 July 2026. Private source documen
 3. `PRIVATE_DO_NOT_PUBLISH`, `UNSUPPORTED_REMOVE` and unapproved `NEEDS_OWNER_APPROVAL` claims must not enter `dist/`.
 4. Business-plan text is never automatically promoted to a current fact.
 5. Structured data may be narrower than visible copy; it must never be broader.
+6. Canonical entity identifiers are changed only through a documented cross-site migration or contract review.
