@@ -166,6 +166,16 @@
     min-width: 0;
   }
 
+  .content-managed a[href^="mailto:"] {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .article-header h1,
+  .contact-hero h1 {
+    overflow-wrap: anywhere;
+  }
+
   .contact-hero,
   .site-footer {
     min-width: 0;

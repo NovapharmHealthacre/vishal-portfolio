@@ -85,6 +85,9 @@ server.stderr.on('data', (chunk) => { serverLog += chunk; });
 
 const auditDocument = async (page, label, { expectNoIndex = false, checkConsole = true } = {}) => {
   await page.waitForLoadState('networkidle');
+  await page.evaluate(() => {
+    for (const image of document.images) image.loading = 'eager';
+  });
   await page.waitForFunction(() => [...document.images].every((image) => image.complete), null, { timeout: 15_000 });
   const state = await page.evaluate(() => ({
     h1: document.querySelectorAll('main h1').length,

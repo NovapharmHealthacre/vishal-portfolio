@@ -6,7 +6,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
   browser-qa:
@@ -26,8 +25,8 @@ jobs:
         run: npm run build
       - name: Install isolated browser and accessibility runtime
         run: |
-          npm install --prefix /tmp/founder-qa --no-save playwright@1.61.1 axe-core@4.10.3 >/dev/null 2>&1
-          /tmp/founder-qa/node_modules/.bin/playwright install --with-deps chromium firefox webkit >/dev/null 2>&1
+          npm install --prefix /tmp/founder-qa --no-save playwright@1.61.1 axe-core@4.10.3
+          /tmp/founder-qa/node_modules/.bin/playwright install --with-deps chromium firefox webkit
       - name: Run three-engine browser matrix
         env:
           PLAYWRIGHT_MODULE: /tmp/founder-qa/node_modules/playwright/index.mjs
@@ -36,20 +35,6 @@ jobs:
           mkdir -p artifacts
           set -o pipefail
           npm run test:browser 2>&1 | tee artifacts/browser-console.log
-      - name: Post final browser diagnostic
-        if: failure() && github.event_name == 'pull_request'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: |
-          {
-            echo '## Browser QA diagnostic'
-            echo
-            echo '```text'
-            tail -30 artifacts/browser-console.log
-            echo '```'
-          } > /tmp/browser-diagnostic.md
-          gh api "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" --method POST --raw-field body="$(cat /tmp/browser-diagnostic.md)"
       - name: Upload browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
