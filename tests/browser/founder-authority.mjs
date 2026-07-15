@@ -205,8 +205,38 @@ try {
       for (const route of narrowRoutes) {
         const page = await narrow.newPage();
         await page.goto(`${origin}${route}`, { waitUntil: 'networkidle' });
-        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-        ensure(overflow <= 1, `${browserName} 320x568 ${route}: horizontal overflow ${overflow}px`);
+        const narrowState = await page.evaluate(() => {
+          const clientWidth = document.documentElement.clientWidth;
+          const offenders = [...document.querySelectorAll('body *')]
+            .map((element) => {
+              const rect = element.getBoundingClientRect();
+              const style = getComputedStyle(element);
+              return {
+                element: `${element.tagName.toLowerCase()}${element.id ? `#${element.id}` : ''}${element.className && typeof element.className === 'string' ? `.${element.className.trim().replace(/\s+/g, '.')}` : ''}`,
+                left: Math.round(rect.left * 10) / 10,
+                right: Math.round(rect.right * 10) / 10,
+                width: Math.round(rect.width * 10) / 10,
+                minWidth: style.minWidth,
+                position: style.position,
+                whiteSpace: style.whiteSpace,
+              };
+            })
+            .filter((item) => item.right > clientWidth + 1 || item.left < -1)
+            .sort((a, b) => b.right - a.right)
+            .slice(0, 12);
+          return {
+            innerWidth: window.innerWidth,
+            visualViewportWidth: window.visualViewport?.width ?? null,
+            clientWidth,
+            scrollWidth: document.documentElement.scrollWidth,
+            bodyClientWidth: document.body.clientWidth,
+            bodyScrollWidth: document.body.scrollWidth,
+            bodyMinWidth: getComputedStyle(document.body).minWidth,
+            offenders,
+          };
+        });
+        const overflow = narrowState.scrollWidth - narrowState.clientWidth;
+        ensure(overflow <= 1, `${browserName} 320x568 ${route}: horizontal overflow ${overflow}px; ${JSON.stringify(narrowState)}`);
         await page.close();
       }
       await narrow.close();
