@@ -1,5 +1,5 @@
 export const verificationDate = '2026-07-12';
-export const profileModifiedDate = '2026-07-14';
+export const profileModifiedDate = '2026-07-15';
 
 export const site = Object.freeze({
   id: 'https://vishal.novapharmhealthcare.com/#website',
@@ -8,7 +8,7 @@ export const site = Object.freeze({
   language: 'en-GB',
   locale: 'en_GB',
   description:
-    'The founder platform of Vishal Chakravarty: regulated healthcare markets, company building and long-form thinking.',
+    'The founder platform of Vishal Chakravarty: pharmaceutical entrepreneurship, market access, specialist medicines and cross-border company building.',
   email: 'vishal@novapharmhealthcare.com',
   correctionEmail: 'vishal@novapharmhealthcare.com',
   linkedIn: 'https://www.linkedin.com/in/vishal-chakravarty',
@@ -21,11 +21,11 @@ export const person = Object.freeze({
   role: 'Founder & CEO, NovaPharm Healthcare Ltd',
   jobTitle: 'Chief Executive Officer',
   proposition:
-    'Founder and operator working on more resilient access, licensing and supply systems for regulated healthcare markets.',
+    'Building a UK-led pharmaceutical company around market access, specialist medicines and resilient cross-border supply.',
   shortBio:
-    'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd. He works on access, licensing and supply questions in regulated healthcare markets, and writes about the operating systems required to build responsibly in complex sectors, with evidence before assertion.',
+    'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd. He is building across pharmaceutical market access, product strategy, manufacturing partnerships, licensing pathways and supply, with a focus on the United Kingdom and international regulated markets.',
   mediumBio:
-    'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, an active UK-registered company incorporated in September 2025. His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. Today, he is developing a compliance-led operating model focused on access, licensing and supply in regulated healthcare markets. NovaPharm’s regulated operating capabilities remain under development and are not presented as licensed or operational on this site. Vishal also contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. His work emphasises clear status boundaries, primary evidence and responsible operating decisions before regulated activity begins or scales.',
+    'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company established in 2025. His pharmaceutical experience includes work with SyriMed between 2020 and 2025. Through NovaPharm, he is developing a business focused on specialist medicines, market access, manufacturing partnerships, licensing pathways and resilient supply across the United Kingdom and international regulated markets. He also contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and writes independently about product strategy, technology transfer, pharmaceutical commercialisation and founder execution.',
   image: {
     id: `${site.origin}/about/#portrait`,
     alt: 'Portrait of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd',
@@ -34,12 +34,15 @@ export const person = Object.freeze({
   },
   sameAs: [site.linkedIn],
   knowsAbout: [
-    'Regulated healthcare markets',
+    'Pharmaceutical entrepreneurship',
     'Pharmaceutical market access',
-    'UK–EU pharmaceutical regulation',
+    'UK–EU pharmaceutical strategy',
+    'Product and portfolio strategy',
+    'CMO and CDMO selection',
+    'Pharmaceutical technology transfer',
     'Parallel import licensing',
-    'Supply-chain resilience',
-    'Founder operations',
+    'Pharmaceutical supply chains',
+    'Cross-border market entry',
   ],
 });
 
@@ -58,15 +61,16 @@ export const company = Object.freeze({
   companiesHouseUrl:
     'https://find-and-update.company-information.service.gov.uk/company/16716501',
   description:
-    'An active UK-registered company developing a compliance-led pharmaceutical sourcing and distribution model.',
+    'A UK pharmaceutical company building market-access, licensing, manufacturing-partnership and supply capabilities for specialist medicines across regulated markets.',
   currentFocus:
-    'The current plan focuses on access and supply resilience in specialist medicines, including oncology.',
+    'NovaPharm’s current work centres on product and portfolio strategy, market entry, manufacturing partnerships, licensing pathways, channel development and resilient supply.',
   regulatoryStatus:
-    'The company does not present itself on this site as holding an MHRA wholesale authorisation. Regulated activity depends on the required permissions and qualified operating partners.',
+    'NovaPharm is developing the permissions, partnerships and operating infrastructure required for its pharmaceutical strategy.',
   roadmap: [
-    'A digital B2B workflow for controlled commercial operations',
-    'Decision support for demand and supply planning',
-    'Traceability research for accountable product movement',
+    'Market access and product strategy for specialist medicines',
+    'Manufacturing and technology-transfer partnerships',
+    'Sourcing, supply and commercialisation architecture',
+    'Digital operating infrastructure for controlled B2B workflows',
   ],
 });
 
@@ -140,7 +144,7 @@ export const publicFacts = Object.freeze([
     sourceDate: 'withheld',
     lastVerified: verificationDate,
     publicSafe: true,
-    approvedWording: 'His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.',
+    approvedWording: 'His pharmaceutical experience includes work with SyriMed between 2020 and 2025.',
     pages: ['/about/', '/facts/'],
   },
   {
@@ -152,14 +156,14 @@ export const publicFacts = Object.freeze([
     sourceDate: '2026-05-12',
     lastVerified: verificationDate,
     publicSafe: true,
-    approvedWording: 'Three instalments of a planned four-part series are published in English and Japanese.',
+    approvedWording: 'Three instalments are published in English and Japanese.',
     pages: ['/media/', '/facts/'],
   },
 ]);
 
 export const statusLabels = Object.freeze({
-  VERIFIED_CURRENT: 'Current · verified',
-  VERIFIED_HISTORICAL: 'Historical · verified',
-  IN_PROGRESS: 'In progress',
-  PLANNED: 'Roadmap',
+  VERIFIED_CURRENT: 'Current',
+  VERIFIED_HISTORICAL: 'Professional history',
+  IN_PROGRESS: 'In development',
+  PLANNED: 'Direction',
 });
