@@ -14,7 +14,8 @@ test('production output preserves ownership and custom-domain files', () => {
 test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
-  assert.match(html, /Founder and operator working on more resilient access/);
+  assert.match(html, /Building a UK-led pharmaceutical company around market access/);
+  assert.match(html, /Founder &amp; CEO · Pharmaceutical entrepreneurship · Regulated markets/);
   assert.match(html, /<nav id="site-navigation"/);
   assert.doesNotMatch(html, /loading screen/i);
 });
@@ -47,10 +48,10 @@ test('public facts expose only approved public-safe records and canonical entity
 
 test('privacy output matches the approved minimal email flow', () => {
   const html = fs.readFileSync(path.resolve('dist/privacy/index.html'), 'utf8');
-  assert.match(html, /does not include analytics, advertising trackers, a contact form or non-essential cookies/);
+  assert.match(html, /does not use analytics, advertising trackers, a contact form or non-essential cookies/);
   assert.match(
     html,
-    /Email enquiries are sent through your email provider and processed through the owner&#39;s business email provider so the enquiry can be read, answered and managed\./,
+    /Email enquiries are sent through the sender’s email provider and processed through the owner’s business email provider so they can be read, answered and managed\./,
   );
   assert.doesNotMatch(
     html,
@@ -63,6 +64,19 @@ test('contact output uses the approved public inbox', () => {
   assert.match(html, /mailto:vishal@novapharmhealthcare\.com/);
   assert.match(html, />vishal@novapharmhealthcare\.com</);
   assert.doesNotMatch(html, /vishal@novapharmhealthcare\.co\.uk/i);
+});
+
+test('profile hides machine assets while preserving the human route', () => {
+  const html = fs.readFileSync(path.resolve('dist/facts/index.html'), 'utf8');
+  assert.match(html, /Founder profile/);
+  assert.doesNotMatch(html, /Machine-readable fact record|href="\/facts\.json"/i);
+});
+
+test('retired essay routes use neutral compatibility output', () => {
+  const html = fs.readFileSync(path.resolve('dist/essays/why-i-left-swiggy/index.html'), 'utf8');
+  assert.match(html, /This page has moved/);
+  assert.match(html, /why-i-chose-to-build-in-pharmaceuticals/);
+  assert.doesNotMatch(html, /The Story Was Too Simple|This is the correction/i);
 });
 
 test('generated portrait files are metadata-stripped derivatives', () => {
