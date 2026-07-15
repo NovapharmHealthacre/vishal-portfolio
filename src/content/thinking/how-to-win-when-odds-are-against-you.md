@@ -1,100 +1,140 @@
 ---
-title: How to Win When the Odds Are Against You
-description: A practical operating note on choosing the right game, building evidence and staying rational when the starting conditions are uneven.
-summary: Advantage is not created by pretending the field is level. It is created by reading the terrain, choosing an asymmetric game and compounding credible work.
+title: Building When the Starting Position Is Uneven
+description: A founder operating note on choosing an asymmetric market, sequencing capital, building expertise and creating leverage when resources and credibility are limited.
+summary: An uneven starting position changes the strategy. The founder’s job is to choose a market where knowledge, relationships and completed work can compound into leverage.
 author: Vishal Chakravarty
 published: 2026-01-06
-modified: 2026-07-12
-category: Operating notes
+modified: 2026-07-15
+category: Founder execution
 canonicalPath: /essays/how-to-win-when-odds-are-against-you/
 legacyPaths: ["/essays/how-to-win-when-odds-are-against-you/index.html"]
 socialImage: /images/social/how-to-win-when-odds-are-against-you-og.jpg
 sources: []
-related: ["regulated-industries", "why-i-left-swiggy"]
+related: ["why-i-chose-to-build-in-pharmaceuticals", "regulatory-approval-is-not-market-access", "route-to-market-before-launch"]
 public: true
 ---
 
-The odds are not personal. They are structural.
+An uneven starting position should change the strategy, not the ambition. A founder with less capital, a smaller network or limited public credibility cannot copy the operating model of a larger company and expect the same outcome. The useful response is to choose a market where knowledge, relationships and completed work can compound into leverage.
 
-That distinction matters. If you treat a structural disadvantage as a verdict on your ability, you waste energy defending yourself. If you treat it as information, you can design around it.
+That is one reason I chose pharmaceuticals. The sector is difficult, slow and demanding, but the barriers reward depth. A company cannot be built through visibility alone. It has to understand products, manufacturers, licences, supply, buyers and the economics connecting them.
 
-This is not a case for blind optimism. It is a case for clear-eyed positioning.
+## Choose a market where learning compounds
 
-## Start with the terrain
+Some markets reset quickly. An advantage disappears when a campaign ends or a feature is copied.
 
-People rarely begin with the same capital, credibility, geography, network or margin for error. Pretending otherwise does not make the game fair. It only makes your decisions less accurate.
+In pharmaceuticals, useful knowledge accumulates:
 
-Write down what is genuinely constrained. Then separate it from what can be changed.
+- how a regulatory route changes the development plan;
+- which manufacturers fit a dosage form and market;
+- where minimum batch size changes product economics;
+- how a distributor or pharmacy channel makes decisions;
+- which documents, quality agreements and responsibilities matter;
+- how working capital moves through a long product cycle.
 
-- A weak network can be rebuilt through useful work and reliable follow-through.
-- Limited capital can force a narrower, more disciplined first move.
-- A lack of public credibility can be answered with evidence, not louder self-description.
-- A longer route can become an advantage if it filters out people who need immediate validation.
+That knowledge survives an individual opportunity. It improves the next assessment and makes the company’s judgement harder to reproduce.
 
-Acceptance is not surrender. It is the moment calculation becomes possible.
+A founder starting without scale should prefer work where learning remains valuable after the first attempt.
 
-## Choose an asymmetric game
+## Convert constraints into sequencing decisions
 
-You do not beat a better-resourced competitor by copying their strategy with fewer resources. You need a different game.
+Limited resources create a need for sequence.
 
-The best asymmetric opportunities tend to have three characteristics: the cost of a small experiment is contained, the learning survives even if the experiment fails, and the upside compounds if it works.
+The company cannot develop every product, enter every market, qualify every manufacturer and build every system at once. The first portfolio decisions should therefore answer:
 
-This changes the question from “How do I look competitive?” to “What can I learn or build here that becomes harder to reproduce over time?”
+- Which opportunity builds the most transferable capability?
+- Which product can reach a meaningful decision with contained capital?
+- Which manufacturer relationship can support more than one programme?
+- Which market creates useful evidence for the next market?
+- Which infrastructure is required now and which can wait?
 
-In complex sectors, that may be procedural knowledge, a record of sound decisions, a trusted relationship or a system that makes difficult work repeatable. None looks dramatic at the beginning. That is the point.
+A constraint becomes dangerous when it is ignored. It becomes useful when it forces the company to identify the decision that matters most.
 
-## Build evidence before visibility
+## Build commercial leverage through expertise
 
-When recognition is scarce, the temptation is to manufacture the appearance of progress. Titles expand. Plans are described as products. Introductions become partnerships. A registration becomes an operating licence.
+A small company may not have purchasing power, but it can create another form of leverage by becoming valuable to partners.
 
-That may create attention, but it destroys the one asset an under-resourced operator cannot afford to lose: trust.
+A manufacturer is more likely to engage seriously when the product scope, target market, forecast, batch strategy and decision process are clear. A buyer is more likely to listen when the company understands availability, pack, price and replenishment. An adviser is more useful when the founder asks a precise question and can implement the answer.
 
-Use a stricter sequence:
+Preparation changes the relationship.
 
-1. State what is true now.
-2. Label what is in progress.
-3. Describe the roadmap as a roadmap.
-4. Keep private work private.
-5. Let completed evidence change the language.
+The founder should arrive with enough understanding to reduce uncertainty for the other side. That does not mean pretending to know everything. It means making the unresolved questions specific and moving decisions forward.
 
-Credibility compounds slowly and can collapse quickly. Protect it.
+## Relationships are built through follow-through
 
-## Make discipline observable
+Pharmaceutical projects can take years. Relationships therefore matter beyond introductions.
 
-Discipline is not a performance of long hours. It is the quality of decisions made when resources are tight.
+Credibility develops through ordinary actions:
 
-It looks like declining work that does not fit the thesis. It looks like recording assumptions before the outcome is known. It looks like stopping a weak line of work without turning the time already spent into an argument for continuing.
+- sending the information promised;
+- responding clearly;
+- understanding the other party’s constraints;
+- recording decisions;
+- paying attention to detail;
+- raising problems early;
+- maintaining contact when there is no immediate transaction.
 
-It also looks like maintaining standards when nobody is watching. In regulated work, the record is part of the work. In founder work, the same principle applies: decisions should still make sense when revisited without the emotion of the day.
+A strong network is not a large list of names. It is a set of people who know how the founder works.
 
-## Treat patience as active work
+That kind of network takes longer to build, but it becomes more valuable with each completed programme.
 
-Waiting is not a strategy. Preparation during a long cycle is.
+## Capital discipline is part of strategy
 
-When an outcome depends on another institution, use the interval to improve the quality of the next decision. Tighten the evidence. Map the dependencies. Identify the failure modes. Build the part of the system that does not depend on permission.
+When capital is limited, the company must understand where money becomes irreversible.
 
-This is how time changes sides. A delay that once felt like a disadvantage becomes a period in which the work becomes more defensible.
+Development fees, analytical work, stability, validation, packaging components and commercial inventory create different commitments at different times. A disciplined programme uses decision gates before the next large spend.
 
-## Know when the odds have changed
+For example:
 
-The odds rarely flip in one visible moment. They move through accumulated proof:
+1. confirm the market and regulatory route;
+2. screen manufacturers and batch economics;
+3. complete technical due diligence;
+4. agree transfer scope and analytical requirements;
+5. update the complete product model;
+6. commit to the next development stage.
 
-- one difficult problem understood properly;
-- one promise kept when it would have been easy to disappear;
-- one process made reliable;
-- one unsupported claim removed before somebody else finds it;
-- one year of work that cannot be compressed into a weekend.
+This does not remove risk. It prevents the company from paying to discover a problem that could have been understood earlier.
 
-Eventually the starting conditions matter less than the position you have built. Spectators may call that luck because they did not see the sequence.
+## Long cycles require active patience
 
-You will know it was not sudden.
+Waiting for a regulatory, technical or partner decision should not stop the company from improving its position.
 
-## The operating rule
+The interval can be used to:
 
-Do not ask whether the game is fair. Ask whether you understand it well enough to choose your position.
+- refine the portfolio;
+- compare alternate manufacturers;
+- map the channel;
+- improve the demand model;
+- prepare data and documents;
+- build operating infrastructure;
+- understand the next market;
+- strengthen relationships.
 
-Do not compete for the appearance of momentum. Build evidence that survives scrutiny.
+Patience is useful when it produces a better next decision.
 
-Do not rely on hope when a smaller, testable decision is available.
+A long cycle becomes an advantage when competitors lose interest and the founder continues building the underlying capability.
 
-The odds are not against you forever. They remain decisive only while you keep playing the game that produced them.
+## Do not compete on appearances
+
+An early-stage company can feel pressure to look larger than it is. That is usually the wrong contest.
+
+The stronger position is to become unusually clear about the product, route, economics and next milestone. Serious partners notice the difference between a founder who has memorised industry language and one who understands how the decisions connect.
+
+The company does not need to appear complete. It needs to show that the work is moving in the right sequence.
+
+## Know when the position has changed
+
+The starting position becomes less important as the business accumulates assets that compound:
+
+- product knowledge;
+- trusted relationships;
+- completed development work;
+- market understanding;
+- reliable processes;
+- a stronger capital base;
+- a record of execution.
+
+The change rarely happens in one announcement. It appears when the company can make a better decision, attract a stronger partner or pursue a larger opportunity because of work completed earlier.
+
+That is how an uneven starting position becomes a differentiated one.
+
+The founder’s task is not to deny the constraint. It is to choose a market and sequence where each serious piece of work changes what becomes possible next.

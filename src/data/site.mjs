@@ -5,7 +5,7 @@ export const navigation = Object.freeze([
   { href: '/ventures/', label: 'Ventures' },
   { href: '/thinking/', label: 'Thinking' },
   { href: '/media/', label: 'Media' },
-  { href: '/facts/', label: 'Facts' },
+  { href: '/facts/', label: 'Profile' },
 ]);
 
 export const canonicalRoutes = Object.freeze([
@@ -21,15 +21,15 @@ export const canonicalRoutes = Object.freeze([
 ]);
 
 export const routeModified = Object.freeze({
-  '/': '2026-07-14',
-  '/about/': '2026-07-14',
-  '/ventures/': '2026-07-14',
-  '/thinking/': '2026-07-12',
-  '/media/': '2026-07-12',
-  '/speaking-partnerships/': '2026-07-12',
-  '/facts/': '2026-07-14',
-  '/contact/': '2026-07-12',
-  '/privacy/': '2026-07-13',
+  '/': '2026-07-15',
+  '/about/': '2026-07-15',
+  '/ventures/': '2026-07-15',
+  '/thinking/': '2026-07-15',
+  '/media/': '2026-07-15',
+  '/speaking-partnerships/': '2026-07-15',
+  '/facts/': '2026-07-15',
+  '/contact/': '2026-07-15',
+  '/privacy/': '2026-07-15',
 });
 
 export const legacyRedirects = Object.freeze({
@@ -38,7 +38,8 @@ export const legacyRedirects = Object.freeze({
   '/essays.html': '/thinking/',
   '/publications.html': '/media/',
   '/profiles.html': '/facts/',
-  '/essays/from-swiggy-to-mhra/': '/essays/why-i-left-swiggy/',
+  '/essays/from-swiggy-to-mhra/': '/essays/why-i-chose-to-build-in-pharmaceuticals/',
+  '/essays/why-i-left-swiggy/': '/essays/why-i-chose-to-build-in-pharmaceuticals/',
 });
 
 export const physicalAliases = Object.freeze({
@@ -49,16 +50,16 @@ export const defaultSocialImage = '/images/social/default-og.jpg';
 
 export const pageMeta = Object.freeze({
   home: {
-    title: 'Vishal Chakravarty — Founder & Operator',
+    title: 'Vishal Chakravarty — Pharmaceutical Founder & CEO',
     description:
-      'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, working on access, licensing and supply systems in regulated healthcare markets.',
+      'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, building around pharmaceutical market access, specialist medicines, manufacturing and resilient supply.',
     path: '/',
     modified: routeModified['/'],
   },
   thinking: {
-    title: 'Thinking — Essays by Vishal Chakravarty',
+    title: 'Pharmaceutical Essays by Vishal Chakravarty',
     description:
-      'Essays on regulated markets, pharmaceutical access, resilience and the operating choices behind company building.',
+      'Original essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
     path: '/thinking/',
     modified: routeModified['/thinking/'],
   },

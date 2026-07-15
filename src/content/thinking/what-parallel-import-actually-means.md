@@ -1,95 +1,172 @@
 ---
-title: What Parallel Import Actually Means
-description: A plain-English explanation of the UK parallel import route, its licensing boundary and the operational work hidden behind the term.
-summary: Parallel import is a product-specific regulated route, not a shortcut around authorisation, quality or supply-chain responsibility.
+title: UK Parallel Import Licensing: What the Route Actually Requires
+description: A practical explanation of the UK parallel import licence route, product comparison, wholesale and assembly permissions, supply responsibilities and commercial viability.
+summary: UK parallel import is a product-specific licensing and supply route. The economics matter, but product comparison, authorised sites, packaging, quality and lifecycle work decide whether the opportunity is viable.
 author: Vishal Chakravarty
 published: 2026-01-01
-modified: 2026-07-12
+modified: 2026-07-15
 category: Market access
 canonicalPath: /essays/what-parallel-import-actually-means/
 legacyPaths: ["/essays/what-parallel-import-actually-means/index.html"]
 socialImage: /images/social/what-parallel-import-actually-means-og.jpg
 sources: [{"label":"MHRA guidance on applying for a parallel import licence","url":"https://www.gov.uk/guidance/medicines-apply-for-a-parallel-import-licence"},{"label":"MHRA collection of approved parallel import licences","url":"https://www.gov.uk/government/collections/parallel-import-licences-lists-of-approved-products"},{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"}]
-related: ["regulated-industries"]
+related: ["regulatory-approval-is-not-market-access", "regulated-industries", "supply-resilience-before-first-purchase-order"]
 public: true
 ---
 
-“Parallel import” is often explained as buying a medicine in one country and selling it in another because the price is different.
+UK parallel import is a product-specific licensing route. It can allow a medicine authorised in a European Economic Area country to be marketed in the United Kingdom when the imported product can be appropriately cross-referenced to a UK product and the application satisfies the Medicines and Healthcare products Regulatory Agency.
 
-That describes the commercial observation. It does not describe the regulated work.
+The commercial opportunity may begin with a price difference, but the route is decided by product comparison, licences, authorised sites, packaging, quality oversight, supply continuity and lifecycle cost.
 
-In the United Kingdom, parallel import is a product-specific licensing route administered by the Medicines and Healthcare products Regulatory Agency. It is not a general permission to move any medicine across a border, and it is not a substitute for the licences required to import, store, assemble or supply medicines.
+## The core product question
 
-## The core test
+The MHRA assessment is built around the imported product and the UK cross-referenced product.
 
-MHRA guidance says the scheme can allow a medicine authorised in a European Economic Area member state to be marketed in the UK when the imported product has no therapeutic difference from a cross-referenced UK product.
+The key issue is whether the evidence supports the required relationship between them, including the absence of a therapeutic difference. That assessment is product-specific. It depends on the source product, its authorised market, the UK reference, the proposed presentation and the information available for the application.
 
-That wording is more useful than saying the products are “exactly the same”. A parallel-import assessment is not based on a slogan. It depends on the source product, the UK reference product, their origin and the evidence supplied for that application.
+A broad statement that two products are “the same” is therefore not enough. The opportunity needs a structured comparison covering the relevant formulation, strength, pharmaceutical form, manufacturer, authorisation, pack and product information.
 
-The licence is attached to the product opportunity. A company does not become entitled to parallel import an entire category simply because it has understood the concept.
+## The product licence sits inside a wider permission structure
 
-## The permissions sit together
+The Parallel Import Licence, commonly shortened to PLPI, addresses the product route.
 
-The product-specific Parallel Import Licence, commonly shortened to PLPI, is one part of the structure.
+The surrounding operations require the appropriate authorised organisations and sites for the activities being performed. Wholesale distribution, import, storage, sale, assembly or repackaging and batch-related responsibilities need to be mapped together.
 
-MHRA guidance also states that an applicant must ensure the product is manufactured to Good Manufacturing Practice standards and hold a wholesale dealer's licence covering import, storage and sale. If the product is assembled or repackaged, the correct manufacturer's licence covering product assembly is also required.
+A practical operating map should identify:
 
-This is why parallel import should not be described as a regulatory shortcut. It may use a different product-licensing route, but the surrounding obligations remain real.
+- the PLPI applicant and holder;
+- the source-market product and supplier;
+- the UK cross-referenced product;
+- the importing and wholesale route;
+- the site performing assembly or repackaging where required;
+- testing, certification or release responsibilities;
+- the warehouse and distribution route;
+- pharmacovigilance, defects and recall responsibilities.
 
-Before a commercial decision, an operator needs to understand at least:
+The product and operating permissions should be designed as one chain.
 
-- the imported product and its authorised source market;
-- the cross-referenced UK product;
-- the applicable PLPI category and evidence requirements;
-- the authorised companies and sites performing each function;
-- labelling, patient-information and packaging requirements;
-- wholesale, assembly, storage and distribution permissions;
-- recall, defect and adverse-reaction responsibilities.
+## Product sourcing begins with authorisation and continuity
 
-## Supply is not just procurement
+An available pack is not yet a supply opportunity.
 
-Finding an available pack is the beginning of the question, not the end.
+The source must be legitimate, appropriately authorised and capable of providing the product with the documentation, shelf life and continuity required by the UK route.
 
-The supplier must hold an appropriate authorisation. The batch and product records must remain traceable. Storage and transport must preserve the conditions required by the marketing authorisation or product specification. If repackaging is involved, the approved presentation and patient information need to be controlled.
+The commercial assessment should consider:
 
-Good Distribution Practice connects these activities. It requires medicines to come from the licensed supply chain and to be stored, transported and handled under suitable conditions.
+- source-market availability;
+- supplier authorisation;
+- manufacturer and marketing-authorisation details;
+- pack configuration;
+- batch and expiry visibility;
+- purchasing terms;
+- currency;
+- transport;
+- source-market changes;
+- risk of allocation or interruption.
 
-The operational discipline is therefore cumulative. A weakness in supplier qualification cannot be repaired by good packaging. A correct label cannot make an unauthorised site acceptable. A digital trace does not make the source data trustworthy unless the underlying process is controlled.
+A product that is available once but cannot be sourced consistently may not support a durable UK market proposition.
 
-## Obligations continue after approval
+## Packaging is part of the licensed product
 
-A granted licence is not the end of the work.
+Parallel import commonly requires market-specific packaging work.
 
-MHRA guidance covers variations, renewal, leaflet and label updates, inspections, adverse-reaction reporting, product defects and recalls. Records must be suitable for identifying affected product and supporting action when a withdrawal or recall is required.
+Labels, leaflets, cartons, over-labelling, coding and presentation need to match the approved UK product information and the licensed assembly route. The selected site must have suitable permissions, equipment, controls and documentation for the activity.
 
-This lifecycle is commercially important. An opportunity that looks attractive at the purchase-price level may be weak once the full cost of compliant maintenance, packaging change, quality oversight and supply continuity is understood.
+Packaging affects:
 
-Commercial viability should follow regulatory suitability, not try to talk it into existence.
+- application content;
+- artwork and approval timing;
+- component minimums;
+- line capability;
+- yield and loss;
+- lead time;
+- release;
+- shelf life;
+- unit economics.
+
+The packaging strategy should be tested before the commercial margin is accepted.
+
+## Good Distribution Practice connects the chain
+
+Parallel import is still pharmaceutical distribution.
+
+Good Distribution Practice supports product integrity through authorised sourcing, storage, transport, records, temperature control where applicable, complaints, defects and recalls.
+
+The operator needs visibility of:
+
+- supplier approval;
+- shipment conditions;
+- receipt and quarantine;
+- batch and expiry;
+- product status;
+- released inventory;
+- customer supply;
+- returns;
+- recall traceability.
+
+The chain can involve several organisations. Quality agreements and operational procedures should make clear who performs each activity and how oversight is maintained.
+
+## Commercial viability requires the complete cost
+
+The source purchase price attracts attention because it is visible early. It is not the complete cost.
+
+A parallel import model may include:
+
+- product purchase;
+- regulatory application and maintenance;
+- artwork and components;
+- assembly or repackaging;
+- testing and release;
+- quality oversight;
+- freight and insurance;
+- warehousing and distribution;
+- financing and currency exposure;
+- inventory loss or expiry;
+- variations and renewals;
+- defects, returns and recalls;
+- channel discounts and service requirements.
+
+The opportunity should be modelled over the lifecycle and under changes in source price, exchange rate, supply and UK selling price.
+
+A margin that exists only under one purchasing condition is fragile.
+
+## Approval creates ongoing work
+
+A granted PLPI is a product asset that requires maintenance.
+
+The operator must remain alert to changes in the imported product, UK cross-referenced product, manufacturer, packaging, leaflet, source market and regulatory requirements. Variations, renewals, safety information, inspections, defects, recalls and adverse-reaction responsibilities continue after initial approval.
+
+The commercial model should therefore include the people and processes required to maintain the product, not only obtain the licence.
 
 ## The post-2025 UK position
 
-The Windsor Framework changed the UK position from 1 January 2025. MHRA now licenses medicines across the whole United Kingdom, and Parallel Distribution Notices are no longer valid in Northern Ireland. The official guidance also explains the changed treatment of Falsified Medicines Directive safety features for parallel imports.
+The Windsor Framework changed the medicines position from 1 January 2025. The MHRA now licenses medicines across the whole United Kingdom, and older structures such as Parallel Distribution Notices for Northern Ireland no longer operate in the same way.
 
-These details matter because older explainers can be directionally familiar and still be operationally out of date. A serious assessment starts with the current official route, not a pre-Brexit diagram copied forward.
+This matters because older explainers may describe a route that has changed materially. A current opportunity should always begin with the latest MHRA guidance, product lists and applicable UK requirements.
 
-## What parallel import is not
+## A practical opportunity screen
 
-It is not proof that a product opportunity will be approved.
+Before committing to a parallel import project, I would want clear answers to ten questions:
 
-It is not evidence that a company holds a wholesale authorisation.
+1. What is the exact source product and authorised market?
+2. What is the UK cross-referenced product?
+3. Does the available evidence support the comparison?
+4. Which PLPI category and application requirements apply?
+5. Which authorised entity and site performs each activity?
+6. What packaging and product-information work is required?
+7. Is the source supply repeatable?
+8. What is the full landed and lifecycle cost?
+9. Which channel will buy the product and why?
+10. How will changes, defects and recalls be managed?
 
-It is not generic substitution by another name.
-
-It is not permission to describe every EEA-authorised product as suitable for the UK.
-
-And it is not a promise of savings. Price differences may create a commercial question, but licensing, supply continuity, packaging, quality and lifecycle costs determine whether the answer is viable.
+The screen should combine regulatory suitability and commercial viability. Neither should be used to rationalise a weakness in the other.
 
 ## The practical meaning
 
-Parallel import is best understood as a controlled comparison between a source product and a UK reference product, carried through an authorised supply chain by organisations with the correct permissions.
+UK parallel import is best understood as a controlled product comparison carried through an authorised supply and packaging route.
 
-The economics attract attention. The operating discipline decides whether the opportunity is real.
+The economics create the initial question. The quality of the product assessment, permissions, sourcing, packaging, lifecycle management and channel strategy decides whether the opportunity can become a reliable business.
 
 ## Editorial note
 
-This essay is general analysis, last reviewed on 12 July 2026. It does not provide legal, regulatory or patient-specific medical advice. Requirements and licence status should be checked directly against current MHRA sources.
+This essay is general strategic analysis. Current requirements and licence status should be checked directly against the linked MHRA sources and qualified professional advice.

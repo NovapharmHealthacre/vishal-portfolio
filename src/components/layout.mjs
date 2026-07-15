@@ -34,8 +34,8 @@ const navigationMarkup = (currentPath) => `
 const footerMarkup = () => `
   <footer class="site-footer">
     <div class="footer-intro">
-      <p class="eyebrow">A considered invitation</p>
-      <h2>Build the useful thing.<br>Earn the right to scale it.</h2>
+      <p class="eyebrow">Vishal Chakravarty</p>
+      <h2>Founder & CEO,<br>NovaPharm Healthcare Ltd.</h2>
     </div>
     <div class="footer-grid">
       <div>
@@ -43,8 +43,10 @@ const footerMarkup = () => `
       </div>
       <nav aria-label="Footer navigation">
         <a href="/about/">About</a>
+        <a href="/ventures/">Ventures</a>
         <a href="/thinking/">Thinking</a>
-        <a href="/facts/">Public facts</a>
+        <a href="/media/">Media</a>
+        <a href="/facts/">Profile</a>
         <a href="/privacy/">Privacy</a>
       </nav>
       <div class="footer-contact">
@@ -54,7 +56,7 @@ const footerMarkup = () => `
     </div>
     <div class="footer-base">
       <span>© ${verificationDate.slice(0, 4)} Vishal Chakravarty</span>
-      <span>Independent founder platform · No tracking</span>
+      <span>Pharmaceutical entrepreneurship · Market access · Regulated markets</span>
     </div>
   </footer>`;
 
@@ -74,7 +76,7 @@ export const renderPage = ({
   schemas = [],
   className = '',
   socialImage = defaultSocialImage,
-  socialImageAlt = 'Vishal Chakravarty — founder and operator in regulated healthcare markets',
+  socialImageAlt = 'Vishal Chakravarty — Founder and CEO of NovaPharm Healthcare Ltd',
   noIndex = false,
 }) => {
   const canonical = absolute(path);
@@ -91,7 +93,6 @@ export const renderPage = ({
     "connect-src 'self'",
     "frame-src 'none'",
     "form-action 'none'",
-    'upgrade-insecure-requests',
   ].join('; ');
   return `<!doctype html>
 <html class="no-js" lang="en-GB">
@@ -123,6 +124,7 @@ export const renderPage = ({
     <link rel="alternate" type="application/rss+xml" title="Thinking by Vishal Chakravarty" href="/rss.xml">
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
     <link rel="stylesheet" href="/assets/site.css">
+    <link rel="stylesheet" href="/assets/content-fixes.css">
     <script src="/assets/site.js" defer></script>
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
   </head>

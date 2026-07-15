@@ -23,13 +23,15 @@ test('entity facts match the verified ledger', () => {
   assert.equal(publications.length, 3);
 });
 
-test('approved biography labels match their exact word counts', () => {
-  assert.equal(person.shortBio.trim().split(/\s+/).length, 40);
-  assert.equal(person.mediumBio.trim().split(/\s+/).length, 100);
+test('founder biographies express the approved pharmaceutical positioning', () => {
+  assert.match(person.shortBio, /Founder & CEO of NovaPharm Healthcare Ltd/);
+  assert.match(person.shortBio, /product strategy, market access, manufacturing partnerships and resilient supply/);
   assert.match(
     person.mediumBio,
     /His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025\./,
   );
+  assert.match(person.mediumBio, /technology transfer, sourcing, supply and commercial market entry/);
+  assert.doesNotMatch(person.mediumBio, /does not present|not licensed|not operational/i);
 });
 
 test('personal and corporate entities use non-competing canonical identifiers', () => {

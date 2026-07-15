@@ -1,44 +1,62 @@
 ---
 title: Speaking and Partnerships
-description: Selected conversations with Vishal Chakravarty on regulated-market building, pharmaceutical access and founder operations.
+description: Speaking, editorial and selected partnership conversations with Vishal Chakravarty on pharmaceutical market access, manufacturing, supply and founder execution.
 canonicalPath: /speaking-partnerships/
 public: true
 ---
 
-Vishal is available for selected conversations on regulated-market building, pharmaceutical access and founder operations.
-
-This is an invitation to discuss future work. It is not a claim of a speaking history, advisory role, investment activity or existing commercial partnership.
+Vishal is available for selected speaking, editorial and founder conversations on building pharmaceutical companies and taking products into regulated markets.
 
 ## Speaking themes
 
-### Building before permission
+### Pharmaceutical market access
 
-How founders can make progress in a regulated market without describing plans as licences or development as operation.
+Why approval, manufacturing, supply, price, channel adoption and patient access need to be designed as one route.
 
-### UK–EU pharmaceutical market access
+### Post-Brexit market entry
 
-The practical consequences of separate UK and EU regulatory systems, including the questions an operator should resolve before choosing a route.
+How pharmaceutical companies can approach the United Kingdom and European Union as a connected region with separate regulatory, supply and commercial systems.
 
-### Parallel import without shortcuts
+### CMO and CDMO strategy
 
-What the UK product-specific parallel import route does, what it does not do and why licensing, quality and supply-chain responsibilities must be understood together.
+How to assess technical capability, regulatory history, batch size, analytical support, documentation quality, commercial fit and lifecycle supply.
 
-### Founder operating systems
+### Technology transfer
 
-How claim discipline, decision records, status labels and evidence architecture improve execution when the work is complex and trust matters.
+Why product understanding, analytical methods, equipment fit, stability, packaging, validation and commercial economics must move together.
+
+### Pharmaceutical supply resilience
+
+How supplier concentration, manufacturing capacity, lead time, inventory, quality agreements and contingency routes shape continuity.
+
+### Specialist medicines
+
+The commercial and operating case for focused products, smaller patient populations and reliable access.
+
+### Founder execution in regulated markets
+
+How founders connect product strategy, expert advice, capital, long timelines and operating decisions without losing commercial urgency.
+
+## Editorial commentary
+
+Vishal can contribute founder and operator perspectives on:
+
+- UK–EU pharmaceutical strategy;
+- parallel import and market-access frameworks;
+- manufacturing partnerships;
+- product and portfolio selection;
+- batch economics and working capital;
+- digital infrastructure for pharmaceutical operations;
+- cross-border company building.
+
+## Founder roundtables
+
+Relevant formats include founder discussions, industry panels, private roundtables, interviews, written commentary, editorial collaboration and workshops focused on the operating decisions behind pharmaceutical market entry.
 
 ## Partnership conversations
 
-Relevant conversations may include editorial collaboration, research exchange, market-access analysis, founder roundtables and exploratory work with organisations operating in regulated healthcare.
-
-An exploratory conversation is not a public endorsement or an operational partnership. Names are published only when the relationship is current, evidenced and approved by all relevant parties.
-
-## Boundaries
-
-Vishal does not use these conversations to provide patient-specific medical advice. Regulatory and legal questions may require advice from appropriately qualified professionals.
-
-Confidential business-plan material, private financial information and unverified company capabilities are not available for public discussion.
+Selected discussions may include product and market-access strategy, manufacturing or technology-transfer opportunities, distribution and channel development, editorial collaboration and research exchange across regulated healthcare markets.
 
 ## Enquire
 
-Email [{{EMAIL}}](mailto:{{EMAIL}}) with the proposed format, audience, subject and date.
+Email [{{EMAIL}}](mailto:{{EMAIL}}) with the proposed subject, format, audience, organisation and date.

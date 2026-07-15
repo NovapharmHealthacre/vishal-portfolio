@@ -1,30 +1,64 @@
 ---
-title: Media and Publications
-description: Verified publisher-hosted writing by Vishal Chakravarty on UK–EU pharmaceutical market access and compliance.
+title: Writing and Media
+description: Published writing and media profile for Vishal Chakravarty, covering UK–EU pharmaceutical market access, post-Brexit regulation and pharmaceutical strategy.
 canonicalPath: /media/
 public: true
 ---
 
-Vishal contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance.
+## Featured publication series
 
-{{PUBLISHED_INSTALLMENT_COUNT}} instalments of a planned four-part series are published in English and Japanese. The fourth instalment is not listed as published and is not presented here as complete.
+Vishal contributes analysis to Yakuji Nippo, a Japanese pharmaceutical publication, on UK–EU pharmaceutical market access and compliance in the post-Brexit era.
 
-## UK–EU Pharmaceutical Market Access and Compliance in the Post-Brexit Era
+The published series examines how regulatory pathways, commercial sequencing, supply responsibilities and market-entry decisions changed after the United Kingdom left the European Union.
 
 {{PUBLICATION_RECORD}}
 
-### 4. Compliance-driven Approaches to Cross-border Market Entry
+## Publication themes
 
-**In progress.** The series index identifies a planned fourth article. This page will add it only when a live publisher URL exists.
+The series addresses:
 
-## Short biography
+- separate UK and EU pharmaceutical market-access pathways;
+- post-Brexit regulatory and compliance planning;
+- parallel-import licensing and risk;
+- cross-border market entry;
+- the relationship between regulatory strategy and commercial execution.
 
-{{PERSON_SHORT_BIO}}
+## Selected independent essays
 
-## Media enquiries
+### [Why I Chose to Build in Pharmaceuticals](/essays/why-i-chose-to-build-in-pharmaceuticals/)
 
-For a factual correction, interview request or editorial enquiry, email [{{EMAIL}}](mailto:{{EMAIL}}).
+A founder perspective on difficult markets, specialist medicines and the ambition behind NovaPharm Healthcare.
 
-This page lists publisher-hosted work only. It does not manufacture a press record from self-published pages.
+### [Regulatory Approval Is Not Market Access](/essays/regulatory-approval-is-not-market-access/)
 
-Publication status last reviewed: {{VERIFICATION_DATE}}.
+A six-question framework connecting approval, manufacturing, supply, economics, channel adoption and patient access.
+
+### [Choosing a CMO for Regulated Markets](/essays/choosing-a-cmo-for-regulated-markets/)
+
+A practical assessment of technical fit, regulatory history, batch size, analytical capability, documentation and commercial alignment.
+
+### [Supply Resilience Begins Before the First Purchase Order](/essays/supply-resilience-before-first-purchase-order/)
+
+An operating view of concentration risk, capacity, lead time, inventory, quality agreements and contingency planning.
+
+## Founder biography
+
+{{PERSON_MEDIUM_BIO}}
+
+## Media and editorial topics
+
+Vishal is available for selected interviews, commentary and editorial conversations around:
+
+- pharmaceutical entrepreneurship;
+- UK–EU market access;
+- post-Brexit pharmaceutical strategy;
+- CMO and CDMO selection;
+- technology transfer;
+- supply-chain resilience;
+- specialist medicines;
+- product and portfolio strategy;
+- building companies in regulated markets.
+
+## Enquiries
+
+For interview requests, editorial commissions or professional commentary, email [{{EMAIL}}](mailto:{{EMAIL}}).

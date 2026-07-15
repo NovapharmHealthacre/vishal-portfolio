@@ -1,0 +1,45 @@
+name: Founder content browser QA
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - name: Use Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Install locked project toolchain
+        run: npm ci
+      - name: Build candidate
+        run: npm run build
+      - name: Install isolated browser and accessibility runtime
+        run: |
+          npm install --prefix /tmp/founder-qa --no-save playwright@1.61.1 axe-core@4.10.3
+          /tmp/founder-qa/node_modules/.bin/playwright install --with-deps chromium firefox webkit
+      - name: Run three-engine browser matrix
+        env:
+          PLAYWRIGHT_MODULE: /tmp/founder-qa/node_modules/playwright/index.mjs
+          AXE_MODULE: /tmp/founder-qa/node_modules/axe-core/axe.js
+        run: |
+          mkdir -p artifacts
+          set -o pipefail
+          npm run test:browser 2>&1 | tee artifacts/browser-console.log
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: founder-content-browser-evidence
+          path: artifacts
+          if-no-files-found: error
+          retention-days: 14

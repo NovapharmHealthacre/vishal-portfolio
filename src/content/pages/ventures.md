@@ -1,48 +1,92 @@
 ---
-title: Ventures
-description: Verified company facts, present focus and clearly labelled roadmap for NovaPharm Healthcare Ltd.
+title: NovaPharm Healthcare
+description: NovaPharm Healthcare is a UK pharmaceutical company building market-access, licensing, manufacturing and supply capabilities for specialist medicines.
 canonicalPath: /ventures/
 public: true
 ---
 
-## {{COMPANY_NAME}}
+## Company overview
 
-**Current — verified public record**
+{{COMPANY_NAME}} is a UK-registered pharmaceutical company founded by Vishal Chakravarty and incorporated in 2025.
 
-{{COMPANY_NAME}} is an active UK-registered private limited company. It was incorporated on {{COMPANY_INCORPORATED}} under company number {{COMPANY_NUMBER}}.
+The company is building around specialist medicines and the route between product opportunity, regulatory pathway, manufacturer, supply, market and channel.
 
 [Visit NovaPharm Healthcare]({{COMPANY_URL}}) or [view the Companies House record]({{COMPANIES_HOUSE_URL}}).
 
-## Current focus
+## Why NovaPharm exists
 
-**Planned — not an operating claim**
+Pharmaceutical market entry is often fragmented. Product selection may happen without manufacturing economics. Regulatory work may begin before the channel is understood. Supply risk may be addressed after the launch plan is already fixed.
 
-{{COMPANY_CURRENT_FOCUS}} This is planned work, not an operating claim. Vishal is developing the work around three connected questions:
+NovaPharm is being built to connect those decisions earlier.
 
-- how product and market-access opportunities should be assessed;
-- how licensing, sourcing and supply responsibilities fit together;
-- how a compliance-led operating model can remain clear as it grows.
+The company’s thesis is that specialist products require focused execution across product strategy, licensing, manufacturing, packaging, sourcing, distribution and market access. The opportunity is not simply to identify a medicine. It is to build a route capable of bringing that product to the market repeatedly and sustainably.
 
-The focus does not mean that a portfolio has launched, that medicines are being supplied or that customers have been contracted.
+## What NovaPharm is building
 
-## Regulatory status
+### Market access and product strategy
 
-**Current — explicit boundary**
+NovaPharm assesses product opportunities through patient and market need, competitive structure, regulatory route, manufacturing feasibility, batch economics, channel fit and lifecycle value.
 
-{{COMPANY_REGULATORY_STATUS}}
+The objective is a focused portfolio in which each product has a clear reason to exist and a credible route to market.
 
-Company registration and Companies House SIC codes are not regulatory authorisations. They should not be read as proof of manufacturing, wholesale activity or a product licence.
+### Licensing and regulatory pathways
 
-## Product roadmap
+The company is developing market-entry strategies for the United Kingdom and selected international regulated markets. Regulatory planning is connected to product selection, development scope, manufacturing site, packaging, launch timing and ongoing lifecycle commitments.
 
-**Roadmap — future work**
+### Manufacturing and technology transfer
 
-{{COMPANY_ROADMAP}}
+NovaPharm works towards long-term relationships with manufacturers and CMO or CDMO partners capable of supporting development, analytical transfer, stability, submission batches, validation and commercial supply.
 
-These are intended directions, not deployed capabilities. No algorithm, automated adverse-event integration or blockchain system is represented as live.
+The manufacturer is selected as part of the market strategy, with attention to dosage-form capability, documentation, regulatory history, batch size, capacity, communication and commercial fit.
 
-## What is deliberately absent
+### Sourcing and supply architecture
 
-This page does not publish unverified customers, licences, logistics partners, suppliers, revenue, investment figures or operational claims.
+The supply model is designed around qualified sources, clear operating responsibilities, realistic lead times, inventory visibility and alternatives where concentration creates material risk.
 
-Status last reviewed: {{VERIFICATION_DATE}}.
+The aim is to build continuity into the product strategy rather than treat supply as a purchase-order function.
+
+### Commercialisation and channel development
+
+NovaPharm is developing the route into pharmacy, wholesale and other appropriate healthcare channels. That work includes pack configuration, pricing, buyer proposition, product information, service expectations, forecast ownership and replenishment.
+
+A product reaches the market only when the channel can adopt, order and receive it reliably.
+
+### Digital operating infrastructure
+
+The company is designing digital infrastructure to connect product, partner, inventory, quality and commercial information. The intended value is clearer decisions, stronger traceability and earlier visibility of risk across the operating model.
+
+## The operating model
+
+NovaPharm’s work connects a sequence that is often managed in separate functions:
+
+**product opportunity → regulatory pathway → manufacturer → supply → market → channel → patient access**
+
+Each stage changes the economics and risk of the next. The company’s role is to keep that complete route visible from portfolio selection through launch and lifecycle supply.
+
+## Geographic direction
+
+The United Kingdom is NovaPharm’s strategic foundation. Europe remains an important connected region with distinct regulatory and commercial systems. India contributes manufacturing, development and partnership depth, while selected international regulated markets form part of the longer market-access direction.
+
+The company will expand by product and operating capability rather than geography alone.
+
+## Founder role
+
+Vishal leads company strategy, product selection, manufacturing and commercial partnerships, market-access planning and the development of NovaPharm’s operating platform.
+
+His focus is turning pharmaceutical opportunities into structured programmes that can survive technical, regulatory, supply and commercial scrutiny.
+
+## Related thinking
+
+- [Why I Chose to Build in Pharmaceuticals](/essays/why-i-chose-to-build-in-pharmaceuticals/)
+- [Regulatory Approval Is Not Market Access](/essays/regulatory-approval-is-not-market-access/)
+- [The Route to Market Is Designed Before Launch](/essays/route-to-market-before-launch/)
+- [Choosing a CMO for Regulated Markets](/essays/choosing-a-cmo-for-regulated-markets/)
+
+## Company details
+
+- **Legal name:** {{COMPANY_LEGAL_NAME}}
+- **Company number:** {{COMPANY_NUMBER}}
+- **Incorporated:** {{COMPANY_INCORPORATED}}
+- **Status:** {{COMPANY_STATUS}} {{COMPANY_LEGAL_FORM}}
+
+[Explore the official NovaPharm Healthcare website]({{COMPANY_URL}}).
