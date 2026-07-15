@@ -7,7 +7,7 @@ published: 2026-07-15
 modified: 2026-07-15
 category: Founder perspective
 canonicalPath: /essays/why-i-chose-to-build-in-pharmaceuticals/
-legacyPaths: ["/essays/why-i-left-swiggy/", "/essays/from-swiggy-to-mhra/", "/essays/why-i-left-swiggy/index.html"]
+legacyPaths: ["/essays/why-i-left-swiggy/", "/essays/from-swiggy-to-mhra/"]
 socialImage: /images/social/default-og.jpg
 sources: []
 related: ["regulatory-approval-is-not-market-access", "regulated-industries", "route-to-market-before-launch"]
