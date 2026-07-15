@@ -24,6 +24,10 @@
 }
 
 @media (max-width: 420px) {
+  body {
+    min-width: 0;
+  }
+
   .contact-hero,
   .site-footer {
     min-width: 0;
