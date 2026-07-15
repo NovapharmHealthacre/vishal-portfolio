@@ -1,43 +1,45 @@
 ---
 title: Speaking and Partnerships
-description: Selected conversations with Vishal Chakravarty on regulated-market building, pharmaceutical access and founder operations.
+description: Speaking, editorial and selected partnership conversations with Vishal Chakravarty on pharmaceutical market access, manufacturing, supply and founder execution.
 canonicalPath: /speaking-partnerships/
 public: true
 ---
 
-Vishal is available for selected conversations on regulated-market building, pharmaceutical access and founder operations.
-
-This is an invitation to discuss future work. It is not a claim of a speaking history, advisory role, investment activity or existing commercial partnership.
+Vishal is available for selected speaking, editorial and founder conversations connected to pharmaceutical strategy and regulated-market company building.
 
 ## Speaking themes
 
-### Building before permission
+### Pharmaceutical market access beyond approval
 
-How founders can make progress in a regulated market without describing plans as licences or development as operation.
+Why regulatory approval is only one part of the route to market, and how manufacturing, pricing, supply, channel strategy and patient access shape commercial success.
 
-### UK–EU pharmaceutical market access
+### Post-Brexit pharmaceutical market entry
 
-The practical consequences of separate UK and EU regulatory systems, including the questions an operator should resolve before choosing a route.
+How companies should think about the United Kingdom and European Union as connected but operationally distinct markets, with different pathways, packaging, legal and supply decisions.
 
-### Parallel import without shortcuts
+### CMO and CDMO selection
 
-What the UK product-specific parallel import route does, what it does not do and why licensing, quality and supply-chain responsibilities must be understood together.
+How technical capability, batch size, regulatory history, documentation, technology transfer, analytical support and commercial fit determine whether a manufacturing relationship can support a product lifecycle.
 
-### Founder operating systems
+### Technology transfer and launch readiness
 
-How claim discipline, decision records, status labels and evidence architecture improve execution when the work is complex and trust matters.
+Why product understanding, analytical methods, equipment fit, stability, validation, packaging and economics must be resolved before a formula becomes a dependable commercial product.
 
-## Partnership conversations
+### Pharmaceutical supply resilience
 
-Relevant conversations may include editorial collaboration, research exchange, market-access analysis, founder roundtables and exploratory work with organisations operating in regulated healthcare.
+How supplier concentration, lead times, quality agreements, alternate sources, inventory assumptions and working capital shape the reliability of supply.
 
-An exploratory conversation is not a public endorsement or an operational partnership. Names are published only when the relationship is current, evidenced and approved by all relevant parties.
+### Founder execution in regulated markets
 
-## Boundaries
+How entrepreneurs can sequence product, regulatory, technical, financial and partnership decisions when timelines are long and the cost of rework is high.
 
-Vishal does not use these conversations to provide patient-specific medical advice. Regulatory and legal questions may require advice from appropriately qualified professionals.
+## Editorial commentary
 
-Confidential business-plan material, private financial information and unverified company capabilities are not available for public discussion.
+Relevant editorial topics include pharmaceutical market access, parallel import, specialist medicines, post-Brexit strategy, manufacturing partnerships, technology transfer and cross-border supply.
+
+## Founder and industry conversations
+
+Vishal is open to selected founder roundtables, research exchanges, industry interviews and exploratory partnership discussions where the subject aligns with NovaPharm’s work and the conversation has a clear purpose.
 
 ## Enquire
 
