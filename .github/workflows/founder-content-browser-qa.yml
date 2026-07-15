@@ -25,8 +25,8 @@ jobs:
         run: npm run build
       - name: Install isolated browser and accessibility runtime
         run: |
-          npm install --prefix /tmp/founder-qa --no-save playwright@1.61.1 axe-core@4.10.3
-          /tmp/founder-qa/node_modules/.bin/playwright install --with-deps chromium firefox webkit
+          npm install --prefix /tmp/founder-qa --no-save playwright@1.61.1 axe-core@4.10.3 >/dev/null 2>&1
+          /tmp/founder-qa/node_modules/.bin/playwright install --with-deps chromium firefox webkit >/dev/null 2>&1
       - name: Run three-engine browser matrix
         env:
           PLAYWRIGHT_MODULE: /tmp/founder-qa/node_modules/playwright/index.mjs
