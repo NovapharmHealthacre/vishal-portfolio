@@ -46,6 +46,7 @@ const footerMarkup = () => `
         <a href="/ventures/">Ventures</a>
         <a href="/thinking/">Thinking</a>
         <a href="/media/">Media</a>
+        <a href="/gallery/">Gallery</a>
         <a href="/facts/">Profile</a>
         <a href="/privacy/">Privacy</a>
       </nav>
@@ -77,6 +78,8 @@ export const renderPage = ({
   className = '',
   socialImage = defaultSocialImage,
   socialImageAlt = 'Vishal Chakravarty — Founder and CEO of NovaPharm Healthcare Ltd',
+  socialImageWidth = 1200,
+  socialImageHeight = 630,
   noIndex = false,
 }) => {
   const canonical = absolute(path);
@@ -111,8 +114,8 @@ export const renderPage = ({
     <meta property="og:url" content="${canonical}">
     <meta property="og:image" content="${absolute(socialImage)}">
     <meta property="og:image:alt" content="${escapeHtml(socialImageAlt)}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image:width" content="${socialImageWidth}">
+    <meta property="og:image:height" content="${socialImageHeight}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escapeHtml(title)}">
     <meta name="twitter:description" content="${escapeHtml(description)}">

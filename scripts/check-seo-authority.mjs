@@ -3,6 +3,7 @@ import path from 'node:path';
 import { loadArticles } from '../src/lib/content.mjs';
 import { canonicalRoutes, routeModified } from '../src/data/site.mjs';
 import { company, person, site } from '../src/data/entity.mjs';
+import { galleryImages, galleryMeta } from '../src/data/gallery.mjs';
 
 const root = path.resolve('.');
 const dist = path.join(root, 'dist');
@@ -21,7 +22,7 @@ const sitemap = read('sitemap.xml');
 for (const forbidden of ['<priority>', '<changefreq>', '/404.html', '/about.html', '/companies.html', '/essays.html', '/profiles.html', '/publications.html']) {
   if (sitemap.includes(forbidden)) failures.push(`sitemap contains forbidden value ${forbidden}`);
 }
-const urls = [...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>\s*<\/url>/g)].map((match) => ({
+const urls = [...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>[\s\S]*?<\/url>/g)].map((match) => ({
   url: match[1],
   modified: match[2],
 }));
@@ -38,6 +39,11 @@ for (const { url, modified } of urls) {
 }
 for (const url of expected.keys()) {
   if (!urls.some((entry) => entry.url === url)) failures.push(`missing sitemap URL ${url}`);
+}
+if (!sitemap.includes(`xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"`)) failures.push('sitemap image namespace missing');
+if (!sitemap.includes(`<loc>${new URL(galleryMeta.path, site.origin).href}</loc>`)) failures.push('gallery page missing from sitemap');
+for (const image of galleryImages) {
+  if (!sitemap.includes(`<image:loc>${new URL(image.path, site.origin).href}</image:loc>`)) failures.push(`${image.id}: missing image sitemap entry`);
 }
 
 const robots = read('robots.txt');
@@ -59,6 +65,7 @@ for (const rule of requiredRobots) {
 const llms = read('llms.txt');
 if (!llms.includes('supplemental navigation aid')) failures.push('llms.txt must state its supplemental status');
 if (!llms.includes(person.id) || !llms.includes(company.id)) failures.push('llms.txt canonical entity ids are incomplete');
+if (!llms.includes(`${site.origin}${galleryMeta.path}`)) failures.push('llms.txt gallery route missing');
 
 const textFiles = [];
 const walk = (directory) => {
@@ -91,4 +98,4 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exit(1);
 }
-console.log(`Validated ${expected.size} canonical URLs, cross-site entity ownership, crawler policy and privacy-safe output.`);
+console.log(`Validated ${expected.size} canonical URLs, ${galleryImages.length} image sitemap entries, cross-site entity ownership, crawler policy and privacy-safe output.`);

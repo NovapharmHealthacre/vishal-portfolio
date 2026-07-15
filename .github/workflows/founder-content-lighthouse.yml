@@ -41,7 +41,7 @@ jobs:
         run: |
           mkdir -p artifacts/lighthouse
           LH=/tmp/founder-lighthouse/node_modules/.bin/lighthouse
-          for target in "home:/" "market-access:/essays/regulatory-approval-is-not-market-access/"; do
+          for target in "home:/" "gallery:/gallery/" "market-access:/essays/regulatory-approval-is-not-market-access/"; do
             name=${target%%:*}
             route=${target#*:}
             "$LH" "http://127.0.0.1:4400${route}" \

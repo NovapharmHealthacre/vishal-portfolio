@@ -1,9 +1,11 @@
-import { company, person, publications, site, verificationDate } from '../data/entity.mjs';
+import { company, person, publications, site } from '../data/entity.mjs';
+import { galleryImages, galleryMeta } from '../data/gallery.mjs';
 import { pageMeta } from '../data/site.mjs';
 import { escapeHtml, externalLink, formatDate } from '../lib/html.mjs';
 import {
   articleSchema,
   breadcrumbSchema,
+  gallerySchema,
   mediaCollectionSchema,
   organisationSchema,
   personSchema,
@@ -37,9 +39,18 @@ const articleCard = (article, index) => `
     <a class="round-link" href="${article.canonicalPath}" aria-label="Read ${escapeHtml(article.title)}"><span aria-hidden="true">↗</span></a>
   </article>`;
 
+const galleryFigure = (image, index, priority = false) => `
+  <figure class="gallery-item gallery-item-${index + 1}">
+    <a href="${image.path}" aria-label="Open ${escapeHtml(image.caption)}">
+      <img src="${image.path}" width="${image.width}" height="${image.height}" alt="${escapeHtml(image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    </a>
+    <figcaption><strong>${escapeHtml(image.caption)}</strong><span>Vishal Chakravarty</span></figcaption>
+  </figure>`;
+
 export const renderHome = (articles) => {
   const meta = pageMeta.home;
   const selected = articles.slice(0, 3);
+  const featuredPortraits = galleryImages.filter((image) => image.featured).slice(0, 3);
   const body = `
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
@@ -78,6 +89,11 @@ export const renderHome = (articles) => {
 
     <section class="evidence section" aria-labelledby="evidence-title"><p class="section-number">05 / Selected record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, independent publication links and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${publications[0].english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Founder profile</span><strong>Biography, focus and official links</strong>${arrow}</a></div></div></section>
 
+    <section class="gallery-preview section" aria-labelledby="gallery-preview-title">
+      <div class="section-heading"><div><p class="section-number">06 / Portrait gallery</p><h2 id="gallery-preview-title">Founder portraits.</h2></div><a class="text-link" href="/gallery/">View the gallery <span aria-hidden="true">→</span></a></div>
+      <div class="gallery-preview-grid">${featuredPortraits.map((image, index) => galleryFigure(image, index)).join('')}</div>
+    </section>
+
     <section class="closing section" id="invest" aria-labelledby="closing-title"><span id="contact" class="anchor-target" aria-hidden="true"></span><p class="eyebrow">Speaking · Editorial · Selected partnerships</p><h2 id="closing-title">For conversations around pharmaceutical market access, manufacturing, supply and cross-border growth.</h2><div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div></section>`;
   return renderPage({ ...meta, body, schemas: [websiteSchema(), personSchema(), webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id } })], className: 'home-page' });
 };
@@ -115,6 +131,24 @@ export const renderMedia = (page) => {
   return renderPage({ ...meta, body, schemas: [mediaCollectionSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }])], className: 'media-page' });
 };
 
+export const renderGallery = () => {
+  const meta = pageMeta.gallery;
+  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery/' }])}<p class="eyebrow">Portrait gallery</p><h1>Portraits of<br><em>Vishal Chakravarty.</em></h1><p class="page-deck">A curated selection of editorial, professional and founder-at-work portraits from Vishal’s personal founder platform.</p></section><section class="gallery-intro section"><p class="section-number">Selected portraits</p><div><h2>One founder.<br>Different frames.</h2><p>The gallery brings together formal studio portraits, professional photography and quieter candid moments. Each image is published with a stable descriptive URL and accurate context.</p></div></section><section class="gallery-grid section" aria-label="Portraits of Vishal Chakravarty">${galleryImages.map((image, index) => galleryFigure(image, index, index === 0)).join('')}</section><aside class="gallery-use section"><p class="eyebrow">Editorial enquiries</p><h2>For interviews, speaking and editorial requests.</h2><p>Use the direct contact route for context, attribution or higher-resolution editorial requirements.</p><a class="button button-primary" href="/contact/">Contact Vishal ${arrow}</a></aside>`;
+  return renderPage({
+    ...meta,
+    body,
+    socialImage: galleryImages[0].path,
+    socialImageAlt: galleryImages[0].alt,
+    schemas: [
+      webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': `${site.origin}${galleryMeta.path}#gallery` } }),
+      gallerySchema(galleryImages),
+      personSchema(),
+      breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery/' }]),
+    ],
+    className: 'gallery-page',
+  });
+};
+
 export const renderSpeaking = (page) => {
   const meta = contentMeta(page);
   const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking · Editorial · Founder roundtables</p><h1>Conversations about<br><em>building in pharmaceuticals.</em></h1><p class="page-deck">Themes spanning market access, post-Brexit market entry, manufacturing partnerships, technology transfer, supply and founder execution.</p></section><section class="content-managed prose-page section">${page.html}</section>`;
@@ -141,4 +175,4 @@ export const renderPrivacy = (page) => {
 
 export const renderCompatibility = (from, to) => renderPage({ title: 'This page has moved — Vishal Chakravarty', description: 'A previous address for content on the Vishal Chakravarty founder platform.', path: to, noIndex: true, className: 'compatibility-page', body: `<section class="utility-page"><p class="eyebrow">Updated address</p><h1>This page has moved.</h1><p>The current article or profile is available at the link below.</p><a class="button button-primary" href="${to}">Continue <span aria-hidden="true">→</span></a></section>` });
 
-export const renderNotFound = () => renderPage({ title: 'Page not found — Vishal Chakravarty', description: 'The requested page could not be found.', path: '/404.html', noIndex: true, className: 'not-found-page', body: `<section class="utility-page"><p class="eyebrow">404</p><h1>There is no page here.</h1><p>Explore the founder profile, NovaPharm Healthcare and the latest pharmaceutical essays.</p><div><a class="button button-primary" href="/">Return home</a><a class="text-link" href="/thinking/">Browse essays <span aria-hidden="true">→</span></a></div></section>` });
+export const renderNotFound = () => renderPage({ title: 'Page not found — Vishal Chakravarty', description: 'The requested page could not be found.', path: '/404.html', noIndex: true, className: 'not-found-page', body: `<section class="utility-page"><p class="eyebrow">404</p><h1>There is no page here.</h1><p>Explore the founder profile, NovaPharm Healthcare, the portrait gallery and the latest pharmaceutical essays.</p><div><a class="button button-primary" href="/">Return home</a><a class="text-link" href="/gallery/">View portraits <span aria-hidden="true">→</span></a></div></section>` });

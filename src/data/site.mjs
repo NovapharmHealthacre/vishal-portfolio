@@ -5,6 +5,7 @@ export const navigation = Object.freeze([
   { href: '/ventures/', label: 'Ventures' },
   { href: '/thinking/', label: 'Thinking' },
   { href: '/media/', label: 'Media' },
+  { href: '/gallery/', label: 'Gallery' },
   { href: '/facts/', label: 'Profile' },
 ]);
 
@@ -14,6 +15,7 @@ export const canonicalRoutes = Object.freeze([
   '/ventures/',
   '/thinking/',
   '/media/',
+  '/gallery/',
   '/speaking-partnerships/',
   '/facts/',
   '/contact/',
@@ -26,6 +28,7 @@ export const routeModified = Object.freeze({
   '/ventures/': '2026-07-15',
   '/thinking/': '2026-07-15',
   '/media/': '2026-07-15',
+  '/gallery/': '2026-07-15',
   '/speaking-partnerships/': '2026-07-15',
   '/facts/': '2026-07-15',
   '/contact/': '2026-07-15',
@@ -62,6 +65,13 @@ export const pageMeta = Object.freeze({
       'Original essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
     path: '/thinking/',
     modified: routeModified['/thinking/'],
+  },
+  gallery: {
+    title: 'Vishal Chakravarty Portrait Gallery',
+    description:
+      'A curated portrait gallery of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd, featuring editorial, professional and founder-at-work photography.',
+    path: '/gallery/',
+    modified: routeModified['/gallery/'],
   },
 });
 
