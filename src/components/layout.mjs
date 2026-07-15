@@ -93,7 +93,6 @@ export const renderPage = ({
     "connect-src 'self'",
     "frame-src 'none'",
     "form-action 'none'",
-    'upgrade-insecure-requests',
   ].join('; ');
   return `<!doctype html>
 <html class="no-js" lang="en-GB">
