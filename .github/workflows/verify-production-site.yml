@@ -57,6 +57,7 @@ jobs:
           founder=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/why-i-chose-to-build-in-pharmaceuticals/?${cache_key}")
           retired=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/why-i-left-swiggy/?${cache_key}")
           profile=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/facts/?${cache_key}")
+          gallery=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/gallery/?${cache_key}")
           sitemap=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/sitemap.xml?${cache_key}")
 
           grep -Fq '10 essays' <<<"$thinking"
@@ -64,11 +65,56 @@ jobs:
           grep -Fq 'Why I Chose to Build in Pharmaceuticals' <<<"$founder"
           grep -Fq 'noindex,follow' <<<"$retired"
           grep -Fq '/essays/why-i-chose-to-build-in-pharmaceuticals/' <<<"$retired"
-          ! grep -Fq 'The Story Was Too Simple' <<<"$retired"
+          if grep -Fq 'The Story Was Too Simple' <<<"$retired"; then
+            echo 'Retired essay title was exposed in production' >&2
+            exit 1
+          fi
           grep -Fq 'Founder Profile' <<<"$profile"
-          ! grep -Fq 'Machine-readable fact record' <<<"$profile"
+          if grep -Fq 'Machine-readable fact record' <<<"$profile"; then
+            echo 'Machine-facing copy was exposed on the founder profile' >&2
+            exit 1
+          fi
+          grep -Fq 'href="/gallery/"' <<<"$home"
+          grep -Fq 'gallery-preview' <<<"$home"
+          grep -Fq '"@type": "ImageGallery"' <<<"$gallery"
+          grep -Fq 'primaryImageOfPage' <<<"$gallery"
+          if grep -Fq 'copyrightHolder' <<<"$gallery"; then
+            echo 'Unsupported image copyright-holder metadata was exposed' >&2
+            exit 1
+          fi
+          if grep -Fq 'creditText' <<<"$gallery"; then
+            echo 'Unsupported image credit metadata was exposed' >&2
+            exit 1
+          fi
+          [[ $(grep -o '<figure class="gallery-item' <<<"$gallery" | wc -l | tr -d ' ') == 11 ]]
+          [[ $(grep -o '"@type": "ImageObject"' <<<"$gallery" | wc -l | tr -d ' ') == 12 ]]
           grep -Fq '/essays/regulatory-approval-is-not-market-access/' <<<"$sitemap"
-          ! grep -Fq '/essays/why-i-left-swiggy/' <<<"$sitemap"
+          if grep -Fq '/essays/why-i-left-swiggy/' <<<"$sitemap"; then
+            echo 'Retired essay route appeared in the sitemap' >&2
+            exit 1
+          fi
+          [[ $(grep -o '<image:image>' <<<"$sitemap" | wc -l | tr -d ' ') == 11 ]]
+
+          gallery_images=(
+            /images/portrait/vishal-chakravarty-1440.jpg
+            /images/gallery/vishal-chakravarty-oxblood-studio-portrait.jpg
+            /images/gallery/vishal-chakravarty-black-suit-crossed-arms.jpg
+            /images/gallery/vishal-chakravarty-studio-close-up.jpg
+            /images/gallery/vishal-chakravarty-founder-at-work.jpg
+            /images/gallery/vishal-chakravarty-light-suit-portrait.jpg
+            /images/gallery/vishal-chakravarty-monochrome-blazer-profile.jpg
+            /images/gallery/vishal-chakravarty-reflective-candid.jpg
+            /images/gallery/vishal-chakravarty-editorial-reclining-portrait.jpg
+            /images/gallery/vishal-chakravarty-black-suit-full-length.jpg
+            /images/gallery/vishal-chakravarty-evening-mirror-portrait.jpg
+          )
+          for image_path in "${gallery_images[@]}"; do
+            curl --fail --silent --show-error --location \
+              -H 'Cache-Control: no-cache' \
+              "${SITE_ORIGIN}${image_path}?${cache_key}" \
+              --output /dev/null
+            grep -Fq "$image_path" <<<"$sitemap"
+          done
 
           cat > "$report" <<EOF
           ## Production site verified
@@ -81,7 +127,11 @@ jobs:
           - Founder-origin essay: served and indexable
           - Retired essay route: neutral \`noindex,follow\` compatibility page
           - Profile: human-facing copy served without machine-record promotion
+          - Gallery: 11 visible portraits, 12 ImageObjects and accurate primary-image metadata
+          - Image rights: no unsupported creator or copyright-owner fields
+          - Portrait assets: high-resolution official portrait and all ten supplied image URLs served
           - Sitemap: new cornerstone route included and retired route excluded
+          - Image sitemap: all 11 portrait URLs included
 
           Release: \`${RELEASE_SHA}\`
           Verified: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
