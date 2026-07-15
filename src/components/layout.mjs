@@ -125,6 +125,7 @@ export const renderPage = ({
     <link rel="alternate" type="application/rss+xml" title="Thinking by Vishal Chakravarty" href="/rss.xml">
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
     <link rel="stylesheet" href="/assets/site.css">
+    <link rel="stylesheet" href="/assets/content-fixes.css">
     <script src="/assets/site.js" defer></script>
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
   </head>
