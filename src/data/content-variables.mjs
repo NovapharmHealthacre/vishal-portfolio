@@ -3,7 +3,7 @@ import { company, person, publications, publicFacts, site, verificationDate } fr
 const publicationRecord = publications
   .map(
     (publication) =>
-      `### ${publication.number}. ${publication.title}\n\nPublished ${new Date(`${publication.date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}.\n\n- [Read in English](${publication.english})\n- [日本語で読む](${publication.japanese})`,
+      `### ${publication.title}\n\n**${publication.subject} · ${new Date(`${publication.date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}**\n\n${publication.abstract}\n\n- [Read in English](${publication.english})\n- [日本語で読む](${publication.japanese})`,
   )
   .join('\n\n');
 
