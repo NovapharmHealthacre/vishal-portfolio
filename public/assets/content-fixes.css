@@ -1,20 +1,33 @@
+.contact-email {
+  width: 100%;
+  min-width: 0;
+}
+
 .contact-email span {
   flex: 1 1 auto;
   min-width: 0;
+  max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
 }
 
 .contact-content,
-.contact-content * {
+.contact-content *,
+.footer-contact,
+.footer-contact a,
+.footer-base,
+.footer-base span {
   min-width: 0;
   max-width: 100%;
   overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 @media (max-width: 420px) {
-  .contact-hero {
+  .contact-hero,
+  .site-footer {
     min-width: 0;
+    max-width: 100%;
   }
 
   .contact-email {
