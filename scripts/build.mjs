@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { loadArticles, loadPageContent } from '../src/lib/content.mjs';
 import { canonicalRoutes, legacyRedirects, routeModified } from '../src/data/site.mjs';
 import { company, person, publicFacts, publications, site, verificationDate } from '../src/data/entity.mjs';
+import { galleryImages, galleryMeta } from '../src/data/gallery.mjs';
 import { contentVariables } from '../src/data/content-variables.mjs';
 import {
   renderAbout,
@@ -11,6 +12,7 @@ import {
   renderCompatibility,
   renderContact,
   renderFacts,
+  renderGallery,
   renderHome,
   renderMedia,
   renderNotFound,
@@ -29,6 +31,12 @@ const write = (relative, content) => {
   fs.writeFileSync(destination, content.endsWith('\n') ? content : `${content}\n`);
 };
 
+const writeBinary = (relative, content) => {
+  const destination = path.join(dist, relative);
+  fs.mkdirSync(path.dirname(destination), { recursive: true });
+  fs.writeFileSync(destination, content);
+};
+
 const routeFile = (route) => {
   if (route === '/') return 'index.html';
   if (route.endsWith('.html')) return route.replace(/^\//, '');
@@ -43,12 +51,14 @@ const articleSourceHtml = (article) =>
     ? `<section><h2>Sources</h2><ol>${article.sources.map((source) => `<li><a href="${xmlEscape(source.url)}" rel="noopener noreferrer">${xmlEscape(source.label)}</a></li>`).join('')}</ol></section>`
     : '';
 
+const feedDescription = 'Essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and founder execution.';
+
 const jsonFeed = (articles) => ({
   version: 'https://jsonfeed.org/version/1.1',
   title: 'Thinking by Vishal Chakravarty',
   home_page_url: `${site.origin}/thinking/`,
   feed_url: `${site.origin}/feed.json`,
-  description: 'Essays on regulated markets, pharmaceutical access, resilience and founder operations.',
+  description: feedDescription,
   authors: [{ name: person.name, url: `${site.origin}/about/` }],
   language: site.language,
   items: articles.map((article) => ({
@@ -70,7 +80,7 @@ const rssFeed = (articles) => `<?xml version="1.0" encoding="UTF-8"?>
   <channel>
     <title>Thinking by Vishal Chakravarty</title>
     <link>${site.origin}/thinking/</link>
-    <description>Essays on regulated markets, pharmaceutical access, resilience and founder operations.</description>
+    <description>${xmlEscape(feedDescription)}</description>
     <language>en-gb</language>
     <atom:link href="${site.origin}/rss.xml" rel="self" type="application/rss+xml"/>
     ${articles.map((article) => `<item>
@@ -86,6 +96,18 @@ const rssFeed = (articles) => `<?xml version="1.0" encoding="UTF-8"?>
   </channel>
 </rss>`;
 
+const galleryImageXml = () =>
+  galleryImages
+    .map(
+      (image) => `
+    <image:image>
+      <image:loc>${xmlEscape(new URL(image.path, site.origin).href)}</image:loc>
+      <image:title>${xmlEscape(image.caption)}</image:title>
+      <image:caption>${xmlEscape(image.description)}</image:caption>
+    </image:image>`,
+    )
+    .join('');
+
 const sitemap = (articles) => {
   const staticEntries = canonicalRoutes.map((route) => ({ route, modified: routeModified[route] }));
   const articleEntries = articles.map((article) => ({ route: article.canonicalPath, modified: article.modified }));
@@ -93,10 +115,10 @@ const sitemap = (articles) => {
     if (!entry.modified) throw new Error(`Missing material lastmod date for ${entry.route}`);
   }
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${[...staticEntries, ...articleEntries].map(({ route, modified }) => `  <url>
     <loc>${xmlEscape(new URL(route, site.origin).href)}</loc>
-    <lastmod>${modified}</lastmod>
+    <lastmod>${modified}</lastmod>${route === galleryMeta.path ? galleryImageXml() : ''}
   </url>`).join('\n')}
 </urlset>`;
 };
@@ -108,6 +130,15 @@ write('assets/site.css', fs.readFileSync(path.join(root, 'src/styles/site.css'),
 write('assets/site.js', fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8'));
 write('assets/lattice.js', fs.readFileSync(path.join(root, 'src/scripts/lattice.js'), 'utf8'));
 
+for (const image of galleryImages) {
+  const encoded = fs.readFileSync(path.join(root, image.source), 'utf8').replace(/\s+/g, '');
+  const binary = Buffer.from(encoded, 'base64');
+  if (binary.length < 1000 || binary[0] !== 0xff || binary[1] !== 0xd8 || binary.at(-2) !== 0xff || binary.at(-1) !== 0xd9) {
+    throw new Error(`Invalid JPEG gallery source: ${image.source}`);
+  }
+  writeBinary(image.path.replace(/^\//, ''), binary);
+}
+
 const articles = loadArticles(root);
 const pageContent = loadPageContent(root, contentVariables);
 if (Object.keys(pageContent).length < 7) throw new Error('Expected the seven public page content records');
@@ -117,6 +148,7 @@ write(routeFile('/about/'), renderAbout(pageContent.about));
 write(routeFile('/ventures/'), renderVentures(pageContent.ventures));
 write(routeFile('/thinking/'), renderThinking(articles));
 write(routeFile('/media/'), renderMedia(pageContent.media));
+write(routeFile('/gallery/'), renderGallery());
 write(routeFile('/speaking-partnerships/'), renderSpeaking(pageContent['speaking-partnerships']));
 write(routeFile('/facts/'), renderFacts(pageContent.facts));
 write(routeFile('/contact/'), renderContact(pageContent.contact));
@@ -158,7 +190,8 @@ write(
         incorporated: company.incorporationDate,
         status: company.status,
         officialUrl: company.officialUrl,
-        regulatoryStatus: company.regulatoryStatus,
+        description: company.description,
+        currentFocus: company.currentFocus,
       },
       publications,
       facts: publicFacts,
@@ -181,4 +214,4 @@ const walk = (directory) => {
   }
 };
 walk(dist);
-console.log(`Built ${outputFiles.length} files from ${articles.length} essays.`);
+console.log(`Built ${outputFiles.length} files from ${articles.length} essays and ${galleryImages.length} gallery portraits.`);
