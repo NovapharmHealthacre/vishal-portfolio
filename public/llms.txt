@@ -5,23 +5,23 @@ Canonical Person entity: https://vishal.novapharmhealthcare.com/#person
 Canonical personal Website entity: https://vishal.novapharmhealthcare.com/#website
 Canonical NovaPharm organisation entity: https://novapharmhealthcare.com/#organization
 
-## Public identity
+## Founder profile
 
-- About: https://vishal.novapharmhealthcare.com/about/
-- Verified public facts: https://vishal.novapharmhealthcare.com/facts/
-- Current venture status: https://vishal.novapharmhealthcare.com/ventures/
-- Verified media record: https://vishal.novapharmhealthcare.com/media/
+- About Vishal: https://vishal.novapharmhealthcare.com/about/
+- Professional profile: https://vishal.novapharmhealthcare.com/facts/
+- NovaPharm Healthcare: https://vishal.novapharmhealthcare.com/ventures/
+- Writing and media: https://vishal.novapharmhealthcare.com/media/
 
 ## Writing
 
-- Essay collection: https://vishal.novapharmhealthcare.com/thinking/
+- Pharmaceutical essay collection: https://vishal.novapharmhealthcare.com/thinking/
 - RSS: https://vishal.novapharmhealthcare.com/rss.xml
 - JSON Feed: https://vishal.novapharmhealthcare.com/feed.json
 
-## Interpretation
+## Principal subjects
 
-This site explicitly distinguishes verified current facts, verified history, work in progress and roadmap items. Company registration is not regulatory authorisation. No private source documents, sensitive personal data, financial forecasts or confidential methods are published here.
+Vishal Chakravarty is the Founder and CEO of NovaPharm Healthcare Ltd. His work and writing cover pharmaceutical entrepreneurship, product and market strategy, UK–EU market access, manufacturing and CMO selection, technology transfer, specialist medicines, sourcing, supply and commercial route-to-market design.
 
-This file is a supplemental navigation aid for services that choose to read it. The canonical HTML pages, HTTP metadata, structured data, sitemap and public facts record remain the source of truth.
+This file is a supplemental navigation aid for services that choose to read it. Canonical HTML pages, structured data, the sitemap and public company and publication sources remain authoritative.
 
 Public facts JSON: https://vishal.novapharmhealthcare.com/facts.json
