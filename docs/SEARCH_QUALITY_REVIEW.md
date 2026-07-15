@@ -44,4 +44,4 @@ The following outcomes cannot be solved or promised by repository changes:
 
 ## Release gates
 
-Every material code change must preserve the deterministic build, canonical/entity tests, claim/privacy guards, image sitemap tests, Chromium/Firefox/WebKit QA, axe accessibility results, Lighthouse thresholds and custom-domain post-deployment verification.
+Every material code change must preserve the deterministic build, canonical/entity tests, claim/privacy guards, image sitemap tests, Chromium/Firefox/WebKit QA, axe accessibility results, three-pass mobile Lighthouse median, desktop Lighthouse thresholds and custom-domain post-deployment verification.
