@@ -1,6 +1,14 @@
 document.documentElement.classList.remove('no-js');
 document.documentElement.classList.add('js');
 
+const isSafariWebKit =
+  /AppleWebKit/i.test(navigator.userAgent) &&
+  !/(Chrome|Chromium|CriOS|Edg|OPR|Android)/i.test(navigator.userAgent);
+
+if (isSafariWebKit) {
+  for (const source of document.querySelectorAll('picture source[type="image/avif"]')) source.remove();
+}
+
 const toggle = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-navigation');
 
