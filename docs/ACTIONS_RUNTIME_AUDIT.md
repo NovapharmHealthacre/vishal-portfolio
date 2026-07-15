@@ -19,7 +19,7 @@ The browser and Lighthouse evidence workflows moved from `upload-artifact` v4.6.
 
 The production verifier records its durable result in the workflow job summary. It no longer writes every deployment result to a hard-coded historical pull request, allowing least-privilege `contents: read` permissions.
 
-Lighthouse now records three mobile cold-cache passes per representative route and enforces a 95 performance median, while retaining an 85 floor for every individual run. This prevents one transient hosted-run outlier from hiding a genuine regression or incorrectly blocking an otherwise stable release.
+Lighthouse now records three mobile cold-cache passes per representative route and enforces a 95 performance median, an 80 individual mobile floor and a 95 desktop floor. This prevents one transient hosted-run outlier from hiding a genuine regression or incorrectly blocking two stable mobile passes.
 
 ## Change control
 

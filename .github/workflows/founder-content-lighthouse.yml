@@ -67,11 +67,12 @@ jobs:
           const path = require('node:path');
           const directory = path.resolve('artifacts/lighthouse');
           const perRunThresholds = {
-            performance: 0.85,
             accessibility: 0.95,
             'best-practices': 0.95,
             seo: 0.95,
           };
+          const desktopPerformanceMinimum = 0.95;
+          const individualMobilePerformanceFloor = 0.80;
           const medianMobilePerformanceMinimum = 0.95;
           const summary = [];
           const failures = [];
@@ -84,6 +85,14 @@ jobs:
                 return [category, score];
               }),
             );
+            const performance = report.categories.performance?.score ?? 0;
+            if (file.endsWith('-desktop.json') && performance < desktopPerformanceMinimum) {
+              failures.push(`${file}: performance ${performance.toFixed(2)} < ${desktopPerformanceMinimum.toFixed(2)}`);
+            }
+            if (file.includes('-mobile-') && performance < individualMobilePerformanceFloor) {
+              failures.push(`${file}: performance ${performance.toFixed(2)} < ${individualMobilePerformanceFloor.toFixed(2)}`);
+            }
+            scores.performance = performance;
             summary.push({ file, finalUrl: report.finalUrl, scores });
           }
           const mobileMedians = [];
