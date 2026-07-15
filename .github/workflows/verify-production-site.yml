@@ -1,0 +1,100 @@
+name: Verify production site
+
+on:
+  workflow_run:
+    workflows: ["Deploy production site"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  verify:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Verify deployed custom domain
+        id: smoke
+        continue-on-error: true
+        env:
+          SITE_ORIGIN: https://vishal.novapharmhealthcare.com
+          RELEASE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          set -uo pipefail
+          report=/tmp/production-verification.md
+          cache_key="release-${RELEASE_SHA}-$(date +%s)"
+          success=false
+
+          for attempt in $(seq 1 72); do
+            home=$(curl --fail --silent --show-error --location \
+              -H 'Cache-Control: no-cache' \
+              -H 'Pragma: no-cache' \
+              "${SITE_ORIGIN}/?${cache_key}-${attempt}" || true)
+            if grep -Fq 'Building a UK-led pharmaceutical company around market access' <<<"$home" \
+              && grep -Fq 'Pharmaceutical essays' <<<"$home" \
+              && ! grep -Fq 'Status before spectacle' <<<"$home"; then
+              success=true
+              break
+            fi
+            sleep 10
+          done
+
+          if [[ "$success" != true ]]; then
+            cat > "$report" <<EOF
+          ## Production verification failed
+
+          The Pages workflow completed, but the custom domain did not serve the new founder homepage within the 12-minute verification window.
+
+          Release: \`${RELEASE_SHA}\`
+          EOF
+            exit 1
+          fi
+
+          thinking=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/thinking/?${cache_key}")
+          cornerstone=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/regulatory-approval-is-not-market-access/?${cache_key}")
+          founder=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/why-i-chose-to-build-in-pharmaceuticals/?${cache_key}")
+          retired=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/why-i-left-swiggy/?${cache_key}")
+          profile=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/facts/?${cache_key}")
+          sitemap=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/sitemap.xml?${cache_key}")
+
+          grep -Fq '10 essays' <<<"$thinking"
+          grep -Fq 'Regulatory Approval Is Not Market Access' <<<"$cornerstone"
+          grep -Fq 'Why I Chose to Build in Pharmaceuticals' <<<"$founder"
+          grep -Fq 'noindex,follow' <<<"$retired"
+          grep -Fq '/essays/why-i-chose-to-build-in-pharmaceuticals/' <<<"$retired"
+          ! grep -Fq 'The Story Was Too Simple' <<<"$retired"
+          grep -Fq 'Founder Profile' <<<"$profile"
+          ! grep -Fq 'Machine-readable fact record' <<<"$profile"
+          grep -Fq '/essays/regulatory-approval-is-not-market-access/' <<<"$sitemap"
+          ! grep -Fq '/essays/why-i-left-swiggy/' <<<"$sitemap"
+
+          cat > "$report" <<EOF
+          ## Production site verified
+
+          The founder-authority release is live on the custom domain.
+
+          - Homepage: new pharmaceutical founder proposition served
+          - Thinking: 10 public essays served
+          - Cornerstone market-access essay: served and indexable
+          - Founder-origin essay: served and indexable
+          - Retired essay route: neutral \`noindex,follow\` compatibility page
+          - Profile: human-facing copy served without machine-record promotion
+          - Sitemap: new cornerstone route included and retired route excluded
+
+          Release: \`${RELEASE_SHA}\`
+          Verified: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          EOF
+
+      - name: Post verification record to PR 6
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api "repos/${GITHUB_REPOSITORY}/issues/6/comments" --method POST --raw-field body="$(cat /tmp/production-verification.md)"
+
+      - name: Enforce verification result
+        if: steps.smoke.outcome != 'success'
+        run: exit 1
