@@ -1,46 +1,46 @@
 ---
 title: About Vishal Chakravarty
-description: Founder and operator working on access, licensing and supply systems for regulated healthcare markets.
+description: Vishal Chakravarty is the Founder and CEO of NovaPharm Healthcare Ltd, building across pharmaceutical market access, manufacturing partnerships and cross-border supply.
 canonicalPath: /about/
 public: true
 ---
 
 {{PERSON_SHORT_BIO}}
 
-## The work
+## Why pharmaceuticals
 
-His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. Reviewed evidence supports that period of work, but not a specific public job title or the publication of confidential responsibilities.
+Pharmaceuticals sits at the intersection of science, regulation, manufacturing, commercial strategy and public need. A strong product can still fail if its route to market is weak. A promising opportunity can disappear through the wrong manufacturer, an unsuitable batch size, fragile sourcing, poor launch sequencing or economics that do not survive beyond the first order.
 
-**In progress — not an operating claim.** He founded NovaPharm Healthcare Ltd in 2025. The company is developing a compliance-led model focused on specialist-medicine access and the systems around pharmaceutical licensing, sourcing and supply.
+That combination of difficulty and consequence is what drew Vishal deeper into the sector. His pharmaceutical experience includes work with SyriMed between 2020 and 2025, followed by the decision to establish NovaPharm Healthcare in the United Kingdom.
 
-The distinction between development and operation matters. NovaPharm is a registered company, but this site does not present it as holding an MHRA wholesale authorisation, supplying customers or operating deployed regulatory infrastructure.
+## Why NovaPharm exists
 
-## Operating principles
+NovaPharm was founded around a simple commercial observation: pharmaceutical market entry is often treated as a chain of separate tasks when it should be designed as one operating model.
 
-### Evidence before assertion
+Product selection affects the regulatory pathway. The regulatory pathway affects manufacturing and packaging. Manufacturing affects batch size, working capital and supply. Supply affects pricing, channel confidence and patient access. The company is being built to connect those decisions earlier and execute them with greater commercial clarity.
 
-A company registration, licence, product, partner and customer are different kinds of fact. Each should be described only at the level the evidence supports.
+## What he is building
 
-### Ambition under control
+Vishal’s work spans product and portfolio strategy, manufacturer and CMO relationships, technology transfer, licensing pathways, sourcing, supply design, distribution and market development. His current focus is the United Kingdom, Europe and selected international regulated markets, with specialist medicines as an important part of the long-term direction.
 
-Complex markets need long-range thinking. They also need precise language about what exists today, what is in progress and what remains on the roadmap.
+The ambition is not to build a narrow trading operation. It is to develop a pharmaceutical company capable of identifying worthwhile products, structuring the route to market and building the partnerships required to sustain supply over time.
 
-### Systems over theatre
+## How he operates
 
-Reliable work is built from clear responsibility, controlled information and repeatable decisions. Technology is useful when it strengthens those foundations, not when it disguises their absence.
+Vishal approaches company building through the relationship between commercial opportunity and operational reality.
 
-### Human stakes
+He looks at whether a product can be developed or sourced, whether the regulatory route is viable, whether the manufacturer can support the required batch strategy, whether the pack and price fit the market, whether the channel has a reason to adopt it and whether the supply model can remain dependable after launch.
 
-Healthcare supply is not an abstract logistics exercise. The work ultimately sits inside systems that affect professionals, institutions and patient access. That demands restraint as well as urgency.
+That approach favours ownership, direct communication and decisions that can be translated into execution. It also reflects the reality of pharmaceutical entrepreneurship: progress is rarely one decision. It is the accumulation of product, technical, regulatory, financial and relationship decisions made in the right order.
 
-## Writing
+## Writing and public thinking
 
-Vishal contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. {{PUBLISHED_INSTALLMENT_COUNT}} instalments of a planned four-part series are published in English and Japanese.
+Vishal contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. He also writes independently about product strategy, parallel import, technology transfer, CMO selection, supply resilience and founder execution in regulated markets.
 
-His independent essays cover regulated-market building, parallel import and founder operating discipline. They are general analysis, not patient-specific medical advice.
+The essays are intended to make complex commercial questions more useful to founders, manufacturers, operators and partners working across pharmaceutical markets.
 
 ## Current role
 
 {{PERSON_ROLE}}.
 
-For verified company details, publication links and status definitions, see the [public fact sheet](/facts/).
+For company strategy, visit [NovaPharm Healthcare]({{COMPANY_URL}}). For publications and official links, see the [founder profile](/facts/).
