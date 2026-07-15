@@ -1,57 +1,57 @@
 ---
-title: Public Fact Sheet
-description: Verified biography, company details, publication record, official links and current status notes for Vishal Chakravarty.
+title: Founder Profile
+description: Biography, professional focus, publications and official links for Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd.
 canonicalPath: /facts/
 public: true
 ---
 
-Last reviewed: {{VERIFICATION_DATE}}.
+## At a glance
 
-This page is the public reference for journalists, collaborators, search systems and readers. It separates verified facts from plans and omits private information that is not necessary to understand Vishal's work.
+- **Founder & CEO:** NovaPharm Healthcare Ltd
+- **Field:** Pharmaceutical entrepreneurship
+- **Focus:** Market access, specialist medicines, manufacturing partnerships and cross-border supply
+- **Markets:** United Kingdom, Europe and selected international regulated markets
+- **Writing:** Pharmaceutical strategy, commercialisation, technology transfer and founder execution
 
-## Preferred identity
-
-- **Professional name:** Vishal Chakravarty
-- **Current role:** {{PERSON_ROLE}}
-- **Positioning:** {{PERSON_PROPOSITION}}
-
-## 40-word biography
-
-{{PERSON_SHORT_BIO}}
-
-## 100-word biography
+## Biography
 
 {{PERSON_MEDIUM_BIO}}
 
-## Verified professional history
+## Professional focus
 
-- Pharmaceutical experience predates NovaPharm.
-- His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.
-- No public title is assigned to that work because the available sources conflict on the formal relationship.
-- Vishal is a current Yakuji Nippo contributor.
+Vishal’s work connects product and portfolio strategy with the practical route to market. His areas of focus include:
 
-## Verified company facts
+- pharmaceutical market access and commercialisation;
+- product selection and portfolio strategy;
+- CMO and CDMO selection;
+- pharmaceutical technology transfer;
+- licensing and parallel import pathways;
+- sourcing, supply and distribution;
+- UK–EU market entry;
+- digital operating infrastructure for pharmaceutical businesses.
 
-- **Legal name:** {{COMPANY_LEGAL_NAME}}
-- **Company number:** {{COMPANY_NUMBER}}
-- **Status:** {{COMPANY_STATUS}} UK-registered {{COMPANY_LEGAL_FORM}}
-- **Incorporated:** {{COMPANY_INCORPORATED}}
-- **Companies House SIC codes:** {{COMPANY_SIC_CODES}}
+## NovaPharm Healthcare
 
-The SIC codes are registry classifications. They are not evidence of manufacturing activity, wholesale operation or regulatory authorisation.
+NovaPharm Healthcare Ltd is a UK pharmaceutical company established in 2025. It is building market-access, manufacturing-partnership, licensing and supply capabilities for specialist medicines across regulated markets.
 
-## Current company status
+[Visit NovaPharm Healthcare]({{COMPANY_URL}}) or [view the Companies House record]({{COMPANIES_HOUSE_URL}}).
 
-- **Current:** The legal entity is active and registered.
-- **Planned:** The company's plan focuses on oncology and specialty-medicine access.
-- **Roadmap:** A digital B2B workflow, forecasting support and traceability tooling.
-- **Not claimed:** MHRA wholesale authorisation, deployed regulated infrastructure, customers, NHS contracts, operational logistics partner, revenue or live technology.
+## Selected publications
 
-## Publications
+Vishal contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. Three instalments are published in English and Japanese.
 
-{{PUBLISHED_INSTALLMENT_COUNT}} instalments of Vishal's planned four-part Yakuji Nippo series are published in English and Japanese. The fourth remains in progress until a publisher-hosted URL exists.
+See the [writing and media profile](/media/).
 
-See the [verified publication record](/media/).
+## Selected essays
+
+- [Why I Chose to Build in Pharmaceuticals](/essays/why-i-chose-to-build-in-pharmaceuticals/)
+- [Regulatory Approval Is Not Market Access](/essays/regulatory-approval-is-not-market-access/)
+- [The Route to Market Is Designed Before Launch](/essays/the-route-to-market-is-designed-before-launch/)
+- [Supply Resilience Begins Before the First Purchase Order](/essays/supply-resilience-before-the-first-purchase-order/)
+
+## Speaking and editorial topics
+
+Vishal is available for selected conversations on pharmaceutical market access, post-Brexit market entry, CMO/CDMO strategy, technology transfer, specialist medicines, supply resilience and founder execution in regulated markets.
 
 ## Official links
 
@@ -60,8 +60,6 @@ See the [verified publication record](/media/).
 - [NovaPharm Healthcare]({{COMPANY_URL}})
 - [Companies House]({{COMPANIES_HOUSE_URL}})
 
-No X, Instagram, YouTube, personal GitHub, Crunchbase, Wikipedia or Wikidata profile is treated as official on this site without further verification.
+## Contact
 
-## Corrections
-
-Send factual corrections, with a primary source where possible, to [{{EMAIL}}](mailto:{{EMAIL}}). A correction request does not guarantee publication, but material evidence will be reviewed against the public fact ledger.
+For editorial, partnership or factual enquiries, email [{{EMAIL}}](mailto:{{EMAIL}}).
