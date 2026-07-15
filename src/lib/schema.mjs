@@ -1,4 +1,5 @@
 import { company, person, profileModifiedDate, publications, site, verificationDate } from '../data/entity.mjs';
+import { galleryImages, galleryMeta } from '../data/gallery.mjs';
 import { absolute, routeModified } from '../data/site.mjs';
 
 export const websiteSchema = () => ({
@@ -135,6 +136,36 @@ export const thinkingCollectionSchema = (articles) => ({
     publisher: { '@type': 'Person', '@id': person.id },
     blogPost: articles.map((article) => ({ '@type': 'BlogPosting', '@id': `${absolute(article.canonicalPath)}#article` })),
   },
+});
+
+export const gallerySchema = (images = galleryImages) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  '@id': `${site.origin}${galleryMeta.path}#gallery`,
+  url: `${site.origin}${galleryMeta.path}`,
+  name: galleryMeta.name,
+  description: galleryMeta.description,
+  dateModified: routeModified[galleryMeta.path],
+  inLanguage: site.language,
+  isPartOf: { '@id': site.id },
+  about: { '@id': person.id },
+  creator: { '@id': person.id },
+  copyrightHolder: { '@id': person.id },
+  associatedMedia: images.map((image) => ({
+    '@type': 'ImageObject',
+    '@id': `${absolute(image.path)}#image`,
+    contentUrl: absolute(image.path),
+    url: `${site.origin}${galleryMeta.path}`,
+    name: image.caption,
+    caption: image.caption,
+    description: image.description,
+    width: image.width,
+    height: image.height,
+    representativeOfPage: image.featured,
+    creator: { '@id': person.id },
+    copyrightHolder: { '@id': person.id },
+    creditText: person.name,
+  })),
 });
 
 export const mediaCollectionSchema = () => ({
