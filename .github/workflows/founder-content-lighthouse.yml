@@ -1,0 +1,103 @@
+name: Founder content Lighthouse
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - name: Use Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Install locked project toolchain
+        run: npm ci
+      - name: Build candidate
+        run: npm run build
+      - name: Install isolated Lighthouse runtime
+        run: npm install --prefix /tmp/founder-lighthouse --no-save lighthouse@12.8.2
+      - name: Start preview server
+        run: |
+          node scripts/dev.mjs --dist --port=4400 > /tmp/founder-preview.log 2>&1 &
+          echo $! > /tmp/founder-preview.pid
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:4400/ > /dev/null; then
+              exit 0
+            fi
+            sleep 0.5
+          done
+          cat /tmp/founder-preview.log
+          exit 1
+      - name: Run mobile and desktop audits
+        run: |
+          mkdir -p artifacts/lighthouse
+          LH=/tmp/founder-lighthouse/node_modules/.bin/lighthouse
+          for target in "home:/" "market-access:/essays/regulatory-approval-is-not-market-access/"; do
+            name=${target%%:*}
+            route=${target#*:}
+            "$LH" "http://127.0.0.1:4400${route}" \
+              --output=json \
+              --output-path="artifacts/lighthouse/${name}-mobile.json" \
+              --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --quiet
+            "$LH" "http://127.0.0.1:4400${route}" \
+              --preset=desktop \
+              --output=json \
+              --output-path="artifacts/lighthouse/${name}-desktop.json" \
+              --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --quiet
+          done
+      - name: Enforce Lighthouse thresholds
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const directory = path.resolve('artifacts/lighthouse');
+          const thresholds = {
+            performance: 0.85,
+            accessibility: 0.95,
+            'best-practices': 0.95,
+            seo: 0.95,
+          };
+          const summary = [];
+          const failures = [];
+          for (const file of fs.readdirSync(directory).filter((entry) => entry.endsWith('.json')).sort()) {
+            const report = JSON.parse(fs.readFileSync(path.join(directory, file), 'utf8'));
+            const scores = Object.fromEntries(
+              Object.entries(thresholds).map(([category, minimum]) => {
+                const score = report.categories[category]?.score ?? 0;
+                if (score < minimum) failures.push(`${file}: ${category} ${score.toFixed(2)} < ${minimum.toFixed(2)}`);
+                return [category, score];
+              }),
+            );
+            summary.push({ file, finalUrl: report.finalUrl, scores });
+          }
+          fs.writeFileSync(path.join(directory, 'summary.json'), JSON.stringify(summary, null, 2));
+          console.log(JSON.stringify(summary, null, 2));
+          if (failures.length) {
+            console.error(failures.join('\n'));
+            process.exit(1);
+          }
+          NODE
+      - name: Stop preview server
+        if: always()
+        run: kill "$(cat /tmp/founder-preview.pid)" 2>/dev/null || true
+      - name: Upload Lighthouse evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: founder-content-lighthouse
+          path: artifacts/lighthouse
+          if-no-files-found: error
+          retention-days: 14
