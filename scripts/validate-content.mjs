@@ -10,7 +10,21 @@ const pages = loadPageContent(root, contentVariables);
 const failures = [];
 const seen = new Set();
 
-if (articles.length !== 4) failures.push(`Expected 4 public essays, found ${articles.length}`);
+const requiredPublicEssays = new Set([
+  'why-i-chose-to-build-in-pharmaceuticals',
+  'regulatory-approval-is-not-market-access',
+  'route-to-market-before-launch',
+  'supply-resilience-before-first-purchase-order',
+  'choosing-a-cmo-for-regulated-markets',
+  'technology-transfer-before-formula-moves',
+  'minimum-batch-size-product-future',
+  'how-to-win-when-odds-are-against-you',
+  'regulated-industries',
+  'what-parallel-import-actually-means',
+]);
+
+if (articles.length !== requiredPublicEssays.size) failures.push(`Expected ${requiredPublicEssays.size} public essays, found ${articles.length}`);
+for (const slug of requiredPublicEssays) if (!articles.some((article) => article.slug === slug)) failures.push(`Missing required public essay ${slug}`);
 if (Object.keys(pages).length !== 7) failures.push(`Expected 7 public page records, found ${Object.keys(pages).length}`);
 
 for (const article of articles) {
@@ -33,4 +47,4 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exit(1);
 }
-console.log(`Validated ${articles.length} essays, ${Object.keys(pages).length} pages and central entity data.`);
+console.log(`Validated ${articles.length} public essays, ${Object.keys(pages).length} pages and central entity data.`);
