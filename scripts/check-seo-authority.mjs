@@ -3,7 +3,7 @@ import path from 'node:path';
 import { loadArticles } from '../src/lib/content.mjs';
 import { canonicalRoutes, routeModified } from '../src/data/site.mjs';
 import { company, person, site } from '../src/data/entity.mjs';
-import { galleryImages, galleryMeta } from '../src/data/gallery.mjs';
+import { galleryMeta, gallerySitemapImages } from '../src/data/gallery.mjs';
 
 const root = path.resolve('.');
 const dist = path.join(root, 'dist');
@@ -42,7 +42,7 @@ for (const url of expected.keys()) {
 }
 if (!sitemap.includes(`xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"`)) failures.push('sitemap image namespace missing');
 if (!sitemap.includes(`<loc>${new URL(galleryMeta.path, site.origin).href}</loc>`)) failures.push('gallery page missing from sitemap');
-for (const image of galleryImages) {
+for (const image of gallerySitemapImages) {
   if (!sitemap.includes(`<image:loc>${new URL(image.path, site.origin).href}</image:loc>`)) failures.push(`${image.id}: missing image sitemap entry`);
 }
 
@@ -98,4 +98,4 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exit(1);
 }
-console.log(`Validated ${expected.size} canonical URLs, ${galleryImages.length} image sitemap entries, cross-site entity ownership, crawler policy and privacy-safe output.`);
+console.log(`Validated ${expected.size} canonical URLs, ${gallerySitemapImages.length} image sitemap entries, cross-site entity ownership, crawler policy and privacy-safe output.`);

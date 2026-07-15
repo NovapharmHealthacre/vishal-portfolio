@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { loadArticles, loadPageContent } from '../src/lib/content.mjs';
 import { canonicalRoutes, legacyRedirects, routeModified } from '../src/data/site.mjs';
 import { company, person, publicFacts, publications, site, verificationDate } from '../src/data/entity.mjs';
-import { galleryImages, galleryMeta } from '../src/data/gallery.mjs';
+import { galleryImages, galleryMeta, gallerySitemapImages } from '../src/data/gallery.mjs';
 import { contentVariables } from '../src/data/content-variables.mjs';
 import {
   renderAbout,
@@ -97,7 +97,7 @@ const rssFeed = (articles) => `<?xml version="1.0" encoding="UTF-8"?>
 </rss>`;
 
 const galleryImageXml = () =>
-  galleryImages
+  gallerySitemapImages
     .map(
       (image) => `
     <image:image>

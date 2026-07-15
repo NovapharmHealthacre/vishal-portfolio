@@ -1,5 +1,5 @@
 import { company, person, publications, site } from '../data/entity.mjs';
-import { galleryImages, galleryMeta } from '../data/gallery.mjs';
+import { galleryImages, galleryLeadImage, galleryMeta } from '../data/gallery.mjs';
 import { pageMeta } from '../data/site.mjs';
 import { escapeHtml, externalLink, formatDate } from '../lib/html.mjs';
 import {
@@ -45,6 +45,14 @@ const galleryFigure = (image, index, priority = false) => `
       <img src="${image.path}" width="${image.width}" height="${image.height}" alt="${escapeHtml(image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
     </a>
     <figcaption><strong>${escapeHtml(image.caption)}</strong><span>Vishal Chakravarty</span></figcaption>
+  </figure>`;
+
+const galleryLeadFigure = () => `
+  <figure class="gallery-item gallery-item-lead">
+    <a href="${galleryLeadImage.path}" aria-label="Open ${escapeHtml(galleryLeadImage.caption)}">
+      ${portrait(true)}
+    </a>
+    <figcaption><strong>${escapeHtml(galleryLeadImage.displayCaption)}</strong><span>Vishal Chakravarty</span></figcaption>
   </figure>`;
 
 export const renderHome = (articles) => {
@@ -95,13 +103,13 @@ export const renderHome = (articles) => {
     </section>
 
     <section class="closing section" id="invest" aria-labelledby="closing-title"><span id="contact" class="anchor-target" aria-hidden="true"></span><p class="eyebrow">Speaking · Editorial · Selected partnerships</p><h2 id="closing-title">For conversations around pharmaceutical market access, manufacturing, supply and cross-border growth.</h2><div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div></section>`;
-  return renderPage({ ...meta, body, schemas: [websiteSchema(), personSchema(), webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id } })], className: 'home-page' });
+  return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [websiteSchema(), personSchema(), webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } })], className: 'home-page' });
 };
 
 export const renderAbout = (page) => {
   const meta = contentMeta(page);
   const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])}<p class="eyebrow">Founder profile</p><h1>Vishal Chakravarty.</h1><p class="page-deck">Pharmaceutical entrepreneur building NovaPharm Healthcare around market access, specialist medicines, manufacturing partnerships and resilient supply.</p></section><section class="profile-spread section"><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Founder & CEO</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
-  return renderPage({ ...meta, body, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
+  return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
 };
 
 export const renderVentures = (page) => {
@@ -133,14 +141,16 @@ export const renderMedia = (page) => {
 
 export const renderGallery = () => {
   const meta = pageMeta.gallery;
-  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery/' }])}<p class="eyebrow">Portrait gallery</p><h1>Portraits of<br><em>Vishal Chakravarty.</em></h1><p class="page-deck">A curated selection of editorial, professional and founder-at-work portraits from Vishal’s personal founder platform.</p></section><section class="gallery-intro section"><p class="section-number">Selected portraits</p><div><h2>One founder.<br>Different frames.</h2><p>The gallery brings together formal studio portraits, professional photography and quieter candid moments. Each image is published with a stable descriptive URL and accurate context.</p></div></section><section class="gallery-grid section" aria-label="Portraits of Vishal Chakravarty">${galleryImages.map((image, index) => galleryFigure(image, index, index === 0)).join('')}</section><aside class="gallery-use section"><p class="eyebrow">Editorial enquiries</p><h2>For interviews, speaking and editorial requests.</h2><p>Use the direct contact route for context, attribution or higher-resolution editorial requirements.</p><a class="button button-primary" href="/contact/">Contact Vishal ${arrow}</a></aside>`;
+  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery/' }])}<p class="eyebrow">Portrait gallery</p><h1>Portraits of<br><em>Vishal Chakravarty.</em></h1><p class="page-deck">A curated selection of editorial, professional and founder-at-work portraits from Vishal’s personal founder platform.</p></section><section class="gallery-intro section"><p class="section-number">Selected portraits</p><div><h2>One founder.<br>Different frames.</h2><p>The gallery brings together formal studio portraits, professional photography and quieter candid moments. Each image is published with a stable descriptive URL and accurate context.</p></div></section><section class="gallery-grid section" aria-label="Portraits of Vishal Chakravarty">${galleryLeadFigure()}${galleryImages.map((image, index) => galleryFigure(image, index + 1, index === 0)).join('')}</section><aside class="gallery-use section"><p class="eyebrow">Editorial enquiries</p><h2>For interviews, speaking and editorial requests.</h2><p>Use the direct contact route for context, attribution or higher-resolution editorial requirements.</p><a class="button button-primary" href="/contact/">Contact Vishal ${arrow}</a></aside>`;
   return renderPage({
     ...meta,
     body,
-    socialImage: galleryImages[0].path,
-    socialImageAlt: galleryImages[0].alt,
+    socialImage: galleryLeadImage.path,
+    socialImageAlt: galleryLeadImage.alt,
+    socialImageWidth: galleryLeadImage.width,
+    socialImageHeight: galleryLeadImage.height,
     schemas: [
-      webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': `${site.origin}${galleryMeta.path}#gallery` } }),
+      webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': `${site.origin}${galleryMeta.path}#gallery` }, primaryImage: { '@id': galleryLeadImage.schemaId } }),
       gallerySchema(galleryImages),
       personSchema(),
       breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery/' }]),
@@ -158,7 +168,7 @@ export const renderSpeaking = (page) => {
 export const renderFacts = (page) => {
   const meta = contentMeta(page);
   const body = `<section class="page-hero page-hero-compact">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }])}<p class="eyebrow">Founder profile</p><h1>Vishal Chakravarty.</h1><p class="page-deck">Biography, professional focus, selected publications and official links.</p></section><section class="content-managed prose-page section">${page.html}</section>`;
-  return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id } }), personSchema(), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }])], className: 'facts-page' });
+  return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } }), personSchema(), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }])], className: 'facts-page' });
 };
 
 export const renderContact = (page) => {

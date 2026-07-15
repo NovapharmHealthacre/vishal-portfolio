@@ -6,6 +6,20 @@ export const galleryMeta = Object.freeze({
 
 const image = (record) => Object.freeze(record);
 
+export const galleryLeadImage = image({
+  id: 'vishal-chakravarty-official-founder-portrait',
+  schemaId: person.image.id,
+  path: person.image.path,
+  width: person.image.width,
+  height: person.image.height,
+  alt: person.image.alt,
+  name: person.image.name,
+  caption: person.image.alt,
+  displayCaption: 'Official founder portrait',
+  description: person.image.description,
+  featured: true,
+});
+
 export const galleryImages = Object.freeze([
   image({ id: 'vishal-chakravarty-oxblood-studio-portrait', source: 'src/assets/gallery-base64/vishal-chakravarty-oxblood-studio-portrait.b64', path: '/images/gallery/vishal-chakravarty-oxblood-studio-portrait.jpg', width: 180, height: 270, alt: 'Vishal Chakravarty in a black suit against an oxblood studio background', caption: 'Oxblood studio portrait', description: 'A formal studio portrait of Vishal Chakravarty in a dark suit against a restrained oxblood background.', featured: true }),
   image({ id: 'vishal-chakravarty-black-suit-crossed-arms', source: 'src/assets/gallery-base64/vishal-chakravarty-black-suit-crossed-arms.b64', path: '/images/gallery/vishal-chakravarty-black-suit-crossed-arms.jpg', width: 180, height: 270, alt: 'Vishal Chakravarty wearing a black suit with his arms crossed', caption: 'Founder portrait in a black suit', description: 'A monochrome founder portrait of Vishal Chakravarty wearing a black suit with his arms crossed.', featured: true }),
@@ -18,3 +32,6 @@ export const galleryImages = Object.freeze([
   image({ id: 'vishal-chakravarty-black-suit-full-length', source: 'src/assets/gallery-base64/vishal-chakravarty-black-suit-full-length.b64', path: '/images/gallery/vishal-chakravarty-black-suit-full-length.jpg', width: 160, height: 346, alt: 'Full-length portrait of Vishal Chakravarty wearing a black suit', caption: 'Full-length black-suit portrait', description: 'A full-length monochrome portrait of Vishal Chakravarty in a black suit.', featured: false }),
   image({ id: 'vishal-chakravarty-evening-mirror-portrait', source: 'src/assets/gallery-base64/vishal-chakravarty-evening-mirror-portrait.b64', path: '/images/gallery/vishal-chakravarty-evening-mirror-portrait.jpg', width: 160, height: 346, alt: 'Vishal Chakravarty in an evening mirror portrait wearing a dark suit', caption: 'Evening mirror portrait', description: 'An evening mirror portrait of Vishal Chakravarty in formalwear under warm interior lighting.', featured: false }),
 ]);
+
+export const gallerySitemapImages = Object.freeze([galleryLeadImage, ...galleryImages]);
+import { person } from './entity.mjs';
