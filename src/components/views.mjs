@@ -23,7 +23,6 @@ const contentMeta = (page) => ({
 
 const portrait = (priority = false) => `
   <picture class="portrait-frame">
-    <source type="image/webp" srcset="/images/portrait/vishal-chakravarty-640.webp 640w, /images/portrait/vishal-chakravarty-960.webp 960w, /images/portrait/vishal-chakravarty-1440.webp 1440w" sizes="(max-width: 720px) 92vw, 48vw">
     <img src="/images/portrait/vishal-chakravarty-960.jpg" srcset="/images/portrait/vishal-chakravarty-640.jpg 640w, /images/portrait/vishal-chakravarty-960.jpg 960w, /images/portrait/vishal-chakravarty-1440.jpg 1440w" sizes="(max-width: 720px) 92vw, 48vw" width="960" height="935" alt="${escapeHtml(person.image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
   </picture>`;
 
