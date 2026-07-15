@@ -1,87 +1,134 @@
 ---
-title: Building in Regulated Industries
-description: Why regulation is an operating system rather than a hurdle, and what patient, evidence-led execution demands from a founder.
-summary: Regulated markets reward a different kind of speed. The work is to make evidence, responsibility and decision quality move together.
+title: Building a Company in a Regulated Industry
+description: How regulation changes product strategy, decision sequencing, partner selection, documentation, technology and founder execution in pharmaceutical markets.
+summary: Regulation is part of the commercial operating model from the first product decision, not a final gate before launch.
 author: Vishal Chakravarty
 published: 2025-12-31
-modified: 2026-07-12
+modified: 2026-07-15
 category: Regulated markets
 canonicalPath: /essays/regulated-industries/
 legacyPaths: ["/essays/regulated-industries/index.html"]
 socialImage: /images/social/regulated-industries-og.jpg
-sources: [{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"MHRA register of licensed wholesale distribution sites","url":"https://www.gov.uk/government/publications/human-and-veterinary-medicines-register-of-licensed-wholesale-distribution-sites"}]
-related: ["what-parallel-import-actually-means", "how-to-win-when-odds-are-against-you"]
+sources: [{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"ICH Q10 Pharmaceutical Quality System","url":"https://database.ich.org/sites/default/files/Q10%20Guideline.pdf"}]
+related: ["what-parallel-import-actually-means", "regulatory-approval-is-not-market-access", "choosing-a-cmo-for-regulated-markets"]
 public: true
 ---
 
-In software, a rough first version can be useful. In regulated healthcare, a rough first version of the wrong process can create risk that no polished interface can hide.
+Building in a regulated industry changes the order of company building.
 
-This changes the founder's job. Regulation is not a gate at the end of product development. It is part of the operating system from the first serious decision.
+In many markets, a business can launch a rough first version, observe demand and improve the process later. In pharmaceuticals, an early decision about the product, manufacturer, licence, pack or supply route can shape years of technical and commercial work.
+
+Regulation is therefore not a final gate. It is part of the operating model from the first serious product decision.
 
 ## Permission is specific
 
-A company registration proves that a legal entity exists. It does not prove that the company is authorised to carry out a regulated activity.
+A legal entity, product approval, manufacturing authorisation, wholesale authorisation and site approval answer different questions.
 
-For human medicines in the UK, the Medicines and Healthcare products Regulatory Agency states that selling or supplying medicines to anyone other than the patient requires a wholesale distribution authorisation. Qualification depends on Good Distribution Practice and regular inspection. Manufacturing, assembly and some import activities have their own permissions.
+The useful planning questions are precise:
 
-Those distinctions are easy to flatten in marketing copy. They should not be flattened in the operation.
-
-The useful questions are precise:
-
-- Which legal entity holds the responsibility?
 - Which activity is proposed?
-- Which authorisation covers it?
-- Which site, person and process sit inside that scope?
-- What evidence shows the requirement has been met?
+- Which legal entity holds the responsibility?
+- Which product and market are involved?
+- Which permission covers the activity?
+- Which site and qualified person sit inside the route?
+- Which records demonstrate that the requirement has been met?
 
-If any answer is missing, the status is not “done”. It is planned, in progress or blocked.
+The commercial team needs to understand these distinctions because they determine which partner can perform each function, how long the route may take and when inventory can move.
 
-## Compliance lives in the hand-offs
+## Product strategy must include the regulatory route
 
-Good Distribution Practice is often reduced to storage conditions. The official definition is broader: medicines must come from the licensed supply chain and be consistently stored, transported and handled under suitable conditions.
+A market opportunity should not be evaluated only through demand and price.
 
-That makes hand-offs central. A product can move between a supplier, importer, contracted warehouse, carrier and buyer while responsibilities remain distributed across several organisations. Outsourcing the physical work does not outsource the need for clear oversight.
+The regulatory route affects the evidence package, development work, manufacturing requirements, packaging, timelines, lifecycle obligations and capital required before launch.
 
-The operating model therefore needs more than a list of partners. It needs defined roles, approved suppliers, quality agreements, controlled records, escalation paths and evidence that performance is reviewed.
+Two products with similar demand can have very different investment cases because one has a clear route and suitable manufacturer while the other requires extensive development or inflexible supply.
 
-The quiet question behind every impressive diagram is: who is accountable when the process fails?
+The strongest product-selection process considers regulatory difficulty beside market size, competition, manufacturing, margin and working capital.
 
-## Documentation is part of the product
+## The hand-offs define the operating model
 
-In an unregulated setting, documentation is often treated as a record of work completed elsewhere. In regulated work, the record helps establish that the work happened correctly.
+A pharmaceutical product may move through several organisations: developer, manufacturer, laboratory, importer, packaging site, warehouse, carrier, wholesaler and buyer.
 
-This is why document control, training records, deviations, corrective and preventive actions, complaints and audit trails are not administrative decoration. They are part of how an organisation learns and demonstrates control.
+Each organisation may be capable individually while the overall route remains weak because responsibilities are unclear at the hand-offs.
 
-Good systems make the right evidence easier to produce without pretending that automation removes judgement. A dashboard can surface an exception. It cannot decide whether a medicine remains suitable, whether a supplier is qualified or whether a regulatory obligation has been met unless an authorised process and accountable person sit behind it.
+The operating model needs:
 
-## Speed has a different meaning
+- defined roles;
+- qualified suppliers and service providers;
+- quality and technical agreements;
+- controlled documents;
+- escalation paths;
+- change management;
+- complaint, defect and recall processes;
+- performance review.
 
-Regulated markets are sometimes described as slow. That is incomplete.
+Outsourcing the physical work does not remove the need to understand how the complete route operates.
 
-Poor preparation is slow. Ambiguous ownership is slow. A submission built on assumptions is slow. Rework after a preventable gap is slow.
+## Partner selection is part of regulatory strategy
 
-The useful form of speed is decision quality: reaching a well-evidenced answer early enough to avoid building the wrong thing. That may mean stopping an opportunity after due diligence. It may mean sequencing commercial work behind a permission. It may mean choosing a simpler process because the more elaborate one adds no controlled value.
+A manufacturer or logistics partner should not be selected from commercial terms alone.
 
-The founder's role is not to make every clock move faster. It is to remove avoidable uncertainty while respecting the clocks the organisation does not control.
+The company needs to assess whether the partner’s approvals, site scope, quality systems, documentation, capacity, batch size and communication fit the product and target market.
 
-## Building before operation
+The same principle applies to laboratories, regulatory advisers, packaging providers and distributors. The partner becomes part of the company’s ability to meet its obligations and serve the market.
 
-NovaPharm Healthcare Ltd is an active UK-registered company. Its regulated operating model remains under development. This site does not present the company as holding a wholesale authorisation or as supplying customers.
+A weak partner decision creates regulatory, supply and commercial risk at the same time.
 
-That status is not a footnote. It is the clearest description of the work today.
+## Documentation is an operating asset
 
-The current plan focuses on specialist-medicine access, licensing and supply systems. A digital business-to-business workflow is on the roadmap. Forecasting support and traceability tooling are being explored. Each statement is deliberately narrower than the ambition because a roadmap is not an operating capability.
+In regulated work, documents are not a retrospective description of what happened elsewhere. They form part of the control of the product and process.
 
-## The founder discipline
+Specifications, methods, batch records, training, deviations, change controls, complaints and audit trails allow an organisation to understand what happened, make decisions and demonstrate consistency.
 
-Building in a regulated industry requires ambition under control.
+Good documentation also improves commercial execution. It makes technical transfer faster, partner reviews clearer, regulatory responses more manageable and lifecycle changes easier to assess.
 
-You must be able to hold a long-range thesis and a short-range fact at the same time. You must explain why the work matters without borrowing credibility from a licence not yet granted, a partner not yet confirmed or a system not yet deployed.
+The most effective systems make the required record part of the workflow instead of creating it after the decision.
 
-That restraint is not timid. It is strategic. It creates a clean line between the entity that exists, the work under way and the future being designed.
+## Technology should strengthen the controlled process
 
-The hard part of a regulated business is not learning the vocabulary. It is building an organisation in which evidence and action remain connected when the pressure to move faster becomes real.
+Digital tools can improve product information, document control, supplier qualification, inventory visibility, quality-event tracking and decision support.
 
-## Editorial note
+But technology cannot compensate for unclear responsibility or weak source data.
 
-This essay is general analysis, last reviewed on 12 July 2026. It does not provide legal, regulatory or patient-specific medical advice. Current requirements should be checked against the linked MHRA guidance and, where appropriate, qualified professional advice.
+Before automating a pharmaceutical workflow, the company should define:
+
+- the decision being supported;
+- the accountable person;
+- the required input;
+- the approved source;
+- the exception process;
+- the record that must be retained.
+
+A dashboard is valuable when it makes a controlled process easier to operate. It is less valuable when it only makes an ambiguous process look organised.
+
+## Speed means reducing avoidable rework
+
+Regulated markets are often described as slow. A better description is that they punish poor sequencing.
+
+A submission built before manufacturing gaps are understood creates rework. Artwork approved before the pack is settled creates rework. A product selected before the batch economics are known creates rework. A partner appointed without clear responsibilities creates rework.
+
+The useful form of speed is reaching a well-supported decision early enough to avoid building the wrong route.
+
+That may mean stopping a product, changing a manufacturer, simplifying a pack or moving commercial work behind a technical milestone.
+
+## The founder’s role
+
+The founder has to connect long-range ambition with short-range decisions.
+
+That means understanding enough of the product, regulatory, technical, supply and commercial route to see where one decision creates a problem for another function.
+
+It also means building a team and partner network where specialist expertise can be used effectively. The founder does not need to perform every regulated role. The founder does need to create the structure in which the right people, permissions and information are connected.
+
+## Building for the full lifecycle
+
+A regulated product continues to require work after approval and launch.
+
+Manufacturing changes, supplier changes, packaging updates, variations, ongoing stability, complaints, defects, recalls and commercial changes all affect the lifecycle.
+
+The initial operating model should therefore be designed for maintenance as well as entry.
+
+A product that can be launched but cannot be supported through normal change is not a durable asset.
+
+Building a company in a regulated industry is difficult because every major commercial decision has a technical and governance consequence.
+
+That is also the opportunity. A company that connects those decisions well can make the route clearer for manufacturers, partners, buyers and the market it intends to serve.
