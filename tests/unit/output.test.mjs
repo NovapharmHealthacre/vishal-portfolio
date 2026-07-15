@@ -15,7 +15,7 @@ test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
-  assert.match(html, /Founder &amp; CEO · Pharmaceutical entrepreneurship · Regulated markets/);
+  assert.match(html, /Founder (?:&|&amp;) CEO · Pharmaceutical entrepreneurship · Regulated markets/);
   assert.match(html, /<nav id="site-navigation"/);
   assert.doesNotMatch(html, /loading screen/i);
 });
