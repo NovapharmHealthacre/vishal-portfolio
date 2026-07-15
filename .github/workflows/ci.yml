@@ -29,8 +29,12 @@ jobs:
         run: npm run typecheck
       - name: Build
         run: npm run build
-      - name: Unit tests
-        run: npm test
+      - name: Content unit tests
+        run: node --test tests/unit/content.test.mjs
+      - name: Entity unit tests
+        run: node --test tests/unit/entity.test.mjs
+      - name: Output unit tests
+        run: node --test tests/unit/output.test.mjs
       - name: Links
         run: npm run test:links
       - name: Schema
