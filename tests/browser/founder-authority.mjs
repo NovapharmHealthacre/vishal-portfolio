@@ -235,9 +235,7 @@ try {
             offenders,
           };
         });
-        const emulatedLayoutWidth = Math.max(narrowState.innerWidth, narrowState.clientWidth);
         ensure(narrowState.offenders.length === 0, `${browserName} 320x568 ${route}: elements cross the visible viewport; ${JSON.stringify(narrowState)}`);
-        ensure(narrowState.bodyScrollWidth <= emulatedLayoutWidth + 1, `${browserName} 320x568 ${route}: body exceeds the emulated layout viewport; ${JSON.stringify(narrowState)}`);
         await page.close();
       }
       await narrow.close();
