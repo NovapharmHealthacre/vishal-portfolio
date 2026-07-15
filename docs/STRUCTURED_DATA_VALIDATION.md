@@ -23,6 +23,8 @@ The schema gate verifies:
 - ProfilePage mainEntity → Person;
 - personal Blog and BlogPosting publisher → Person;
 - direct image metadata;
+- one high-resolution canonical Person portrait and page-level `primaryImageOfPage` references;
+- gallery ImageObjects that identify Vishal as the subject without unsupported creator or copyright claims;
 - no private identity properties, ratings, reviews or unsupported awards;
 - no legacy personal-domain Organization identifier.
 

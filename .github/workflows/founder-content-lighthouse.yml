@@ -44,12 +44,14 @@ jobs:
           for target in "home:/" "gallery:/gallery/" "market-access:/essays/regulatory-approval-is-not-market-access/"; do
             name=${target%%:*}
             route=${target#*:}
-            "$LH" "http://127.0.0.1:4400${route}" \
-              --output=json \
-              --output-path="artifacts/lighthouse/${name}-mobile.json" \
-              --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
-              --only-categories=performance,accessibility,best-practices,seo \
-              --quiet
+            for pass in 1 2 3; do
+              "$LH" "http://127.0.0.1:4400${route}" \
+                --output=json \
+                --output-path="artifacts/lighthouse/${name}-mobile-${pass}.json" \
+                --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
+                --only-categories=performance,accessibility,best-practices,seo \
+                --quiet
+            done
             "$LH" "http://127.0.0.1:4400${route}" \
               --preset=desktop \
               --output=json \
@@ -64,27 +66,54 @@ jobs:
           const fs = require('node:fs');
           const path = require('node:path');
           const directory = path.resolve('artifacts/lighthouse');
-          const thresholds = {
-            performance: 0.85,
+          const perRunThresholds = {
             accessibility: 0.95,
             'best-practices': 0.95,
             seo: 0.95,
           };
+          const desktopPerformanceMinimum = 0.95;
+          const individualMobilePerformanceFloor = 0.80;
+          const medianMobilePerformanceMinimum = 0.95;
           const summary = [];
           const failures = [];
           for (const file of fs.readdirSync(directory).filter((entry) => entry.endsWith('.json')).sort()) {
             const report = JSON.parse(fs.readFileSync(path.join(directory, file), 'utf8'));
             const scores = Object.fromEntries(
-              Object.entries(thresholds).map(([category, minimum]) => {
+              Object.entries(perRunThresholds).map(([category, minimum]) => {
                 const score = report.categories[category]?.score ?? 0;
                 if (score < minimum) failures.push(`${file}: ${category} ${score.toFixed(2)} < ${minimum.toFixed(2)}`);
                 return [category, score];
               }),
             );
+            const performance = report.categories.performance?.score ?? 0;
+            if (file.endsWith('-desktop.json') && performance < desktopPerformanceMinimum) {
+              failures.push(`${file}: performance ${performance.toFixed(2)} < ${desktopPerformanceMinimum.toFixed(2)}`);
+            }
+            if (file.includes('-mobile-') && performance < individualMobilePerformanceFloor) {
+              failures.push(`${file}: performance ${performance.toFixed(2)} < ${individualMobilePerformanceFloor.toFixed(2)}`);
+            }
+            scores.performance = performance;
             summary.push({ file, finalUrl: report.finalUrl, scores });
           }
-          fs.writeFileSync(path.join(directory, 'summary.json'), JSON.stringify(summary, null, 2));
-          console.log(JSON.stringify(summary, null, 2));
+          const mobileMedians = [];
+          for (const target of ['home', 'gallery', 'market-access']) {
+            const performances = summary
+              .filter((entry) => entry.file.startsWith(`${target}-mobile-`))
+              .map((entry) => entry.scores.performance)
+              .sort((left, right) => left - right);
+            if (performances.length !== 3) {
+              failures.push(`${target}: expected three mobile Lighthouse passes, found ${performances.length}`);
+              continue;
+            }
+            const median = performances[1];
+            mobileMedians.push({ target, performances, median });
+            if (median < medianMobilePerformanceMinimum) {
+              failures.push(`${target}: mobile performance median ${median.toFixed(2)} < ${medianMobilePerformanceMinimum.toFixed(2)}`);
+            }
+          }
+          const report = { audits: summary, mobileMedians };
+          fs.writeFileSync(path.join(directory, 'summary.json'), JSON.stringify(report, null, 2));
+          console.log(JSON.stringify(report, null, 2));
           if (failures.length) {
             console.error(failures.join('\n'));
             process.exit(1);
@@ -95,7 +124,7 @@ jobs:
         run: kill "$(cat /tmp/founder-preview.pid)" 2>/dev/null || true
       - name: Upload Lighthouse evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: founder-content-lighthouse
           path: artifacts/lighthouse

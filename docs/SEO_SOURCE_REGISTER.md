@@ -1,6 +1,6 @@
 # SEO source register
 
-Reviewed: 14 July 2026
+Reviewed: 15 July 2026
 
 This register records the official guidance used for the post-launch SEO and entity-authority phase. Third-party SEO blogs are not treated as technical authority.
 
@@ -8,6 +8,8 @@ This register records the official guidance used for the post-launch SEO and ent
 |---|---|---|---|---|---|
 | Search essentials | Google Search Central, `developers.google.com/search/docs/essentials` | Build useful, people-first, crawlable content and avoid manipulative practices. | Preserve semantic HTML, factual claims, stable URLs and no hidden or doorway content. | None. | Quarterly |
 | AI features in Search | Google Search Central, `developers.google.com/search/docs/appearance/ai-features` | Normal SEO fundamentals apply; content should be accurate, relevant and useful. | No separate AI-only content layer. Human-readable pages remain canonical. | None. | Quarterly |
+| Image SEO | Google Search Central, `developers.google.com/search/docs/appearance/google-images` | Use crawlable HTML images, high-quality source files, descriptive context, responsive delivery and image sitemaps; `primaryImageOfPage` can identify the representative image. | The high-resolution official portrait is the primary Person/Profile image; the gallery uses stable `<img>` URLs and eleven image sitemap entries. | Supply higher-resolution originals for the ten gallery uploads when available. | On image change |
+| Image rights metadata | Google Search Central, `developers.google.com/search/docs/appearance/structured-data/image-license-metadata` | Creator, credit and licence metadata should describe genuine rights information. | Vishal is modelled as the image subject, not as an unverified photographer or copyright owner. | Provide photographer and licence records only if they are known and publication-safe. | On rights evidence |
 | ProfilePage | Google Search Central, `developers.google.com/search/docs/appearance/structured-data/profile-page` | An About Me page may use ProfilePage when one person is the primary focus; markup must match visible content. | `/about/` remains the canonical ProfilePage for Vishal. | Validate the deployed URL in Rich Results Test and URL Inspection after merge. | On material profile change |
 | Organization markup | Google Search Central, `developers.google.com/search/docs/appearance/structured-data/organization` | Use accurate organisation identity data and consistent identifiers. | NovaPharm uses the corporate-domain `#organization` identifier; the personal site refers to it rather than creating a competing identity. | Corporate website should publish the same identifier. | Quarterly |
 | Sitemaps | Google Search Central, `developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap` | Include canonical URLs and truthful last modification dates; sitemap inclusion does not guarantee indexing. | Generated sitemap contains only canonical pages and essays with material `lastmod`. | Submit in Search Console. | Monthly |

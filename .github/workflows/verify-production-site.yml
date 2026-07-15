@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: read
-  issues: write
-  pull-requests: write
 
 jobs:
   verify:
@@ -89,11 +87,14 @@ jobs:
           Verified: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
           EOF
 
-      - name: Post verification record to PR 6
+      - name: Record verification summary
         if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api "repos/${GITHUB_REPOSITORY}/issues/6/comments" --method POST --raw-field body="$(cat /tmp/production-verification.md)"
+        run: |
+          if [[ -f /tmp/production-verification.md ]]; then
+            cat /tmp/production-verification.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            printf '%s\n' '## Production verification did not produce a report' >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Enforce verification result
         if: steps.smoke.outcome != 'success'

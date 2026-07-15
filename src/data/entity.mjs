@@ -28,7 +28,10 @@ export const person = Object.freeze({
     'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company established in 2025. His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. He is building the company around specialist medicines, product and market selection, licensing pathways, manufacturing partnerships, technology transfer, sourcing, supply and commercial market entry. Vishal also contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and writes independently about the decisions that shape regulated pharmaceutical businesses.',
   image: {
     id: `${site.origin}/about/#portrait`,
+    path: '/images/portrait/vishal-chakravarty-1440.jpg',
+    name: 'Official founder portrait of Vishal Chakravarty',
     alt: 'Portrait of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd',
+    description: 'The principal professional portrait of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd.',
     width: 1440,
     height: 1402,
   },

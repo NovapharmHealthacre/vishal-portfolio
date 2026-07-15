@@ -1,18 +1,23 @@
 # Founder gallery release
 
-Status: implementation complete; release validation in progress.
+Status: live on the custom-domain production site; automated release verification active.
 
 ## Scope
 
-- Ten owner-supplied portraits
 - Dedicated `/gallery/` page
-- Descriptive captions and alt text
+- Existing high-resolution official founder portrait
+- Ten owner-supplied portraits with descriptive filenames, captions and alt text
 - `ImageGallery` and `ImageObject` structured data
-- Image sitemap coverage
-- Stable crawlable JPEG URLs
-- Homepage gallery preview
-- Cross-browser, accessibility, Lighthouse and production verification
+- One canonical Person portrait identifier
+- `primaryImageOfPage` on the founder and gallery surfaces
+- Image sitemap coverage for all eleven public portrait URLs
+- Homepage gallery preview and primary navigation
+- Cross-browser, accessibility, Lighthouse and post-deployment verification gates
 
-## Privacy and ownership
+## Privacy and rights accuracy
 
-The owner has authorised publication, cropping, optimisation and transformation of the selected portraits. Source images are re-encoded without embedded camera or editing metadata before the deterministic build emits public JPEG assets.
+The owner authorised publication, cropping, optimisation and transformation of the selected portraits. Source files are emitted without embedded camera or editing metadata. The structured data describes Vishal as the subject of the images without making unsupported photographer, creator or copyright-owner claims.
+
+## Release rule
+
+Changes must pass the deterministic repository suite, Chromium/Firefox/WebKit QA, axe accessibility checks, Lighthouse thresholds and custom-domain production verification. DNS, the Pages custom domain, entity identifiers and the no-tracking privacy position remain protected.

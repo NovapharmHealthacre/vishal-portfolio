@@ -1,6 +1,22 @@
 import { company, person, profileModifiedDate, publications, site, verificationDate } from '../data/entity.mjs';
-import { galleryImages, galleryMeta } from '../data/gallery.mjs';
+import { galleryImages, galleryLeadImage, galleryMeta } from '../data/gallery.mjs';
 import { absolute, routeModified } from '../data/site.mjs';
+
+const imageObject = (image, { representativeOfPage = false, pageId } = {}) => ({
+  '@type': 'ImageObject',
+  '@id': image.schemaId ?? `${absolute(image.path)}#image`,
+  contentUrl: absolute(image.path),
+  url: absolute(image.path),
+  name: image.name ?? image.caption,
+  caption: image.caption,
+  description: image.description,
+  width: image.width,
+  height: image.height,
+  encodingFormat: 'image/jpeg',
+  about: { '@id': person.id },
+  representativeOfPage,
+  ...(pageId ? { mainEntityOfPage: { '@id': pageId } } : {}),
+});
 
 export const websiteSchema = () => ({
   '@context': 'https://schema.org',
@@ -23,10 +39,15 @@ export const personSchema = () => ({
   image: {
     '@type': 'ImageObject',
     '@id': person.image.id,
-    contentUrl: absolute('/images/portrait/vishal-chakravarty-960.jpg'),
+    contentUrl: absolute(person.image.path),
+    url: absolute(person.image.path),
+    name: person.image.name,
     caption: person.image.alt,
-    width: 960,
-    height: 935,
+    description: person.image.description,
+    width: person.image.width,
+    height: person.image.height,
+    encodingFormat: 'image/jpeg',
+    about: { '@id': person.id },
     representativeOfPage: true,
   },
   jobTitle: person.jobTitle,
@@ -46,9 +67,10 @@ export const profileSchema = () => ({
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
   mainEntity: { '@id': person.id },
+  primaryImageOfPage: { '@id': person.image.id },
 });
 
-export const webPageSchema = ({ path, name, description, type = 'WebPage', mainEntity, dateModified } = {}) => ({
+export const webPageSchema = ({ path, name, description, type = 'WebPage', mainEntity, primaryImage, dateModified } = {}) => ({
   '@context': 'https://schema.org',
   '@type': type,
   '@id': `${absolute(path)}#page`,
@@ -59,6 +81,7 @@ export const webPageSchema = ({ path, name, description, type = 'WebPage', mainE
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
   ...(mainEntity ? { mainEntity } : {}),
+  ...(primaryImage ? { primaryImageOfPage: primaryImage } : {}),
 });
 
 export const organisationSchema = () => ({
@@ -149,23 +172,13 @@ export const gallerySchema = (images = galleryImages) => ({
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
   about: { '@id': person.id },
-  creator: { '@id': person.id },
-  copyrightHolder: { '@id': person.id },
-  associatedMedia: images.map((image) => ({
-    '@type': 'ImageObject',
-    '@id': `${absolute(image.path)}#image`,
-    contentUrl: absolute(image.path),
-    url: `${site.origin}${galleryMeta.path}`,
-    name: image.caption,
-    caption: image.caption,
-    description: image.description,
-    width: image.width,
-    height: image.height,
-    representativeOfPage: image.featured,
-    creator: { '@id': person.id },
-    copyrightHolder: { '@id': person.id },
-    creditText: person.name,
-  })),
+  primaryImageOfPage: { '@id': galleryLeadImage.schemaId },
+  image: { '@id': galleryLeadImage.schemaId },
+  associatedMedia: [galleryLeadImage, ...images].map((image, index) =>
+    imageObject(image, {
+      representativeOfPage: index === 0,
+      pageId: `${site.origin}${galleryMeta.path}#gallery`,
+    })),
 });
 
 export const mediaCollectionSchema = () => ({
