@@ -6,12 +6,27 @@ import { loadArticles, loadPageContent, renderMarkdown } from '../../src/lib/con
 
 const root = path.resolve('.');
 
-test('loads the complete public content collection', () => {
+const requiredSlugs = [
+  'why-i-chose-to-build-in-pharmaceuticals',
+  'regulatory-approval-is-not-market-access',
+  'route-to-market-before-launch',
+  'supply-resilience-before-first-purchase-order',
+  'choosing-a-cmo-for-regulated-markets',
+  'technology-transfer-before-formula-moves',
+  'minimum-batch-size-product-future',
+  'how-to-win-when-odds-are-against-you',
+  'regulated-industries',
+  'what-parallel-import-actually-means',
+];
+
+test('loads the complete public founder authority collection', () => {
   const articles = loadArticles(root);
   const pages = loadPageContent(root, contentVariables);
-  assert.equal(articles.length, 4);
+  assert.equal(articles.length, requiredSlugs.length);
   assert.equal(Object.keys(pages).length, 7);
-  assert.equal(new Set(articles.map((article) => article.canonicalPath)).size, 4);
+  assert.equal(new Set(articles.map((article) => article.canonicalPath)).size, requiredSlugs.length);
+  for (const slug of requiredSlugs) assert.equal(articles.some((article) => article.slug === slug), true, slug);
+  assert.equal(articles.some((article) => article.title === 'The Story Was Too Simple'), false);
 });
 
 test('renders allowlisted Markdown and escapes HTML', () => {
