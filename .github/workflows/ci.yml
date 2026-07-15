@@ -28,13 +28,21 @@ jobs:
       - name: Content contracts
         run: npm run typecheck --silent
       - name: Build
+        id: build
+        continue-on-error: true
         shell: bash
-        run: |
-          set +e
-          npm run build --silent > /tmp/gallery-build.log 2>&1
-          status=$?
-          cat /tmp/gallery-build.log
-          exit $status
+        run: npm run build --silent > gallery-build.log 2>&1
+      - name: Upload build diagnostics
+        if: steps.build.outcome != 'success'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: gallery-build-diagnostics
+          path: gallery-build.log
+          if-no-files-found: error
+          retention-days: 7
+      - name: Enforce build
+        if: steps.build.outcome != 'success'
+        run: exit 1
       - name: Unit tests
         run: npm test --silent
       - name: Links
