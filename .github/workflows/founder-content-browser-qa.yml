@@ -23,13 +23,14 @@ jobs:
         run: npm ci
       - name: Build candidate
         run: npm run build
-      - name: Install isolated Playwright runtime
+      - name: Install isolated browser and accessibility runtime
         run: |
-          npm install --prefix /tmp/founder-qa --no-save playwright@1.61.1
+          npm install --prefix /tmp/founder-qa --no-save playwright@1.61.1 axe-core@4.10.3
           /tmp/founder-qa/node_modules/.bin/playwright install --with-deps chromium firefox webkit
       - name: Run three-engine browser matrix
         env:
           PLAYWRIGHT_MODULE: /tmp/founder-qa/node_modules/playwright/index.mjs
+          AXE_MODULE: /tmp/founder-qa/node_modules/axe-core/axe.js
         run: |
           mkdir -p artifacts
           set -o pipefail
