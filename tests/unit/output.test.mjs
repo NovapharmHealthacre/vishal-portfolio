@@ -25,9 +25,16 @@ test('content security policy permits only same-origin connections', () => {
   assert.doesNotMatch(html, /connect-src (?:\*|https?:|&#39;none&#39;)/);
 });
 
-test('public facts expose only approved public-safe records', () => {
+test('public facts expose only approved public-safe records and canonical entity ids', () => {
   const facts = JSON.parse(fs.readFileSync(path.resolve('dist/facts.json'), 'utf8'));
+  assert.equal(facts.schemaVersion, 2);
   assert.deepEqual(facts.person.sameAs, ['https://www.linkedin.com/in/vishal-chakravarty']);
+  assert.equal(facts.person.jobTitle, 'Chief Executive Officer');
+  assert.equal(facts.entityIds.person, 'https://vishal.novapharmhealthcare.com/#person');
+  assert.equal(facts.entityIds.personalWebsite, 'https://vishal.novapharmhealthcare.com/#website');
+  assert.equal(facts.entityIds.profilePage, 'https://vishal.novapharmhealthcare.com/about/#profile');
+  assert.equal(facts.entityIds.organization, 'https://novapharmhealthcare.com/#organization');
+  assert.equal(facts.entityIds.organizationWebsite, 'https://novapharmhealthcare.com/#website');
   assert.equal(facts.facts.length, 5);
   assert.equal(facts.facts.every((fact) => fact.publicSafe === true), true);
   assert.equal(

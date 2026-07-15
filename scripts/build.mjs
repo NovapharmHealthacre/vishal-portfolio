@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadArticles, loadPageContent } from '../src/lib/content.mjs';
-import { canonicalRoutes, legacyRedirects } from '../src/data/site.mjs';
+import { canonicalRoutes, legacyRedirects, routeModified } from '../src/data/site.mjs';
 import { company, person, publicFacts, publications, site, verificationDate } from '../src/data/entity.mjs';
 import { contentVariables } from '../src/data/content-variables.mjs';
 import {
@@ -87,8 +87,11 @@ const rssFeed = (articles) => `<?xml version="1.0" encoding="UTF-8"?>
 </rss>`;
 
 const sitemap = (articles) => {
-  const staticEntries = canonicalRoutes.map((route) => ({ route, modified: verificationDate }));
+  const staticEntries = canonicalRoutes.map((route) => ({ route, modified: routeModified[route] }));
   const articleEntries = articles.map((article) => ({ route: article.canonicalPath, modified: article.modified }));
+  for (const entry of staticEntries) {
+    if (!entry.modified) throw new Error(`Missing material lastmod date for ${entry.route}`);
+  }
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${[...staticEntries, ...articleEntries].map(({ route, modified }) => `  <url>
@@ -137,12 +140,20 @@ write(
   'facts.json',
   JSON.stringify(
     {
-      schemaVersion: 1,
+      schemaVersion: 2,
       canonical: `${site.origin}/facts/`,
       lastReviewed: verificationDate,
-      person: { name: person.name, role: person.role, proposition: person.proposition, sameAs: person.sameAs },
+      entityIds: {
+        person: person.id,
+        personalWebsite: site.id,
+        profilePage: person.profileId,
+        organization: company.id,
+        organizationWebsite: company.websiteId,
+      },
+      person: { name: person.name, role: person.role, jobTitle: person.jobTitle, proposition: person.proposition, sameAs: person.sameAs },
       company: {
         name: company.name,
+        brandName: company.brandName,
         companyNumber: company.companyNumber,
         incorporated: company.incorporationDate,
         status: company.status,

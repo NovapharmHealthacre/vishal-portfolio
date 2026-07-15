@@ -38,7 +38,9 @@ for (const url of sitemapUrls) if (!expectedSitemapUrls.includes(url)) missing.p
 
 const facts = JSON.parse(fs.readFileSync(path.join(dist, 'facts.json'), 'utf8'));
 if (facts['@context']) missing.push('facts.json: must be documented public-facts JSON, not pseudo JSON-LD');
-if (facts.schemaVersion !== 1 || facts.canonical !== 'https://vishal.novapharmhealthcare.com/facts/') missing.push('facts.json: invalid contract');
+if (facts.schemaVersion !== 2 || facts.canonical !== 'https://vishal.novapharmhealthcare.com/facts/') missing.push('facts.json: invalid contract');
+if (facts.entityIds?.person !== 'https://vishal.novapharmhealthcare.com/#person') missing.push('facts.json: canonical Person id missing');
+if (facts.entityIds?.organization !== 'https://novapharmhealthcare.com/#organization') missing.push('facts.json: canonical Organization id missing');
 
 const feed = JSON.parse(fs.readFileSync(path.join(dist, 'feed.json'), 'utf8'));
 if (feed.items.length !== articles.length) missing.push('feed.json: item count does not match public essays');

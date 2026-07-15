@@ -1,6 +1,8 @@
 export const verificationDate = '2026-07-12';
+export const profileModifiedDate = '2026-07-14';
 
 export const site = Object.freeze({
+  id: 'https://vishal.novapharmhealthcare.com/#website',
   name: 'Vishal Chakravarty',
   origin: 'https://vishal.novapharmhealthcare.com',
   language: 'en-GB',
@@ -14,8 +16,10 @@ export const site = Object.freeze({
 
 export const person = Object.freeze({
   id: `${site.origin}/#person`,
+  profileId: `${site.origin}/about/#profile`,
   name: 'Vishal Chakravarty',
   role: 'Founder & CEO, NovaPharm Healthcare Ltd',
+  jobTitle: 'Chief Executive Officer',
   proposition:
     'Founder and operator working on more resilient access, licensing and supply systems for regulated healthcare markets.',
   shortBio:
@@ -40,8 +44,10 @@ export const person = Object.freeze({
 });
 
 export const company = Object.freeze({
-  id: `${site.origin}/ventures/#novapharm-healthcare`,
+  id: 'https://novapharmhealthcare.com/#organization',
+  websiteId: 'https://novapharmhealthcare.com/#website',
   name: 'NovaPharm Healthcare Ltd',
+  brandName: 'NovaPharm Healthcare',
   legalName: 'NOVAPHARM HEALTHCARE LTD',
   companyNumber: '16716501',
   incorporationDate: '2025-09-15',
