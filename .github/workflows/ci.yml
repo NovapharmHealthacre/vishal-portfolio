@@ -20,6 +20,21 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - name: Install locked toolchain
-        run: npm ci
+        run: npm ci --silent
+      - name: Build gallery candidate
+        id: build
+        continue-on-error: true
+        run: npm run build --silent > gallery-build.log 2>&1
+      - name: Upload gallery diagnostics
+        if: steps.build.outcome != 'success'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: gallery-build-diagnostics
+          path: gallery-build.log
+          if-no-files-found: error
+          retention-days: 7
+      - name: Enforce gallery build
+        if: steps.build.outcome != 'success'
+        run: exit 1
       - name: Run release checks
         run: npm run check
