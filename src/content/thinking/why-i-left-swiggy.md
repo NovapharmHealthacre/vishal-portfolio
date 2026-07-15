@@ -1,6 +1,6 @@
 ---
 title: Archived founder essay
- description: Archived content retained outside the public build for route continuity.
+description: Archived content retained outside the public build for route continuity.
 summary: Archived content retained outside the public build.
 author: Vishal Chakravarty
 published: 2026-01-01
