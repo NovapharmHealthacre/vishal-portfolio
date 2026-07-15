@@ -20,34 +20,40 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - name: Install locked toolchain
-        run: npm ci
+        run: npm ci --silent
       - name: Format
-        run: npm run format:check
+        run: npm run format:check --silent
       - name: Syntax
-        run: npm run lint
+        run: npm run lint --silent
       - name: Content contracts
-        run: npm run typecheck
+        run: npm run typecheck --silent
       - name: Build
-        run: npm run build
+        shell: bash
+        run: |
+          set +e
+          npm run build --silent > /tmp/gallery-build.log 2>&1
+          status=$?
+          cat /tmp/gallery-build.log
+          exit $status
       - name: Unit tests
-        run: npm test
+        run: npm test --silent
       - name: Links
-        run: npm run test:links
+        run: npm run test:links --silent
       - name: Schema
-        run: npm run test:schema
+        run: npm run test:schema --silent
       - name: Claims
-        run: npm run test:claims
+        run: npm run test:claims --silent
       - name: Routes
-        run: npm run test:routes
+        run: npm run test:routes --silent
       - name: SEO authority
-        run: npm run test:seo-authority
+        run: npm run test:seo-authority --silent
       - name: Visible content
-        run: npm run test:visible-content
+        run: npm run test:visible-content --silent
       - name: Gallery
-        run: npm run test:gallery
+        run: npm run test:gallery --silent
       - name: Accessibility preflight
-        run: npm run test:a11y
+        run: npm run test:a11y --silent
       - name: Performance budget
-        run: npm run test:performance
+        run: npm run test:performance --silent
       - name: Security
-        run: npm run test:security
+        run: npm run test:security --silent
