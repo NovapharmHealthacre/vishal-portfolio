@@ -9,7 +9,8 @@ if (!playwrightPath) {
   process.exit(2);
 }
 
-const playwright = await import(pathToFileURL(playwrightPath).href);
+const playwrightModule = await import(pathToFileURL(playwrightPath).href);
+const playwright = playwrightModule.chromium ? playwrightModule : playwrightModule.default;
 const browserNames = (process.env.BROWSER_ENGINES ?? 'chromium,firefox,webkit')
   .split(',')
   .map((name) => name.trim())
@@ -134,7 +135,7 @@ const attachConsole = (page) => {
 
 const runAxe = async (page, label) => {
   if (!axeSource) return [];
-  await page.addScriptTag({ content: axeSource });
+  await page.evaluate(axeSource);
   const violations = await page.evaluate(async () => {
     const result = await window.axe.run(document, {
       runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] },
