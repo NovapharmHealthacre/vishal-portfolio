@@ -232,9 +232,15 @@ const exerciseFounderAi = async (browser, browserName) => {
       await page.locator('.founder-ai-message', { hasText: 'cannot provide medical' }).waitFor();
     }
 
+    // Playwright's default caret hiding injects a temporary stylesheet, which a
+    // strict CSP correctly rejects in WebKit. Blur the field and keep native state.
+    await page.evaluate(() => {
+      if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+    });
     await page.screenshot({
       path: path.join(screenshots, `ask-vishal-${browserName}-${viewport.name}.png`),
       fullPage: false,
+      caret: 'initial',
     });
     screenshotsTaken += 1;
     ensure(page.__consoleErrors.length === 0, `${browserName} ${viewport.name}: console errors ${page.__consoleErrors.join(' | ')}`);
