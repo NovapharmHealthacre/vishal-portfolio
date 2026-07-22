@@ -39,7 +39,7 @@ jobs:
     needs: signal
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
@@ -50,8 +50,36 @@ jobs:
           cache: npm
       - name: Install locked toolchain
         run: npm ci
-      - name: Validate and build
-        run: npm run check
+      - name: Formatting hygiene
+        run: npm run format:check
+      - name: Syntax and lint
+        run: npm run lint
+      - name: Content contracts
+        run: npm run typecheck
+      - name: Build generated site
+        run: npm run build
+      - name: Unit tests
+        run: npm test
+      - name: Link validation
+        run: npm run test:links
+      - name: Structured data validation
+        run: npm run test:schema
+      - name: Claims governance
+        run: npm run test:claims
+      - name: Route validation
+        run: npm run test:routes
+      - name: SEO authority validation
+        run: npm run test:seo-authority
+      - name: Visible content validation
+        run: npm run test:visible-content
+      - name: Gallery validation
+        run: npm run test:gallery
+      - name: Accessibility preflight
+        run: npm run test:a11y
+      - name: Performance budget
+        run: npm run test:performance
+      - name: Security validation
+        run: npm run test:security
       - name: Configure GitHub Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
       - name: Upload generated site
