@@ -234,9 +234,9 @@
   border-bottom: 1px solid var(--rule-dark);
 }
 
-.founder-ai-kicker {
+.founder-ai-header .founder-ai-kicker {
   margin-top: .28rem;
-  color: #b8b4ad;
+  color: #c4c0b8;
   font-family: var(--mono);
   font-size: .66rem;
   letter-spacing: .06em;
@@ -493,6 +493,7 @@
 
 .founder-ai-footer > p {
   max-width: 34rem;
+  color: #c4c0b8;
 }
 
 .founder-ai-footer > div {
