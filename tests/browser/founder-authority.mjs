@@ -141,7 +141,16 @@ const runAxe = async (page, label) => {
     const result = await window.axe.run(document, {
       runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] },
     });
-    return result.violations.map((violation) => ({ id: violation.id, impact: violation.impact, nodes: violation.nodes.length }));
+    return result.violations.map((violation) => ({
+      id: violation.id,
+      impact: violation.impact,
+      nodes: violation.nodes.length,
+      details: violation.nodes.slice(0, 4).map((node) => ({
+        target: node.target,
+        html: node.html,
+        failureSummary: node.failureSummary,
+      })),
+    }));
   });
   const serious = violations.filter((violation) => ['critical', 'serious'].includes(violation.impact));
   // WebKit reports Axe's temporary inline-style probe after axe.run resolves.
