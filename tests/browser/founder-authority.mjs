@@ -187,7 +187,7 @@ const exerciseFounderAi = async (browser, browserName) => {
       await page.locator('[data-founder-ai-form]').evaluate((form) => form.requestSubmit());
       await page.locator('.founder-ai-answer').waitFor();
       ensure(
-        (await page.locator('.founder-ai-label').first().innerText()) === 'AI-generated summary based on Vishal’s published work',
+        (await page.locator('.founder-ai-answer .founder-ai-label').innerText()) === 'AI-generated summary based on Vishal’s published work',
         `${browserName}: founder answer disclosure is incorrect`,
       );
       ensure((await page.locator('.founder-ai-sources li').count()) > 0, `${browserName}: supported answer has no citations`);
