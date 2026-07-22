@@ -161,7 +161,7 @@ const exerciseFounderAi = async (browser, browserName) => {
     const page = await context.newPage();
     attachConsole(page);
     await page.goto(origin, { waitUntil: 'networkidle' });
-    await page.locator('[data-founder-ai-open]').first().click();
+    await page.locator('[data-founder-ai-open]:visible').first().click();
     const dialog = page.locator('[data-founder-ai-dialog]');
     await dialog.waitFor({ state: 'visible' });
     ensure(await dialog.getAttribute('open') !== null, `${browserName} ${viewport.name}: founder dialog did not open`);
