@@ -1,0 +1,92 @@
+name: Founder AI browser acceptance
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Use repository Node.js version
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install locked site dependencies
+        run: npm ci
+
+      - name: Install isolated browser acceptance tools
+        run: npm install --no-save --package-lock=false playwright@1.56.1 axe-core@4.11.0 lighthouse@12.8.2
+
+      - name: Install Chromium and WebKit
+        run: npx --no-install playwright install --with-deps chromium webkit
+
+      - name: Build candidate
+        run: npm run build
+
+      - name: Run exact-head Chromium and WebKit acceptance
+        env:
+          BROWSER_ENGINES: chromium,webkit
+        run: |
+          PLAYWRIGHT_MODULE="$(node -p "require.resolve('playwright')")" \
+          AXE_MODULE="$(node -p "require.resolve('axe-core')")" \
+          npm run test:browser
+
+      - name: Run homepage Lighthouse
+        run: |
+          mkdir -p artifacts
+          node scripts/dev.mjs --dist --port=4400 > /tmp/founder-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:4400/ >/dev/null; then break; fi
+            sleep 0.25
+          done
+          curl -fsS http://127.0.0.1:4400/ >/dev/null
+          export CHROME_PATH="$(node -e "const { chromium } = require('playwright'); process.stdout.write(chromium.executablePath())")"
+          npx --no-install lighthouse http://127.0.0.1:4400/ \
+            --chrome-flags="--headless --no-sandbox" \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --output=json \
+            --output-path=artifacts/lighthouse-home.json \
+            --quiet
+          node --input-type=module - <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync('artifacts/lighthouse-home.json', 'utf8'));
+          const scores = Object.fromEntries(
+            Object.entries(report.categories).map(([key, value]) => [key, value.score]),
+          );
+          const minimum = {
+            performance: 0.85,
+            accessibility: 0.90,
+            'best-practices': 0.90,
+            seo: 0.90,
+          };
+          for (const [category, threshold] of Object.entries(minimum)) {
+            if ((scores[category] ?? 0) < threshold) {
+              throw new Error(`${category} score ${scores[category]} is below ${threshold}`);
+            }
+          }
+          fs.writeFileSync('artifacts/lighthouse-scores.json', JSON.stringify(scores, null, 2));
+          console.log(JSON.stringify(scores));
+          NODE
+
+      - name: Upload visual and performance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: founder-ai-acceptance-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts
+          if-no-files-found: warn
+          retention-days: 14
