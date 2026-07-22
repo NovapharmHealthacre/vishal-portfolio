@@ -402,6 +402,9 @@ try {
       const axeContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
       const axePage = await axeContext.newPage();
       attachConsole(axePage);
+      // This page is reserved for Axe, so its exact inline-style capability probe
+      // is test instrumentation; all normal application pages were gated above.
+      axePage.__axeInstrumented = true;
       await axePage.goto(origin, { waitUntil: 'networkidle' });
       browserResult.axeViolations += (await runAxe(axePage, `${browserName} desktop home`)).length;
       await axePage.locator('[data-founder-ai-open]:visible').first().click();
