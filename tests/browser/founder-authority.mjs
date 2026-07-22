@@ -186,7 +186,7 @@ const exerciseFounderAi = async (browser, browserName) => {
       await page.locator('[data-founder-ai-input]').fill('How does Vishal assess CMO readiness?');
       await page.locator('[data-founder-ai-form]').evaluate((form) => form.requestSubmit());
       await page.locator('.founder-ai-answer').waitFor();
-      const disclosure = await page.locator('.founder-ai-answer .founder-ai-label').innerText();
+      const disclosure = await page.locator('.founder-ai-answer .founder-ai-label').textContent();
       ensure(
         disclosure === 'AI-generated summary based on Vishal’s published work',
         `${browserName}: founder answer disclosure is incorrect: ${JSON.stringify(disclosure)}`,
