@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  statuses: write
 
 concurrency:
   group: pages
@@ -48,3 +49,78 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5
+
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      statuses: write
+    env:
+      SITE_ORIGIN: https://vishal.novapharmhealthcare.com
+      RELEASE_SHA: ${{ github.sha }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Mark publication pending
+        run: |
+          curl --fail --silent --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/statuses/${RELEASE_SHA}" \
+            --data '{"state":"pending","context":"pages-live-publish","description":"Waiting for the personal custom domain to serve the approved release"}'
+
+      - name: Verify approved release on custom domain
+        id: live
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          cache_key="release-${RELEASE_SHA}-$(date +%s)"
+          for attempt in $(seq 1 72); do
+            home=$(curl --fail --silent --show-error --location \
+              -H 'Cache-Control: no-cache' \
+              -H 'Pragma: no-cache' \
+              "${SITE_ORIGIN}/?${cache_key}-${attempt}" || true)
+            assistant=$(curl --fail --silent --show-error --location \
+              -H 'Cache-Control: no-cache' \
+              "${SITE_ORIGIN}/assets/founder-ai.js?${cache_key}-${attempt}" || true)
+            knowledge_status=$(curl --silent --output /dev/null --write-out '%{http_code}' --location \
+              -H 'Cache-Control: no-cache' \
+              "${SITE_ORIGIN}/assets/founder-knowledge.json?${cache_key}-${attempt}" || true)
+
+            if grep -Fq 'Ask Vishal’s Work' <<<"$home" \
+              && grep -Fq 'data-founder-ai-dialog' <<<"$home" \
+              && grep -Fq 'AI-generated summary based on Vishal’s published work' <<<"$assistant" \
+              && [[ "$knowledge_status" == "200" ]]; then
+              printf '%s\n' "Personal AI release verified on attempt ${attempt}."
+              exit 0
+            fi
+            sleep 10
+          done
+          printf '%s\n' 'The custom domain did not serve the approved personal AI release within 12 minutes.' >&2
+          exit 1
+
+      - name: Mark publication successful
+        if: steps.live.outcome == 'success'
+        run: |
+          curl --fail --silent --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/statuses/${RELEASE_SHA}" \
+            --data '{"state":"success","context":"pages-live-publish","description":"Personal AI release verified on the custom domain"}'
+
+      - name: Mark publication failed
+        if: steps.live.outcome != 'success'
+        run: |
+          curl --fail --silent --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/statuses/${RELEASE_SHA}" \
+            --data '{"state":"failure","context":"pages-live-publish","description":"Personal custom-domain verification failed"}'
+          exit 1
