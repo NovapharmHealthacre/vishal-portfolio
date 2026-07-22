@@ -219,8 +219,6 @@ const exerciseFounderAi = async (browser, browserName) => {
       );
       ensure((await page.locator('.founder-ai-sources li').count()) > 0, `${browserName}: supported answer has no citations`);
       ensure((await page.locator('.founder-ai-sources a').first().getAttribute('href'))?.startsWith('https://'), `${browserName}: citation is not canonical`);
-      axeViolations += (await runAxe(page, `${browserName} founder AI dialog`)).length;
-
       await page.locator('[data-founder-ai-input]').fill('What is his favourite colour?');
       await page.locator('[data-founder-ai-form]').evaluate((form) => form.requestSubmit());
       await page.locator('.founder-ai-answer-copy', { hasText: 'I could not verify that from Vishal’s approved published work.' }).waitFor();
@@ -291,12 +289,6 @@ try {
       ensure(unknownResponse?.status() === 404, `${browserName}: unknown route HTTP ${unknownResponse?.status()}`);
       await auditDocument(unknown, `${browserName} unknown route`, { expectNoIndex: true, checkConsole: false });
       await unknown.close();
-
-      const desktopAxe = await desktop.newPage();
-      attachConsole(desktopAxe);
-      await desktopAxe.goto(origin, { waitUntil: 'networkidle' });
-      browserResult.axeViolations += (await runAxe(desktopAxe, `${browserName} desktop home`)).length;
-      await desktopAxe.close();
 
       for (const route of screenshotRoutes) {
         const page = await desktop.newPage();
@@ -397,6 +389,23 @@ try {
       const founderAiResult = await exerciseFounderAi(browser, browserName);
       browserResult.screenshots += founderAiResult.screenshotsTaken;
       browserResult.axeViolations += founderAiResult.axeViolations;
+
+      // Run all Axe instrumentation after clean-page console assertions. WebKit can
+      // emit Axe's inline-style capability probe late and browser-wide.
+      const axeContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+      const axePage = await axeContext.newPage();
+      attachConsole(axePage);
+      await axePage.goto(origin, { waitUntil: 'networkidle' });
+      browserResult.axeViolations += (await runAxe(axePage, `${browserName} desktop home`)).length;
+      await axePage.locator('[data-founder-ai-open]:visible').first().click();
+      await axePage.locator('[data-founder-ai-input]').fill('How does Vishal assess CMO readiness?');
+      await axePage.locator('[data-founder-ai-form]').evaluate((form) => form.requestSubmit());
+      await axePage.locator('.founder-ai-answer').waitFor();
+      browserResult.axeViolations += (await runAxe(axePage, `${browserName} founder AI dialog`)).length;
+      await axePage.waitForTimeout(500);
+      ensure(axePage.__consoleErrors.length === 0, `${browserName} Axe context: console errors ${axePage.__consoleErrors.join(' | ')}`);
+      await axeContext.close();
+
       results.push(browserResult);
     } finally {
       await browser.close();
