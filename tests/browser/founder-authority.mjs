@@ -135,6 +135,7 @@ const attachConsole = (page) => {
 
 const runAxe = async (page, label) => {
   if (!axeSource) return [];
+  const consoleStart = page.__consoleErrors?.length ?? 0;
   await page.evaluate(axeSource);
   const violations = await page.evaluate(async () => {
     const result = await window.axe.run(document, {
@@ -143,6 +144,11 @@ const runAxe = async (page, label) => {
     return result.violations.map((violation) => ({ id: violation.id, impact: violation.impact, nodes: violation.nodes.length }));
   });
   const serious = violations.filter((violation) => ['critical', 'serious'].includes(violation.impact));
+  const instrumentationErrors = (page.__consoleErrors ?? []).slice(consoleStart);
+  const unexpectedInstrumentationErrors = instrumentationErrors.filter(
+    (message) => !message.startsWith("Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive"),
+  );
+  if (page.__consoleErrors) page.__consoleErrors.splice(consoleStart, instrumentationErrors.length, ...unexpectedInstrumentationErrors);
   ensure(serious.length === 0, `${label}: serious axe violations ${JSON.stringify(serious)}`);
   return violations;
 };
