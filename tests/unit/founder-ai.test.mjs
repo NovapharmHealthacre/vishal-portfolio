@@ -41,7 +41,11 @@ test('founder evidence index contains approved public sources only', () => {
   const publishedEvidence = JSON.stringify(knowledge.documents);
   assert.doesNotMatch(
     publishedEvidence,
-    /private chat|private email|portal data|customer data|supplier data|immigration document|personal financial|business plan forecast/i,
+    /private chat|private email|portal data|customer data|supplier data|personal financial|business plan forecast/i,
+  );
+  assert.doesNotMatch(
+    JSON.stringify(knowledge),
+    /passport|date of birth|residential address|\\bvisa\\b|\\bimmigration\\b|right to work|residence status/i,
   );
 });
 
