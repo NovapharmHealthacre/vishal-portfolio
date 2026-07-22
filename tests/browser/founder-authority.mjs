@@ -69,14 +69,16 @@ const narrowRoutes = [
   '/essays/regulatory-approval-is-not-market-access/',
 ];
 
+// Keep the Axe-instrumented viewport last so WebKit's delayed CSP probe cannot
+// be attributed to a subsequent clean viewport.
 const founderAiViewports = [
-  { name: 'desktop-1440', width: 1440, height: 900 },
   { name: 'desktop-1920', width: 1920, height: 1080 },
   { name: 'tablet-1024', width: 1024, height: 1366 },
   { name: 'tablet-768', width: 768, height: 1024 },
   { name: 'mobile-390', width: 390, height: 844, isMobile: true, hasTouch: true },
   { name: 'mobile-430', width: 430, height: 932, isMobile: true, hasTouch: true },
   { name: 'mobile-375', width: 375, height: 667, isMobile: true, hasTouch: true },
+  { name: 'desktop-1440', width: 1440, height: 900 },
 ];
 
 const slug = (route) => (route === '/' ? 'home' : route.replace(/^\//, '').replace(/\/$/, '').replaceAll('/', '-').replace('.html', ''));
