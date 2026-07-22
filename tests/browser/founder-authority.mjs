@@ -125,10 +125,16 @@ const auditDocument = async (page, label, { expectNoIndex = false, checkConsole 
   }
 };
 
+const axeStyleProbe = "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive";
+
 const attachConsole = (page) => {
   page.__consoleErrors = [];
+  page.__axeInstrumented = false;
   page.on('console', (message) => {
-    if (message.type() === 'error') page.__consoleErrors.push(message.text());
+    if (message.type() !== 'error') return;
+    const text = message.text().trim();
+    if (page.__axeInstrumented && text.startsWith(axeStyleProbe)) return;
+    page.__consoleErrors.push(message.text());
   });
   page.on('pageerror', (error) => page.__consoleErrors.push(error.message));
 };
@@ -136,6 +142,7 @@ const attachConsole = (page) => {
 const runAxe = async (page, label) => {
   if (!axeSource) return [];
   const consoleStart = page.__consoleErrors?.length ?? 0;
+  page.__axeInstrumented = true;
   await page.evaluate(axeSource);
   const violations = await page.evaluate(async () => {
     const result = await window.axe.run(document, {
@@ -156,7 +163,6 @@ const runAxe = async (page, label) => {
   // WebKit reports Axe's temporary inline-style probe after axe.run resolves.
   await page.waitForTimeout(100);
   const instrumentationErrors = (page.__consoleErrors ?? []).slice(consoleStart);
-  const axeStyleProbe = "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive";
   const unexpectedInstrumentationErrors = instrumentationErrors.filter(
     (message) => !message.trim().startsWith(axeStyleProbe),
   );
