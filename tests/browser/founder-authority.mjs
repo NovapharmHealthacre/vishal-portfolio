@@ -144,9 +144,12 @@ const runAxe = async (page, label) => {
     return result.violations.map((violation) => ({ id: violation.id, impact: violation.impact, nodes: violation.nodes.length }));
   });
   const serious = violations.filter((violation) => ['critical', 'serious'].includes(violation.impact));
+  // WebKit reports Axe's temporary inline-style probe after axe.run resolves.
+  await page.waitForTimeout(100);
   const instrumentationErrors = (page.__consoleErrors ?? []).slice(consoleStart);
+  const axeStyleProbe = "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive";
   const unexpectedInstrumentationErrors = instrumentationErrors.filter(
-    (message) => !message.startsWith("Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive"),
+    (message) => !message.trim().startsWith(axeStyleProbe),
   );
   if (page.__consoleErrors) page.__consoleErrors.splice(consoleStart, instrumentationErrors.length, ...unexpectedInstrumentationErrors);
   ensure(serious.length === 0, `${label}: serious axe violations ${JSON.stringify(serious)}`);
