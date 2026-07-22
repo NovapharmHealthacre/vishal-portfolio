@@ -186,9 +186,10 @@ const exerciseFounderAi = async (browser, browserName) => {
       await page.locator('[data-founder-ai-input]').fill('How does Vishal assess CMO readiness?');
       await page.locator('[data-founder-ai-form]').evaluate((form) => form.requestSubmit());
       await page.locator('.founder-ai-answer').waitFor();
+      const disclosure = await page.locator('.founder-ai-answer .founder-ai-label').innerText();
       ensure(
-        (await page.locator('.founder-ai-answer .founder-ai-label').innerText()) === 'AI-generated summary based on Vishal’s published work',
-        `${browserName}: founder answer disclosure is incorrect`,
+        disclosure === 'AI-generated summary based on Vishal’s published work',
+        `${browserName}: founder answer disclosure is incorrect: ${JSON.stringify(disclosure)}`,
       );
       ensure((await page.locator('.founder-ai-sources li').count()) > 0, `${browserName}: supported answer has no citations`);
       ensure((await page.locator('.founder-ai-sources a').first().getAttribute('href'))?.startsWith('https://'), `${browserName}: citation is not canonical`);
