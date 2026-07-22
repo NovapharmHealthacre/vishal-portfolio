@@ -9,8 +9,8 @@
     "storage": false
   },
   "boundaries": [
-    "Published essays and verified public facts only",
-    "No private chats, emails, contracts, portal data, customer data, supplier data, immigration documents or personal financial data",
+    "Approved published essays and verified public facts only",
+    "No non-public personal, commercial, account or portal records",
     "No medical, legal, investment or personalised regulatory advice",
     "No new personal view is attributed to Vishal"
   ],
