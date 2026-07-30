@@ -11,6 +11,7 @@ const forbidden = [
   [/MHRA[- ]licensed wholesaler/gi, 'unsupported MHRA licence claim'],
   [/GDP[- ]certified supply chain/gi, 'unsupported GDP certification'],
   [/serving NHS Trusts/gi, 'unsupported NHS service claim'],
+  [/Founder\s*(?:&|and)\s*(?:Chief Executive Officer|CEO)/gi, 'combined founder and executive title'],
   [/nationality/gi, 'nationality should not be public'],
   [/passport|date of birth|residential address|\bvisa\b|\bimmigration\b|right to work|residence status/gi, 'private personal data'],
 ];

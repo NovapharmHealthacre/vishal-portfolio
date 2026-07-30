@@ -7,7 +7,8 @@ public: true
 
 ## At a glance
 
-- **Founder & CEO:** NovaPharm Healthcare Ltd
+- **Executive role:** Chief Executive Officer, NovaPharm Healthcare Ltd
+- **Governance relationship:** Founder of NovaPharm Healthcare Ltd
 - **Focus:** Pharmaceutical entrepreneurship and market access
 - **Areas of work:** Product strategy, licensing, manufacturing, technology transfer, sourcing and supply
 - **Markets:** United Kingdom, Europe and selected international regulated markets

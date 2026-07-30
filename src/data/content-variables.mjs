@@ -19,6 +19,7 @@ export const contentVariables = Object.freeze({
   EMAIL: site.email,
   LINKEDIN_URL: site.linkedIn,
   PERSON_ROLE: person.role,
+  PERSON_FOUNDER_RELATIONSHIP: person.founderRelationship,
   PERSON_PROPOSITION: person.proposition,
   PERSON_SHORT_BIO: person.shortBio,
   PERSON_MEDIUM_BIO: person.mediumBio,

@@ -1,6 +1,6 @@
 # Canonical entity register
 
-Reviewed: 14 July 2026
+Reviewed: 30 July 2026
 
 ## Vishal Chakravarty
 
@@ -11,14 +11,16 @@ Reviewed: 14 July 2026
 | Canonical URL | `https://vishal.novapharmhealthcare.com/about/` |
 | Persistent `@id` | `https://vishal.novapharmhealthcare.com/#person` |
 | ProfilePage `@id` | `https://vishal.novapharmhealthcare.com/about/#profile` |
-| Visible role | Founder & CEO, NovaPharm Healthcare Ltd |
+| Public executive designation | Chief Executive Officer |
+| Visible role | Chief Executive Officer, NovaPharm Healthcare Ltd |
+| Founder relationship | Founder of NovaPharm Healthcare Ltd |
 | Structured job title | Chief Executive Officer |
 | Employer | `https://novapharmhealthcare.com/#organization` |
 | Verified sameAs | `https://www.linkedin.com/in/vishal-chakravarty` |
 | Approved portrait | `/images/portrait/vishal-chakravarty-960.jpg` and responsive derivatives |
 | Principal description source | `src/data/entity.mjs` |
-| Last fact verification | 12 July 2026 |
-| Last profile-entity review | 14 July 2026 |
+| Last fact verification | 30 July 2026 |
+| Last profile-entity review | 30 July 2026 |
 
 ### Public-safe knowledge areas
 

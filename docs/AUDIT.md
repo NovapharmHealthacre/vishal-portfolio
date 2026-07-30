@@ -75,7 +75,7 @@ Multiple non-Git copies exist in Documents and OneDrive. They are stale exports 
 
 - Companies House identifies NOVAPHARM HEALTHCARE LTD, company number 16716501, as an active private limited company incorporated on 15 September 2025.
 - Current Companies House SIC entries are 21100 and 46460. SIC codes describe a filing category, not proof of regulatory authorisation or current operations.
-- Companies House and public Yakuji Nippo author pages support Vishal Chakravarty as Founder & CEO.
+- Companies House and public Yakuji Nippo author pages supported the combined founder/executive wording used at the time of this baseline audit. The canonical public executive designation was changed to Chief Executive Officer on 30 July 2026, with founder retained as a separate governance relationship.
 - Yakuji Nippo has published three instalments of Vishal's UK-EU market-access series in English and Japanese as of the audit date.
 - The Yakuji author profile and verified first-party LinkedIn search result use `novapharmhealthcare.com` and the `.com` email.
 - Authoritative non-public evidence, which is not retained in this repository, places Vishal's pharmaceutical work with SyriMed in 2020-2025, so a “no pharmaceutical background” origin story is contradicted.

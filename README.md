@@ -1,6 +1,6 @@
 # Vishal Chakravarty — founder platform
 
-A static, content-first founder platform for Vishal Chakravarty, Founder & CEO of NovaPharm Healthcare Ltd.
+A static, content-first professional platform for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder.
 
 The core build and runtime are deliberately dependency-free. They use Node.js standard-library modules, Markdown content, a central verified entity source and generated semantic HTML. Full release QA additionally requires externally supplied Playwright/browser, axe and Lighthouse tooling as documented in `docs/QA_PLAN.md`.
 

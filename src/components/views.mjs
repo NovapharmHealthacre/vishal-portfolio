@@ -62,7 +62,7 @@ export const renderHome = (articles) => {
   const body = `
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">Founder & CEO · Pharmaceutical entrepreneurship · Regulated markets</p>
+        <p class="eyebrow">Chief Executive Officer · Pharmaceutical entrepreneurship · Regulated markets</p>
         <h1 id="hero-title"><span>Vishal</span> <span>Chakravarty</span></h1>
         <p class="hero-proposition">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
@@ -73,7 +73,7 @@ export const renderHome = (articles) => {
       <div class="hero-visual">
         <div class="lattice-shell" aria-hidden="true"><canvas id="system-lattice"></canvas><div class="lattice-poster"><span></span><span></span><span></span><span></span><span></span></div></div>
         ${portrait(true)}
-        <div class="portrait-caption"><span>Founder & CEO</span><span>${escapeHtml(company.name)}</span></div>
+        <div class="portrait-caption"><span>Chief Executive Officer</span><span>${escapeHtml(company.name)}</span></div>
       </div>
       <div class="hero-proof" aria-label="Areas of work"><span>Pharmaceutical market access</span><span>Manufacturing & technology transfer</span><span>Specialist medicines & supply</span></div>
     </section>
@@ -108,7 +108,7 @@ export const renderHome = (articles) => {
 
 export const renderAbout = (page) => {
   const meta = contentMeta(page);
-  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])}<p class="eyebrow">Founder profile</p><h1>Vishal Chakravarty.</h1><p class="page-deck">Pharmaceutical entrepreneur building NovaPharm Healthcare around market access, specialist medicines, manufacturing partnerships and resilient supply.</p></section><section class="profile-spread section"><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Founder & CEO</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
+  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])}<p class="eyebrow">Founder profile</p><h1>Vishal Chakravarty.</h1><p class="page-deck">Pharmaceutical entrepreneur building NovaPharm Healthcare around market access, specialist medicines, manufacturing partnerships and resilient supply.</p></section><section class="profile-spread section"><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Chief Executive Officer</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
 };
 

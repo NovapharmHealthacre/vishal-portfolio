@@ -15,7 +15,9 @@ test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
-  assert.match(html, /Founder (?:&|&amp;) CEO · Pharmaceutical entrepreneurship · Regulated markets/);
+  assert.match(html, /Chief Executive Officer · Pharmaceutical entrepreneurship · Regulated markets/);
+  assert.match(html, /Founder of NovaPharm Healthcare Ltd\./);
+  assert.doesNotMatch(html, /Founder\s*(?:&|&amp;|and)\s*(?:Chief Executive Officer|CEO)/i);
   assert.match(html, /<nav id="site-navigation"/);
   assert.doesNotMatch(html, /loading screen/i);
 });
@@ -36,14 +38,18 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.entityIds.profilePage, 'https://vishal.novapharmhealthcare.com/about/#profile');
   assert.equal(facts.entityIds.organization, 'https://novapharmhealthcare.com/#organization');
   assert.equal(facts.entityIds.organizationWebsite, 'https://novapharmhealthcare.com/#website');
-  assert.equal(facts.facts.length, 5);
+  assert.equal(facts.facts.length, 6);
   assert.equal(facts.facts.every((fact) => fact.publicSafe === true), true);
+  assert.equal(facts.person.role, 'Chief Executive Officer, NovaPharm Healthcare Ltd');
+  assert.equal(facts.person.founderRelationship, 'Founder of NovaPharm Healthcare Ltd');
+  assert.equal(facts.facts.find((fact) => fact.id === 'P-017')?.approvedWording, 'Founder of NovaPharm Healthcare Ltd');
   assert.equal(
     facts.facts.find((fact) => fact.id === 'P-008')?.approvedWording,
     'His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.',
   );
   assert.equal(facts.facts.find((fact) => fact.id === 'P-008')?.status, 'VERIFIED_HISTORICAL');
   assert.doesNotMatch(JSON.stringify(facts), /passport|birthDate|residential address|\bvisa\b|\bimmigration\b/i);
+  assert.doesNotMatch(JSON.stringify(facts), /Founder\s*(?:&|and)\s*(?:Chief Executive Officer|CEO)/i);
 });
 
 test('privacy output matches the approved minimal email flow', () => {

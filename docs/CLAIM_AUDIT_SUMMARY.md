@@ -35,7 +35,8 @@ Release grouping:
 
 | Claim IDs | Approved fact or wording boundary | Main uses |
 |---|---|---|
-| P-001, P-002 | `Vishal Chakravarty` and `Founder & CEO, NovaPharm Healthcare Ltd`. | Home, about, facts, metadata, Person schema |
+| P-001, P-002 | `Vishal Chakravarty` and `Chief Executive Officer, NovaPharm Healthcare Ltd`. | Home, about, facts, metadata, Person schema |
+| P-017 | `Founder of NovaPharm Healthcare Ltd`, expressed separately from the executive designation. | Home, about, ventures, facts, Organization schema |
 | P-008 | `His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.` No title or confidential responsibility. | About, facts, carefully revised essay note |
 | P-011 | Availability for selected future speaking and partnership conversations. This is not evidence of past engagements. | Speaking/partnerships, contact |
 | P-012 | Verified LinkedIn URL only. | Footer, contact, Person `sameAs` |
@@ -101,8 +102,8 @@ The following must not be committed, rendered, logged in snapshots or copied int
 
 | Route/output | Claims allowed | Required checks |
 |---|---|---|
-| `/` | P-001, P-002, E-002, selected verified media and visibly labelled C-011/C-012/C-013/C-014 if used | Hero proposition contains no regulated achievement; venture status is adjacent; evidence links are real. |
-| `/about/` | P-001, P-002, P-008, M-001, E-002 | No invented title, residence, nationality, prestige label or private chronology. |
+| `/` | P-001, P-002, P-017, E-002, selected verified media and visibly labelled C-011/C-012/C-013/C-014 if used | Hero proposition contains no regulated achievement; founder relationship is separate from the executive designation; venture status is adjacent; evidence links are real. |
+| `/about/` | P-001, P-002, P-008, P-017, M-001, E-002 | No invented title, combined founder/executive designation, residence, nationality, prestige label or private chronology. |
 | `/ventures/` | C-001 to C-006 plus labelled C-011 to C-014 | Registration is explicitly distinguished from licence/operations; C-008 to C-010 and C-015 to C-019 do not leak. |
 | `/thinking/` and essays | Approved identity, editorial metadata and source-backed analysis | No patient advice; primary pharmaceutical sources; opinions distinguished from facts; no stale company claims. |
 | `/media/` | M-001 and exact M-002 count/status | Publisher URLs resolve; no fabricated press, speaking or podcast entries. |

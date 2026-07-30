@@ -1,5 +1,5 @@
-export const verificationDate = '2026-07-15';
-export const profileModifiedDate = '2026-07-15';
+export const verificationDate = '2026-07-30';
+export const profileModifiedDate = '2026-07-30';
 
 export const site = Object.freeze({
   id: 'https://vishal.novapharmhealthcare.com/#website',
@@ -8,7 +8,7 @@ export const site = Object.freeze({
   language: 'en-GB',
   locale: 'en_GB',
   description:
-    'The founder platform of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd, covering pharmaceutical market access, manufacturing, supply and company building.',
+    'The professional platform of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, covering pharmaceutical market access, manufacturing, supply and company building.',
   email: 'vishal@novapharmhealthcare.com',
   correctionEmail: 'vishal@novapharmhealthcare.com',
   linkedIn: 'https://www.linkedin.com/in/vishal-chakravarty',
@@ -18,20 +18,21 @@ export const person = Object.freeze({
   id: `${site.origin}/#person`,
   profileId: `${site.origin}/about/#profile`,
   name: 'Vishal Chakravarty',
-  role: 'Founder & CEO, NovaPharm Healthcare Ltd',
+  role: 'Chief Executive Officer, NovaPharm Healthcare Ltd',
+  founderRelationship: 'Founder of NovaPharm Healthcare Ltd',
   jobTitle: 'Chief Executive Officer',
   proposition:
     'Building a UK-led pharmaceutical company around market access, specialist medicines and resilient supply across regulated markets.',
   shortBio:
-    'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd. He is building a pharmaceutical company focused on product strategy, market access, manufacturing partnerships and resilient supply across regulated markets.',
+    'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025 and is building it around product strategy, market access, manufacturing partnerships and resilient supply across regulated markets.',
   mediumBio:
-    'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company established in 2025. His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. He is building the company around specialist medicines, product and market selection, licensing pathways, manufacturing partnerships, technology transfer, sourcing, supply and commercial market entry. Vishal also contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and writes independently about the decisions that shape regulated pharmaceutical businesses.',
+    'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025. His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. He is building the company around specialist medicines, product and market selection, licensing pathways, manufacturing partnerships, technology transfer, sourcing, supply and commercial market entry. Vishal also contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and writes independently about the decisions that shape regulated pharmaceutical businesses.',
   image: {
     id: `${site.origin}/about/#portrait`,
     path: '/images/portrait/vishal-chakravarty-1440.jpg',
     name: 'Official founder portrait of Vishal Chakravarty',
-    alt: 'Portrait of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd',
-    description: 'The principal professional portrait of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd.',
+    alt: 'Portrait of Vishal Chakravarty',
+    description: 'The principal professional portrait of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd.',
     width: 1440,
     height: 1402,
   },
@@ -113,8 +114,13 @@ export const publications = Object.freeze([
 export const publicFacts = Object.freeze([
   {
     id: 'P-002', label: 'Current role', value: person.role, status: 'VERIFIED_CURRENT',
-    source: 'Companies House and Yakuji Nippo', sourceDate: '2026-02-06', lastVerified: verificationDate,
+    source: 'Owner-approved executive designation and Companies House officer record', sourceDate: '2026-07-30', lastVerified: verificationDate,
     publicSafe: true, approvedWording: person.role, pages: ['/about/', '/facts/'],
+  },
+  {
+    id: 'P-017', label: 'Founder relationship', value: person.founderRelationship, status: 'VERIFIED_CURRENT',
+    source: 'Owner-attested corporate governance record', sourceDate: '2026-07-30', lastVerified: verificationDate,
+    publicSafe: true, approvedWording: person.founderRelationship, pages: ['/about/', '/ventures/', '/facts/'],
   },
   {
     id: 'C-002', label: 'Company number', value: company.companyNumber, status: 'VERIFIED_CURRENT',

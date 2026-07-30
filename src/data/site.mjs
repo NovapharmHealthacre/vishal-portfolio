@@ -23,14 +23,14 @@ export const canonicalRoutes = Object.freeze([
 ]);
 
 export const routeModified = Object.freeze({
-  '/': '2026-07-15',
-  '/about/': '2026-07-15',
+  '/': '2026-07-30',
+  '/about/': '2026-07-30',
   '/ventures/': '2026-07-15',
   '/thinking/': '2026-07-15',
   '/media/': '2026-07-15',
-  '/gallery/': '2026-07-15',
+  '/gallery/': '2026-07-30',
   '/speaking-partnerships/': '2026-07-15',
-  '/facts/': '2026-07-15',
+  '/facts/': '2026-07-30',
   '/contact/': '2026-07-15',
   '/privacy/': '2026-07-15',
 });
@@ -53,9 +53,9 @@ export const defaultSocialImage = '/images/social/default-og.jpg';
 
 export const pageMeta = Object.freeze({
   home: {
-    title: 'Vishal Chakravarty — Pharmaceutical Founder & CEO',
+    title: 'Vishal Chakravarty — Chief Executive Officer',
     description:
-      'Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, building around pharmaceutical market access, specialist medicines, manufacturing and resilient supply.',
+      'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, building around pharmaceutical market access, specialist medicines, manufacturing and resilient supply.',
     path: '/',
     modified: routeModified['/'],
   },
@@ -69,7 +69,7 @@ export const pageMeta = Object.freeze({
   gallery: {
     title: 'Vishal Chakravarty Portrait Gallery',
     description:
-      'A curated portrait gallery of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd, featuring editorial, professional and founder-at-work photography.',
+      'A curated portrait gallery of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder.',
     path: '/gallery/',
     modified: routeModified['/gallery/'],
   },

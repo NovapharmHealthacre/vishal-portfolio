@@ -1,6 +1,6 @@
 ---
 title: About Vishal Chakravarty
-description: Vishal Chakravarty is the Founder and CEO of NovaPharm Healthcare Ltd, building across pharmaceutical market access, manufacturing, supply and regulated markets.
+description: Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, building across pharmaceutical market access, manufacturing, supply and regulated markets.
 canonicalPath: /about/
 public: true
 ---

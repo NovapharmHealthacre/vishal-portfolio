@@ -1,11 +1,11 @@
 # Metadata register
 
-Reviewed: 14 July 2026
+Reviewed: 30 July 2026
 
 | URL | Purpose and audience | Primary topic | Title | Meta description | H1 | Index | Schema | Primary CTA | Material review |
 |---|---|---|---|---|---|---|---|---|---|
-| `/` | Canonical founder introduction for professional contacts and search systems | Vishal Chakravarty founder profile | Vishal Chakravarty — Founder & Operator | Vishal Chakravarty is the Founder & CEO of NovaPharm Healthcare Ltd, working on access, licensing and supply systems in regulated healthcare markets. | Vishal Chakravarty | Yes | WebSite, Person, WebPage | Read the verified profile | 2026-07-14 |
-| `/about/` | Canonical personal professional profile | Biography and operating principles | About Vishal Chakravarty | Founder and operator working on access, licensing and supply systems for regulated healthcare markets. | Vishal Chakravarty. | Yes | ProfilePage, Person, BreadcrumbList | Public fact sheet | 2026-07-14 |
+| `/` | Canonical founder introduction for professional contacts and search systems | Vishal Chakravarty founder profile | Vishal Chakravarty — Chief Executive Officer | Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, building around pharmaceutical market access, specialist medicines, manufacturing and resilient supply. | Vishal Chakravarty | Yes | WebSite, Person, WebPage | Read the profile | 2026-07-30 |
+| `/about/` | Canonical personal professional profile | Biography and operating principles | About Vishal Chakravarty | Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, building across pharmaceutical market access, manufacturing, supply and regulated markets. | Vishal Chakravarty. | Yes | ProfilePage, Person, BreadcrumbList | Public fact sheet | 2026-07-30 |
 | `/ventures/` | Factual venture status and boundaries | NovaPharm current status | Ventures — Vishal Chakravarty | Verified company facts, present focus and clearly labelled roadmap for NovaPharm Healthcare Ltd. | NovaPharm Healthcare Ltd, in its current state. | Yes | WebPage, Organization, BreadcrumbList | Visit NovaPharm / Companies House | 2026-07-14 |
 | `/thinking/` | Essay collection | Regulated markets and founder operations | Thinking — Essays by Vishal Chakravarty | Essays on regulated markets, pharmaceutical access, resilience and the operating choices behind company building. | Thinking in public, with the sources attached. | Yes | CollectionPage, Blog, BreadcrumbList | Read an essay | 2026-07-12 |
 | `/media/` | Verified external publication record | Yakuji Nippo contributions | Media and Publications — Vishal Chakravarty | Verified publisher-hosted writing by Vishal Chakravarty on UK–EU pharmaceutical market access and compliance. | Vishal Chakravarty’s published work. | Yes | CollectionPage, ItemList, BreadcrumbList | Open publisher-hosted work | 2026-07-12 |

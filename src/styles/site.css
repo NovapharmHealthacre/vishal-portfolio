@@ -124,6 +124,7 @@
   .site-footer { width: var(--page); margin-inline: auto; padding-top: clamp(7rem, 12vw, 12rem); }
   .footer-intro { max-width: 68rem; padding-bottom: clamp(5rem, 8vw, 8rem); }
   .footer-intro h2 { margin-top: 1.5rem; font-size: clamp(3.2rem, 7vw, 7.8rem); }
+  .footer-founder-role { margin-top: 1.25rem; color: var(--graphite); font-size: 1rem; }
   .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;

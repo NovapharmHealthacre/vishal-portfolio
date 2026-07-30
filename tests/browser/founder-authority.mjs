@@ -191,6 +191,7 @@ const exerciseFounderAi = async (browser, browserName) => {
     const dialog = page.locator('[data-founder-ai-dialog]');
     await dialog.waitFor({ state: 'visible' });
     ensure(await dialog.getAttribute('open') !== null, `${browserName} ${viewport.name}: founder dialog did not open`);
+    await page.waitForTimeout(300);
 
     const geometry = await dialog.evaluate((node) => {
       const rect = node.getBoundingClientRect();

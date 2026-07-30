@@ -12,7 +12,7 @@ Reviewed: 14 July 2026
 | Personal WebSite | Generated root `#website` | Explicit central `site.id`; publisher remains Vishal |
 | ProfilePage | Personal About profile | Explicit canonical `person.profileId` and material review date |
 | NovaPharm Organization | Personal-domain `/ventures/#novapharm-healthcare` | Corporate-domain `https://novapharmhealthcare.com/#organization` |
-| Person jobTitle | `Founder & CEO` | `Chief Executive Officer`; founder relationship represented separately |
+| Person jobTitle | Former combined founder/executive title | `Chief Executive Officer`; founder relationship represented separately |
 | Personal essays publisher | Vishal | Explicitly tested and preserved |
 | facts.json | Schema version 1; no entity-id contract | Schema version 2 with canonical Person, WebSite, ProfilePage and corporate identifiers |
 

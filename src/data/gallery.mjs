@@ -1,6 +1,6 @@
 export const galleryMeta = Object.freeze({
   name: 'Vishal Chakravarty Portrait Gallery',
-  description: 'A curated portrait gallery of Vishal Chakravarty, Founder and CEO of NovaPharm Healthcare Ltd, featuring editorial, professional and founder-at-work photography.',
+  description: 'A curated portrait gallery of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, featuring editorial, professional and founder-at-work photography.',
   path: '/gallery/',
 });
 

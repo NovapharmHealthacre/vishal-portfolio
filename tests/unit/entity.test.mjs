@@ -24,13 +24,17 @@ test('entity facts match the verified ledger', () => {
 });
 
 test('founder biographies express the approved pharmaceutical positioning', () => {
-  assert.match(person.shortBio, /Founder & CEO of NovaPharm Healthcare Ltd/);
+  assert.equal(person.role, 'Chief Executive Officer, NovaPharm Healthcare Ltd');
+  assert.equal(person.founderRelationship, 'Founder of NovaPharm Healthcare Ltd');
+  assert.match(person.shortBio, /is Chief Executive Officer of NovaPharm Healthcare Ltd\./);
+  assert.match(person.shortBio, /He founded the UK-registered pharmaceutical company in 2025/);
   assert.match(person.shortBio, /product strategy, market access, manufacturing partnerships and resilient supply/);
   assert.match(
     person.mediumBio,
     /His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025\./,
   );
   assert.match(person.mediumBio, /technology transfer, sourcing, supply and commercial market entry/);
+  assert.doesNotMatch(person.mediumBio, /Founder\s*(?:&|and)\s*(?:Chief Executive Officer|CEO)/i);
   assert.doesNotMatch(person.mediumBio, /does not present|not licensed|not operational/i);
 });
 
