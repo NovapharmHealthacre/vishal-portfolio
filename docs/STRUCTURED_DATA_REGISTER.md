@@ -1,6 +1,6 @@
 # Structured data register
 
-Reviewed: 14 July 2026
+Reviewed: 30 July 2026
 
 ## Canonical nodes
 
@@ -29,9 +29,9 @@ Reviewed: 14 July 2026
 
 ## Property rules
 
-- `jobTitle` is `Chief Executive Officer`; visible founder status is represented separately through the Organization founder relationship and visible role copy.
+- `jobTitle` and the public executive designation are `Chief Executive Officer`; founder status is represented separately through the Organization founder relationship and visible governance copy.
 - `sameAs` contains only the verified exact LinkedIn profile.
-- Authored Yakuji pages are publication records, not independent `subjectOf` biographical coverage.
+- Authored Yakuji Nippo and Pharmaceutical Commerce pages are publication records, not independent `subjectOf` biographical coverage.
 - Organization identifier uses a Companies House PropertyValue.
 - Direct image URLs, dimensions and captions are supplied.
 - `dateModified` uses material page/article dates.

@@ -22,7 +22,7 @@ Personal essays remain authored and published by Vishal. Vishal’s Person node 
 
 ## Other implementation changes
 
-- Structured `jobTitle` is now `Chief Executive Officer`; visible role remains Founder & CEO.
+- Structured `jobTitle` is `Chief Executive Officer`. As of the 30 July 2026 cross-estate alignment, the visible executive designation also uses `Chief Executive Officer`; founder remains a separate governance relationship.
 - Route-specific material modification dates replace a global static-page date.
 - `facts.json` version 2 publishes the canonical entity contract.
 - Sitemap output is checked against exact canonical route and material-date sources.

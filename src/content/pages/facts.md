@@ -7,7 +7,8 @@ public: true
 
 ## At a glance
 
-- **Founder & CEO:** NovaPharm Healthcare Ltd
+- **Executive role:** Chief Executive Officer, NovaPharm Healthcare Ltd
+- **Governance relationship:** Founder of NovaPharm Healthcare Ltd
 - **Focus:** Pharmaceutical entrepreneurship and market access
 - **Areas of work:** Product strategy, licensing, manufacturing, technology transfer, sourcing and supply
 - **Markets:** United Kingdom, Europe and selected international regulated markets
@@ -39,15 +40,17 @@ Vishal leads the company’s strategy, product selection, partnerships, commerci
 
 [Explore NovaPharm Healthcare]({{COMPANY_URL}}) or [view the company record]({{COMPANIES_HOUSE_URL}}).
 
-## Selected publications
+## External publications
 
-Vishal contributes to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. Published work includes:
+Vishal contributes to Yakuji Nippo and Pharmaceutical Commerce. Verified publisher-hosted work includes:
 
 - *UK and EU Pharmaceutical Market Access Pathways After Brexit*
 - *Regulatory and Compliance Considerations Post-Brexit*
 - *Parallel Import Frameworks and Risk Considerations*
+- *Compliance-Driven Approaches to Cross-Border Market Entry*
+- *Why Onshoring Alone Won’t Secure Pharma Supply Chains*
 
-See [Writing and Media](/media/) for English and Japanese publication links.
+See [Writing and Media](/media/) for the original English and Japanese publisher links.
 
 ## Selected essays
 

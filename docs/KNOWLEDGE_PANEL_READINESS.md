@@ -18,7 +18,7 @@ A Knowledge Panel cannot be created or guaranteed by adding schema. Google gener
 - A public facts page and machine-readable facts record.
 - Verified LinkedIn identity only in `sameAs`.
 - Companies House organisation evidence.
-- Publisher-hosted Yakuji publication URLs.
+- Publisher-hosted Yakuji Nippo and Pharmaceutical Commerce publication URLs.
 - Stable canonical routes and structured data.
 - Correction contact and material review dates.
 

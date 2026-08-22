@@ -182,7 +182,14 @@ write(
         organization: company.id,
         organizationWebsite: company.websiteId,
       },
-      person: { name: person.name, role: person.role, jobTitle: person.jobTitle, proposition: person.proposition, sameAs: person.sameAs },
+      person: {
+        name: person.name,
+        role: person.role,
+        founderRelationship: person.founderRelationship,
+        jobTitle: person.jobTitle,
+        proposition: person.proposition,
+        sameAs: person.sameAs,
+      },
       company: {
         name: company.name,
         brandName: company.brandName,

@@ -9,7 +9,7 @@ category: Product economics
 canonicalPath: /essays/minimum-batch-size-product-future/
 legacyPaths: []
 socialImage: /images/social/default-og.jpg
-sources: [{"label":"European Commission EU GMP Annex 15: Qualification and Validation","url":"https://health.ec.europa.eu/document/download/7c6c5b3c-4c15-4a75-a7e3-828e48390703_en?filename=2015-10_annex15.pdf"},{"label":"ICH Q8(R2) Pharmaceutical Development","url":"https://database.ich.org/sites/default/files/Q8_R2_Guideline.pdf"}]
+sources: [{"label":"European Commission EudraLex Volume 4: Annex 15 Qualification and Validation","url":"https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en"},{"label":"ICH Q8(R2) Pharmaceutical Development","url":"https://database.ich.org/sites/default/files/Q8_R2_Guideline.pdf"}]
 related: ["choosing-a-cmo-for-regulated-markets", "technology-transfer-before-formula-moves", "route-to-market-before-launch"]
 public: true
 ---

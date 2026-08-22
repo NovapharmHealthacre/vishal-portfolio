@@ -19,7 +19,7 @@ The official OpenAI developer-docs connector was unavailable and could not be in
 - Company identifier: `https://vishal.novapharmhealthcare.com/ventures/#novapharm-healthcare`
 - Company domain: `https://novapharmhealthcare.com/`
 - Verified profile for `sameAs`: `https://www.linkedin.com/in/vishal-chakravarty`
-- Verified publication evidence: Yakuji Nippo article URLs
+- Verified publication evidence: Yakuji Nippo and Pharmaceutical Commerce article URLs
 
 Nationality, residence, Wikipedia, conflicting Wikidata QIDs, Crunchbase, GitHub, X, Instagram and YouTube are omitted.
 
@@ -80,7 +80,7 @@ The facts page will expose:
 - company name, number, incorporation date and current registration status;
 - explicit distinction between registration, regulated permission and roadmap;
 - verified LinkedIn and company domain;
-- Yakuji publication links;
+- Yakuji Nippo and Pharmaceutical Commerce publication links;
 - last-reviewed date and correction contact.
 
 No hidden SEO biography is used.

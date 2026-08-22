@@ -1,6 +1,6 @@
 # Off-site authority plan
 
-Reviewed: 14 July 2026
+Reviewed: 22 August 2026
 
 ## Objective
 
@@ -8,8 +8,8 @@ Build legitimate external corroboration around Vishal’s professional identity 
 
 ## Priority channels
 
-1. Complete the publisher-hosted Yakuji Nippo series when the fourth article is genuinely live.
-2. Contribute source-led guest analysis to established pharmaceutical, regulatory and founder publications.
+1. Maintain the complete publisher-hosted Yakuji Nippo series and Pharmaceutical Commerce commentary record.
+2. Contribute source-led guest analysis to established pharmaceutical, regulatory and founder publications where there is genuine editorial value.
 3. Provide concise expert commentary when a journalist or editor requests insight within the verified public scope.
 4. Participate in relevant podcasts, panels or roundtables only when a real invitation and public listing exist.
 5. Develop original public frameworks that editors and professionals can reference.

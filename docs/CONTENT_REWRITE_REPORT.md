@@ -43,7 +43,7 @@ Before: registry facts, status labels and abstract operating aphorisms dominated
 
 After:
 
-- hero identifies Vishal as Founder & CEO and a pharmaceutical entrepreneur;
+- hero identified Vishal using the then-approved combined founder/executive wording and as a pharmaceutical entrepreneur; the public executive designation was aligned to Chief Executive Officer on 30 July 2026;
 - proposition states the NovaPharm market-access, specialist-medicine and supply ambition;
 - proof strip presents areas of work rather than company metadata;
 - founder thesis explains the gap between product approval and market access;

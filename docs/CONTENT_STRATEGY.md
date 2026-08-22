@@ -10,7 +10,7 @@ This wording is intentionally active but non-absolute. It describes Vishal's are
 
 ## Narrative hierarchy
 
-1. Who Vishal is now: Founder & CEO of a UK-registered company.
+1. Who Vishal is now: Chief Executive Officer of NovaPharm Healthcare Ltd, with the founder relationship stated separately.
 2. What he works on: access, licensing and supply questions in regulated healthcare.
 3. What shaped the work: pharmaceutical experience predating NovaPharm, including SyriMed work from 2020 to 2025.
 4. What NovaPharm is today: an active UK-registered company incorporated in September 2025.
@@ -47,7 +47,7 @@ Editorial index generated from content. Each essay includes author, published/mo
 
 ### Media
 
-Verified Yakuji contribution record with three published instalments in English and Japanese and a planned-fourth status note. No fake press wall.
+Verified external publication record with four Yakuji Nippo instalments in English and Japanese plus one Pharmaceutical Commerce commentary. No fake press wall.
 
 ### Speaking & partnerships
 

@@ -36,7 +36,8 @@ const footerMarkup = () => `
   <footer class="site-footer">
     <div class="footer-intro">
       <p class="eyebrow">Vishal Chakravarty</p>
-      <h2>Founder & CEO,<br>NovaPharm Healthcare Ltd.</h2>
+      <h2>Chief Executive Officer,<br>NovaPharm Healthcare Ltd.</h2>
+      <p class="footer-founder-role">Founder of NovaPharm Healthcare Ltd.</p>
     </div>
     <div class="footer-grid">
       <div>
@@ -129,7 +130,7 @@ export const renderPage = ({
   schemas = [],
   className = '',
   socialImage = defaultSocialImage,
-  socialImageAlt = 'Vishal Chakravarty — Founder and CEO of NovaPharm Healthcare Ltd',
+  socialImageAlt = 'Portrait of Vishal Chakravarty',
   socialImageWidth = 1200,
   socialImageHeight = 630,
   noIndex = false,

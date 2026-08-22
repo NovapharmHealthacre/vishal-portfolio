@@ -198,6 +198,21 @@ export const mediaCollectionSchema = () => ({
       position: index + 1,
       url: publication.english,
       name: publication.title,
+      item: {
+        '@type': 'Article',
+        '@id': `${publication.english}#article`,
+        url: publication.english,
+        headline: publication.title,
+        description: publication.abstract,
+        datePublished: publication.date,
+        inLanguage: 'en',
+        author: { '@type': 'Person', '@id': person.id, name: person.name },
+        publisher: {
+          '@type': 'Organization',
+          name: publication.publisher,
+          url: publication.publisherUrl,
+        },
+      },
     })),
   },
 });

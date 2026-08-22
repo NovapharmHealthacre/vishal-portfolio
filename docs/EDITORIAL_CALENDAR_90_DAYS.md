@@ -77,7 +77,7 @@ No molecule-specific confidential project details or CMO identities.
 ## Weeks 12–13: evidence and correction cycle
 
 - Review public facts and publication status.
-- Add the fourth Yakuji instalment only if a live publisher URL exists.
+- Recheck all current external publication URLs and record any genuinely new publisher-hosted contribution.
 - Review existing essay citations for redirects or material regulatory changes.
 - Compare Search Console snippets with approved metadata.
 - Decide which new article brief has enough evidence and original value to draft next.

@@ -13,7 +13,7 @@ The highest-risk defect is factual rather than visual: the site currently presen
 
 ## Repository location and preservation
 
-- Actual checkout located by remote: `/Users/vishalchakravarty/Documents/Novapharm InfoTech/vishal-portfolio-main`.
+- The authoritative checkout was identified from its verified Git remote outside the initial task workspace.
 - `origin`: `https://github.com/NovapharmHealthacre/vishal-portfolio.git` for fetch and push.
 - Original checkout was clean: `main...origin/main`, no untracked files, ignored `.DS_Store` only.
 - Local `main`, locally recorded `origin/main`, and the GitHub connector all identify `1ae1ff5` as the remote default-branch head.
@@ -75,8 +75,8 @@ Multiple non-Git copies exist in Documents and OneDrive. They are stale exports 
 
 - Companies House identifies NOVAPHARM HEALTHCARE LTD, company number 16716501, as an active private limited company incorporated on 15 September 2025.
 - Current Companies House SIC entries are 21100 and 46460. SIC codes describe a filing category, not proof of regulatory authorisation or current operations.
-- Companies House and public Yakuji Nippo author pages support Vishal Chakravarty as Founder & CEO.
-- Yakuji Nippo has published three instalments of Vishal's UK-EU market-access series in English and Japanese as of the audit date.
+- Companies House and public Yakuji Nippo author pages supported the combined founder/executive wording used at the time of this baseline audit. The canonical public executive designation was changed to Chief Executive Officer on 30 July 2026, with founder retained as a separate governance relationship.
+- The 22 August 2026 release recheck confirms all four Yakuji Nippo instalments in English and Japanese plus one Pharmaceutical Commerce commentary.
 - The Yakuji author profile and verified first-party LinkedIn search result use `novapharmhealthcare.com` and the `.com` email.
 - Authoritative non-public evidence, which is not retained in this repository, places Vishal's pharmaceutical work with SyriMed in 2020-2025, so a “no pharmaceutical background” origin story is contradicted.
 
@@ -115,7 +115,7 @@ Owner-supplied plans and projections are strategy inputs, not proof that planned
 - LinkedIn slugs vary between `vishalchakravarty` and `vishal-chakravarty`; public evidence supports the hyphenated form.
 - Existing essays rely partly on secondary market-statistics and startup blogs. Pharmaceutical factual assertions must be reviewed against primary MHRA, GOV.UK, NHS, NICE or EMA sources before republication.
 
-The release recheck on 13 July 2026 directly reached Companies House, all six Yakuji pages and all five GOV.UK sources. LinkedIn identity was confirmed through its current indexed result. The NovaPharm domain was corroborated by Yakuji and LinkedIn but its direct fetch was rejected by the managed web client's URL-safety layer. See `docs/EXTERNAL_LINK_AUDIT.md`; repeat those two ordinary-browser checks before production.
+The release recheck on 22 August 2026 directly reached all eight Yakuji pages, the Pharmaceutical Commerce commentary, the NovaPharm corporate domain and all five GOV.UK sources. LinkedIn identity remains an owner-controlled external-profile check. See `docs/EXTERNAL_LINK_AUDIT.md`.
 
 ## Image audit
 

@@ -9,7 +9,7 @@ category: Manufacturing
 canonicalPath: /essays/choosing-a-cmo-for-regulated-markets/
 legacyPaths: []
 socialImage: /images/social/default-og.jpg
-sources: [{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"European Commission EU GMP Annex 15: Qualification and Validation","url":"https://health.ec.europa.eu/document/download/7c6c5b3c-4c15-4a75-a7e3-828e48390703_en?filename=2015-10_annex15.pdf"},{"label":"ICH Q10 Pharmaceutical Quality System","url":"https://database.ich.org/sites/default/files/Q10_Guideline.pdf"}]
+sources: [{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"European Commission EudraLex Volume 4: Annex 15 Qualification and Validation","url":"https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en"},{"label":"ICH Q10 Pharmaceutical Quality System","url":"https://database.ich.org/sites/default/files/Q10_Guideline.pdf"}]
 related: ["technology-transfer-before-formula-moves", "minimum-batch-size-product-future", "supply-resilience-before-first-purchase-order"]
 public: true
 ---
