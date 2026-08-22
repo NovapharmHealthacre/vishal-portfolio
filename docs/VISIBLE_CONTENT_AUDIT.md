@@ -77,7 +77,7 @@ The rewrite continues to state only supported facts:
 - Vishal Chakravarty’s executive and founder relationships were both stated; the public executive designation was subsequently aligned to Chief Executive Officer on 30 July 2026, with founder stated separately.
 - NovaPharm Healthcare Ltd is an active UK-registered company incorporated in 2025.
 - Vishal’s pharmaceutical experience includes work with SyriMed between 2020 and 2025.
-- Three Yakuji Nippo instalments are published in English and Japanese.
+- All four Yakuji Nippo instalments are published in English and Japanese, and one Pharmaceutical Commerce commentary is publisher-hosted.
 - The company is building around product strategy, market access, manufacturing partnerships, licensing pathways and supply.
 
 No new customer, licence, product approval, revenue, investor, award, education, partnership or deployed-technology claim was introduced.

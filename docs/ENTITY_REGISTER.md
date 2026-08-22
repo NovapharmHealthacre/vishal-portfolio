@@ -1,6 +1,6 @@
 # Canonical entity register
 
-Reviewed: 30 July 2026
+Reviewed: 22 August 2026
 
 ## Vishal Chakravarty
 
@@ -65,9 +65,9 @@ Nationality, date of birth, residential address, passport data, immigration stat
 | Authoritative registry | Companies House company 16716501 |
 | Regulatory boundary | No MHRA wholesale authorisation is claimed on the personal site |
 
-## Yakuji Nippo publication record
+## External publication record
 
-Three instalments of a planned four-part series are currently recorded. The English and Japanese publisher-hosted URLs in `src/data/entity.mjs` are the authoritative publication links. Authored work is not treated as independent biographical coverage or `subjectOf` evidence.
+All four Yakuji Nippo series instalments are recorded with live English and Japanese publisher URLs. One Pharmaceutical Commerce commentary is also recorded. The five primary publisher records in `src/data/entity.mjs` are the authoritative publication links. Authored work is not treated as independent biographical coverage or `subjectOf` evidence.
 
 ## Governance
 

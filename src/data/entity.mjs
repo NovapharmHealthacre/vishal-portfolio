@@ -1,5 +1,5 @@
-export const verificationDate = '2026-07-30';
-export const profileModifiedDate = '2026-07-30';
+export const verificationDate = '2026-08-22';
+export const profileModifiedDate = '2026-08-22';
 
 export const site = Object.freeze({
   id: 'https://vishal.novapharmhealthcare.com/#website',
@@ -26,7 +26,7 @@ export const person = Object.freeze({
   shortBio:
     'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025 and is building it around product strategy, market access, manufacturing partnerships and resilient supply across regulated markets.',
   mediumBio:
-    'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025. His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. He is building the company around specialist medicines, product and market selection, licensing pathways, manufacturing partnerships, technology transfer, sourcing, supply and commercial market entry. Vishal also contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and writes independently about the decisions that shape regulated pharmaceutical businesses.',
+    'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025. His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. He is building the company around specialist medicines, product and market selection, licensing pathways, manufacturing partnerships, technology transfer, sourcing, supply and commercial market entry. Vishal contributes external analysis to Yakuji Nippo and Pharmaceutical Commerce and writes independently about the decisions that shape regulated pharmaceutical businesses.',
   image: {
     id: `${site.origin}/about/#portrait`,
     path: '/images/portrait/vishal-chakravarty-1440.jpg',
@@ -81,6 +81,9 @@ export const company = Object.freeze({
 export const publications = Object.freeze([
   {
     number: 1,
+    publisher: 'Yakuji Nippo',
+    publisherUrl: 'https://www.yakuji.co.jp/',
+    publicationType: 'External analysis',
     date: '2026-02-06',
     title: 'UK and EU Pharmaceutical Market Access Pathways After Brexit',
     subject: 'Market access after Brexit',
@@ -91,6 +94,9 @@ export const publications = Object.freeze([
   },
   {
     number: 2,
+    publisher: 'Yakuji Nippo',
+    publisherUrl: 'https://www.yakuji.co.jp/',
+    publicationType: 'External analysis',
     date: '2026-03-12',
     title: 'Regulatory and Compliance Considerations Post-Brexit',
     subject: 'Regulatory and compliance strategy',
@@ -101,6 +107,9 @@ export const publications = Object.freeze([
   },
   {
     number: 3,
+    publisher: 'Yakuji Nippo',
+    publisherUrl: 'https://www.yakuji.co.jp/',
+    publicationType: 'External analysis',
     date: '2026-05-12',
     title: 'Parallel Import Frameworks and Risk Considerations',
     subject: 'Parallel import and supply risk',
@@ -108,6 +117,31 @@ export const publications = Object.freeze([
       'An explanation of the parallel-import framework and the licensing, quality, supply and commercial risks that sit behind the opportunity.',
     english: 'https://www.yakuji.co.jp/entry133526.html',
     japanese: 'https://www.yakuji.co.jp/entry133527.html',
+  },
+  {
+    number: 4,
+    publisher: 'Yakuji Nippo',
+    publisherUrl: 'https://www.yakuji.co.jp/',
+    publicationType: 'External analysis',
+    date: '2026-07-23',
+    title:
+      'UK–EU Pharmaceutical Market Access and Compliance in the Post-Brexit Era — 4. Compliance-Driven Approaches to Cross-Border Market Entry',
+    subject: 'Compliance-driven cross-border market entry',
+    abstract:
+      'A compliance-led view of cross-border pharmaceutical entry, connecting market choice with regulatory infrastructure, GDP responsibilities and quality-system readiness across the UK and EU.',
+    english: 'https://www.yakuji.co.jp/entry136963.html',
+    japanese: 'https://www.yakuji.co.jp/entry136964.html',
+  },
+  {
+    publisher: 'Pharmaceutical Commerce',
+    publisherUrl: 'https://www.pharmaceuticalcommerce.com/',
+    publicationType: 'External commentary',
+    date: '2026-07-31',
+    title: 'Why Onshoring Alone Won’t Secure Pharma Supply Chains',
+    subject: 'Pharmaceutical supply resilience beyond onshoring',
+    abstract:
+      'A supply-resilience argument for combining geographic strategy with qualified redundancy, quality maturity, concentration controls and commercially sustainable continuity planning.',
+    english: 'https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains',
   },
 ]);
 
@@ -138,9 +172,14 @@ export const publicFacts = Object.freeze([
     publicSafe: true, approvedWording: 'His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.', pages: ['/about/', '/facts/'],
   },
   {
-    id: 'M-002', label: 'Yakuji Nippo series', value: 'Three instalments published in English and Japanese', status: 'IN_PROGRESS',
-    source: 'Yakuji Nippo', sourceDate: '2026-05-12', lastVerified: verificationDate,
-    publicSafe: true, approvedWording: 'Three instalments are published in English and Japanese.', pages: ['/media/', '/facts/'],
+    id: 'M-002', label: 'Yakuji Nippo series', value: 'Four instalments published in English and Japanese', status: 'VERIFIED_CURRENT',
+    source: 'Yakuji Nippo', sourceDate: '2026-07-23', lastVerified: verificationDate,
+    publicSafe: true, approvedWording: 'Four instalments are published in English and Japanese.', pages: ['/media/', '/facts/'],
+  },
+  {
+    id: 'M-004', label: 'External publication record', value: 'Five publisher-hosted contributions', status: 'VERIFIED_CURRENT',
+    source: 'Yakuji Nippo and Pharmaceutical Commerce', sourceDate: '2026-07-31', lastVerified: verificationDate,
+    publicSafe: true, approvedWording: 'Five publisher-hosted contributions are verified.', pages: ['/media/', '/facts/'],
   },
 ]);
 

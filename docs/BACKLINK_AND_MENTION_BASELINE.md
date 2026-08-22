@@ -1,6 +1,6 @@
 # Backlink and mention baseline
 
-Audit date: 14 July 2026
+Audit date: 22 August 2026
 
 This is a public-source baseline, not a complete backlink index. Search Console and Bing Webmaster exports are required for authoritative property-level reporting.
 
@@ -8,13 +8,17 @@ This is a public-source baseline, not a complete backlink index. Search Console 
 
 ### Yakuji Nippo
 
-Three instalments of a planned four-part series have live English and Japanese publisher-hosted URLs. These demonstrate authored professional work and provide legitimate external links and attribution.
+All four series instalments have live English and Japanese publisher-hosted URLs. These demonstrate authored professional work and provide legitimate external links and attribution.
 
 They should be classified as:
 
 - publisher-hosted authored contributions;
 - evidence of writing and subject-matter participation;
 - not independent biographical coverage about Vishal.
+
+### Pharmaceutical Commerce
+
+One live publisher-hosted commentary, *Why Onshoring Alone Won’t Secure Pharma Supply Chains*, is verified. It is classified as an authored professional contribution, not independent biographical coverage.
 
 ### LinkedIn
 
@@ -47,14 +51,14 @@ From Search Console and Bing Webmaster Tools, export:
 - top linked pages;
 - anchor text where available;
 - newly discovered and lost links;
-- referring pages for each Yakuji article;
+- referring pages for each verified external article;
 - branded-query impressions and clicks.
 
 Store private exports outside the public repository. Summarise only public-safe trends here if useful.
 
 ## Quality criteria
 
-A desirable mention is relevant, editorially genuine, accurate, publicly accessible and connected to Vishal’s verified professional work. One qualified pharmaceutical publication is more valuable than many unrelated directory links.
+A desirable mention is relevant, editorially genuine, accurate, publicly accessible and connected to Vishal’s verified professional work. A small number of qualified pharmaceutical publications is more valuable than many unrelated directory links.
 
 ## Next baseline date
 

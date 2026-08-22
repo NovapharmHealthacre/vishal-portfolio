@@ -1,6 +1,6 @@
 # Claim audit summary
 
-Audit date: 12 July 2026
+Audit date: 22 August 2026
 Control source: `docs/FACT_LEDGER.md`
 Public-data implementation target: `src/data/entity.mjs`
 
@@ -12,13 +12,13 @@ Owner-supplied private research is not retained in this repository. It is not a 
 
 ## Ledger snapshot
 
-The ledger contains 40 material claims.
+The ledger contains 41 material claims.
 
 | Status | Count | Release treatment |
 |---|---:|---|
-| `VERIFIED_CURRENT` | 14 | May be published using approved wording and central data. |
+| `VERIFIED_CURRENT` | 16 | May be published using approved wording and central data. |
 | `VERIFIED_HISTORICAL` | 1 | May be published conservatively, without an invented role or title. |
-| `IN_PROGRESS` | 1 | May be published only with precise current count/status and visible labelling. |
+| `IN_PROGRESS` | 0 | No in-progress media claim is currently published. |
 | `PLANNED` | 5 | May be published only as roadmap/plan language with an adjacent label. |
 | `PROJECTION` | 0 | None approved for publication. |
 | `PRIVATE_DO_NOT_PUBLISH` | 4 | Exclude from source, metadata, schema, feeds, social assets and `dist/`. |
@@ -27,8 +27,8 @@ The ledger contains 40 material claims.
 
 Release grouping:
 
-- 15 verified current/historical claims are eligible for conservative publication.
-- 6 in-progress/planned claims are conditional and must carry visible status language.
+- 17 verified current/historical claims are eligible for conservative publication.
+- 5 planned claims are conditional and must carry visible status language.
 - 19 private, unsupported or unapproved claims must remain absent.
 
 ## Approved public entity foundation
@@ -44,13 +44,13 @@ Release grouping:
 | C-005 | Companies House records SIC codes 21100 and 46460. The statement must explain that SIC filing is not authorisation or proof of operations. | Facts only |
 | C-006, C-007 | `.com` company domain and public founder email. Email deliverability remains an owner release check. | Ventures, facts, contact |
 | M-001 | Verified Yakuji Nippo contributor role with restrained description. | Home, about, media |
+| M-002, M-004 | Four bilingual Yakuji Nippo instalments and one Pharmaceutical Commerce commentary, linked only to verified publisher records. | About, media, facts, schema |
 | E-001, E-002 | Canonical personal origin and the approved founder/operator role description. | All shared metadata and entity copy |
 
 ## Conditional public claims
 
 | Claim IDs | Required wording/status | Prohibited escalation |
 |---|---|---|
-| M-002 | `Three instalments of a planned four-part series are published in English and Japanese.` Label/current date must remain visible. | Do not say the four-part series is complete until a fourth publisher URL exists. |
 | C-011 | `Its current plan focuses on oncology and specialty-medicine access.` | Do not imply a launched portfolio, stocked products, customers or supply capability. |
 | C-012 | `A digital B2B workflow is part of the company's product roadmap.` | Do not say platform, portal or marketplace is live or in customer use. |
 | C-013 | `Forecasting support is being explored as part of the roadmap.` | No deployed AI, performance percentage, model, data or algorithm claim. |
@@ -81,7 +81,7 @@ Although C-015 is classified `PLANNED`, its approved wording is omission. The pu
 | Expert, visionary, thought leader, leading, first or unique | Unsupported prestige/competitive claims. | Use the approved founder/operator description. |
 | Wikipedia/Wikidata identity | No reliable matching article; conflicting QIDs. | Omit. |
 | GitHub, X, Instagram, YouTube or Crunchbase identity | Ownership not established. | Omit until individually verified. |
-| Fully published four-part Yakuji series | Only three instalments verified at audit date. | Use the exact in-progress sentence. |
+| More than five external contributions | Five publisher-hosted contributions are verified at the audit date. | Publish only records with a live primary publisher URL. |
 
 ## Private exclusion boundary
 

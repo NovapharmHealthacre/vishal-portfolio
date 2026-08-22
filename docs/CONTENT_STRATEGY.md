@@ -47,7 +47,7 @@ Editorial index generated from content. Each essay includes author, published/mo
 
 ### Media
 
-Verified Yakuji contribution record with three published instalments in English and Japanese and a planned-fourth status note. No fake press wall.
+Verified external publication record with four Yakuji Nippo instalments in English and Japanese plus one Pharmaceutical Commerce commentary. No fake press wall.
 
 ### Speaking & partnerships
 

@@ -1,6 +1,6 @@
 # External entity consistency
 
-Reviewed: 30 July 2026
+Reviewed: 22 August 2026
 
 This matrix records approved public values and owner actions. It does not authorise automatic changes to external accounts.
 
@@ -11,7 +11,8 @@ This matrix records approved public values and owner actions. It does not author
 | NovaPharm corporate website | NovaPharm Healthcare | Founder relationship to Vishal | Legal name, number and incorporation date must match Companies House; regulatory status must remain accurate | `novapharmhealthcare.com` | Corporate site should publish `#organization` and reference the personal Person `@id`. |
 | NovaPharm LinkedIn company page | NovaPharm Healthcare | Use Chief Executive Officer as the executive designation; state founder as a separate relationship | Use correct name, domain, incorporation year and conservative capability wording | Owner-controlled external account | Audit company description, industry, website and logo. Remove any unsupported MHRA/NHS/customer/deployed-technology language. |
 | Companies House | NOVAPHARM HEALTHCARE LTD | Public officer/filing record as officially shown | Company 16716501; incorporated 15 September 2025 | Official registry record | Authoritative legal source. Do not reinterpret SIC codes as licences. |
-| Yakuji Nippo | Vishal Chakravarty | Contributor/author | NovaPharm relationship as shown by publisher | Six live English/Japanese article URLs for three instalments | Verified publication evidence. Authored content is not independent subject coverage. |
+| Yakuji Nippo | Vishal Chakravarty | Contributor/author | NovaPharm relationship as shown by publisher | Eight live English/Japanese article URLs for four instalments | Verified publication evidence. Authored content is not independent subject coverage. |
+| Pharmaceutical Commerce | Vishal Chakravarty | Contributor/author | Author biography as shown by publisher | One live commentary URL | Verified publication evidence. Authored content is not independent subject coverage. |
 | Other social profiles | Unverified | Unverified | Unverified | X, Instagram, YouTube, personal GitHub and Crunchbase | Excluded from links and `sameAs` until the owner confirms exact URLs and the profiles are complete. |
 | Wikipedia / Wikidata | Not approved | Not approved | Conflicting or circular records may exist | None treated as official | Do not create or edit for SEO. Consider only under genuine community policies and independent sourcing. |
 

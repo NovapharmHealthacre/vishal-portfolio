@@ -70,7 +70,7 @@ These are build-time diagnostics, not measured Core Web Vitals or Lighthouse sco
 
 ## External-link evidence
 
-Direct web checks reached Companies House, all six Yakuji Nippo article pages and all five GOV.UK essay sources. The exact LinkedIn identity was corroborated by its current indexed result. The company `.com` domain was corroborated by Yakuji and LinkedIn but could not be directly fetched by the managed web client; see `docs/EXTERNAL_LINK_AUDIT.md` and A-018.
+The 22 August 2026 release recheck reached Companies House, all eight Yakuji Nippo article pages, the Pharmaceutical Commerce commentary, the company `.com` domain and all five GOV.UK essay sources. LinkedIn remains an owner-controlled external-profile check; see `docs/EXTERNAL_LINK_AUDIT.md` and A-018.
 
 ## Blocked release gates
 

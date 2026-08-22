@@ -11,6 +11,7 @@ import {
   retrieveFounderEvidence,
   tokenize,
 } from '../../public/assets/founder-ai.js';
+import { publications } from '../../src/data/entity.mjs';
 
 const knowledge = JSON.parse(
   fs.readFileSync(path.resolve('public/assets/founder-knowledge.json'), 'utf8'),
@@ -20,7 +21,7 @@ test('founder evidence index contains approved public sources only', () => {
   assert.equal(knowledge.schemaVersion, '1.0.0');
   assert.equal(knowledge.label, RESPONSE_LABEL);
   assert.equal(knowledge.sourceCount, knowledge.documents.length);
-  assert.equal(knowledge.documents.length, 12);
+  assert.equal(knowledge.documents.length, 17);
   assert.deepEqual(knowledge.privacy, {
     externalInference: false,
     queryLogging: false,
@@ -28,15 +29,21 @@ test('founder evidence index contains approved public sources only', () => {
     storage: false,
   });
 
-  const allowedTypes = new Set(['Published essay', 'Verified biography', 'Official public register']);
+  const allowedTypes = new Set(['Published essay', 'Verified biography', 'Official public register', 'External publication']);
   for (const document of knowledge.documents) {
     assert.equal(allowedTypes.has(document.type), true, `Unexpected source type: ${document.type}`);
     assert.match(
       document.url,
-      /^https:\/\/(?:vishal\.novapharmhealthcare\.com|find-and-update\.company-information\.service\.gov\.uk)\//,
+      /^https:\/\/(?:vishal\.novapharmhealthcare\.com|find-and-update\.company-information\.service\.gov\.uk|www\.yakuji\.co\.jp|www\.pharmaceuticalcommerce\.com)\//,
     );
     assert.ok(document.passages.length > 0, `Missing passages for ${document.id}`);
   }
+
+  const externalPublications = knowledge.documents.filter((document) => document.type === 'External publication');
+  assert.deepEqual(
+    externalPublications.map((document) => document.url),
+    publications.map((publication) => publication.english),
+  );
 
   const publishedEvidence = JSON.stringify(knowledge.documents);
   assert.doesNotMatch(
@@ -64,6 +71,19 @@ test('tokenisation and retrieval are deterministic and source bound', () => {
   assert.equal(answer.answer, first[0].passage);
   assert.ok(first.some((citation) => citation.passage === answer.answer));
   assert.ok(answer.citations.length > 0);
+});
+
+test('external publication questions resolve to verified publisher evidence', () => {
+  const results = retrieveFounderEvidence(
+    knowledge,
+    'Which external publication explains why onshoring alone will not secure pharma supply chains?',
+  );
+  assert.ok(results.length > 0);
+  assert.equal(results[0].title, 'Why Onshoring Alone Won’t Secure Pharma Supply Chains');
+  assert.equal(
+    results[0].url,
+    'https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains',
+  );
 });
 
 test('unsupported questions abstain without inventing a view', () => {

@@ -1,9 +1,11 @@
 import { company, person, publications, publicFacts, site, verificationDate } from './entity.mjs';
 
+const yakujiPublications = publications.filter((publication) => publication.publisher === 'Yakuji Nippo');
+
 const publicationRecord = publications
   .map(
     (publication) =>
-      `### ${publication.title}\n\n**${publication.subject} · ${new Date(`${publication.date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}**\n\n${publication.abstract}\n\n- [Read in English](${publication.english})\n- [日本語で読む](${publication.japanese})`,
+      `### ${publication.title}\n\n**${publication.publisher}${publication.number ? ` · Article ${publication.number} of ${yakujiPublications.length}` : ''} · ${new Date(`${publication.date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}**\n\n${publication.abstract}\n\n- [Read at ${publication.publisher}](${publication.english})${publication.japanese ? `\n- [日本語版を読む](${publication.japanese})` : ''}`,
   )
   .join('\n\n');
 
@@ -35,7 +37,8 @@ export const contentVariables = Object.freeze({
   COMPANY_CURRENT_FOCUS: company.currentFocus,
   COMPANY_REGULATORY_STATUS: company.regulatoryStatus,
   COMPANY_ROADMAP: company.roadmap.map((item) => `- ${item}`).join('\n'),
-  PUBLISHED_INSTALLMENT_COUNT: publications.length,
+  PUBLISHED_INSTALLMENT_COUNT: yakujiPublications.length,
+  EXTERNAL_PUBLICATION_COUNT: publications.length,
   VERIFICATION_DATE: formatIsoDate(verificationDate),
   PUBLICATION_RECORD: publicationRecord,
   PUBLIC_FACT_RECORD: publicFacts.map((fact) => `- **${fact.label}:** ${fact.value} — ${fact.source}`).join('\n'),

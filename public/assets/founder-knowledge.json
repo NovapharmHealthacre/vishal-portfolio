@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "reviewedAt": "2026-07-22",
+  "reviewedAt": "2026-08-22",
   "label": "AI-generated summary based on Vishal’s published work",
   "privacy": {
     "externalInference": false,
@@ -14,7 +14,7 @@
     "No medical, legal, investment or personalised regulatory advice",
     "No new personal view is attributed to Vishal"
   ],
-  "sourceCount": 12,
+  "sourceCount": 17,
   "documents": [
     {
       "id": "essay-choosing-a-cmo-for-regulated-markets",
@@ -1299,7 +1299,7 @@
       "type": "Verified biography",
       "author": "Vishal Chakravarty",
       "published": "2026-07-15",
-      "modified": "2026-07-15",
+      "modified": "2026-08-22",
       "topics": [
         "Biography",
         "NovaPharm Healthcare",
@@ -1329,7 +1329,7 @@
       "type": "Official public register",
       "author": "Companies House",
       "published": "2025-09-15",
-      "modified": "2026-07-15",
+      "modified": "2026-08-22",
       "topics": [
         "NovaPharm Healthcare",
         "Company record",
@@ -1340,6 +1340,111 @@
         {
           "heading": "Company identity",
           "passage": "NOVAPHARM HEALTHCARE LTD is registered in England and Wales under company number 16716501 and was incorporated on 15 September 2025."
+        }
+      ]
+    },
+    {
+      "id": "external-yakuji-article-1",
+      "title": "UK and EU Pharmaceutical Market Access Pathways After Brexit",
+      "url": "https://www.yakuji.co.jp/entry129529.html",
+      "type": "External publication",
+      "author": "Vishal Chakravarty",
+      "published": "2026-02-06",
+      "modified": "2026-02-06",
+      "topics": [
+        "Post-Brexit market access",
+        "UK pharmaceutical regulation",
+        "EU pharmaceutical regulation"
+      ],
+      "summary": "Publisher-hosted analysis of the separate UK and EU pathways that pharmaceutical companies must connect through product, regulatory and commercial planning.",
+      "passages": [
+        {
+          "heading": "Publication summary",
+          "passage": "The analysis connects separate UK and EU market-access pathways through product, regulatory and commercial planning after Brexit."
+        }
+      ]
+    },
+    {
+      "id": "external-yakuji-article-2",
+      "title": "Regulatory and Compliance Considerations Post-Brexit",
+      "url": "https://www.yakuji.co.jp/entry131265.html",
+      "type": "External publication",
+      "author": "Vishal Chakravarty",
+      "published": "2026-03-12",
+      "modified": "2026-03-12",
+      "topics": [
+        "Post-Brexit compliance",
+        "Regulatory strategy",
+        "Market-entry sequencing"
+      ],
+      "summary": "Publisher-hosted review of the responsibilities, sequencing and compliance questions created by the post-Brexit pharmaceutical environment.",
+      "passages": [
+        {
+          "heading": "Publication summary",
+          "passage": "The review considers how regulatory responsibilities, compliance questions and market-entry sequencing changed in the post-Brexit pharmaceutical environment."
+        }
+      ]
+    },
+    {
+      "id": "external-yakuji-article-3",
+      "title": "Parallel Import Frameworks and Risk Considerations",
+      "url": "https://www.yakuji.co.jp/entry133526.html",
+      "type": "External publication",
+      "author": "Vishal Chakravarty",
+      "published": "2026-05-12",
+      "modified": "2026-05-12",
+      "topics": [
+        "Parallel import",
+        "Licensing risk",
+        "Supply governance"
+      ],
+      "summary": "Publisher-hosted explanation of the parallel-import framework and the licensing, quality, supply and commercial risks behind the opportunity.",
+      "passages": [
+        {
+          "heading": "Publication summary",
+          "passage": "The analysis treats parallel import as a connected licensing, quality, supply and commercial decision rather than a simple sourcing opportunity."
+        }
+      ]
+    },
+    {
+      "id": "external-yakuji-article-4",
+      "title": "UK–EU Pharmaceutical Market Access and Compliance in the Post-Brexit Era — 4. Compliance-Driven Approaches to Cross-Border Market Entry",
+      "url": "https://www.yakuji.co.jp/entry136963.html",
+      "type": "External publication",
+      "author": "Vishal Chakravarty",
+      "published": "2026-07-23",
+      "modified": "2026-07-23",
+      "topics": [
+        "Cross-border pharmaceutical market entry",
+        "Compliance strategy",
+        "GDP and quality systems"
+      ],
+      "summary": "Publisher-hosted compliance-led view of cross-border pharmaceutical entry across the UK and EU.",
+      "passages": [
+        {
+          "heading": "Publication summary",
+          "passage": "The analysis connects cross-border market choice with regulatory infrastructure, GDP responsibilities and quality-system readiness across the UK and EU."
+        }
+      ]
+    },
+    {
+      "id": "external-pharmaceutical-commerce-onshoring",
+      "title": "Why Onshoring Alone Won’t Secure Pharma Supply Chains",
+      "url": "https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains",
+      "type": "External publication",
+      "author": "Vishal Chakravarty",
+      "published": "2026-07-31",
+      "modified": "2026-07-31",
+      "topics": [
+        "Pharmaceutical supply resilience",
+        "Qualified redundancy",
+        "Supply continuity"
+      ],
+      "summary": "Publisher-hosted commentary on the operating conditions required for resilient pharmaceutical supply beyond onshoring alone.",
+      "passages": [
+        {
+          "heading": "Publication summary",
+          "passage": "The commentary argues that geographic strategy must be combined with qualified redundancy, quality maturity, concentration controls and commercially sustainable continuity planning."
         }
       ]
     }

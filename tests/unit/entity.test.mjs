@@ -20,7 +20,10 @@ test('entity facts match the verified ledger', () => {
   assert.equal(site.email, 'vishal@novapharmhealthcare.com');
   assert.equal(site.correctionEmail, site.email);
   assert.deepEqual(person.sameAs, [site.linkedIn]);
-  assert.equal(publications.length, 3);
+  assert.equal(publications.length, 5);
+  assert.equal(publications.filter((publication) => publication.publisher === 'Yakuji Nippo').length, 4);
+  assert.equal(publications.filter((publication) => publication.publisher === 'Pharmaceutical Commerce').length, 1);
+  assert.equal(publications.every((publication) => publication.english.startsWith('https://')), true);
 });
 
 test('founder biographies express the approved pharmaceutical positioning', () => {
@@ -36,6 +39,7 @@ test('founder biographies express the approved pharmaceutical positioning', () =
   assert.match(person.mediumBio, /technology transfer, sourcing, supply and commercial market entry/);
   assert.doesNotMatch(person.mediumBio, /Founder\s*(?:&|and)\s*(?:Chief Executive Officer|CEO)/i);
   assert.doesNotMatch(person.mediumBio, /does not present|not licensed|not operational/i);
+  assert.match(person.mediumBio, /Yakuji Nippo and Pharmaceutical Commerce/);
 });
 
 test('personal and corporate entities use non-competing canonical identifiers', () => {

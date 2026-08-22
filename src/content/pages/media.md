@@ -1,27 +1,30 @@
 ---
 title: Writing and Media
-description: Published writing and media profile for Vishal Chakravarty, covering UK–EU pharmaceutical market access, post-Brexit regulation and pharmaceutical strategy.
+description: Publisher-hosted writing and media profile for Vishal Chakravarty, covering UK–EU pharmaceutical market access, supply resilience and pharmaceutical strategy.
 canonicalPath: /media/
 public: true
 ---
 
-## Featured publication series
+## External publications
 
-Vishal contributes analysis to Yakuji Nippo, a Japanese pharmaceutical publication, on UK–EU pharmaceutical market access and compliance in the post-Brexit era.
+Vishal contributes analysis to Yakuji Nippo and Pharmaceutical Commerce. {{EXTERNAL_PUBLICATION_COUNT}} publisher-hosted contributions are verified below.
 
-The published series examines how regulatory pathways, commercial sequencing, supply responsibilities and market-entry decisions changed after the United Kingdom left the European Union.
+The four-part Yakuji Nippo series examines UK–EU pharmaceutical market access and compliance after Brexit. His Pharmaceutical Commerce commentary considers the operating conditions required for resilient pharmaceutical supply.
+
+Each link opens the original publisher record.
 
 {{PUBLICATION_RECORD}}
 
 ## Publication themes
 
-The series addresses:
+The published work addresses:
 
 - separate UK and EU pharmaceutical market-access pathways;
 - post-Brexit regulatory and compliance planning;
 - parallel-import licensing and risk;
 - cross-border market entry;
-- the relationship between regulatory strategy and commercial execution.
+- the relationship between regulatory strategy and commercial execution;
+- onshoring, qualified redundancy and supply continuity.
 
 ## Selected independent essays
 

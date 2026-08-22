@@ -60,7 +60,7 @@ Pharmaceutical programmes are long. Vishal uses that time to deepen product know
 
 ## Writing and public thinking
 
-Vishal contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. {{PUBLISHED_INSTALLMENT_COUNT}} instalments are published in English and Japanese.
+Vishal contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. All {{PUBLISHED_INSTALLMENT_COUNT}} instalments are published in English and Japanese. He also contributes external commentary to Pharmaceutical Commerce.
 
 His independent essays explore pharmaceutical market access, CMO and CDMO selection, technology transfer, supply resilience, portfolio strategy and founder execution in regulated markets.
 

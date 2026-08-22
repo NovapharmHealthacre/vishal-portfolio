@@ -59,6 +59,8 @@ export const renderHome = (articles) => {
   const meta = pageMeta.home;
   const selected = articles.slice(0, 3);
   const featuredPortraits = galleryImages.filter((image) => image.featured).slice(0, 3);
+  const yakujiPublication = publications.find((publication) => publication.publisher === 'Yakuji Nippo');
+  if (!yakujiPublication) throw new Error('Missing verified Yakuji Nippo publication record');
   const body = `
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
@@ -95,7 +97,7 @@ export const renderHome = (articles) => {
 
     <section class="writing section" id="essays" aria-labelledby="writing-title"><div class="section-heading"><div><p class="section-number">04 / Selected thinking</p><h2 id="writing-title">Pharmaceutical essays</h2></div><a class="text-link" href="/thinking/">All essays <span aria-hidden="true">→</span></a></div><div class="essay-list">${selected.map(articleCard).join('')}</div></section>
 
-    <section class="evidence section" aria-labelledby="evidence-title"><p class="section-number">05 / Selected record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, independent publication links and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${publications[0].english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Founder profile</span><strong>Biography, focus and official links</strong>${arrow}</a></div></div></section>
+    <section class="evidence section" aria-labelledby="evidence-title"><p class="section-number">05 / Selected record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, publisher-hosted writing and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Founder profile</span><strong>Biography, focus and official links</strong>${arrow}</a></div></div></section>
 
     <section class="gallery-preview section" aria-labelledby="gallery-preview-title">
       <div class="section-heading"><div><p class="section-number">06 / Portrait gallery</p><h2 id="gallery-preview-title">Founder portraits.</h2></div><a class="text-link" href="/gallery/">View the gallery <span aria-hidden="true">→</span></a></div>
