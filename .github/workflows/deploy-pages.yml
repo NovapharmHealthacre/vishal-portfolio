@@ -72,8 +72,6 @@ jobs:
         run: npm run test:seo-authority
       - name: Visible content validation
         run: npm run test:visible-content
-      - name: Gallery validation
-        run: npm run test:gallery
       - name: Accessibility preflight
         run: npm run test:a11y
       - name: Performance budget
@@ -121,23 +119,28 @@ jobs:
               -H 'Cache-Control: no-cache' \
               -H 'Pragma: no-cache' \
               "${SITE_ORIGIN}/?${cache_key}-${attempt}" || true)
-            assistant=$(curl --fail --silent --show-error --location \
+            gallery=$(curl --fail --silent --show-error --location \
+              -H 'Cache-Control: no-cache' \
+              "${SITE_ORIGIN}/gallery/?${cache_key}-${attempt}" || true)
+            founder_ai_status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
               -H 'Cache-Control: no-cache' \
               "${SITE_ORIGIN}/assets/founder-ai.js?${cache_key}-${attempt}" || true)
-            knowledge_status=$(curl --silent --output /dev/null --write-out '%{http_code}' --location \
+            nova_status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
               -H 'Cache-Control: no-cache' \
-              "${SITE_ORIGIN}/assets/founder-knowledge.json?${cache_key}-${attempt}" || true)
+              "${SITE_ORIGIN}/assets/nova-field.js?${cache_key}-${attempt}" || true)
 
-            if grep -Fq 'Ask Vishal’s Work' <<<"$home" \
-              && grep -Fq 'data-founder-ai-dialog' <<<"$home" \
-              && grep -Fq 'AI-generated summary based on Vishal’s published work' <<<"$assistant" \
-              && [[ "$knowledge_status" == "200" ]]; then
-              printf '%s\n' "Personal AI release verified on attempt ${attempt}."
+            if grep -Fq 'id="nova-field"' <<<"$home" \
+              && ! grep -Fq 'Ask Vishal’s Work' <<<"$home" \
+              && ! grep -Fq 'href="/gallery/"' <<<"$home" \
+              && grep -Fq 'This page has moved.' <<<"$gallery" \
+              && [[ "$founder_ai_status" == "404" ]] \
+              && [[ "$nova_status" == "200" ]]; then
+              printf '%s\n' "Refined portfolio release verified on attempt ${attempt}."
               exit 0
             fi
             sleep 10
           done
-          printf '%s\n' 'The custom domain did not serve the approved personal AI release within 12 minutes.' >&2
+          printf '%s\n' 'The custom domain did not serve the approved refined portfolio release within 12 minutes.' >&2
           exit 1
 
       - name: Mark publication successful
@@ -149,7 +152,7 @@ jobs:
             --header "Authorization: Bearer ${GH_TOKEN}" \
             --header "X-GitHub-Api-Version: 2022-11-28" \
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/statuses/${RELEASE_SHA}" \
-            --data "{\"state\":\"success\",\"context\":\"pages-live-publish\",\"description\":\"Personal AI release verified on the custom domain\",\"target_url\":\"${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}"
+            --data "{\"state\":\"success\",\"context\":\"pages-live-publish\",\"description\":\"Refined portfolio release verified on the custom domain\",\"target_url\":\"${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}"
 
       - name: Mark publication failed
         if: steps.live.outcome != 'success'
