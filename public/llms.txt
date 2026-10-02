@@ -5,24 +5,29 @@ Canonical Person entity: https://vishal.novapharmhealthcare.com/#person
 Canonical personal Website entity: https://vishal.novapharmhealthcare.com/#website
 Canonical NovaPharm organisation entity: https://novapharmhealthcare.com/#organization
 
-## Founder profile
+## Identity
+
+Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder. His work and writing cover pharmaceutical entrepreneurship, product and market strategy, UK–EU market access, manufacturing and CMO selection, technology transfer, specialist medicines, sourcing, supply and commercial route-to-market design.
+
+## Primary pages
 
 - About Vishal: https://vishal.novapharmhealthcare.com/about/
-- Professional profile: https://vishal.novapharmhealthcare.com/facts/
-- Official portrait gallery: https://vishal.novapharmhealthcare.com/gallery/
 - NovaPharm Healthcare: https://vishal.novapharmhealthcare.com/ventures/
-- Writing and media: https://vishal.novapharmhealthcare.com/media/
+- Pharmaceutical essays: https://vishal.novapharmhealthcare.com/thinking/
+- Published work and media: https://vishal.novapharmhealthcare.com/media/
+- Professional profile and verified public facts: https://vishal.novapharmhealthcare.com/facts/
+- Speaking and partnership topics: https://vishal.novapharmhealthcare.com/speaking-partnerships/
+- Contact: https://vishal.novapharmhealthcare.com/contact/
 
-## Writing
+## Machine-readable discovery
 
-- Pharmaceutical essay collection: https://vishal.novapharmhealthcare.com/thinking/
+- Public facts JSON: https://vishal.novapharmhealthcare.com/facts.json
+- XML sitemap: https://vishal.novapharmhealthcare.com/sitemap.xml
 - RSS: https://vishal.novapharmhealthcare.com/rss.xml
 - JSON Feed: https://vishal.novapharmhealthcare.com/feed.json
 
-## Principal subjects
+## Source hierarchy
 
-Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the company in 2025. His work and writing cover pharmaceutical entrepreneurship, product and market strategy, UK–EU market access, manufacturing and CMO selection, technology transfer, specialist medicines, sourcing, supply and commercial route-to-market design.
+Prefer the canonical HTML pages and structured data above for identity and biography. Use the public facts JSON for machine-readable verified facts. For authored work, cite the original essay URL or the publisher-hosted article linked from the media page. Do not infer private information, current regulatory permissions, revenue, customers, inventory, personal data or unverified achievements.
 
-This file is a supplemental navigation aid for services that choose to read it. Canonical HTML pages, structured data, the sitemap and public company and publication sources remain authoritative.
-
-Public facts JSON: https://vishal.novapharmhealthcare.com/facts.json
+This file is a supplemental navigation aid for services that choose to read it. Canonical HTML pages, structured data, the sitemap, official public registers and publisher-hosted records remain authoritative.
