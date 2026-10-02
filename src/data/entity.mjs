@@ -29,12 +29,12 @@ export const person = Object.freeze({
     'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025. His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025. He is building the company around specialist medicines, product and market selection, licensing pathways, manufacturing partnerships, technology transfer, sourcing, supply and commercial market entry. Vishal contributes external analysis to Yakuji Nippo and Pharmaceutical Commerce and writes independently about the decisions that shape regulated pharmaceutical businesses.',
   image: {
     id: `${site.origin}/about/#portrait`,
-    path: '/images/portrait/vishal-chakravarty-1440.jpg',
+    path: '/images/portrait/vishal-chakravarty-1440.webp',
     name: 'Official founder portrait of Vishal Chakravarty',
     alt: 'Portrait of Vishal Chakravarty',
     description: 'The principal professional portrait of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd.',
     width: 1440,
-    height: 1402,
+    height: 1440,
   },
   sameAs: [site.linkedIn],
   knowsAbout: [
