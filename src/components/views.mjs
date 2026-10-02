@@ -25,7 +25,7 @@ const contentMeta = (page) => ({
 
 const portrait = (priority = false) => `
   <picture class="portrait-frame">
-    <img src="/images/portrait/vishal-chakravarty-960.jpg" srcset="/images/portrait/vishal-chakravarty-640.jpg 640w, /images/portrait/vishal-chakravarty-960.jpg 960w, /images/portrait/vishal-chakravarty-1440.jpg 1440w" sizes="(max-width: 720px) 92vw, 48vw" width="960" height="935" alt="${escapeHtml(person.image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    <img src="/images/portrait/vishal-chakravarty-1440.jpg" width="1440" height="1440" alt="${escapeHtml(person.image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
   </picture>`;
 
 const articleCard = (article, index) => `
@@ -73,7 +73,6 @@ export const renderHome = (articles) => {
         </div>
       </div>
       <div class="hero-visual">
-        <div class="lattice-shell" aria-hidden="true"><canvas id="system-lattice"></canvas><div class="lattice-poster"><span></span><span></span><span></span><span></span><span></span></div></div>
         ${portrait(true)}
         <div class="portrait-caption"><span>Chief Executive Officer</span><span>${escapeHtml(company.name)}</span></div>
       </div>
