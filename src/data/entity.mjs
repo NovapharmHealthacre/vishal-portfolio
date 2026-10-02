@@ -34,7 +34,7 @@ export const person = Object.freeze({
     alt: 'Portrait of Vishal Chakravarty',
     description: 'The principal professional portrait of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd.',
     width: 1440,
-    height: 1402,
+    height: 1440,
   },
   sameAs: [site.linkedIn],
   knowsAbout: [
