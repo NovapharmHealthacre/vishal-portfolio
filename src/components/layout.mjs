@@ -174,13 +174,13 @@ export const renderPage = ({
     <meta name="twitter:description" content="${escapeHtml(description)}">
     <meta name="twitter:image" content="${absolute(socialImage)}">
     <meta name="twitter:image:alt" content="${escapeHtml(socialImageAlt)}">
-    <meta name="theme-color" content="#0d0d0f">
+    <meta name="theme-color" content="#f5f5f7">\n    <meta name="color-scheme" content="light">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="alternate" type="application/rss+xml" title="Thinking by Vishal Chakravarty" href="/rss.xml">
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
     <link rel="stylesheet" href="/assets/site.css">
-    <link rel="stylesheet" href="/assets/content-fixes.css">
+    <link rel="stylesheet" href="/assets/content-fixes.css">\n    <link rel="stylesheet" href="/assets/apple-refresh.css">
     <script src="/assets/site.js" defer></script>
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
   </head>
