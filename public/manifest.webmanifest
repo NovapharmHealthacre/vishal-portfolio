@@ -1,10 +1,10 @@
 {
   "name": "Vishal Chakravarty",
   "short_name": "Vishal C.",
-  "description": "Founder and operator working in regulated healthcare markets.",
+  "description": "Professional platform of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0d0d0f",
-  "theme_color": "#0d0d0f",
+  "background_color": "#f5f5f7",
+  "theme_color": "#f5f5f7",
   "icons": []
 }
