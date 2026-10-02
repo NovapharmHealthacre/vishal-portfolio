@@ -5,7 +5,6 @@ export const navigation = Object.freeze([
   { href: '/ventures/', label: 'Ventures' },
   { href: '/thinking/', label: 'Thinking' },
   { href: '/media/', label: 'Media' },
-  { href: '/gallery/', label: 'Gallery' },
   { href: '/facts/', label: 'Profile' },
 ]);
 
@@ -15,7 +14,6 @@ export const canonicalRoutes = Object.freeze([
   '/ventures/',
   '/thinking/',
   '/media/',
-  '/gallery/',
   '/speaking-partnerships/',
   '/facts/',
   '/contact/',
@@ -23,16 +21,15 @@ export const canonicalRoutes = Object.freeze([
 ]);
 
 export const routeModified = Object.freeze({
-  '/': '2026-08-22',
-  '/about/': '2026-08-22',
-  '/ventures/': '2026-07-15',
-  '/thinking/': '2026-07-15',
-  '/media/': '2026-08-22',
-  '/gallery/': '2026-07-30',
-  '/speaking-partnerships/': '2026-07-15',
-  '/facts/': '2026-08-22',
-  '/contact/': '2026-07-15',
-  '/privacy/': '2026-07-15',
+  '/': '2026-10-02',
+  '/about/': '2026-10-02',
+  '/ventures/': '2026-10-02',
+  '/thinking/': '2026-10-02',
+  '/media/': '2026-10-02',
+  '/speaking-partnerships/': '2026-10-02',
+  '/facts/': '2026-10-02',
+  '/contact/': '2026-10-02',
+  '/privacy/': '2026-10-02',
 });
 
 export const legacyRedirects = Object.freeze({
@@ -41,6 +38,7 @@ export const legacyRedirects = Object.freeze({
   '/essays.html': '/thinking/',
   '/publications.html': '/media/',
   '/profiles.html': '/facts/',
+  '/gallery/': '/about/',
   '/essays/from-swiggy-to-mhra/': '/essays/why-i-chose-to-build-in-pharmaceuticals/',
   '/essays/why-i-left-swiggy/': '/essays/why-i-chose-to-build-in-pharmaceuticals/',
 });
@@ -65,13 +63,6 @@ export const pageMeta = Object.freeze({
       'Original essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
     path: '/thinking/',
     modified: routeModified['/thinking/'],
-  },
-  gallery: {
-    title: 'Vishal Chakravarty Portrait Gallery',
-    description:
-      'A curated portrait gallery of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder.',
-    path: '/gallery/',
-    modified: routeModified['/gallery/'],
   },
 });
 
