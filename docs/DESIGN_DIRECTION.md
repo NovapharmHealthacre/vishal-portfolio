@@ -1,10 +1,10 @@
 # Design direction
 
-## Concept: Precision without theatre
+## Concept: Precision with spatial depth
 
-Vishal's platform should feel like a premium personal product surface: clear, calm, fast and deliberate. The design is Apple-inspired in principle, not copied from Apple. No Apple source code, page markup, proprietary template, imagery or brand assets are used.
+Vishal's platform should feel like a premium personal product surface: clear, calm, fast and deliberate. The visual benchmark combines Apple-like hierarchy and restraint with the spatial depth and ambient motion associated with modern OpenAI product experiences. The implementation remains original: no Apple or OpenAI source code, page markup, proprietary templates, imagery, motion assets or brand assets are copied.
 
-The system prioritises the person, the work and the evidence. Decoration is subordinate to information.
+The system prioritises the person, the work and the evidence. Motion creates atmosphere without becoming the information.
 
 ## Brand character
 
@@ -13,7 +13,7 @@ The system prioritises the person, the work and the evidence. Decoration is subo
 - Product-minded: every component has a clear job.
 - Regulated-market aware: confidence without unsupported claims.
 - Human: authentic portraiture and authored work.
-- Ambitious under control: scale through hierarchy and restraint.
+- Ambitious under control: scale through hierarchy, motion and restraint.
 
 ## Visual system
 
@@ -24,18 +24,20 @@ The system prioritises the person, the work and the evidence. Decoration is subo
 - Primary ink: `#1d1d1f`
 - Secondary copy: `#424245`
 - Muted copy: `#6e6e73`
-- Interaction blue: `#0066cc` (chosen to maintain WCAG AA contrast on the light canvas)
-- Feature black: `#000000`
+- Interaction blue: `#0066cc` for WCAG AA contrast on the light canvas
+- Immersive hero: `#000000`
+- Hero light: `#f5f5f7`
+- Spatial blue-violet light is limited to the animated Nova field
 
-Colour is functional. Most pages remain light. Black is reserved for deliberate feature moments such as the NovaPharm section. Gradients, decorative noise and ornamental colour are excluded.
+Colour is functional. Most information surfaces remain light; the homepage hero and selected feature surfaces may use black for contrast and depth.
 
 ### Typography
 
 - Interface and display use an operating-system-first sans stack headed by `-apple-system` and `BlinkMacSystemFont`.
-- No proprietary font files are shipped.
-- Headlines rely on weight, scale, spacing and short measures rather than serif drama.
-- Body copy remains readable at approximately 65–75 characters per line.
-- Labels are sentence case wherever possible; uppercase interface theatre is avoided.
+- On Apple hardware this resolves naturally to the system San Francisco family without distributing proprietary font files.
+- Headlines rely on weight, scale, tracking and short measures rather than ornamental type.
+- Body copy targets approximately 65–75 characters per line.
+- Labels use sentence case wherever possible.
 
 ### Grid and rhythm
 
@@ -47,36 +49,48 @@ Colour is functional. Most pages remain light. Black is reserved for deliberate 
 
 ## Homepage sequence
 
-1. Vishal's name, current role and verified proposition.
-2. The owner-supplied black-and-white portrait as the dominant visual.
-3. Founder thesis in a quiet, centred statement.
-4. NovaPharm as a high-contrast black feature surface.
-5. Three operating principles as calm product cards.
-6. Selected writing.
-7. Verified public evidence.
-8. Selected portrait preview.
-9. Direct contact close.
+1. Immersive black Nova field hero with Vishal's name, current role and verified proposition.
+2. Owner-supplied black-and-white portrait paired with the founder thesis.
+3. NovaPharm as a high-contrast feature surface.
+4. Three operating principles as calm product cards.
+5. Selected writing.
+6. Verified public evidence.
+7. Direct contact close.
+
+The public portrait gallery and the browser-based “Ask Vishal’s Work” interface are intentionally retired. The former `/gallery/` address is retained only as a noindex compatibility route to `/about/` so existing links fail gracefully without competing in search.
 
 ## Navigation
 
-The global navigation is compact, sticky and translucent. It uses a restrained blur/saturation treatment, small system typography and no decorative logo badge. Mobile navigation keeps 44px minimum touch targets and preserves keyboard/focus behaviour.
+The global navigation is compact, sticky and translucent. It uses a 44px Apple-like rhythm, small system typography and no decorative logo badge. Mobile navigation preserves 44px minimum touch targets and keyboard/focus behaviour.
 
 ## Motion language
 
-- Motion is short, quiet and reversible.
-- Entry motion is limited to subtle opacity/position/scale changes.
-- No scroll hijacking, cursor followers, fake loaders, continuous decorative canvases or parallax dependencies.
-- `prefers-reduced-motion` removes non-essential motion.
+- The Nova field is a first-party Canvas 2D animation using deterministic particles, orbit filaments and subtle pointer parallax.
+- Animation is progressively enhanced and loads after the essential page is already usable.
+- It pauses when off-screen or when the document is hidden.
+- It is skipped for reduced-motion, data-saver and lower-resource contexts.
+- Static CSS gradients preserve the hero composition without JavaScript.
+- No scroll hijacking, cursor followers, fake loaders or continuous animation outside the hero.
 
 ## Portrait
 
-The official rendered portrait is:
+The canonical rendered portrait is:
 
 `/images/portrait/vishal-chakravarty-1440.webp`
 
-It is the owner-supplied square black-and-white headshot, served at 1440 × 1440 for the principal profile image. The original factual alt text and structured-data identity remain intact.
+It is the owner-supplied square black-and-white headshot, served at 1440 × 1440 on the About/founder surfaces and in structured identity metadata. The factual alt text and canonical Person identity remain intact.
 
-Legacy responsive derivatives remain in the repository where release tooling still references them, but the current hero/about/gallery lead surfaces intentionally use the refreshed 1440px portrait.
+Legacy responsive portrait derivatives remain only where release tooling validates metadata-stripped fallbacks.
+
+## Search, entity and generative discovery
+
+- Every public canonical page has one canonical URL and explicit indexability.
+- Breadcrumbs are visible on internal pages and represented as `BreadcrumbList` structured data.
+- Person, ProfilePage, Organization, WebSite, WebPage, BlogPosting and CollectionPage entities use stable `@id` values.
+- The sitemap carries material `lastmod` dates and the canonical founder portrait in the Google image extension.
+- `robots.txt` explicitly allows Googlebot, Bingbot, Applebot, OAI-SearchBot, Claude-SearchBot and PerplexityBot while separately declining selected model-training crawlers.
+- `facts.json`, RSS, JSON Feed and `llms.txt` expose structured, source-bounded discovery paths without inventing facts.
+- Removed experiences do not remain in the canonical sitemap or generative-discovery file.
 
 ## Accessibility and performance
 
@@ -85,14 +99,14 @@ Legacy responsive derivatives remain in the repository where release tooling sti
 - Long headings must not create horizontal overflow on narrow screens.
 - Reduced motion must be honoured.
 - No third-party runtime scripts or remote font dependencies are introduced.
-- Existing CSP, structured-data, claims-governance, browser and Lighthouse gates remain release requirements.
+- Existing CSP, structured-data, claims-governance, multi-browser and Lighthouse gates remain release requirements.
 
 ## Implementation strategy
 
-The verified content and governance architecture is intentionally preserved. The visual redesign is implemented as a final first-party stylesheet, `public/assets/apple-refresh.css`, loaded after the established base and content-fix styles.
+The verified content and governance architecture is preserved. The front end remains generated semantic HTML, CSS and JavaScript modules rather than migrating to a client-rendered framework merely for visual similarity.
 
-This keeps the redesign reversible, reduces risk to generated content and tests, and avoids rewriting stable content logic solely for appearance.
+This is deliberate. Apple’s WebKit engineering guidance continues to emphasise HTML, CSS and JavaScript as the foundations of the web. Swift, SwiftUI and UIKit are native Apple application technologies; they are not substitutes for browser HTML/CSS/JavaScript. OpenAI’s public web properties use a modern React/Next.js stack, but this portfolio does not require that runtime cost to achieve the relevant interaction and visual principles.
 
 ## Explicit anti-patterns
 
-No copied Apple page sections, proprietary Apple assets, generic SaaS dashboards, stock laboratory imagery, fake metrics, awards, testimonials, fake press logos, molecule wallpaper, ornamental glassmorphism, neon, cinematic loaders or decorative animation that competes with the content.
+No copied Apple or OpenAI page sections, proprietary assets, generic SaaS dashboards, stock laboratory imagery, fake metrics, awards, testimonials, fake press logos, molecule wallpaper, ornamental glassmorphism, neon spectacle, cinematic loaders or motion that competes with the content.
