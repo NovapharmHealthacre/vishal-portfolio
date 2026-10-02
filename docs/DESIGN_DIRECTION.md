@@ -1,100 +1,98 @@
 # Design direction
 
-## Concept: The Quiet Infrastructure
+## Concept: Precision without theatre
 
-Vishal's platform should not look like a pharmaceutical catalogue, startup pitch or celebrity microsite. It should feel like a founder's working record: editorial, exact and calm, with just enough cinematic depth to suggest the systems beneath regulated markets.
+Vishal's platform should feel like a premium personal product surface: clear, calm, fast and deliberate. The design is Apple-inspired in principle, not copied from Apple. No Apple source code, page markup, proprietary template, imagery or brand assets are used.
 
-The core metaphor is infrastructure under pressure—routes, checkpoints, transfer points and decisions—expressed through spacing, rules, status labels and a restrained spatial lattice rather than literal pills, DNA or globes.
+The system prioritises the person, the work and the evidence. Decoration is subordinate to information.
 
 ## Brand character
 
-- Founder: clearly personal, first-person and authored.
-- Operator: verbs, decisions, current status and evidence over slogans.
-- Regulated-market strategist: precision without acronym theatre.
-- Institutional: stable grid, factual dates, readable source links.
-- Human: one authentic portrait, personal essays and unforced voice.
-- Ambitious under control: scale through composition, not hype.
+- Personal: Vishal is the primary identity.
+- Precise: verified facts and source links outrank slogans.
+- Product-minded: every component has a clear job.
+- Regulated-market aware: confidence without unsupported claims.
+- Human: authentic portraiture and authored work.
+- Ambitious under control: scale through hierarchy and restraint.
 
 ## Visual system
 
 ### Colour
 
-- Deep ink: `#0d0d0f`
-- Carbon: `#17171a`
-- Warm ivory: `#f2efe8`
-- Soft paper: `#e3ded4`
-- Muted graphite: `#98938b`
-- Nova oxblood: `#8f1f2d`
-- Signal red for focus/critical state only: `#c43a48`
+- Canvas: `#f5f5f7`
+- Surface: `#ffffff`
+- Primary ink: `#1d1d1f`
+- Secondary copy: `#424245`
+- Muted copy: `#6e6e73`
+- Interaction blue: `#0071e3`
+- Feature black: `#000000`
 
-Oxblood is a controlled lineage cue to NovaPharm, not the dominant personal-brand colour. Gold, neon and gradient spectacle are excluded.
+Colour is functional. Most pages remain light. Black is reserved for deliberate feature moments such as the NovaPharm section. Gradients, decorative noise and ornamental colour are excluded.
 
 ### Typography
 
-- Display/editorial: an operating-system serif stack with strong contrast.
-- Interface/body: a neutral system sans stack.
-- Labels/status: compact uppercase system monospace.
-- Headlines use short measures and deliberate wrapping, not oversized words for their own sake.
-- Body copy targets 65–72 characters per line.
+- Interface and display use an operating-system-first sans stack headed by `-apple-system` and `BlinkMacSystemFont`.
+- No proprietary font files are shipped.
+- Headlines rely on weight, scale, spacing and short measures rather than serif drama.
+- Body copy remains readable at approximately 65–75 characters per line.
+- Labels are sentence case wherever possible; uppercase interface theatre is avoided.
 
 ### Grid and rhythm
 
-- Twelve-column desktop grid, six-column tablet, four-column mobile.
-- Max content width around 1440px; prose max around 720px.
-- Large vertical intervals frame narrative chapters.
-- Thin rules define status and chronology; cards are reserved for genuinely comparable records.
-- Rounded rectangles are minimal and functional, not a blanket component style.
+- Content is capped around 1180–1280px for major product surfaces.
+- Whitespace establishes hierarchy before borders or decoration.
+- Rounded surfaces are used for discrete product-like sections, not every block.
+- Thin rules are reserved for genuine structure.
+- Mobile is recomposed rather than treated as a squeezed desktop layout.
 
 ## Homepage sequence
 
-1. Name, current role and one verified proposition.
-2. A single portrait plus optional spatial-system canvas.
-3. Short founder introduction grounded in operating history.
-4. NovaPharm status: registered facts, present focus and explicit roadmap boundary.
-5. Three operating principles expressed as editorial statements.
-6. Selected writing generated from the collection.
-7. Verified public evidence: Companies House and Yakuji Nippo.
-8. Speaking/partnership themes framed as invitations, not achievements.
+1. Vishal's name, current role and verified proposition.
+2. The owner-supplied black-and-white portrait as the dominant visual.
+3. Founder thesis in a quiet, centred statement.
+4. NovaPharm as a high-contrast black feature surface.
+5. Three operating principles as calm product cards.
+6. Selected writing.
+7. Verified public evidence.
+8. Selected portrait preview.
 9. Direct contact close.
+
+## Navigation
+
+The global navigation is compact, sticky and translucent. It uses a restrained blur/saturation treatment, small system typography and no decorative logo badge. Mobile navigation keeps 44px minimum touch targets and preserves keyboard/focus behaviour.
 
 ## Motion language
 
-- 160–320ms interface transitions.
-- Page content does not wait for animation.
-- One hero lattice moves slowly at a capped frame rate and pauses off-screen/hidden.
-- Subtle reveal is CSS-only and removed under reduced-motion.
-- No scroll hijacking, cursor follower, infinite marquee, fake loader or continuous full-page animation.
+- Motion is short, quiet and reversible.
+- Entry motion is limited to subtle opacity/position/scale changes.
+- No scroll hijacking, cursor followers, fake loaders, continuous decorative canvases or parallax dependencies.
+- `prefers-reduced-motion` removes non-essential motion.
 
-## 3D narrative
+## Portrait
 
-Five node families represent manufacturer, regulator, warehouse, pharmacy and patient access. Thin perspective lines connect them through a controlled depth field. One oxblood route advances slowly through the system, suggesting compliant passage rather than speed.
+The official rendered portrait is:
 
-The scene remains abstract. It does not claim live tracking, operational technology or actual network data.
+`/images/portrait/vishal-chakravarty-1440.webp`
 
-## Image plan
+It is the owner-supplied square black-and-white headshot, served at 1440 × 1440 for the principal profile image. The original factual alt text and structured-data identity remain intact.
 
-| Use | Current asset | Treatment | Approval status |
-|---|---|---|---|
-| Hero portrait | `src/assets/vishal-headshot-original.jpg` | Metadata-stripped responsive AVIF/WebP/JPEG derivatives with visible dimensions | Use subject to owner confirming publication rights |
-| About portrait | Same responsive derivative set | Larger editorial presentation of the same verified crop | Same |
-| Working/environment imagery | None supplied | Use text-led layout; do not use stock laboratory imagery | Future authentic shoot recommended |
-| Speaking/media | None verified | No imagery or event claims | Withhold |
-| Company imagery | None required | Abstract system diagram only | Original code-native visual |
-| Open Graph | Code-generated typographic cards | Name/title or essay title, no synthetic face | Approved design route |
-| Press headshots | Current portrait only | Download disabled until rights and preferred crop confirmed | Needs owner approval |
+Legacy responsive derivatives remain in the repository where release tooling still references them, but the current hero/about/gallery lead surfaces intentionally use the refreshed 1440px portrait.
 
-Recommended future photography: one controlled portrait, one working-table frame, one exterior/transition frame and one speaking image from a real event. Keep natural skin, real environments and documentary restraint.
+## Accessibility and performance
 
-## Benchmark principles extracted from Steven Bartlett's site
+- Visible focus states are mandatory.
+- Touch targets remain at least 44px for primary controls.
+- Long headings must not create horizontal overflow on narrow screens.
+- Reduced motion must be honoured.
+- No third-party runtime scripts or remote font dependencies are introduced.
+- Existing CSP, structured-data, claims-governance, browser and Lighthouse gates remain release requirements.
 
-- Strong story hierarchy and confident whitespace.
-- Founder identity precedes the venture inventory.
-- Large imagery used as narrative punctuation.
-- Ventures and editorial work form one coherent ecosystem.
-- Motion supports chapter transitions.
+## Implementation strategy
 
-Excluded from adaptation: layouts, wording, image treatment, timeline composition, animation sequences, assets and celebrity-scale claims.
+The verified content and governance architecture is intentionally preserved. The visual redesign is implemented as a final first-party stylesheet, `public/assets/apple-refresh.css`, loaded after the established base and content-fix styles.
+
+This keeps the redesign reversible, reduces risk to generated content and tests, and avoids rewriting stable content logic solely for appearance.
 
 ## Explicit anti-patterns
 
-No generic SaaS pricing/cards, glass panels, neon, molecule wallpaper, pills, globes, fake dashboards, counters, awards, testimonials, hustle copy, unverified media logos or cinematic effects that obscure reading.
+No copied Apple page sections, proprietary Apple assets, generic SaaS dashboards, stock laboratory imagery, fake metrics, awards, testimonials, fake press logos, molecule wallpaper, ornamental glassmorphism, neon, cinematic loaders or decorative animation that competes with the content.
