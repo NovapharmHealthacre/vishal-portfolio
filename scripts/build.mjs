@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url';
 import { loadArticles, loadPageContent } from '../src/lib/content.mjs';
 import { canonicalRoutes, legacyRedirects, routeModified } from '../src/data/site.mjs';
 import { company, person, publicFacts, publications, site, verificationDate } from '../src/data/entity.mjs';
-import { galleryImages, galleryMeta, gallerySitemapImages } from '../src/data/gallery.mjs';
 import { contentVariables } from '../src/data/content-variables.mjs';
 import {
   renderAbout,
@@ -12,7 +11,6 @@ import {
   renderCompatibility,
   renderContact,
   renderFacts,
-  renderGallery,
   renderHome,
   renderMedia,
   renderNotFound,
@@ -96,17 +94,12 @@ const rssFeed = (articles) => `<?xml version="1.0" encoding="UTF-8"?>
   </channel>
 </rss>`;
 
-const galleryImageXml = () =>
-  gallerySitemapImages
-    .map(
-      (image) => `
+const portraitImageXml = () => `
     <image:image>
-      <image:loc>${xmlEscape(new URL(image.path, site.origin).href)}</image:loc>
-      <image:title>${xmlEscape(image.caption)}</image:title>
-      <image:caption>${xmlEscape(image.description)}</image:caption>
-    </image:image>`,
-    )
-    .join('');
+      <image:loc>${xmlEscape(new URL(person.image.path, site.origin).href)}</image:loc>
+      <image:title>${xmlEscape(person.image.name)}</image:title>
+      <image:caption>${xmlEscape(person.image.description)}</image:caption>
+    </image:image>`;
 
 const sitemap = (articles) => {
   const staticEntries = canonicalRoutes.map((route) => ({ route, modified: routeModified[route] }));
@@ -118,7 +111,7 @@ const sitemap = (articles) => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${[...staticEntries, ...articleEntries].map(({ route, modified }) => `  <url>
     <loc>${xmlEscape(new URL(route, site.origin).href)}</loc>
-    <lastmod>${modified}</lastmod>${route === galleryMeta.path ? galleryImageXml() : ''}
+    <lastmod>${modified}</lastmod>${route === '/about/' ? portraitImageXml() : ''}
   </url>`).join('\n')}
 </urlset>`;
 };
@@ -128,16 +121,7 @@ fs.mkdirSync(dist, { recursive: true });
 fs.cpSync(path.join(root, 'public'), dist, { recursive: true });
 write('assets/site.css', fs.readFileSync(path.join(root, 'src/styles/site.css'), 'utf8'));
 write('assets/site.js', fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8'));
-write('assets/lattice.js', fs.readFileSync(path.join(root, 'src/scripts/lattice.js'), 'utf8'));
-
-for (const image of galleryImages) {
-  const encoded = fs.readFileSync(path.join(root, image.source), 'utf8').replace(/\s+/g, '');
-  const binary = Buffer.from(encoded, 'base64');
-  if (binary.length < 1000 || binary[0] !== 0xff || binary[1] !== 0xd8 || binary.at(-2) !== 0xff || binary.at(-1) !== 0xd9) {
-    throw new Error(`Invalid JPEG gallery source: ${image.source}`);
-  }
-  writeBinary(image.path.replace(/^\//, ''), binary);
-}
+write('assets/nova-field.js', fs.readFileSync(path.join(root, 'src/scripts/nova-field.js'), 'utf8'));
 
 const articles = loadArticles(root);
 const pageContent = loadPageContent(root, contentVariables);
@@ -148,7 +132,6 @@ write(routeFile('/about/'), renderAbout(pageContent.about));
 write(routeFile('/ventures/'), renderVentures(pageContent.ventures));
 write(routeFile('/thinking/'), renderThinking(articles));
 write(routeFile('/media/'), renderMedia(pageContent.media));
-write(routeFile('/gallery/'), renderGallery());
 write(routeFile('/speaking-partnerships/'), renderSpeaking(pageContent['speaking-partnerships']));
 write(routeFile('/facts/'), renderFacts(pageContent.facts));
 write(routeFile('/contact/'), renderContact(pageContent.contact));
@@ -221,4 +204,4 @@ const walk = (directory) => {
   }
 };
 walk(dist);
-console.log(`Built ${outputFiles.length} files from ${articles.length} essays and ${galleryImages.length} gallery portraits.`);
+console.log(`Built ${outputFiles.length} files from ${articles.length} essays.`);
