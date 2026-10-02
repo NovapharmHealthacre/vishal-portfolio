@@ -24,7 +24,7 @@ The system prioritises the person, the work and the evidence. Decoration is subo
 - Primary ink: `#1d1d1f`
 - Secondary copy: `#424245`
 - Muted copy: `#6e6e73`
-- Interaction blue: `#0071e3`
+- Interaction blue: `#0066cc` (chosen to maintain WCAG AA contrast on the light canvas)
 - Feature black: `#000000`
 
 Colour is functional. Most pages remain light. Black is reserved for deliberate feature moments such as the NovaPharm section. Gradients, decorative noise and ornamental colour are excluded.
