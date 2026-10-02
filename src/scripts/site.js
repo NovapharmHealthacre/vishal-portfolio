@@ -38,19 +38,18 @@ if (toggle && navigation) {
   });
 }
 
-const latticeEligible =
-  document.querySelector('#system-lattice') &&
+const novaFieldEligible =
+  document.querySelector('#nova-field') &&
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-  window.innerWidth >= 720 &&
   !navigator.connection?.saveData &&
   (navigator.deviceMemory ?? 8) >= 4 &&
   (navigator.hardwareConcurrency ?? 8) >= 4;
 
-if (latticeEligible) {
-  const loadLattice = () => {
-    const schedule = window.requestIdleCallback ?? ((callback) => window.setTimeout(callback, 400));
-    schedule(() => import('/assets/lattice.js').catch(() => {}), { timeout: 1200 });
+if (novaFieldEligible) {
+  const loadNovaField = () => {
+    const schedule = window.requestIdleCallback ?? ((callback) => window.setTimeout(callback, 120));
+    schedule(() => import('/assets/nova-field.js').catch(() => {}), { timeout: 700 });
   };
-  if (document.readyState === 'complete') loadLattice();
-  else window.addEventListener('load', loadLattice, { once: true });
+  if (document.readyState === 'complete') loadNovaField();
+  else window.addEventListener('load', loadNovaField, { once: true });
 }
