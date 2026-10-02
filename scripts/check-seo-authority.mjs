@@ -47,6 +47,8 @@ const robots = read('robots.txt');
 const requiredRobots = [
   'User-agent: Googlebot\nAllow: /',
   'User-agent: Bingbot\nAllow: /',
+  'User-agent: Applebot\nAllow: /',
+  'User-agent: Applebot-Extended\nDisallow: /',
   'User-agent: OAI-SearchBot\nAllow: /',
   'User-agent: GPTBot\nDisallow: /',
   'User-agent: Claude-SearchBot\nAllow: /',
