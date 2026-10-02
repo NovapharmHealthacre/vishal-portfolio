@@ -25,14 +25,14 @@ const files = {
   homepage: await read('index.html'),
   css: await read('assets/site.css'),
   criticalJs: await read('assets/site.js'),
-  latticeJs: await read('assets/lattice.js'),
+  novaFieldJs: await read('assets/nova-field.js'),
   lcpAvif: await read('images/portrait/vishal-chakravarty-960.avif'),
   lcpFallback: await read('images/portrait/vishal-chakravarty-960.jpg'),
 };
 
 const measurements = {
   'Critical JavaScript (Brotli)': [brotliSize(files.criticalJs), limits.criticalJavaScriptBrotli],
-  'All homepage JavaScript (Brotli)': [brotliSize(files.criticalJs) + brotliSize(files.latticeJs), limits.totalJavaScriptBrotli],
+  'All homepage JavaScript including Nova field (Brotli)': [brotliSize(files.criticalJs) + brotliSize(files.novaFieldJs), limits.totalJavaScriptBrotli],
   'Global CSS (Brotli)': [brotliSize(files.css), limits.cssBrotli],
   'Homepage HTML (Brotli)': [brotliSize(files.homepage), limits.homepageHtmlBrotli],
   'LCP portrait AVIF': [files.lcpAvif.byteLength, limits.lcpAvif],
