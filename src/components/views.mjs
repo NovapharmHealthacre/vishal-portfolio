@@ -25,7 +25,7 @@ const contentMeta = (page) => ({
 
 const portrait = (priority = false) => `
   <picture class="portrait-frame">
-    <img src="/images/portrait/vishal-chakravarty-1440.jpg" width="1440" height="1440" alt="${escapeHtml(person.image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    <img src="/images/portrait/vishal-chakravarty-1440.webp" width="1440" height="1440" alt="${escapeHtml(person.image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
   </picture>`;
 
 const articleCard = (article, index) => `
