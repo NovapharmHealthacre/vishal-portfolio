@@ -1762,8 +1762,13 @@ a {
   }
 
   .hero-orbit {
-    right: -28vw;
-    width: 105vw;
+    right: 2vw;
+    width: 96vw;
+  }
+
+  .hero-orbit-two {
+    right: 8vw;
+    width: 78vw;
   }
 
   .founder-feature {
