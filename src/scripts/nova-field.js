@@ -12,6 +12,7 @@ if (canvas) {
       running: false,
       visible: true,
       frame: 0,
+      lastDraw: 0,
       pointerX: 0,
       pointerY: 0,
       pointerTargetX: 0,
@@ -165,7 +166,10 @@ if (canvas) {
 
     const tick = (time) => {
       if (!state.running) return;
-      draw(time);
+      if (time - state.lastDraw >= 32) {
+        draw(time);
+        state.lastDraw = time;
+      }
       state.frame = requestAnimationFrame(tick);
     };
 
