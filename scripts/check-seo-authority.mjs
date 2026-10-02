@@ -3,7 +3,6 @@ import path from 'node:path';
 import { loadArticles } from '../src/lib/content.mjs';
 import { canonicalRoutes, routeModified } from '../src/data/site.mjs';
 import { company, person, site } from '../src/data/entity.mjs';
-import { galleryMeta, gallerySitemapImages } from '../src/data/gallery.mjs';
 
 const root = path.resolve('.');
 const dist = path.join(root, 'dist');
@@ -41,10 +40,8 @@ for (const url of expected.keys()) {
   if (!urls.some((entry) => entry.url === url)) failures.push(`missing sitemap URL ${url}`);
 }
 if (!sitemap.includes(`xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"`)) failures.push('sitemap image namespace missing');
-if (!sitemap.includes(`<loc>${new URL(galleryMeta.path, site.origin).href}</loc>`)) failures.push('gallery page missing from sitemap');
-for (const image of gallerySitemapImages) {
-  if (!sitemap.includes(`<image:loc>${new URL(image.path, site.origin).href}</image:loc>`)) failures.push(`${image.id}: missing image sitemap entry`);
-}
+if (sitemap.includes(`<loc>${site.origin}/gallery/</loc>`)) failures.push('retired gallery route remains in sitemap');
+if (!sitemap.includes(`<image:loc>${new URL(person.image.path, site.origin).href}</image:loc>`)) failures.push('official portrait missing from image sitemap');
 
 const robots = read('robots.txt');
 const requiredRobots = [
@@ -65,7 +62,10 @@ for (const rule of requiredRobots) {
 const llms = read('llms.txt');
 if (!llms.includes('supplemental navigation aid')) failures.push('llms.txt must state its supplemental status');
 if (!llms.includes(person.id) || !llms.includes(company.id)) failures.push('llms.txt canonical entity ids are incomplete');
-if (!llms.includes(`${site.origin}${galleryMeta.path}`)) failures.push('llms.txt gallery route missing');
+if (llms.includes(`${site.origin}/gallery/`)) failures.push('llms.txt still exposes retired gallery route');
+for (const route of ['/about/', '/ventures/', '/thinking/', '/media/', '/facts/']) {
+  if (!llms.includes(`${site.origin}${route}`)) failures.push(`llms.txt missing canonical route ${route}`);
+}
 
 const textFiles = [];
 const walk = (directory) => {
@@ -98,4 +98,4 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exit(1);
 }
-console.log(`Validated ${expected.size} canonical URLs, ${gallerySitemapImages.length} image sitemap entries, cross-site entity ownership, crawler policy and privacy-safe output.`);
+console.log(`Validated ${expected.size} canonical URLs, portrait image discovery, cross-site entity ownership, crawler policy and privacy-safe output.`);
