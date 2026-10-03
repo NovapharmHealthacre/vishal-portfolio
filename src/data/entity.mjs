@@ -16,6 +16,7 @@ export const site = Object.freeze({
   companiesHousePerson:
     'https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments',
   companyProfile: 'https://novapharmhealthcare.com/leadership/vishal-chakravarty/',
+  crunchbase: 'https://www.crunchbase.com/person/vishal-chakravarty',
 });
 
 export const person = Object.freeze({
@@ -43,7 +44,7 @@ export const person = Object.freeze({
     width: 1440,
     height: 1440,
   },
-  sameAs: [site.linkedIn, site.wikidata, site.companiesHousePerson, site.companyProfile],
+  sameAs: [site.linkedIn, site.wikidata, site.companiesHousePerson, site.companyProfile, site.crunchbase],
   knowsAbout: [
     'Pharmaceutical entrepreneurship',
     'Pharmaceutical market access',
@@ -72,6 +73,7 @@ export const company = Object.freeze({
   companiesHouseUrl:
     'https://find-and-update.company-information.service.gov.uk/company/16716501',
   linkedInUrl: 'https://www.linkedin.com/company/novapharm-healthcare/',
+  crunchbaseUrl: 'https://www.crunchbase.com/organization/novapharm-healthcare',
   description:
     'A UK pharmaceutical company building market-access, licensing, manufacturing and supply capabilities for specialist medicines across regulated markets.',
   currentFocus:
