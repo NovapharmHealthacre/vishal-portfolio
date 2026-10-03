@@ -51,6 +51,7 @@ const nasaRouteHero = ({
   credit,
   meta = [],
   action = '',
+  foreground = '',
 }) => `
   <section class="page-hero page-hero-cosmic page-hero-${variant}" data-page-cosmic-hero aria-labelledby="${variant}-hero-title">
     <div class="page-cosmos" data-page-cosmos aria-hidden="true">
@@ -66,6 +67,7 @@ const nasaRouteHero = ({
         decoding="async">
       <div class="page-cosmos-optics"></div>
     </div>
+    ${foreground}
     ${breadcrumbs(crumbs)}
     <div class="page-cosmic-copy">
       <p class="eyebrow">${eyebrow}</p>
@@ -158,7 +160,22 @@ export const renderHome = (articles) => {
 
 export const renderAbout = (page) => {
   const meta = contentMeta(page);
-  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])}<p class="eyebrow">Founder profile</p><h1>Vishal Chakravarty.</h1><p class="page-deck">Pharmaceutical entrepreneur building NovaPharm Healthcare around market access, specialist medicines, manufacturing partnerships and resilient supply.</p></section><section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Founder. Operator. Pharmaceutical strategist.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer</dd></div><div><dt>Company</dt><dd>NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy and founder execution</dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Chief Executive Officer</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
+  const hero = nasaRouteHero({
+    variant: 'about',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }],
+    eyebrow: 'Founder profile / 2026',
+    title: 'Vishal<br>Chakravarty.',
+    deck: 'Founder and Chief Executive Officer of NovaPharm Healthcare.<br>Building the route between medicines, regulation, manufacturing, supply and market access.',
+    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/01/STScI-01EVT8DP1YM9FYPF0Y33VY7ANB.tif',
+    width: 6637,
+    height: 3787,
+    source: 'https://science.nasa.gov/asset/hubble/barred-spiral-galaxy-ngc-1300/',
+    credit: 'Hubble · NGC 1300 · NASA/ESA · Hubble Heritage Team',
+    meta: ['NGC 1300 · Eridanus', 'Hubble · ACS', '69 million light-years'],
+    action: `<a class="page-cosmic-action" href="#profile-snapshot-title">Explore the work <span aria-hidden="true">↓</span></a>`,
+    foreground: `<picture class="about-hero-portrait"><img src="/images/portrait/vishal-chakravarty-960.webp" width="960" height="960" alt="${escapeHtml(person.image.alt)}" fetchpriority="high" decoding="async"></picture>`,
+  });
+  const body = `${hero}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Founder. Operator. Pharmaceutical strategist.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer</dd></div><div><dt>Company</dt><dd>NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy and founder execution</dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Chief Executive Officer</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
 };
 
@@ -167,15 +184,16 @@ export const renderVentures = (page) => {
   const hero = nasaRouteHero({
     variant: 'ventures',
     crumbs: [{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }],
-    eyebrow: 'NovaPharm Healthcare',
+    eyebrow: 'Ventures / 01 · NovaPharm Healthcare',
     title: 'Building the route<br>from product to market.',
-    deck: 'A UK pharmaceutical company connecting product strategy, licensing, manufacturing, supply and commercial market entry.',
+    deck: 'Product strategy, regulatory pathways, manufacturing, supply and commercial market entry — connected as one operating system.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01GA6KKWG229B16K4Q38CH3BXS.png',
     width: 14575,
     height: 8441,
     source: 'https://science.nasa.gov/asset/webb/cosmic-cliffs-in-the-carina-nebula-nircam-image/',
     credit: 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI',
     meta: ['NGC 3324 · Carina', 'JWST · NIRCam', '7,600 light-years'],
+    action: `<a class="page-cosmic-action" href="${company.officialUrl}" target="_blank" rel="noopener noreferrer">Explore NovaPharm <span aria-hidden="true">↗</span></a>`,
   });
   const body = `${hero}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': company.id } }), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }])], className: 'ventures-page' });
