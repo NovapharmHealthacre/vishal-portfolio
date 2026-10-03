@@ -37,6 +37,48 @@ const articleCard = (article, index) => `
     <a class="round-link" href="${article.canonicalPath}" aria-label="Read ${escapeHtml(article.title)}"><span aria-hidden="true">↗</span></a>
   </article>`;
 
+
+const nasaRouteHero = ({
+  variant,
+  crumbs,
+  eyebrow,
+  title,
+  deck,
+  image,
+  width,
+  height,
+  source,
+  credit,
+  meta = [],
+  action = '',
+}) => `
+  <section class="page-hero page-hero-cosmic page-hero-${variant}" data-page-cosmic-hero aria-labelledby="${variant}-hero-title">
+    <div class="page-cosmos" data-page-cosmos aria-hidden="true">
+      <img
+        class="page-cosmos-image"
+        src="${image}?w=1200"
+        srcset="${image}?w=720 720w, ${image}?w=1200 1200w, ${image}?w=1800 1800w"
+        sizes="100vw"
+        width="${width}"
+        height="${height}"
+        alt=""
+        fetchpriority="high"
+        decoding="async">
+      <div class="page-cosmos-optics"></div>
+    </div>
+    ${breadcrumbs(crumbs)}
+    <div class="page-cosmic-copy">
+      <p class="eyebrow">${eyebrow}</p>
+      <h1 id="${variant}-hero-title">${title}</h1>
+      <p class="page-deck">${deck}</p>
+      ${action}
+    </div>
+    <div class="page-observation" aria-label="Observation details">
+      ${meta.map((item) => `<span>${item}</span>`).join('')}
+    </div>
+    <a class="page-cosmic-credit" href="${source}" target="_blank" rel="noopener noreferrer">${credit}</a>
+  </section>`;
+
 export const renderHome = (articles) => {
   const meta = pageMeta.home;
   const selected = articles.slice(0, 3);
@@ -122,13 +164,39 @@ export const renderAbout = (page) => {
 
 export const renderVentures = (page) => {
   const meta = contentMeta(page);
-  const body = `<section class="page-hero page-hero-compact">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }])}<p class="eyebrow">NovaPharm Healthcare</p><h1>Building the route<br>from product to market.</h1><p class="page-deck">A UK pharmaceutical company connecting product strategy, licensing, manufacturing, supply and commercial market entry.</p></section><section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const hero = nasaRouteHero({
+    variant: 'ventures',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }],
+    eyebrow: 'NovaPharm Healthcare',
+    title: 'Building the route<br>from product to market.',
+    deck: 'A UK pharmaceutical company connecting product strategy, licensing, manufacturing, supply and commercial market entry.',
+    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01GA6KKWG229B16K4Q38CH3BXS.png',
+    width: 14575,
+    height: 8441,
+    source: 'https://science.nasa.gov/asset/webb/cosmic-cliffs-in-the-carina-nebula-nircam-image/',
+    credit: 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI',
+    meta: ['NGC 3324 · Carina', 'JWST · NIRCam', '7,600 light-years'],
+  });
+  const body = `${hero}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': company.id } }), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }])], className: 'ventures-page' });
 };
 
 export const renderThinking = (articles) => {
   const meta = pageMeta.thinking;
-  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }])}<p class="eyebrow">Pharmaceutical strategy · Founder execution</p><h1>Essays from<br><em>the work.</em></h1><p class="page-deck">Original writing on market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.</p></section><section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><div class="collection-summary"><span>${articles.length} essays</span><span>Pharmaceutical strategy</span><span>Founder perspective</span></div><div class="essay-list essay-list-large">${articles.map(articleCard).join('')}</div></section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Technical articles use current authoritative sources where the subject requires them. The writing focuses on operating and commercial decisions rather than patient-specific guidance.</p></aside>`;
+  const hero = nasaRouteHero({
+    variant: 'thinking',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }],
+    eyebrow: 'Pharmaceutical strategy · Founder execution',
+    title: 'Essays from<br><em>the work.</em>',
+    deck: 'Original writing on market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
+    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/09/STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif',
+    width: 3100,
+    height: 3100,
+    source: 'https://science.nasa.gov/asset/hubble/hubble-ultra-deep-field/',
+    credit: 'Hubble · Ultra Deep Field · NASA/ESA/STScI',
+    meta: ['HUDF · Deep Field Survey', 'Hubble · ACS', 'Thousands of galaxies'],
+  });
+  const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><div class="collection-summary"><span>${articles.length} essays</span><span>Pharmaceutical strategy</span><span>Founder perspective</span></div><div class="essay-list essay-list-large">${articles.map(articleCard).join('')}</div></section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Technical articles use current authoritative sources where the subject requires them. The writing focuses on operating and commercial decisions rather than patient-specific guidance.</p></aside>`;
   return renderPage({ ...meta, body, schemas: [thinkingCollectionSchema(articles), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }])], className: 'thinking-page' });
 };
 
@@ -143,7 +211,20 @@ export const renderArticle = (article, articles) => {
 
 export const renderMedia = (page) => {
   const meta = contentMeta(page);
-  const body = `<section class="page-hero page-hero-compact">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }])}<p class="eyebrow">Writing & media</p><h1>Published work,<br>ideas and commentary.</h1><p class="page-deck">Selected writing on UK–EU pharmaceutical market access, post-Brexit regulation, parallel import and the operating decisions behind pharmaceutical companies.</p></section><section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const hero = nasaRouteHero({
+    variant: 'media',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }],
+    eyebrow: 'Writing & media',
+    title: 'Published work,<br>ideas and commentary.',
+    deck: 'Selected writing on UK–EU pharmaceutical market access, post-Brexit regulation, parallel import and the operating decisions behind pharmaceutical companies.',
+    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/10/STScI-01GFRYYRTCTMX197BY86MBFCR9.png',
+    width: 1987,
+    height: 1817,
+    source: 'https://science.nasa.gov/asset/webb/pillars-of-creation-miri-image/',
+    credit: 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI',
+    meta: ['M16 · Eagle Nebula', 'JWST · MIRI', 'Infrared observation'],
+  });
+  const body = `${hero}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [mediaCollectionSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }])], className: 'media-page' });
 };
 
@@ -155,13 +236,40 @@ export const renderSpeaking = (page) => {
 
 export const renderFacts = (page) => {
   const meta = contentMeta(page);
-  const body = `<section class="page-hero page-hero-compact">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }])}<p class="eyebrow">Founder profile</p><h1>Vishal Chakravarty.</h1><p class="page-deck">Biography, professional focus, selected publications and official links.</p></section><section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const hero = nasaRouteHero({
+    variant: 'facts',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }],
+    eyebrow: 'Founder profile',
+    title: 'Vishal Chakravarty.',
+    deck: 'Biography, professional focus, selected publications and official links.',
+    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png',
+    width: 4537,
+    height: 4630,
+    source: 'https://science.nasa.gov/asset/webb/webbs-first-deep-field-nircam-compass-image/',
+    credit: 'Webb · First Deep Field · NASA/ESA/CSA/STScI',
+    meta: ['SMACS 0723', 'JWST · NIRCam', 'Lensing galaxy cluster'],
+  });
+  const body = `${hero}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } }), personSchema(), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }])], className: 'facts-page' });
 };
 
 export const renderContact = (page) => {
   const meta = contentMeta(page);
-  const body = `<section class="contact-hero" data-reveal>${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }])}<p class="eyebrow">Direct contact</p><h1>Start a focused conversation.</h1><p class="page-deck">For selected conversations across pharmaceutical market access, manufacturing, supply, company building and editorial work.</p><a class="contact-email" href="mailto:${site.email}"><span>${site.email}</span>${arrow}</a><div class="content-managed contact-content">${page.html}</div></section>`;
+  const hero = nasaRouteHero({
+    variant: 'contact',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }],
+    eyebrow: 'Direct contact',
+    title: 'Start a focused<br>conversation.',
+    deck: 'For selected conversations across pharmaceutical market access, manufacturing, supply, company building and editorial work.',
+    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/3/324350main_11_full-1.jpg',
+    width: 1880,
+    height: 1410,
+    source: 'https://science.nasa.gov/resource/earth-at-night/',
+    credit: 'Earth at Night · NASA/NOAA',
+    meta: ['Earth · Night lights', 'Composite satellite imagery', 'Global view'],
+    action: `<a class="contact-email contact-email-hero" href="mailto:${site.email}"><span>${site.email}</span>${arrow}</a>`,
+  });
+  const body = `${hero}<section class="content-managed contact-content contact-content-panel section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, type: 'ContactPage', mainEntity: { '@id': person.id } }), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }])], className: 'contact-page' });
 };
 
