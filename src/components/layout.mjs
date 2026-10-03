@@ -52,7 +52,7 @@ const footerMarkup = () => `
       </nav>
       <div class="footer-contact">
         <a href="mailto:${site.email}">${site.email}</a>
-        <a href="${site.linkedIn}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="${site.linkedIn}" target="_blank" rel="me noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <div class="footer-base">
@@ -80,9 +80,13 @@ export const renderPage = ({
   socialImageAlt = 'Portrait of Vishal Chakravarty',
   socialImageWidth = 1200,
   socialImageHeight = 630,
+  publishedTime,
+  modifiedTime,
   noIndex = false,
 }) => {
   const canonical = absolute(path);
+  const ogType = path.startsWith('/essays/') ? 'article' : ['/about/', '/facts/'].includes(path) ? 'profile' : 'website';
+  const imageType = socialImage.endsWith('.webp') ? 'image/webp' : socialImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const schemaScripts = schemas.map((schema) => jsonForHtml(schema));
   const hashes = schemaScripts.map(scriptHash);
   const csp = [
@@ -106,21 +110,32 @@ export const renderPage = ({
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}">
     <meta name="author" content="${escapeHtml(person.name)}">
+    <meta name="application-name" content="Vishal Chakravarty">
+    <meta name="apple-mobile-web-app-title" content="Vishal Chakravarty">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="robots" content="${noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
     <meta name="googlebot" content="${noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
     <link rel="canonical" href="${canonical}">
+    <link rel="alternate" hreflang="en-GB" href="${canonical}">
+    <link rel="alternate" hreflang="x-default" href="${canonical}">
     <link rel="author" href="/about/">
     <link rel="alternate" type="application/json" title="Verified public facts about ${escapeHtml(person.name)}" href="/facts.json">
     <meta property="og:site_name" content="Vishal Chakravarty">
     <meta property="og:locale" content="en_GB">
-    <meta property="og:type" content="${path.startsWith('/essays/') ? 'article' : 'website'}">
+    <meta property="og:type" content="${ogType}">
     <meta property="og:title" content="${escapeHtml(title)}">
     <meta property="og:description" content="${escapeHtml(description)}">
     <meta property="og:url" content="${canonical}">
     <meta property="og:image" content="${absolute(socialImage)}">
+    <meta property="og:image:secure_url" content="${absolute(socialImage)}">
+    <meta property="og:image:type" content="${imageType}">
     <meta property="og:image:alt" content="${escapeHtml(socialImageAlt)}">
     <meta property="og:image:width" content="${socialImageWidth}">
     <meta property="og:image:height" content="${socialImageHeight}">
+    ${ogType === 'profile' ? '<meta property="profile:first_name" content="Vishal">\n    <meta property="profile:last_name" content="Chakravarty">' : ''}
+    ${publishedTime ? `<meta property="article:published_time" content="${escapeHtml(publishedTime)}">` : ''}
+    ${modifiedTime ? `<meta property="article:modified_time" content="${escapeHtml(modifiedTime)}">` : ''}
+    ${publishedTime ? `<meta property="article:author" content="${absolute('/about/')}">` : ''}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escapeHtml(title)}">
     <meta name="twitter:description" content="${escapeHtml(description)}">
