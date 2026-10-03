@@ -210,6 +210,30 @@ test('about page exposes a concise human-readable entity snapshot', () => {
   assert.match(html, /<meta property="profile:last_name" content="Chakravarty">/);
 });
 
+test('Media exposes the verified iPHEX 2026 field note and curated images', () => {
+  const html = fs.readFileSync(path.resolve('dist/media/index.html'), 'utf8');
+  const sitemap = fs.readFileSync(path.resolve('dist/sitemap.xml'), 'utf8');
+  const contentIndex = JSON.parse(fs.readFileSync(path.resolve('dist/content-index.json'), 'utf8'));
+  const llms = fs.readFileSync(path.resolve('dist/llms.txt'), 'utf8');
+
+  assert.match(html, /Field note \/ iPHEX 2026/);
+  assert.match(html, /7–9 September 2026/);
+  assert.match(html, /UK overseas delegate/);
+  assert.match(html, /overseasdelegates_participating_list_2026/);
+  assert.match(html, /vishal-chakravarty-iphex-2026-working\.webp/);
+  assert.match(html, /vishal-chakravarty-iphex-2026-international-delegates\.webp/);
+  assert.match(html, /"@type":"Event"|\\?"@type\\?":\\?"Event\\?"/);
+  assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-working.webp')));
+  assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp')));
+  assert.equal((sitemap.match(/<image:image>/g) ?? []).length, 3);
+  assert.match(sitemap, /vishal-chakravarty-iphex-2026-working\.webp/);
+  assert.match(sitemap, /vishal-chakravarty-iphex-2026-international-delegates\.webp/);
+  assert.equal(contentIndex.appearances?.[0]?.name, 'iPHEX 2026');
+  assert.match(contentIndex.appearances?.[0]?.officialRecord ?? '', /overseasdelegates_participating_list_2026/);
+  assert.match(llms, /Verified industry participation/);
+  assert.match(llms, /iPHEX 2026 field note/);
+});
+
 test('media output exposes the complete verified publisher record', () => {
   const html = fs.readFileSync(path.resolve('dist/media/index.html'), 'utf8');
   const facts = JSON.parse(fs.readFileSync(path.resolve('dist/facts.json'), 'utf8'));
