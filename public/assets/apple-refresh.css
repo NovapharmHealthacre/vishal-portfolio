@@ -2002,12 +2002,14 @@ a {
 }
 
 .home-page .writing .essay-card {
+  position: relative;
   display: flex;
   min-height: 28rem;
   flex-direction: column;
   grid-template-columns: none;
   gap: 0;
   padding: clamp(1.7rem, 2.8vw, 2.4rem);
+  padding-bottom: 5.25rem;
   border: 1px solid rgba(0, 0, 0, .05);
   border-radius: 28px;
   background: #fff;
