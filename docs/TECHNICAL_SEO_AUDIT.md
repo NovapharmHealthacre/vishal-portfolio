@@ -22,7 +22,7 @@ The production architecture is fundamentally strong: complete static HTML, small
 
 - Principal content is generated as semantic HTML.
 - The portrait has responsive AVIF, WebP and JPEG sources with explicit dimensions.
-- The canvas lattice is decorative and has a static fallback.
+- The homepage Nova field is decorative, progressively enhanced and backed by a static CSS composition.
 - Navigation, headings, facts and essay content do not depend on JavaScript.
 - No hidden FAQ, keyword layer or AI-only page exists.
 
