@@ -63,6 +63,12 @@ body {
   border-color: rgba(255,255,255,.12);
 }
 
+.home-page .site-header {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+
 .brand {
   gap: .62rem;
 }
