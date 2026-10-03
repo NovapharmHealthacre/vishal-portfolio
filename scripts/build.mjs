@@ -170,6 +170,7 @@ write(
         givenName: person.givenName,
         familyName: person.familyName,
         alternateName: person.alternateName,
+        disambiguatingDescription: person.disambiguatingDescription,
         role: person.role,
         founderRelationship: person.founderRelationship,
         jobTitle: person.jobTitle,
