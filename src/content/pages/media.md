@@ -9,7 +9,7 @@ public: true
 
 Vishal contributes analysis to Yakuji Nippo and Pharmaceutical Commerce. {{EXTERNAL_PUBLICATION_COUNT}} publisher-hosted contributions are verified below.
 
-The four-part Yakuji Nippo series examines UK–EU pharmaceutical market access and compliance after Brexit. His Pharmaceutical Commerce commentary considers the operating conditions required for resilient pharmaceutical supply.
+The four-part Yakuji Nippo series examines UK–EU pharmaceutical market access and compliance after Brexit. His Pharmaceutical Commerce commentary examines resilient pharmaceutical supply and the boundary between package-level traceability and upstream continuity intelligence.
 
 Each link opens the original publisher record.
 
@@ -24,7 +24,8 @@ The published work addresses:
 - parallel-import licensing and risk;
 - cross-border market entry;
 - the relationship between regulatory strategy and commercial execution;
-- onshoring, qualified redundancy and supply continuity.
+- onshoring, qualified redundancy and supply continuity;
+- DSCSA traceability, upstream risk and continuity intelligence.
 
 ## Selected independent essays
 
