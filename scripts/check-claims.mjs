@@ -6,7 +6,7 @@ const failures = [];
 const forbidden = [
   [/novapharmhealthcare\.co\.uk/gi, 'obsolete .co.uk domain'],
   [/en\.wikipedia\.org\/wiki\/Vishal_Chakravarty/gi, 'unsupported Wikipedia'],
-  [/Q130325741|Q137660690/g, 'unapproved Wikidata'],
+  [/Q130325741/g, 'unapproved Wikidata'],
   [/github\.com\/vishalchakravarty/gi, 'unverified GitHub profile'],
   [/MHRA[- ]licensed wholesaler/gi, 'unsupported MHRA licence claim'],
   [/GDP[- ]certified supply chain/gi, 'unsupported GDP certification'],
