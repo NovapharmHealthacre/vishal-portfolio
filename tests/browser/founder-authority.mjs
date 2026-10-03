@@ -250,7 +250,7 @@ try {
         const narrowState = await page.evaluate(() => {
           const clientWidth = document.documentElement.clientWidth;
           const offenders = [...document.querySelectorAll('body *')]
-            .filter((element) => !element.closest('[data-real-cosmos]'))
+            .filter((element) => !element.closest('[data-real-cosmos], [data-page-cosmos]'))
             .map((element) => {
               const rect = element.getBoundingClientRect();
               const style = getComputedStyle(element);

@@ -86,6 +86,7 @@ export const renderPage = ({
   redirectTo,
 }) => {
   const canonical = absolute(path);
+  const routeCosmosEnabled = ['ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].includes(className);
   const ogType = path.startsWith('/essays/') ? 'article' : ['/about/', '/facts/'].includes(path) ? 'profile' : 'website';
   const imageType = socialImage.endsWith('.webp') ? 'image/webp' : socialImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const schemaScripts = schemas.map((schema) => jsonForHtml(schema));
@@ -152,7 +153,9 @@ export const renderPage = ({
     <link rel="stylesheet" href="/assets/site.css">
     <link rel="stylesheet" href="/assets/content-fixes.css">
     <link rel="stylesheet" href="/assets/apple-refresh.css">
+    ${routeCosmosEnabled ? '<link rel="stylesheet" href="/assets/route-cosmos.css">' : ''}
     <script src="/assets/site.js" defer></script>
+    ${routeCosmosEnabled ? '<script src="/assets/route-cosmos.js" defer></script>' : ''}
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
   </head>
   <body class="${escapeHtml(className)}">

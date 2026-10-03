@@ -30,7 +30,47 @@ test('essential homepage content exists before JavaScript', () => {
   assert.doesNotMatch(html, /data-founder-ai/);
   assert.doesNotMatch(html, /Founder\s*(?:&|&amp;|and)\s*(?:Chief Executive Officer|CEO)/i);
   assert.match(html, /<nav id="site-navigation"/);
+  assert.doesNotMatch(html, /assets\/route-cosmos\.js/);
+  assert.doesNotMatch(html, /assets\/route-cosmos\.css/);
   assert.doesNotMatch(html, /loading screen/i);
+});
+
+test('primary routes each expose a distinct official NASA observation hero', () => {
+  const expectations = [
+    ['ventures', 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png', 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI'],
+    ['thinking', 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif', 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI'],
+    ['media', 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png', 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI'],
+    ['facts', 'STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png', 'Webb · First Deep Field · NASA/ESA/CSA/STScI'],
+    ['contact', '324350main_11_full-1.jpg', 'Earth at Night · NASA/NOAA'],
+  ];
+
+  for (const [route, asset, credit] of expectations) {
+    const html = fs.readFileSync(path.resolve('dist/' + route + '/index.html'), 'utf8');
+    assert.match(html, /data-page-cosmic-hero/);
+    assert.match(html, /data-page-cosmos/);
+    assert.match(html, /assets\.science\.nasa\.gov/);
+    assert.ok(html.includes(asset), route + ': missing expected NASA asset ' + asset);
+    assert.ok(html.includes(credit), route + ': missing observation credit');
+    assert.match(html, /<link rel="stylesheet" href="\/assets\/route-cosmos\.css">/);
+    assert.match(html, /<script src="\/assets\/route-cosmos\.js" defer><\/script>/);
+  }
+});
+
+test('route cosmos stylesheet is shipped as a route-only asset', () => {
+  const file = path.resolve('dist/assets/route-cosmos.css');
+  assert.equal(fs.existsSync(file), true);
+  const stylesheet = fs.readFileSync(file, 'utf8');
+  assert.match(stylesheet, /page-hero-cosmic/);
+  assert.match(stylesheet, /page-hero-ventures/);
+  assert.match(stylesheet, /page-hero-contact/);
+});
+
+test('route cosmos controller is built as a route-only asset', () => {
+  const file = path.resolve('dist/assets/route-cosmos.js');
+  assert.equal(fs.existsSync(file), true);
+  const script = fs.readFileSync(file, 'utf8');
+  assert.match(script, /data-page-cosmic-hero/);
+  assert.match(script, /requestAnimationFrame/);
 });
 
 test('content security policy permits only same-origin connections', () => {

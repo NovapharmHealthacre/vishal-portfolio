@@ -139,5 +139,3 @@ if (revealItems.length) {
     for (const item of revealItems) revealObserver.observe(item);
   }
 }
-
-
