@@ -2928,3 +2928,19 @@ a {
     opacity: .18;
   }
 }
+
+
+/* Keep mobile telescope imagery real but static and lightweight.
+   Desktop retains the cinematic camera/parallax treatment. */
+@media (max-width: 720px) {
+  .home-page .hero-hubble .hubble-wide {
+    animation: none !important;
+    transform: scale(1.04);
+    filter: brightness(.68) saturate(.9) contrast(1.06);
+    will-change: auto;
+  }
+
+  .home-page .hero-hubble .hubble-close-shell {
+    display: none !important;
+  }
+}
