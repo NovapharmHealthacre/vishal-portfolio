@@ -1,10 +1,12 @@
 # Search Console and Bing owner actions
 
-Reviewed: 14 July 2026
+Reviewed: 3 October 2026
 
 No passwords, authentication codes or private tokens should be placed in this repository or shared in chat.
 
 ## Google Search Console
+
+Current status: no Search Console property is present in the connected Google account. The existing HTML verification file remains deployed. Add/verify the property before the steps below can be executed.
 
 | Step | Screen / field | Value | Secret? | Action |
 |---|---|---|---|---|
