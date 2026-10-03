@@ -40,6 +40,7 @@ if (toggle && navigation) {
 
 const novaFieldEligible =
   document.querySelector('#nova-field') &&
+  window.matchMedia('(min-width: 721px)').matches &&
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
   !navigator.connection?.saveData &&
   (navigator.deviceMemory ?? 8) >= 4 &&
