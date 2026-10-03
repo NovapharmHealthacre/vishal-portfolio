@@ -3,6 +3,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 
+test('IndexNow ownership key is shipped', () => {
+  assert.equal(
+    fs.readFileSync(path.resolve('dist/5ab151c5043481fb27617ef883d0cce5.txt'), 'utf8').trim(),
+    '5ab151c5043481fb27617ef883d0cce5',
+  );
+});
+
 test('production output preserves ownership and custom-domain files', () => {
   assert.equal(fs.readFileSync(path.resolve('dist/CNAME'), 'utf8').trim(), 'vishal.novapharmhealthcare.com');
   assert.equal(
@@ -222,7 +229,8 @@ test('Media exposes the verified iPHEX 2026 field note and curated images', () =
   assert.match(html, /overseasdelegates_participating_list_2026/);
   assert.match(html, /vishal-chakravarty-iphex-2026-working\.webp/);
   assert.match(html, /vishal-chakravarty-iphex-2026-international-delegates\.webp/);
-  assert.match(html, /"@type":"Event"|\\?"@type\\?":\\?"Event\\?"/);
+  assert.match(html, /OfflineEventAttendanceMode/);
+  assert.match(html, /EventCompleted/);
   assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-working.webp')));
   assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp')));
   assert.equal((sitemap.match(/<image:image>/g) ?? []).length, 3);
