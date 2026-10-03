@@ -37,10 +37,16 @@ test('content security policy permits only same-origin connections', () => {
 test('public facts expose only approved public-safe records and canonical entity ids', () => {
   const facts = JSON.parse(fs.readFileSync(path.resolve('dist/facts.json'), 'utf8'));
   assert.equal(facts.schemaVersion, 2);
-  assert.deepEqual(facts.person.sameAs, ['https://www.linkedin.com/in/vishal-chakravarty']);
+  assert.deepEqual(facts.person.sameAs, [
+    'https://www.linkedin.com/in/vishal-chakravarty',
+    'https://www.wikidata.org/wiki/Q137660690',
+    'https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments',
+    'https://novapharmhealthcare.com/leadership/vishal-chakravarty/',
+  ]);
   assert.equal(facts.person.jobTitle, 'Chief Executive Officer');
   assert.equal(facts.person.givenName, 'Vishal');
   assert.equal(facts.person.familyName, 'Chakravarty');
+  assert.equal(facts.person.alternateName, 'Vishal Om Prakash Chakravarty');
   assert.equal(facts.answers.length, 3);
   assert.equal(facts.answers.every((answer) => answer.source.startsWith('https://vishal.novapharmhealthcare.com/')), true);
   assert.equal(facts.entityIds.person, 'https://vishal.novapharmhealthcare.com/#person');
@@ -59,7 +65,7 @@ test('public facts expose only approved public-safe records and canonical entity
   );
   assert.equal(facts.facts.find((fact) => fact.id === 'P-008')?.status, 'VERIFIED_HISTORICAL');
   assert.equal(facts.facts.find((fact) => fact.id === 'M-002')?.status, 'VERIFIED_CURRENT');
-  assert.equal(facts.facts.find((fact) => fact.id === 'M-004')?.value, 'Five publisher-hosted contributions');
+  assert.equal(facts.facts.find((fact) => fact.id === 'M-004')?.value, 'Six publisher-hosted contributions');
   assert.doesNotMatch(JSON.stringify(facts), /passport|birthDate|residential address|\bvisa\b|\bimmigration\b/i);
   assert.doesNotMatch(JSON.stringify(facts), /Founder\s*(?:&|and)\s*(?:Chief Executive Officer|CEO)/i);
 });
@@ -80,11 +86,12 @@ test('about page exposes a concise human-readable entity snapshot', () => {
 test('media output exposes the complete verified publisher record', () => {
   const html = fs.readFileSync(path.resolve('dist/media/index.html'), 'utf8');
   const facts = JSON.parse(fs.readFileSync(path.resolve('dist/facts.json'), 'utf8'));
-  assert.equal(facts.publications.length, 5);
+  assert.equal(facts.publications.length, 6);
   assert.match(html, /entry136963\.html/);
   assert.match(html, /entry136964\.html/);
   assert.match(html, /why-onshoring-alone-wont-secure-pharma-supply-chains/);
-  assert.match(html, /5 publisher-hosted contributions are verified below/);
+  assert.match(html, /dscsa-can-trace-a-package-it-cannot-tell-you-whether-the-next-one-will-arrive-/);
+  assert.match(html, /6 publisher-hosted contributions are verified below/);
 });
 
 test('privacy output matches the approved minimal email flow', () => {
