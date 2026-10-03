@@ -1,55 +1,57 @@
 # Remaining owner actions
 
-Reviewed: 14 July 2026
+Reviewed: 3 October 2026
 
-No action below requires sharing a password, authentication code or private document in chat.
+The repository, production deployment, canonical entity graph, external evidence links, crawler policy, feeds, sitemap generation, public facts, Wikidata reconciliation and retired-route handling have been completed and validated under automated release gates.
 
-## Required before merging SEO PR #3
+No password, authentication code or private document should be shared in chat.
 
-1. Review the cross-site entity contract and confirm the intended corporate identifiers:
-   - `https://novapharmhealthcare.com/#organization`
-   - `https://novapharmhealthcare.com/#website`
-2. Review the public search baseline, especially the stale legacy retrieval finding.
-3. Confirm the content calendar is a planning document only and does not authorise automatic publishing.
-4. Review hosted CI and any requested changes on PR #3.
-5. Review draft maintenance PR #4 separately; do not merge it merely because PR #3 is approved.
-
-## Required after an approved SEO merge
+## Required to unlock Google-side completion
 
 ### Google Search Console
 
-- Submit or reconfirm `sitemap.xml`.
-- Inspect homepage, About, Ventures, Thinking and Facts.
-- Compare Google-selected canonicals and rendered HTML.
-- Request indexing once where necessary.
-- Review legacy URLs and old snippets.
+The connected Google account currently exposes no Search Console properties for this site.
+
+The production site already preserves the Google verification file:
+
+`https://vishal.novapharmhealthcare.com/googlef9cdfdd63c360d56.html`
+
+Owner action:
+
+1. Add `https://vishal.novapharmhealthcare.com/` to Google Search Console as a URL-prefix property, or add the parent `novapharmhealthcare.com` domain property through DNS if preferred.
+2. Complete/confirm ownership using Google's supported flow. The existing HTML verification file must remain unchanged.
+3. Once the property exists, register it in the connected Search Console workspace.
+4. Submit `https://vishal.novapharmhealthcare.com/sitemap.xml`.
+5. Inspect the homepage, `/about/`, `/facts/`, `/media/`, one representative essay and the retired `/gallery/` route.
+6. Request indexing only for materially changed canonical pages where Google offers that action.
+7. Confirm Google-selected canonicals and allow the retired Gallery/Ask-Vishal cache to age out after recrawl.
+
+These account-level steps cannot be executed until Google Search Console contains the property.
+
+## Optional secondary search coverage
 
 ### Bing Webmaster Tools
 
-- Verify/import the site.
-- Submit the sitemap.
-- Inspect the same priority URLs.
-- Review crawl, index and backlink reports.
+Bing verification/import, sitemap submission and URL inspection are optional secondary coverage. They are not required for Google Knowledge Panel eligibility.
 
-### External profiles
+## Already completed
 
-- Align the personal LinkedIn headline, About text, portrait and website field with the approved identity standard.
-- Align NovaPharm’s company page and corporate website with Companies House and the regulatory boundary.
-- Publish the corporate Organization identifier when the company-site work is ready.
-- Do not add unverified social profiles to `sameAs`.
+- Canonical Person, ProfilePage, WebSite and Organization identifiers.
+- Person/Organization cross-linking.
+- LinkedIn, Wikidata, Companies House and corporate leadership identity references.
+- Independent iPHEX identity/role evidence.
+- Four Yakuji Nippo instalments and two Pharmaceutical Commerce contributions.
+- Public founder facts page and machine-readable `facts.json`.
+- `llms.txt`, RSS and JSON Feed discovery files.
+- Googlebot/Bingbot/search-retrieval crawler access.
+- Canonical sitemap generation with truthful `lastmod` values.
+- Breadcrumb structured data and visible breadcrumbs.
+- Canonical founder portrait and image sitemap entry.
+- Gallery and Ask-Vishal removal from canonical navigation/discovery.
+- Retired Gallery route marked `noindex,follow`, canonicalised to About and redirected to the canonical profile.
+- Automated SEO, schema, accessibility, performance, security and production-domain checks.
+- Google verification file preserved in the public build.
 
-## Optional future decisions
+## Google-controlled outcome
 
-- Reassess IndexNow if publishing frequency becomes materially higher.
-- Approve an additional social profile only after exact identity verification.
-- Consider a press kit only after image redistribution rights and a sufficient public media record are confirmed.
-- Consider privacy-preserving analytics only through a separate legal, privacy and performance review.
-- Consider Knowledge Panel claiming only if a correct panel appears.
-
-## No action required
-
-- DNS must not change.
-- GitHub Pages settings must not change for this SEO phase.
-- No new verification token is needed in the repository now.
-- No paid SEO tool or monitoring service is required.
-- No Wikipedia or Wikidata page should be created as an SEO shortcut.
+Google decides whether and when a Knowledge Panel is generated. No repository, schema or Search Console action can guarantee or force panel creation. The controllable objective is accurate entity reconciliation and crawlable authoritative evidence.

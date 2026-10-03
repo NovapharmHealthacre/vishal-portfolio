@@ -1,6 +1,6 @@
 # Knowledge Panel readiness
 
-Reviewed: 14 July 2026
+Reviewed: 3 October 2026
 
 ## Current finding
 
@@ -16,8 +16,9 @@ A Knowledge Panel cannot be created or guaranteed by adding schema. Google gener
 - A verified current role and founder relationship.
 - A high-quality crawlable portrait.
 - A public facts page and machine-readable facts record.
-- Verified LinkedIn identity only in `sameAs`.
-- Companies House organisation evidence.
+- Verified identity/reference graph spanning LinkedIn, Wikidata, Companies House and the NovaPharm leadership profile.
+- Independent iPHEX 2026 identity/role evidence.
+- Companies House Person and Organization evidence.
 - Publisher-hosted Yakuji Nippo and Pharmaceutical Commerce publication URLs.
 - Stable canonical routes and structured data.
 - Correction contact and material review dates.
@@ -27,8 +28,8 @@ A Knowledge Panel cannot be created or guaranteed by adding schema. Google gener
 - Limited independent biographical coverage about Vishal as the subject.
 - No confirmed broad media profile or established speaker record.
 - No approved additional social profiles.
-- Corporate website still needs to publish the agreed Organization identifier.
-- Search engines may retain old or conflicting legacy descriptions while recrawling.
+- Google Search Console property registration is still required in the connected Google account before URL Inspection and sitemap resubmission can be performed.
+- Search engines may retain old or conflicting legacy descriptions while recrawling; retired routes now emit noindex, destination canonicals and zero-delay HTML redirects.
 - Authored articles demonstrate expertise but are not independent notability evidence.
 
 ## Owner checklist if a correct panel appears

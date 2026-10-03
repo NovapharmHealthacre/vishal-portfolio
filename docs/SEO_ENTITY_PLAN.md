@@ -1,6 +1,6 @@
 # Search, entity and AI-discoverability plan
 
-Research date: 12 July 2026
+Research date: 3 October 2026
 
 ## Scope and promise boundary
 
@@ -16,10 +16,12 @@ The official OpenAI developer-docs connector was unavailable and could not be in
 - Website identifier: `https://vishal.novapharmhealthcare.com/#website`
 - Canonical company name: NovaPharm Healthcare Ltd
 - Company number: 16716501
-- Company identifier: `https://vishal.novapharmhealthcare.com/ventures/#novapharm-healthcare`
+- Company identifier: `https://novapharmhealthcare.com/#organization`
 - Company domain: `https://novapharmhealthcare.com/`
-- Verified profile for `sameAs`: `https://www.linkedin.com/in/vishal-chakravarty`
-- Verified publication evidence: Yakuji Nippo and Pharmaceutical Commerce article URLs
+- Verified Person reference URLs: LinkedIn, Wikidata Q137660690, Companies House officer record and the NovaPharm leadership profile
+- Verified Organization reference URLs: Companies House company record, NovaPharm LinkedIn and Wikidata Q137660644
+- Verified independent identity evidence: iPHEX 2026 overseas delegates record
+- Verified publication evidence: four Yakuji Nippo instalments (English/Japanese) and two Pharmaceutical Commerce commentaries
 
 Nationality, residence, Wikipedia, conflicting Wikidata QIDs, Crunchbase, GitHub, X, Instagram and YouTube are omitted.
 
@@ -68,7 +70,7 @@ Rules:
 - No `FAQPage` unless an actual visible Q&A page exists and Google eligibility guidance supports the use case.
 - No `ScholarlyArticle` for essays.
 - No nationality, residence, ratings, awards, reviews, customers, licences, projected values or hidden text.
-- `sameAs` includes only verified identity profiles, not articles or registries.
+- `sameAs` is limited to URLs that unambiguously identify the Person or Organization; publisher articles remain `subjectOf` evidence rather than identity aliases.
 - Structured-data snapshots are tested for private/unsupported properties.
 
 ## Visible entity evidence
@@ -154,7 +156,7 @@ Do not add `Crawl-delay` for Googlebot/Bingbot. The generic group remains `Allow
 1. Use one role description across personal site, company site and verified LinkedIn.
 2. Correct company incorporation date everywhere under owner control.
 3. Remove unsupported MHRA, NHS, deployed-technology and residence wording.
-4. Resolve duplicate/conflicting Wikidata items through normal source-based community processes, not as a ranking tactic.
+4. Keep Wikidata Q137660690 (Person) and Q137660644 (Organization) aligned with independently verifiable public facts; do not add unsupported claims for SEO.
 5. Do not create Wikipedia or circular references.
 6. Use a consistent owner-approved headshot once rights and crop are confirmed.
 7. Review the fact ledger quarterly.

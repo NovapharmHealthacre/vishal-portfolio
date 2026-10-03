@@ -1,6 +1,6 @@
 # Search Console and webmaster setup
 
-Last reviewed: 12 July 2026
+Last reviewed: 3 October 2026
 Canonical origin: `https://vishal.novapharmhealthcare.com/`
 
 ## Objective
@@ -25,10 +25,14 @@ shasum -a 256 public/googlef9cdfdd63c360d56.html dist/googlef9cdfdd63c360d56.htm
 
 `robots.txt` must not disallow this file. The file proves control only to the relevant Google property; it is not an identity or regulatory credential.
 
+## Current Search Console status
+
+As of 3 October 2026, the connected Google account exposes no Search Console property for the personal site or parent domain. The HTML verification file remains deployed and tested, but URL Inspection, sitemap submission and Search Console performance/index reports cannot be used until a property is added to Google Search Console.
+
 ## Google Search Console release checklist
 
-1. Sign in through the owner's existing Google account and open the existing property if one is present.
-2. Prefer the existing URL-prefix property for `https://vishal.novapharmhealthcare.com/`. Creating a domain property requires a DNS change and is outside this release unless separately approved.
+1. Sign in through the owner's Google account and add the URL-prefix property `https://vishal.novapharmhealthcare.com/`, or add the parent domain property if DNS verification is preferred.
+2. Confirm ownership through Google's supported verification flow. Preserve the existing HTML verification file.
 3. Confirm ownership still verifies through the preserved HTML file.
 4. Inspect the live homepage and the canonical routes `/about/`, `/ventures/`, `/thinking/`, `/media/` and `/facts/`.
 5. Confirm Google-selected canonical agrees with the declared canonical after recrawl. Do not treat a temporary mismatch immediately after migration as proof of failure.
@@ -55,7 +59,7 @@ Before and after production deployment:
 3. Test representative live pages with Google's Rich Results Test where their types are supported.
 4. Validate the JSON-LD graph manually against visible copy and Schema.org.
 5. Confirm stable `#person`, `#website` and organisation identifiers.
-6. Confirm `sameAs` contains only the verified LinkedIn URL.
+6. Confirm Person `sameAs` resolves only to approved identity/reference URLs: LinkedIn, Wikidata Q137660690, the Companies House officer record and the NovaPharm leadership profile.
 7. Confirm schema contains no nationality, residence, licence, customer, revenue, rating, award, review, unsupported profile or hidden FAQ claim.
 
 Absence of a rich result is not a release defect when the page is ineligible for one. Valid schema is an entity-consistency aid, not a ranking guarantee.

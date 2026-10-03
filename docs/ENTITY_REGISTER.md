@@ -1,6 +1,6 @@
 # Canonical entity register
 
-Reviewed: 22 August 2026
+Reviewed: 3 October 2026
 
 ## Vishal Chakravarty
 
@@ -16,11 +16,11 @@ Reviewed: 22 August 2026
 | Founder relationship | Founder of NovaPharm Healthcare Ltd |
 | Structured job title | Chief Executive Officer |
 | Employer | `https://novapharmhealthcare.com/#organization` |
-| Verified sameAs | `https://www.linkedin.com/in/vishal-chakravarty` |
-| Approved portrait | `/images/portrait/vishal-chakravarty-960.jpg` and responsive derivatives |
+| Verified sameAs | LinkedIn; Wikidata Q137660690; Companies House officer record; NovaPharm leadership profile |
+| Approved portrait | `/images/portrait/vishal-chakravarty-1440.webp` with responsive derivatives |
 | Principal description source | `src/data/entity.mjs` |
-| Last fact verification | 30 July 2026 |
-| Last profile-entity review | 30 July 2026 |
+| Last fact verification | 3 October 2026 |
+| Last profile-entity review | 3 October 2026 |
 
 ### Public-safe knowledge areas
 
@@ -62,12 +62,13 @@ Nationality, date of birth, residential address, passport data, immigration stat
 | Incorporation date | 15 September 2025 |
 | Status | Active UK-registered private limited company |
 | Founder | Vishal Person entity |
+| Wikidata | Q137660644 |
 | Authoritative registry | Companies House company 16716501 |
 | Regulatory boundary | No MHRA wholesale authorisation is claimed on the personal site |
 
 ## External publication record
 
-All four Yakuji Nippo series instalments are recorded with live English and Japanese publisher URLs. One Pharmaceutical Commerce commentary is also recorded. The five primary publisher records in `src/data/entity.mjs` are the authoritative publication links. Authored work is not treated as independent biographical coverage or `subjectOf` evidence.
+All four Yakuji Nippo series instalments are recorded with live English and Japanese publisher URLs. Two Pharmaceutical Commerce commentaries are also recorded. The six publisher-hosted contribution records in `src/data/entity.mjs` are the canonical publication references. The official iPHEX 2026 overseas delegates record is tracked separately as independent identity/role evidence.
 
 ## Governance
 
