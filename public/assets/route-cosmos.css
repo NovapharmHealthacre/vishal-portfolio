@@ -469,3 +469,6 @@
     margin-top: 1.75rem;
   }
 }
+
+/* NASA asset fallback */
+.page-cosmos { background-color: #020204; }
