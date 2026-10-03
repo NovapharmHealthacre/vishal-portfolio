@@ -4,6 +4,7 @@ import { escapeHtml, externalLink, formatDate } from '../lib/html.mjs';
 import {
   articleSchema,
   breadcrumbSchema,
+  iphex2026EventSchema,
   mediaCollectionSchema,
   organisationSchema,
   personSchema,
@@ -299,29 +300,74 @@ export const renderMedia = (page) => {
   const hero = nasaRouteHero({
     variant: 'media',
     crumbs: [{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }],
-    eyebrow: 'Media & publications',
-    title: 'Published<br>elsewhere.',
-    deck: 'Publisher-hosted analysis, press resources and a concise media profile — with primary sources linked directly.',
+    eyebrow: 'Media & public work',
+    title: 'Published.<br>Present.',
+    deck: 'Publisher-hosted analysis, selected industry participation and press resources — with primary sources linked directly.',
     image: '',
     width: 0,
     height: 0,
     source: '',
     credit: '',
-    meta: ['Publisher-hosted', 'Yakuji Nippo', 'Pharmaceutical Commerce'],
+    meta: ['Publisher-hosted', 'Industry', 'Primary sources'],
   });
   const summary = routeSummary({
-    eyebrow: 'Published record',
-    title: 'Primary sources before self-description.',
-    copy: 'This page is reserved for work published elsewhere and press resources. Original essays live in Thinking; verification lives in Public record.',
+    eyebrow: 'Public record',
+    title: 'Show the work. Link the source.',
+    copy: 'Published analysis and selected industry participation sit here with primary-source verification. Original essays remain in Thinking; formal identity evidence remains in Public record.',
     facts: [
       ['Publishers', 'Yakuji Nippo · Pharmaceutical Commerce'],
-      ['Verified work', String(publications.length) + ' contributions'],
-      ['Focus', 'UK–EU market access · supply resilience'],
-      ['Format', 'Analysis · commentary · press resources'],
+      ['Industry', 'iPHEX 2026'],
+      ['Focus', 'Market access · manufacturing · supply'],
+      ['Format', 'Analysis · field notes · press resources'],
     ],
   });
-  const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
-  return renderPage({ ...meta, body, schemas: [mediaCollectionSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }])], className: 'media-page' });
+  const iphexFeature = `
+    <section class="media-field-note section" id="iphex-2026" aria-labelledby="iphex-2026-title" data-reveal>
+      <header class="media-field-note-header">
+        <div>
+          <p class="eyebrow">Field note / iPHEX 2026</p>
+          <h2 id="iphex-2026-title">Three days of conversations.<br>One operating question.</h2>
+        </div>
+        <dl>
+          <div><dt>Event</dt><dd>iPHEX 2026</dd></div>
+          <div><dt>Dates</dt><dd>7–9 September 2026</dd></div>
+          <div><dt>Location</dt><dd>New Delhi, India</dd></div>
+          <div><dt>Record</dt><dd>UK overseas delegate</dd></div>
+        </dl>
+      </header>
+      <div class="media-field-note-grid">
+        <figure class="media-field-note-lead">
+          <img src="/images/media/vishal-chakravarty-iphex-2026-working.webp" width="440" height="550" alt="Vishal Chakravarty reviewing meeting material during iPHEX 2026." loading="lazy" decoding="async">
+          <figcaption>Between scheduled business meetings during iPHEX 2026.</figcaption>
+        </figure>
+        <div class="media-field-note-copy">
+          <p>The official iPHEX 2026 overseas delegates list records <strong>Vishal Om Prakash Chakravarty</strong> under the United Kingdom, representing <strong>NovaPharm Healthcare Ltd</strong>. That independent record matters more than another self-written title line.</p>
+          <p>The event compressed months of partner discovery into three days: product portfolios, specialist medicines, oncology opportunities, manufacturing routes, dossiers, UK market access and cross-border supply.</p>
+          <p>The useful conclusion was not that the market needs more product lists. It was the opposite. Quality, regulatory readiness, commercial fit and continuity of supply determine whether an opportunity can become a durable route to market.</p>
+          <blockquote><p>A product list is not a strategy. The route from dossier to manufacturer to market is.</p></blockquote>
+          <a class="text-link" href="https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026" target="_blank" rel="noopener noreferrer">Official iPHEX overseas delegate record <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="media-field-note-wide">
+        <img src="/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp" width="500" height="333" alt="Vishal Chakravarty at iPHEX 2026 beside participating-country flags." loading="lazy" decoding="async">
+        <figcaption>iPHEX 2026 brought together an international business-delegate programme around pharmaceuticals and healthcare.</figcaption>
+      </figure>
+    </section>`;
+  const body = `${hero}${summary}${iphexFeature}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  return renderPage({
+    ...meta,
+    body,
+    socialImage: '/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp',
+    socialImageAlt: 'Vishal Chakravarty at iPHEX 2026 beside participating-country flags.',
+    socialImageWidth: 500,
+    socialImageHeight: 333,
+    schemas: [
+      mediaCollectionSchema(),
+      iphex2026EventSchema(),
+      breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }]),
+    ],
+    className: 'media-page',
+  });
 };
 
 export const renderSpeaking = (page) => {
