@@ -7,7 +7,7 @@ public: true
 
 ## Company overview
 
-{{COMPANY_NAME}} is a UK-registered pharmaceutical company founded by Vishal Chakravarty and incorporated in 2025.
+{{COMPANY_NAME}} is a UK-registered pharmaceutical company incorporated in 2025.
 
 It is being built around specialist medicines and the complete route between product opportunity, regulatory pathway, manufacturer, supply, market and channel.
 
@@ -75,12 +75,6 @@ The intended value is clearer decisions, stronger traceability and earlier visib
 The United Kingdom is NovaPharm’s strategic foundation.
 
 Europe remains an important connected region with distinct regulatory and commercial systems. India contributes manufacturing, development and partnership depth. Selected international regulated markets form part of the longer market-access direction.
-
-## Founder role
-
-Vishal leads company strategy, product selection, manufacturing and commercial partnerships, market-access planning and the development of NovaPharm’s operating platform.
-
-The focus is turning pharmaceutical opportunities into structured programmes that can survive technical, regulatory, supply and commercial scrutiny.
 
 ## Related thinking
 
