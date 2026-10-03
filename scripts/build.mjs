@@ -169,6 +169,7 @@ write(
         name: person.name,
         givenName: person.givenName,
         familyName: person.familyName,
+        alternateName: person.alternateName,
         role: person.role,
         founderRelationship: person.founderRelationship,
         jobTitle: person.jobTitle,
