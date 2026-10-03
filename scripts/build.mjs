@@ -192,13 +192,18 @@ const contentIndex = (pages, articles) => ({
 
 const llmsText = (pages, articles) => `# Vishal Chakravarty
 
-> Official public website for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and founder of the company.
+> Official public website for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and founder of the company. This file is a supplemental navigation aid; canonical pages and structured data remain authoritative.
+
+## Canonical entity ids
+- Person: ${person.id}
+- Organisation: ${company.id}
 
 ## Primary pages
 ${Object.values(pages)
   .filter((page) => page.public)
   .map((page) => `- [${page.title}](${new URL(page.canonicalPath, site.origin).href}): ${page.description}`)
   .join('\n')}
+- [Pharmaceutical Essays by Vishal Chakravarty](${site.origin}/thinking/): Original essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.
 
 ## Selected essays
 ${articles.slice(0, 10).map((article) => `- [${article.title}](${new URL(article.canonicalPath, site.origin).href}): ${article.summary}`).join('\n')}
