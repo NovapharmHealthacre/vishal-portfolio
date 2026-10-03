@@ -2431,3 +2431,20 @@ a {
     opacity: 1;
   }
 }
+
+
+/* 2026-10-03 supernova performance pass.
+   Keep the identity/LCP content immediate; reserve procedural motion for larger screens. */
+.home-page .nova-field {
+  filter: none;
+}
+
+.home-page .hero-cosmic .hero-copy {
+  animation: none !important;
+}
+
+@media (max-width: 720px) {
+  .home-page .nova-field {
+    display: none;
+  }
+}
