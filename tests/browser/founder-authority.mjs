@@ -186,7 +186,12 @@ try {
       await homeCheck.goto(origin, { waitUntil: 'networkidle' });
       ensure((await homeCheck.locator('a[href="/gallery/"]').count()) === 0, `${browserName}: gallery link remains on homepage`);
       ensure((await homeCheck.locator('[data-founder-ai-open], [data-founder-ai-dialog]').count()) === 0, `${browserName}: founder AI UI remains on homepage`);
-      ensure((await homeCheck.locator('#nova-field').count()) === 1, `${browserName}: immersive hero canvas missing`);
+      ensure((await homeCheck.locator('[data-real-cosmos]').count()) === 1, `${browserName}: real Hubble hero missing`);
+      ensure((await homeCheck.locator('img.hubble-wide').count()) === 1, `${browserName}: wide Hubble image missing`);
+      ensure((await homeCheck.locator('img.hubble-close').count()) === 1, `${browserName}: Hubble focal image missing`);
+      ensure((await homeCheck.locator('#nova-field').count()) === 0, `${browserName}: retired procedural nova canvas remains`);
+      const hubbleSrc = await homeCheck.locator('img.hubble-wide').getAttribute('src');
+      ensure(hubbleSrc?.startsWith('https://assets.science.nasa.gov/'), `${browserName}: Hubble source is not the official NASA asset host`);
       await homeCheck.close();
 
       for (const { route, destination } of compatibilityRoutes) {
