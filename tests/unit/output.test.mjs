@@ -35,23 +35,19 @@ test('essential homepage content exists before JavaScript', () => {
   assert.doesNotMatch(html, /loading screen/i);
 });
 
-test('primary routes each expose a distinct official NASA observation hero', () => {
-  const expectations = [
-    ['about', 'STScI-01EVT8DP1YM9FYPF0Y33VY7ANB.tif', 'Hubble · NGC 1300 · NASA/ESA · Hubble Heritage Team'],
-    ['ventures', 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png', 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI'],
-    ['thinking', 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif', 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI'],
-    ['media', 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png', 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI'],
-    ['facts', 'STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png', 'Webb · First Deep Field · NASA/ESA/CSA/STScI'],
-    ['contact', '324350main_11_full-1.jpg', 'Earth at Night · NASA/NOAA'],
-  ];
+test('About retains NASA observation while operating routes use Nova-owned visuals', () => {
+  const about = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
+  assert.match(about, /data-page-cosmic-hero/);
+  assert.match(about, /STScI-01EVT8DP1YM9FYPF0Y33VY7ANB\.tif/);
+  assert.match(about, /Hubble · NGC 1300 · NASA\/ESA · Hubble Heritage Team/);
 
-  for (const [route, asset, credit] of expectations) {
+  for (const route of ['ventures', 'thinking', 'media', 'facts', 'contact']) {
     const html = fs.readFileSync(path.resolve('dist/' + route + '/index.html'), 'utf8');
     assert.match(html, /data-page-cosmic-hero/);
-    assert.match(html, /data-page-cosmos/);
-    assert.match(html, /assets\.science\.nasa\.gov/);
-    assert.ok(html.includes(asset), route + ': missing expected NASA asset ' + asset);
-    assert.ok(html.includes(credit), route + ': missing observation credit');
+    assert.match(html, /page-cosmos-owned/);
+    assert.match(html, /nova-signal-field/);
+    assert.match(html, /Nova signal system/);
+    assert.doesNotMatch(html, /assets\.science\.nasa\.gov/);
     assert.match(html, /<link rel="stylesheet" href="\/assets\/route-cosmos\.css">/);
     assert.match(html, /<script src="\/assets\/route-cosmos\.js" defer><\/script>/);
   }
@@ -66,6 +62,8 @@ test('route cosmos stylesheet is shipped as a route-only asset', () => {
   assert.match(stylesheet, /about-hero-portrait/);
   assert.match(stylesheet, /page-hero-ventures/);
   assert.match(stylesheet, /page-hero-contact/);
+  assert.match(stylesheet, /Nova-owned route visual system/);
+  assert.match(stylesheet, /nova-signal-field/);
 });
 
 test('route cosmos controller is built as a route-only asset', () => {

@@ -80,25 +80,28 @@ jobs:
           grep -Fq 'page-section-index' <<<"$about"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$ventures"
-          grep -Fq 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png' <<<"$ventures"
-          grep -Fq 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI' <<<"$ventures"
+          grep -Fq 'page-cosmos-owned' <<<"$ventures"
+          grep -Fq 'Nova signal system' <<<"$ventures"
           grep -Fq 'NovaPharm Healthcare' <<<"$ventures"
           grep -Fq 'Explore NovaPharm' <<<"$ventures"
           grep -Fq 'One route. Connected decisions.' <<<"$ventures"
           grep -Fq 'route-summary' <<<"$ventures"
 
-          grep -Fq '10 essays' <<<"$thinking"
+          grep -Fq 'Market Access' <<<"$thinking"
+          grep -Fq 'Manufacturing & Technology Transfer' <<<"$thinking"
+          grep -Fq 'Supply & Resilience' <<<"$thinking"
+          grep -Fq 'Company Building' <<<"$thinking"
           grep -Fq 'data-page-cosmic-hero' <<<"$thinking"
-          grep -Fq 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif' <<<"$thinking"
-          grep -Fq 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI' <<<"$thinking"
+          grep -Fq 'page-cosmos-owned' <<<"$thinking"
+          grep -Fq 'Nova signal system' <<<"$thinking"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$media"
-          grep -Fq 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png' <<<"$media"
-          grep -Fq 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI' <<<"$media"
+          grep -Fq 'page-cosmos-owned' <<<"$media"
+          grep -Fq 'Nova signal system' <<<"$media"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$contact"
-          grep -Fq '324350main_11_full-1.jpg' <<<"$contact"
-          grep -Fq 'Earth at Night · NASA/NOAA' <<<"$contact"
+          grep -Fq 'page-cosmos-owned' <<<"$contact"
+          grep -Fq 'Nova signal system' <<<"$contact"
           grep -Fq 'Regulatory Approval Is Not Market Access' <<<"$cornerstone"
           grep -Fq 'Why I Chose to Build in Pharmaceuticals' <<<"$founder"
           grep -Fq 'noindex,follow' <<<"$retired"
@@ -109,8 +112,8 @@ jobs:
           fi
           grep -Fq 'Public Record' <<<"$profile"
           grep -Fq 'data-page-cosmic-hero' <<<"$profile"
-          grep -Fq 'STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png' <<<"$profile"
-          grep -Fq 'Webb · First Deep Field · NASA/ESA/CSA/STScI' <<<"$profile"
+          grep -Fq 'page-cosmos-owned' <<<"$profile"
+          grep -Fq 'Nova signal system' <<<"$profile"
           if grep -Fq 'Machine-readable fact record' <<<"$profile"; then
             echo 'Machine-facing copy was exposed on the founder profile' >&2
             exit 1
@@ -161,11 +164,11 @@ jobs:
           - About: founder-first Hubble NGC 1300 hero served with the canonical portrait
           - Unified system: shared Apple/OpenAI/NASA/SpaceX-inspired UI and editorial hierarchy served
           - Structured publishing: content-index.json and llms.txt served
-          - NovaPharm: Webb Cosmic Cliffs hero served with the focused company action
-          - Thinking: Hubble Ultra Deep Field hero served from the official NASA asset host
-          - Media: Webb Pillars of Creation MIRI hero served from the official NASA asset host
-          - Profile: Webb First Deep Field hero served from the official NASA asset host
-          - Contact: NASA Earth at Night hero served from the official NASA asset host
+          - NovaPharm: first-party Nova signal hero served with the focused company action
+          - Thinking: first-party Nova signal hero and topic architecture served
+          - Media: first-party Nova signal hero and press-first structure served
+          - Public record: first-party Nova signal hero and evidence-first structure served
+          - Contact: first-party Nova signal hero and intent-based enquiry routing served
           - Gallery: retired route serves noindex,follow with a destination canonical and instant redirect to About
           - Portrait asset: high-resolution official WebP served
           - Sitemap: cornerstone route included; retired essay and gallery routes excluded
