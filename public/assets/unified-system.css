@@ -549,10 +549,15 @@ body {
 }
 
 .site-footer .footer-intro h2 {
-  max-width: 13ch;
+  max-width: min(13ch, 100%);
   font-size: clamp(3.2rem, 5.7vw, 6.3rem);
   line-height: .92;
   letter-spacing: -.06em;
+  overflow-wrap: anywhere;
+}
+
+.site-footer .footer-grid > * {
+  min-width: 0;
 }
 
 .site-footer a {
