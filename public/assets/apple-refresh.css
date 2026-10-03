@@ -2944,3 +2944,1675 @@ a {
     display: none !important;
   }
 }
+
+
+/* ==========================================================================
+   2026-10-03 — Convergence design system
+   Apple × OpenAI × NASA × SpaceX, interpreted as an original visual language.
+   Principles:
+   - Apple: restraint, immaculate spacing, content-first surfaces.
+   - OpenAI: editorial hierarchy, large type, calm information density.
+   - NASA: authentic scientific imagery, technical metadata, mission precision.
+   - SpaceX: full-bleed scale, hard rules, cinematic black/white contrast.
+   ========================================================================== */
+
+:root {
+  --cx-black: #000;
+  --cx-ink: #111113;
+  --cx-white: #f5f5f7;
+  --cx-paper: #fbfbfd;
+  --cx-soft: #e8e8ed;
+  --cx-mid: #86868b;
+  --cx-line: rgba(17, 17, 19, .13);
+  --cx-line-dark: rgba(255, 255, 255, .16);
+  --cx-blue: #2997ff;
+  --cx-red: #ff453a;
+  --cx-ease: cubic-bezier(.22, .8, .24, 1);
+  --cx-page: min(92vw, 1520px);
+}
+
+html {
+  background: var(--cx-black);
+}
+
+body {
+  background: var(--cx-black);
+  color: var(--cx-white);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -.012em;
+}
+
+body::before {
+  opacity: .055;
+}
+
+h1,
+h2,
+h3,
+.page-hero h1,
+.article-header h1,
+.essay-card h3,
+.principle-list h3,
+.footer-intro h2,
+.profile-snapshot h2,
+.content-managed h2,
+.content-managed h3,
+.article-body h2,
+.article-body h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2 {
+  font-weight: 600;
+  letter-spacing: -.065em;
+}
+
+h3 {
+  font-weight: 600;
+  letter-spacing: -.045em;
+}
+
+.section {
+  width: var(--cx-page);
+  padding-block: clamp(7rem, 10vw, 10.5rem);
+}
+
+/* ----- Global navigation: Apple-like restraint, SpaceX-like permanence ----- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 800;
+  width: 100%;
+  min-height: 56px;
+  margin: 0;
+  padding-inline: max(4vw, calc((100vw - 1520px) / 2));
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  background: rgba(0, 0, 0, .72);
+  color: #f5f5f7;
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter: blur(24px) saturate(150%);
+  transition: background 260ms ease, border-color 260ms ease;
+}
+
+.site-header::after {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: calc(var(--site-scroll-progress, 0) * 100%);
+  height: 1px;
+  background: rgba(255, 255, 255, .78);
+  content: "";
+  pointer-events: none;
+}
+
+.home-page .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .62), rgba(0, 0, 0, .1));
+  border-color: rgba(255, 255, 255, .08);
+}
+
+.site-header[data-scrolled="true"] {
+  background: rgba(0, 0, 0, .84);
+  border-color: rgba(255, 255, 255, .14);
+}
+
+.brand {
+  gap: .7rem;
+}
+
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 9px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: -.04em;
+}
+
+.brand-name {
+  color: rgba(255, 255, 255, .9);
+  font-size: 12px;
+  font-weight: 560;
+  letter-spacing: -.01em;
+  text-transform: none;
+}
+
+.site-nav-list {
+  gap: clamp(1.1rem, 1.9vw, 2rem);
+}
+
+.site-nav-list a {
+  color: rgba(255, 255, 255, .7);
+  font-size: 12px;
+  font-weight: 520;
+  letter-spacing: -.005em;
+  text-transform: none;
+  transition: color 160ms ease;
+}
+
+.site-nav-list a:hover,
+.site-nav-list a[aria-current="page"] {
+  color: #fff;
+}
+
+.site-nav-list a:not(.nav-contact)::after {
+  bottom: -.72rem;
+  background: #fff;
+}
+
+.nav-contact {
+  padding: .52rem .82rem;
+  border-color: rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .07);
+}
+
+/* ----- Core controls ----- */
+
+.eyebrow,
+.section-number,
+.venture-number,
+.essay-meta,
+.article-byline,
+.breadcrumbs ol,
+.profile-image > p,
+.footer-base {
+  font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+}
+
+.eyebrow,
+.section-number {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+
+.button {
+  min-height: 44px;
+  padding: .72rem 1.12rem;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 560;
+  letter-spacing: -.01em;
+  text-transform: none;
+  transition:
+    transform 220ms var(--cx-ease),
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: #fff;
+  color: #000;
+}
+
+.button-primary:hover {
+  background: #e8e8ed;
+  color: #000;
+}
+
+.text-link {
+  font-size: 14px;
+  font-weight: 560;
+  letter-spacing: -.015em;
+}
+
+/* ----- Home: keep Hubble authentic, make everything after it equally premium ----- */
+
+.home-page .hero-hubble {
+  min-height: 100svh;
+}
+
+.home-page .hero-hubble .hero-copy {
+  margin-top: 7vh;
+}
+
+.home-page .hero-hubble .eyebrow {
+  font-size: 11px;
+  letter-spacing: .02em;
+}
+
+.home-page .hero-hubble h1 {
+  font-weight: 600;
+  letter-spacing: -.085em;
+}
+
+.home-page .hero-hubble .hero-proposition {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 470;
+  letter-spacing: -.025em;
+}
+
+.home-page .hero-proof {
+  gap: .9rem;
+  color: rgba(255, 255, 255, .46);
+}
+
+.home-page .hero-proof span:not(:last-child)::after {
+  margin-left: .9rem;
+  content: "·";
+}
+
+/* Founder section — Apple product-story calm */
+.home-page .founder-feature {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  min-height: 86svh;
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(20rem, .9fr) minmax(0, 1.1fr);
+  gap: clamp(3rem, 7vw, 8rem);
+  align-items: center;
+  padding:
+    clamp(7rem, 10vw, 10rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  border: 0;
+  border-radius: 0;
+  background: var(--cx-white);
+  color: var(--cx-ink);
+  box-shadow: none;
+}
+
+.home-page .founder-feature::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 49.94%, rgba(17, 17, 19, .055) 50%, transparent 50.06%),
+    linear-gradient(180deg, transparent 72%, rgba(17, 17, 19, .03));
+  content: "";
+  pointer-events: none;
+}
+
+.home-page .founder-feature-portrait {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page .founder-feature-portrait .portrait-frame {
+  aspect-ratio: .92;
+  border-radius: 0;
+  background: #e9e9ed;
+}
+
+.home-page .founder-feature-portrait img {
+  filter: grayscale(.12) contrast(1.02);
+  transform: scale(1.015);
+  transition: transform 900ms var(--cx-ease);
+}
+
+.home-page .founder-feature.is-visible .founder-feature-portrait img {
+  transform: scale(1);
+}
+
+.home-page .founder-feature-portrait > p {
+  margin-top: .8rem;
+  color: #6e6e73;
+  font-size: 11px;
+}
+
+.home-page .founder-feature-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page .founder-feature-copy .eyebrow {
+  color: #6e6e73;
+}
+
+.home-page .founder-feature-copy h2 {
+  max-width: 10.5ch;
+  margin-top: 1rem;
+  color: #111113;
+  font-size: clamp(3.7rem, 6.7vw, 7.4rem);
+  line-height: .94;
+}
+
+.home-page .founder-feature-copy > p:not(.eyebrow) {
+  max-width: 38rem;
+  margin-top: 2rem;
+  color: #5f5f63;
+  font-size: clamp(1.15rem, 1.6vw, 1.38rem);
+  line-height: 1.5;
+}
+
+.home-page .founder-feature-copy .text-link {
+  margin-top: 2rem;
+  color: #111113;
+}
+
+/* Venture — SpaceX mission band with OpenAI information density */
+.home-page .venture-feature {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: none;
+  min-height: 78svh;
+  margin: 0;
+  padding:
+    clamp(8rem, 11vw, 11rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  overflow: hidden;
+  border: 0;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(41, 151, 255, .12), transparent 26%),
+    #050505;
+  color: #f5f5f7;
+  box-shadow: none;
+}
+
+.home-page .venture-feature::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+  background-size: 12.5vw 12.5vw;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 84%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 84%);
+  content: "";
+}
+
+.home-page .venture-feature::after {
+  display: none;
+}
+
+.home-page .venture-feature .eyebrow,
+.home-page .venture-number {
+  color: rgba(255, 255, 255, .46);
+}
+
+.home-page .venture-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(22rem, .72fr);
+  gap: clamp(4rem, 10vw, 12rem);
+  align-items: end;
+}
+
+.home-page .venture-grid h2 {
+  max-width: 8ch;
+  color: #fff;
+  font-size: clamp(5rem, 9vw, 10rem);
+  line-height: .85;
+  letter-spacing: -.08em;
+}
+
+.home-page .venture-copy {
+  padding-top: 2rem;
+  border-top: 1px solid var(--cx-line-dark);
+}
+
+.home-page .venture-copy .lead {
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.8rem, 2.7vw, 2.8rem);
+  font-weight: 560;
+  letter-spacing: -.045em;
+  line-height: 1.07;
+}
+
+.home-page .venture-copy > p:not(.lead) {
+  color: rgba(255, 255, 255, .56);
+}
+
+.home-page .venture-feature .status-pill {
+  border-color: rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .66);
+  background: rgba(255, 255, 255, .035);
+}
+
+.home-page .venture-feature .button-light {
+  border-color: rgba(255, 255, 255, .24);
+  color: #fff;
+}
+
+/* Principles — NASA technical clarity, no generic cards */
+.home-page .principles {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding:
+    clamp(8rem, 11vw, 11rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  background: #fff;
+  color: #111113;
+}
+
+.home-page .principles .section-heading {
+  align-items: start;
+}
+
+.home-page .principles .eyebrow {
+  color: #6e6e73;
+}
+
+.home-page .principles .section-heading h2 {
+  max-width: 10ch;
+  color: #111113;
+  font-size: clamp(4rem, 7vw, 7.5rem);
+}
+
+.home-page .principle-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(4rem, 6vw, 7rem);
+  border-top: 1px solid #d2d2d7;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.home-page .principle-list article {
+  display: flex;
+  min-height: 31rem;
+  flex-direction: column;
+  gap: 0;
+  padding: 2rem clamp(1.5rem, 2.4vw, 2.6rem) 2.4rem 0;
+  border: 0;
+  border-right: 1px solid #d2d2d7;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-page .principle-list article + article {
+  padding-left: clamp(1.5rem, 2.4vw, 2.6rem);
+}
+
+.home-page .principle-list article:last-child {
+  border-right: 0;
+}
+
+.home-page .principle-list article > span {
+  color: #c7c7cc;
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -.07em;
+  line-height: .9;
+}
+
+.home-page .principle-list h3 {
+  max-width: 12ch;
+  margin-top: auto;
+  color: #111113;
+  font-size: clamp(1.8rem, 2.7vw, 2.9rem);
+  line-height: 1.02;
+}
+
+.home-page .principle-list p {
+  margin-top: 1.2rem;
+  color: #6e6e73;
+  font-size: 15px;
+  line-height: 1.52;
+}
+
+/* Writing — OpenAI editorial grid */
+.home-page .writing {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding:
+    clamp(8rem, 11vw, 11rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  border: 0;
+  background: var(--cx-white);
+  color: var(--cx-ink);
+}
+
+.home-page .writing .eyebrow {
+  color: #6e6e73;
+}
+
+.home-page .writing .section-heading h2 {
+  color: #111113;
+  font-size: clamp(4rem, 7vw, 7.2rem);
+}
+
+.home-page .writing .text-link {
+  color: #111113;
+}
+
+.home-page .writing .essay-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #d2d2d7;
+  background: #d2d2d7;
+}
+
+.home-page .writing .essay-card {
+  position: relative;
+  display: flex;
+  min-height: 32rem;
+  flex-direction: column;
+  gap: 0;
+  padding: clamp(1.8rem, 2.8vw, 2.6rem);
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  color: #111113;
+  transition: background 220ms ease, transform 280ms var(--cx-ease);
+}
+
+.home-page .writing .essay-card:hover {
+  z-index: 1;
+  transform: translateY(-3px);
+  background: #fafafa;
+}
+
+.home-page .writing .essay-index {
+  display: block;
+  color: #86868b;
+  font-size: 10px;
+}
+
+.home-page .writing .essay-meta {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: #86868b;
+}
+
+.home-page .writing .essay-card h3 {
+  margin-top: 2rem;
+  color: #111113;
+  font-size: clamp(2rem, 3vw, 3.35rem);
+  line-height: 1;
+}
+
+.home-page .writing .essay-card p {
+  margin-top: auto;
+  padding-top: 3rem;
+  color: #6e6e73;
+}
+
+.home-page .writing .round-link {
+  position: absolute;
+  right: 1.8rem;
+  bottom: 1.8rem;
+  border-color: #d2d2d7;
+  background: #f5f5f7;
+  color: #111113;
+}
+
+/* Evidence — mission log */
+.home-page .evidence {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding:
+    clamp(8rem, 11vw, 11rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  overflow: hidden;
+  border: 0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(41, 151, 255, .08), transparent 24%),
+    #020202;
+}
+
+.home-page .evidence::before {
+  position: absolute;
+  right: 5vw;
+  top: 7rem;
+  width: 14rem;
+  height: 14rem;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3rem rgba(255, 255, 255, .018),
+    0 0 0 6rem rgba(255, 255, 255, .012);
+  content: "";
+  pointer-events: none;
+}
+
+.home-page .evidence-grid {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+}
+
+.home-page .evidence-grid h2 {
+  max-width: 9ch;
+  font-size: clamp(4.1rem, 7.3vw, 8rem);
+  line-height: .9;
+}
+
+.home-page .evidence-grid > div:first-child > p {
+  color: rgba(255, 255, 255, .48);
+}
+
+.home-page .evidence-links {
+  border-top-color: rgba(255, 255, 255, .18);
+}
+
+.home-page .evidence-links a {
+  padding-block: 1.65rem;
+  border-bottom-color: rgba(255, 255, 255, .14);
+}
+
+.home-page .evidence-links span {
+  color: rgba(255, 255, 255, .42);
+}
+
+.home-page .evidence-links strong {
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  font-weight: 520;
+  letter-spacing: -.025em;
+}
+
+.home-page .evidence-links .arrow {
+  color: rgba(255, 255, 255, .65);
+}
+
+/* Closing — SpaceX scale, Apple restraint */
+.home-page .closing {
+  width: 100%;
+  max-width: none;
+  min-height: 78svh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:
+    clamp(8rem, 12vw, 13rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  background:
+    radial-gradient(circle at 50% 120%, rgba(41, 151, 255, .15), transparent 37%),
+    #000;
+  text-align: left;
+}
+
+.home-page .closing .eyebrow {
+  color: rgba(255, 255, 255, .42);
+}
+
+.home-page .closing h2 {
+  max-width: 12ch;
+  margin: 1.6rem 0 3rem;
+  color: #fff;
+  font-size: clamp(4.3rem, 8.4vw, 9.3rem);
+  line-height: .88;
+}
+
+.home-page .closing > div {
+  justify-content: flex-start;
+}
+
+/* ----- Internal page heroes: mission briefing, not brochure header ----- */
+
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 72svh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding:
+    clamp(7rem, 12vh, 10rem)
+    max(5vw, calc((100vw - 1520px) / 2))
+    clamp(6rem, 9vw, 9rem);
+  background:
+    radial-gradient(circle at 78% 24%, rgba(41, 151, 255, .11), transparent 28%),
+    #030303;
+  color: #fff;
+}
+
+.page-hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  background-size: 12.5vw 12.5vw;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 100%);
+  content: "";
+}
+
+.page-hero::after {
+  position: absolute;
+  right: max(5vw, calc((100vw - 1520px) / 2));
+  top: 22%;
+  width: clamp(8rem, 15vw, 15rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, .11);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2rem rgba(255, 255, 255, .018),
+    0 0 0 4rem rgba(255, 255, 255, .01);
+  content: "";
+  pointer-events: none;
+}
+
+.page-hero .breadcrumbs {
+  position: absolute;
+  top: clamp(2.3rem, 4vw, 4rem);
+  left: max(5vw, calc((100vw - 1520px) / 2));
+  margin: 0;
+}
+
+.page-hero .breadcrumbs ol {
+  color: rgba(255, 255, 255, .38);
+  font-size: 10px;
+}
+
+.page-hero .eyebrow {
+  color: rgba(255, 255, 255, .5);
+}
+
+.page-hero h1,
+.page-hero-compact h1 {
+  max-width: 12ch;
+  margin-top: 1.25rem;
+  color: #fff;
+  font-size: clamp(4.8rem, 9.4vw, 10.5rem);
+  line-height: .88;
+  letter-spacing: -.075em;
+}
+
+.page-hero h1 em {
+  color: rgba(255, 255, 255, .52);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.page-deck {
+  max-width: 45rem;
+  margin-top: 2.2rem;
+  color: rgba(255, 255, 255, .62);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.48rem);
+  line-height: 1.45;
+  letter-spacing: -.025em;
+}
+
+/* ----- Light editorial surfaces used by all internal content pages ----- */
+
+.about-page main,
+.ventures-page main,
+.thinking-page main,
+.media-page main,
+.facts-page main,
+.speaking-page main,
+.privacy-page main,
+.article-page main {
+  background: var(--cx-white);
+  color: var(--cx-ink);
+}
+
+.about-page .page-hero,
+.ventures-page .page-hero,
+.thinking-page .page-hero,
+.media-page .page-hero,
+.facts-page .page-hero,
+.speaking-page .page-hero,
+.privacy-page .page-hero,
+.article-page .article-header {
+  background-color: #030303;
+}
+
+/* About */
+.profile-snapshot {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  grid-template-columns: minmax(20rem, .8fr) minmax(0, 1.2fr);
+  padding:
+    clamp(7rem, 9vw, 9rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  border-radius: 0;
+  background: #fff;
+  color: #111113;
+}
+
+.profile-snapshot .eyebrow {
+  color: #6e6e73;
+}
+
+.profile-snapshot h2 {
+  max-width: 10ch;
+  color: #111113;
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  line-height: .92;
+}
+
+.profile-snapshot dl {
+  border-top-color: #d2d2d7;
+}
+
+.profile-snapshot dl > div {
+  padding-block: 1.45rem;
+  border-bottom-color: #d2d2d7;
+}
+
+.profile-snapshot dt {
+  color: #86868b;
+  font-size: 11px;
+}
+
+.profile-snapshot dd {
+  color: #111113;
+  font-size: clamp(1.08rem, 1.6vw, 1.3rem);
+  font-weight: 560;
+}
+
+.profile-spread {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  grid-template-columns: minmax(18rem, .76fr) minmax(0, 1.24fr);
+  gap: clamp(4rem, 9vw, 11rem);
+  padding:
+    clamp(8rem, 11vw, 11rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  background: var(--cx-white);
+  color: #111113;
+}
+
+.profile-image {
+  top: 6rem;
+}
+
+.profile-image .portrait-frame {
+  background: #e8e8ed;
+}
+
+.profile-image img {
+  filter: grayscale(.1) contrast(1.03);
+}
+
+.profile-image > p {
+  color: #86868b;
+}
+
+.profile-copy {
+  max-width: 52rem;
+  padding-top: 0;
+}
+
+.profile-copy > p,
+.profile-copy .content-managed > p,
+.about-page .content-managed > p {
+  color: #3a3a3c;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.1rem, 1.45vw, 1.28rem);
+  line-height: 1.65;
+}
+
+.about-page .content-managed h2,
+.about-page .content-managed h3,
+.about-page .content-managed strong,
+.about-page .content-managed a {
+  color: #111113;
+}
+
+.about-page .content-managed h2 {
+  padding-top: 2.8rem;
+  border-top: 1px solid #d2d2d7;
+}
+
+/* Ventures / Media / Facts / Speaking / Privacy: OpenAI editorial document system */
+.ventures-page .prose-page,
+.media-page .prose-page,
+.facts-page .prose-page,
+.speaking-page .prose-page,
+.privacy-page .prose-page {
+  width: min(90vw, 1180px);
+  max-width: none;
+  margin-inline: auto;
+  padding-block: clamp(7rem, 10vw, 11rem);
+  color: #111113;
+}
+
+.ventures-page .content-managed > p,
+.media-page .content-managed > p,
+.facts-page .content-managed > p,
+.speaking-page .content-managed > p,
+.privacy-page .content-managed > p,
+.ventures-page .content-managed li,
+.media-page .content-managed li,
+.facts-page .content-managed li,
+.speaking-page .content-managed li,
+.privacy-page .content-managed li {
+  color: #4b4b4f;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+  line-height: 1.68;
+}
+
+.ventures-page .content-managed > p,
+.media-page .content-managed > p,
+.facts-page .content-managed > p,
+.speaking-page .content-managed > p,
+.privacy-page .content-managed > p,
+.ventures-page .content-managed > ul,
+.media-page .content-managed > ul,
+.facts-page .content-managed > ul,
+.speaking-page .content-managed > ul,
+.privacy-page .content-managed > ul {
+  max-width: 48rem;
+  margin-left: auto;
+}
+
+.ventures-page .content-managed h2,
+.media-page .content-managed h2,
+.facts-page .content-managed h2,
+.speaking-page .content-managed h2,
+.privacy-page .content-managed h2 {
+  max-width: 13ch;
+  margin: clamp(7rem, 9vw, 9rem) 0 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid #d2d2d7;
+  color: #111113;
+  font-size: clamp(3.2rem, 5.8vw, 6.2rem);
+  line-height: .93;
+}
+
+.ventures-page .content-managed h2:first-child,
+.media-page .content-managed h2:first-child,
+.facts-page .content-managed h2:first-child,
+.speaking-page .content-managed h2:first-child,
+.privacy-page .content-managed h2:first-child {
+  margin-top: 0;
+}
+
+.ventures-page .content-managed h3,
+.media-page .content-managed h3,
+.facts-page .content-managed h3,
+.speaking-page .content-managed h3,
+.privacy-page .content-managed h3 {
+  max-width: 48rem;
+  margin: 3.5rem 0 1rem auto;
+  color: #111113;
+  font-size: clamp(1.8rem, 3vw, 3.05rem);
+  line-height: 1;
+}
+
+.ventures-page .content-managed strong,
+.media-page .content-managed strong,
+.facts-page .content-managed strong,
+.speaking-page .content-managed strong,
+.privacy-page .content-managed strong,
+.ventures-page .content-managed a,
+.media-page .content-managed a,
+.facts-page .content-managed a,
+.speaking-page .content-managed a,
+.privacy-page .content-managed a {
+  color: #111113;
+}
+
+/* Thinking index */
+.thinking-page .writing-index {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding:
+    clamp(7rem, 10vw, 10rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  background: #fff;
+  color: #111113;
+}
+
+.thinking-page .collection-summary {
+  padding-block: 0 1.5rem;
+  border-bottom: 1px solid #d2d2d7;
+  color: #86868b;
+}
+
+.thinking-page .essay-list-large {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #d2d2d7;
+  background: #d2d2d7;
+}
+
+.thinking-page .essay-card {
+  position: relative;
+  display: flex;
+  min-height: 25rem;
+  flex-direction: column;
+  gap: 0;
+  padding: clamp(1.8rem, 2.8vw, 2.6rem);
+  border: 0;
+  background: #fff;
+  color: #111113;
+}
+
+.thinking-page .essay-card:first-child {
+  grid-column: 1 / -1;
+  min-height: 31rem;
+  background: #050505;
+  color: #fff;
+}
+
+.thinking-page .essay-card:first-child h3,
+.thinking-page .essay-card:first-child p,
+.thinking-page .essay-card:first-child .essay-meta,
+.thinking-page .essay-card:first-child .essay-index {
+  color: inherit;
+}
+
+.thinking-page .essay-card:first-child p,
+.thinking-page .essay-card:first-child .essay-meta,
+.thinking-page .essay-card:first-child .essay-index {
+  opacity: .6;
+}
+
+.thinking-page .essay-index {
+  color: #86868b;
+}
+
+.thinking-page .essay-meta {
+  margin-top: 1rem;
+  color: #86868b;
+}
+
+.thinking-page .essay-card h3 {
+  margin-top: 1.8rem;
+  color: #111113;
+  font-size: clamp(2rem, 3.2vw, 3.6rem);
+  line-height: .98;
+}
+
+.thinking-page .essay-card p {
+  margin-top: auto;
+  padding-top: 2.8rem;
+  color: #6e6e73;
+}
+
+.thinking-page .round-link {
+  position: absolute;
+  right: 1.7rem;
+  bottom: 1.7rem;
+  border-color: #d2d2d7;
+  background: #f5f5f7;
+  color: #111113;
+}
+
+.thinking-page .essay-card:first-child .round-link {
+  border-color: rgba(255, 255, 255, .2);
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
+}
+
+.thinking-page .editorial-policy {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding:
+    clamp(8rem, 11vw, 11rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  background: #050505;
+  color: #fff;
+}
+
+.thinking-page .editorial-policy .eyebrow {
+  color: rgba(255, 255, 255, .46);
+}
+
+.thinking-page .editorial-policy h2 {
+  max-width: 12ch;
+  color: #fff;
+  font-size: clamp(4rem, 7vw, 7.5rem);
+}
+
+.thinking-page .editorial-policy > p:last-child {
+  color: rgba(255, 255, 255, .55);
+}
+
+/* Article pages — OpenAI longform with NASA source discipline */
+.article-shell {
+  width: 100%;
+  margin: 0;
+  background: var(--cx-white);
+  color: #111113;
+}
+
+.article-header {
+  position: relative;
+  max-width: none;
+  padding:
+    clamp(7rem, 10vw, 10rem)
+    max(5vw, calc((100vw - 1520px) / 2))
+    clamp(6rem, 9vw, 8rem);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 24%, rgba(41, 151, 255, .1), transparent 27%),
+    #030303;
+  color: #fff;
+}
+
+.article-header::after {
+  position: absolute;
+  right: max(5vw, calc((100vw - 1520px) / 2));
+  top: 22%;
+  width: 11rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 50%;
+  content: "";
+}
+
+.article-header .breadcrumbs ol,
+.article-header .eyebrow,
+.article-byline {
+  color: rgba(255, 255, 255, .46);
+}
+
+.article-header h1 {
+  max-width: 12ch;
+  color: #fff;
+  font-size: clamp(4.1rem, 7.8vw, 8.8rem);
+  line-height: .9;
+  letter-spacing: -.07em;
+}
+
+.article-summary {
+  max-width: 47rem;
+  color: rgba(255, 255, 255, .62);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.48rem);
+}
+
+.article-layout {
+  width: min(90vw, 1140px);
+  grid-template-columns: 12rem minmax(0, 48rem);
+  gap: clamp(3rem, 7vw, 8rem);
+  margin-inline: auto;
+  padding-block: clamp(6rem, 9vw, 9rem);
+}
+
+.article-aside {
+  top: 6rem;
+  border-top-color: #111113;
+}
+
+.article-aside span,
+.article-aside a {
+  color: #111113;
+}
+
+.article-aside p {
+  color: #86868b;
+}
+
+.article-body {
+  color: #2d2d30;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.08rem, 1.35vw, 1.2rem);
+  line-height: 1.72;
+}
+
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body strong,
+.article-body a {
+  color: #111113;
+}
+
+.article-body h2 {
+  padding-top: 1.2rem;
+  border-top: 1px solid #d2d2d7;
+  font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+}
+
+.article-body h3 {
+  font-size: clamp(1.5rem, 2.3vw, 2.4rem);
+}
+
+.article-body > p:first-child::first-letter {
+  color: #111113;
+}
+
+.article-sources {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding:
+    clamp(6rem, 8vw, 8rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  background: #ebebef;
+  color: #111113;
+}
+
+.article-sources h2,
+.article-sources a {
+  color: #111113;
+}
+
+.related {
+  color: #111113;
+}
+
+.article-pagination {
+  width: min(90vw, 1140px);
+  margin-inline: auto;
+  border-color: #d2d2d7;
+  color: #111113;
+}
+
+/* Facts gets a more data-sheet / NASA registry feel */
+.facts-page .content-managed > ul {
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #d2d2d7;
+}
+
+.facts-page .content-managed > ul li {
+  display: grid;
+  grid-template-columns: minmax(10rem, .45fr) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.facts-page .content-managed > ul li strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Contact — one decisive action */
+.contact-page {
+  background: #000;
+}
+
+.contact-page .site-footer {
+  background: #000;
+}
+
+.contact-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100svh - 56px);
+  margin: 0;
+  padding:
+    clamp(7rem, 11vw, 10rem)
+    max(5vw, calc((100vw - 1520px) / 2));
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(41, 151, 255, .11), transparent 28%),
+    #000;
+  color: #fff;
+}
+
+.contact-hero::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+  background-size: 12.5vw 12.5vw;
+  content: "";
+  pointer-events: none;
+}
+
+.contact-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-hero .breadcrumbs ol,
+.contact-hero .eyebrow {
+  color: rgba(255, 255, 255, .46);
+}
+
+.contact-hero h1 {
+  max-width: 10ch;
+  color: #fff;
+  font-size: clamp(4.8rem, 9.2vw, 10.2rem);
+  line-height: .88;
+  letter-spacing: -.075em;
+}
+
+.contact-hero .page-deck {
+  color: rgba(255, 255, 255, .6);
+}
+
+.contact-email {
+  margin-top: clamp(4rem, 8vw, 8rem);
+  padding-block: 1.6rem;
+  border-color: rgba(255, 255, 255, .18);
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.7rem, 4.5vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -.055em;
+}
+
+.contact-content {
+  max-width: 62rem;
+  color: #fff;
+}
+
+.contact-content h2,
+.contact-content h3,
+.contact-content strong,
+.contact-content a {
+  color: #fff;
+}
+
+.contact-content > p,
+.contact-content li {
+  color: rgba(255, 255, 255, .58);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ----- Footer: minimal launch-site finish ----- */
+
+.site-footer {
+  width: 100%;
+  margin: 0;
+  padding:
+    clamp(8rem, 12vw, 12rem)
+    max(5vw, calc((100vw - 1520px) / 2))
+    0;
+  background: #000;
+  color: #fff;
+}
+
+.footer-intro {
+  max-width: 78rem;
+}
+
+.footer-intro .eyebrow {
+  color: rgba(255, 255, 255, .42);
+}
+
+.footer-intro h2 {
+  max-width: 12ch;
+  color: #fff;
+  font-size: clamp(4rem, 7.4vw, 8rem);
+  line-height: .9;
+}
+
+.footer-founder-role {
+  color: rgba(255, 255, 255, .46);
+}
+
+.footer-grid {
+  grid-template-columns: minmax(0, 1.6fr) .7fr .8fr;
+  border-top-color: rgba(255, 255, 255, .14);
+}
+
+.footer-grid p {
+  color: rgba(255, 255, 255, .5);
+}
+
+.footer-grid a {
+  color: rgba(255, 255, 255, .72);
+  transition: color 160ms ease;
+}
+
+.footer-grid a:hover {
+  color: #fff;
+}
+
+.footer-base {
+  border-top-color: rgba(255, 255, 255, .14);
+  color: rgba(255, 255, 255, .36);
+}
+
+/* ----- Motion: subtle, content-first ----- */
+
+.js.reveal-ready [data-reveal] {
+  transition:
+    opacity 720ms var(--cx-ease),
+    transform 820ms var(--cx-ease);
+}
+
+.js.reveal-ready [data-reveal]:not(.is-visible) {
+  transform: translateY(26px);
+  opacity: 0;
+}
+
+.js.reveal-ready [data-reveal].is-visible {
+  transform: none;
+  opacity: 1;
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 980px) {
+  .site-header {
+    padding-inline: 4vw;
+  }
+
+  .js .site-navigation {
+    left: 0;
+    right: 0;
+    top: 100%;
+    padding: 1rem 4vw 2rem;
+    border-bottom-color: rgba(255, 255, 255, .12);
+    background: rgba(0, 0, 0, .95);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
+
+  .js .site-nav-list a {
+    border-bottom-color: rgba(255, 255, 255, .12);
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 560;
+  }
+
+  .home-page .founder-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .founder-feature-portrait {
+    max-width: 38rem;
+  }
+
+  .home-page .venture-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .principle-list {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .principle-list article,
+  .home-page .principle-list article + article {
+    min-height: 0;
+    padding: 2rem 0 2.5rem;
+    border-right: 0;
+    border-bottom: 1px solid #d2d2d7;
+  }
+
+  .home-page .principle-list article:last-child {
+    border-bottom: 0;
+  }
+
+  .home-page .principle-list h3 {
+    margin-top: 3.5rem;
+  }
+
+  .home-page .writing .essay-list,
+  .thinking-page .essay-list-large {
+    grid-template-columns: 1fr;
+  }
+
+  .thinking-page .essay-card:first-child {
+    grid-column: auto;
+  }
+
+  .profile-spread {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image {
+    position: static;
+    max-width: 36rem;
+  }
+
+  .article-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .article-aside {
+    position: static;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding-block: 6rem;
+  }
+
+  .home-page .hero-hubble .hero-copy {
+    margin-top: 15vh;
+  }
+
+  .home-page .founder-feature,
+  .home-page .venture-feature,
+  .home-page .principles,
+  .home-page .writing,
+  .home-page .evidence,
+  .home-page .closing,
+  .profile-snapshot,
+  .profile-spread,
+  .thinking-page .writing-index,
+  .thinking-page .editorial-policy,
+  .article-header,
+  .article-sources,
+  .contact-hero {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .home-page .founder-feature {
+    min-height: 0;
+    gap: 3rem;
+  }
+
+  .home-page .founder-feature-copy h2,
+  .home-page .principles .section-heading h2,
+  .home-page .writing .section-heading h2,
+  .home-page .evidence-grid h2,
+  .home-page .closing h2,
+  .profile-snapshot h2,
+  .thinking-page .editorial-policy h2 {
+    font-size: clamp(3.1rem, 13vw, 5rem);
+  }
+
+  .home-page .venture-grid h2 {
+    font-size: clamp(4rem, 16vw, 6rem);
+  }
+
+  .home-page .writing .essay-card,
+  .thinking-page .essay-card,
+  .thinking-page .essay-card:first-child {
+    min-height: 24rem;
+  }
+
+  .home-page .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .evidence::before {
+    display: none;
+  }
+
+  .page-hero {
+    min-height: 68svh;
+    padding:
+      7rem 5vw
+      4.5rem;
+  }
+
+  .page-hero::after {
+    right: 5vw;
+    top: 23%;
+    width: 7rem;
+  }
+
+  .page-hero .breadcrumbs {
+    top: 2rem;
+    left: 5vw;
+  }
+
+  .page-hero h1,
+  .page-hero-compact h1,
+  .article-header h1,
+  .contact-hero h1 {
+    font-size: clamp(3.6rem, 15.5vw, 5.4rem);
+  }
+
+  .ventures-page .prose-page,
+  .media-page .prose-page,
+  .facts-page .prose-page,
+  .speaking-page .prose-page,
+  .privacy-page .prose-page {
+    width: 90vw;
+    padding-block: 6rem;
+  }
+
+  .ventures-page .content-managed > p,
+  .media-page .content-managed > p,
+  .facts-page .content-managed > p,
+  .speaking-page .content-managed > p,
+  .privacy-page .content-managed > p,
+  .ventures-page .content-managed > ul,
+  .media-page .content-managed > ul,
+  .facts-page .content-managed > ul,
+  .speaking-page .content-managed > ul,
+  .privacy-page .content-managed > ul,
+  .ventures-page .content-managed h3,
+  .media-page .content-managed h3,
+  .facts-page .content-managed h3,
+  .speaking-page .content-managed h3,
+  .privacy-page .content-managed h3 {
+    margin-left: 0;
+  }
+
+  .ventures-page .content-managed h2,
+  .media-page .content-managed h2,
+  .facts-page .content-managed h2,
+  .speaking-page .content-managed h2,
+  .privacy-page .content-managed h2 {
+    font-size: clamp(2.9rem, 12vw, 4.5rem);
+  }
+
+  .profile-snapshot {
+    grid-template-columns: 1fr;
+  }
+
+  .facts-page .content-managed > ul li {
+    grid-template-columns: 1fr;
+    gap: .35rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js.reveal-ready [data-reveal],
+  .js.reveal-ready [data-reveal]:not(.is-visible),
+  .js.reveal-ready [data-reveal].is-visible {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
