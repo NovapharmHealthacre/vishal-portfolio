@@ -86,7 +86,7 @@ export const renderPage = ({
 }) => {
   const canonical = absolute(path);
   const routeCosmosEnabled = ['about-page', 'ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].includes(className);
-  const nasaAssetsEnabled = routeCosmosEnabled || className === 'home-page';
+  const nasaAssetsEnabled = className === 'home-page' || className === 'about-page';
   const ogType = path.startsWith('/essays/') ? 'article' : ['/about/', '/facts/'].includes(path) ? 'profile' : 'website';
   const imageType = socialImage.endsWith('.webp') ? 'image/webp' : socialImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const schemaScripts = schemas.map((schema) => jsonForHtml(schema));
@@ -95,7 +95,7 @@ export const renderPage = ({
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
-    "img-src 'self' data: https://assets.science.nasa.gov",
+    `img-src 'self' data:${nasaAssetsEnabled ? ' https://assets.science.nasa.gov' : ''}`,
     "font-src 'self'",
     "style-src 'self'",
     `script-src 'self'${hashes.length ? ` ${hashes.map((hash) => `'${hash}'`).join(' ')}` : ''}`,
