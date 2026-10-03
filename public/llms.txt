@@ -4,7 +4,9 @@ Canonical founder platform: https://vishal.novapharmhealthcare.com/
 Canonical Person entity: https://vishal.novapharmhealthcare.com/#person
 Canonical personal Website entity: https://vishal.novapharmhealthcare.com/#website
 Canonical NovaPharm organisation entity: https://novapharmhealthcare.com/#organization
-Wikidata entity: https://www.wikidata.org/wiki/Q137660690
+Wikidata Person entity: https://www.wikidata.org/wiki/Q137660690
+Wikidata NovaPharm entity: https://www.wikidata.org/wiki/Q137660644
+Official iPHEX 2026 identity record: https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026
 Official NovaPharm leadership profile: https://novapharmhealthcare.com/leadership/vishal-chakravarty/
 Companies House officer record: https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments
 
@@ -18,6 +20,13 @@ Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and th
 - **Who is Vishal Chakravarty?** Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025 and works across product strategy, market access, manufacturing partnerships and resilient supply.
 - **What is NovaPharm Healthcare?** NovaPharm Healthcare Ltd is a UK pharmaceutical company building market-access, licensing, manufacturing and supply capabilities for specialist medicines across regulated markets.
 - **What does Vishal write about?** Pharmaceutical market access, UK–EU strategy, manufacturing and CMO selection, technology transfer, supply resilience, specialist medicines and founder execution.
+
+## Independent and publisher-hosted evidence
+
+- Companies House officer record: https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments
+- iPHEX 2026 overseas delegates list: https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026
+- Yakuji Nippo author series: https://www.yakuji.co.jp/entry136963.html
+- Pharmaceutical Commerce commentary: https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains
 
 ## Primary pages
 
