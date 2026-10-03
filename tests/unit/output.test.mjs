@@ -55,7 +55,7 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.entityIds.organization, 'https://novapharmhealthcare.com/#organization');
   assert.equal(facts.entityIds.organizationWebsite, 'https://novapharmhealthcare.com/#website');
   assert.equal(facts.company.linkedInUrl, 'https://www.linkedin.com/company/novapharm-healthcare/');
-  assert.equal(facts.facts.length, 7);
+  assert.equal(facts.facts.length, 8);
   assert.equal(facts.facts.every((fact) => fact.publicSafe === true), true);
   assert.equal(facts.person.role, 'Chief Executive Officer, NovaPharm Healthcare Ltd');
   assert.equal(facts.person.founderRelationship, 'Founder of NovaPharm Healthcare Ltd');
@@ -67,6 +67,10 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.facts.find((fact) => fact.id === 'P-008')?.status, 'VERIFIED_HISTORICAL');
   assert.equal(facts.facts.find((fact) => fact.id === 'M-002')?.status, 'VERIFIED_CURRENT');
   assert.equal(facts.facts.find((fact) => fact.id === 'M-004')?.value, 'Six publisher-hosted contributions');
+  assert.equal(
+    facts.facts.find((fact) => fact.id === 'P-020')?.sourceUrl,
+    'https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026',
+  );
   assert.doesNotMatch(JSON.stringify(facts), /passport|birthDate|residential address|\bvisa\b|\bimmigration\b/i);
   assert.doesNotMatch(JSON.stringify(facts), /Founder\s*(?:&|and)\s*(?:Chief Executive Officer|CEO)/i);
 });
@@ -93,6 +97,14 @@ test('media output exposes the complete verified publisher record', () => {
   assert.match(html, /why-onshoring-alone-wont-secure-pharma-supply-chains/);
   assert.match(html, /dscsa-can-trace-a-package-it-cannot-tell-you-whether-the-next-one-will-arrive-/);
   assert.match(html, /6 publisher-hosted contributions are verified below/);
+});
+
+test('facts page exposes independent identity verification sources', () => {
+  const html = fs.readFileSync(path.resolve('dist/facts/index.html'), 'utf8');
+  assert.match(html, /Independent public records/);
+  assert.match(html, /overseasdelegates_participating_list_2026/);
+  assert.match(html, /entry136963\.html/);
+  assert.match(html, /why-onshoring-alone-wont-secure-pharma-supply-chains/);
 });
 
 test('privacy output matches the approved minimal email flow', () => {
