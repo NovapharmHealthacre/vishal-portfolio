@@ -150,6 +150,12 @@ for (const file of htmlFiles) {
   if (organization) {
     if (organization['@id'] !== organizationId) failures.push(`${rel}: Organization id is not canonical to the company domain`);
     if (organization.founder?.['@id'] !== personId) failures.push(`${rel}: Organization founder must reference Vishal`);
+    for (const sameAs of [
+      'https://find-and-update.company-information.service.gov.uk/company/16716501',
+      'https://www.linkedin.com/company/novapharm-healthcare/',
+    ]) {
+      if (!organization.sameAs?.includes(sameAs)) failures.push(`${rel}: Organization sameAs missing ${sameAs}`);
+    }
   }
 
   if (!noIndex && route !== '/') {
