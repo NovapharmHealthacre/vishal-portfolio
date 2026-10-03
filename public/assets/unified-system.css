@@ -769,3 +769,182 @@ body {
     font-size: clamp(2.6rem, 11vw, 4.2rem);
   }
 }
+
+
+/* iPHEX 2026 editorial field note --------------------------------------- */
+
+.media-field-note {
+  background: #0a0a0c;
+  color: #f5f5f7;
+  padding-top: clamp(6rem, 10vw, 10rem);
+  padding-bottom: clamp(6rem, 10vw, 10rem);
+}
+
+.media-field-note-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, .55fr);
+  gap: clamp(3rem, 7vw, 8rem);
+  align-items: end;
+  padding-bottom: clamp(2rem, 4vw, 4rem);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.media-field-note-header .eyebrow {
+  color: rgba(255,255,255,.55);
+}
+
+.media-field-note-header h2 {
+  max-width: 11ch;
+  margin: .8rem 0 0;
+  font-size: clamp(3.6rem, 7vw, 7.8rem);
+  font-weight: 590;
+  line-height: .9;
+  letter-spacing: -.07em;
+  text-wrap: balance;
+}
+
+.media-field-note-header dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0;
+  background: rgba(255,255,255,.12);
+}
+
+.media-field-note-header dl div {
+  min-height: 6.8rem;
+  padding: 1rem;
+  background: #0a0a0c;
+}
+
+.media-field-note-header dt {
+  color: rgba(255,255,255,.48);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.media-field-note-header dd {
+  margin: .65rem 0 0;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 560;
+  line-height: 1.35;
+}
+
+.media-field-note-grid {
+  display: grid;
+  grid-template-columns: minmax(18rem, .72fr) minmax(0, 1.28fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: start;
+  margin-top: clamp(3rem, 6vw, 6rem);
+}
+
+.media-field-note figure {
+  margin: 0;
+}
+
+.media-field-note img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  filter: saturate(.92) contrast(1.02);
+}
+
+.media-field-note figcaption {
+  margin-top: .8rem;
+  color: rgba(255,255,255,.46);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.media-field-note-copy {
+  max-width: 52rem;
+  padding-top: clamp(1rem, 4vw, 4rem);
+}
+
+.media-field-note-copy > p {
+  margin: 0;
+  color: rgba(255,255,255,.72);
+  font-size: clamp(1.15rem, 1.65vw, 1.42rem);
+  line-height: 1.58;
+}
+
+.media-field-note-copy > p + p {
+  margin-top: 1.4rem;
+}
+
+.media-field-note-copy strong {
+  color: #fff;
+  font-weight: 570;
+}
+
+.media-field-note-copy blockquote {
+  margin: clamp(3rem, 5vw, 5rem) 0;
+  padding: 0;
+  border: 0;
+}
+
+.media-field-note-copy blockquote p {
+  max-width: 15ch;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.4rem, 4.5vw, 5rem);
+  font-weight: 570;
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.media-field-note .text-link {
+  color: #fff;
+  border-color: rgba(255,255,255,.34);
+}
+
+.media-field-note-wide {
+  width: min(100%, 74rem);
+  margin: clamp(4rem, 8vw, 8rem) 0 0 auto !important;
+}
+
+.media-field-note-wide img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+@media (max-width: 860px) {
+  .media-field-note-header,
+  .media-field-note-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-field-note-header h2 {
+    max-width: 12ch;
+  }
+
+  .media-field-note-header dl {
+    max-width: 36rem;
+  }
+
+  .media-field-note-lead {
+    max-width: 32rem;
+  }
+
+  .media-field-note-copy {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .media-field-note-header dl {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .media-field-note-header h2 {
+    font-size: clamp(3.1rem, 14vw, 5rem);
+  }
+
+  .media-field-note-copy blockquote p {
+    font-size: clamp(2.2rem, 10vw, 3.8rem);
+  }
+}
