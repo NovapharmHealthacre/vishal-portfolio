@@ -139,3 +139,12 @@ if (revealItems.length) {
     for (const item of revealItems) revealObserver.observe(item);
   }
 }
+
+
+const syncSiteScrollProgress = () => {
+  const maximum = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  document.documentElement.style.setProperty('--site-scroll-progress', String(Math.min(1, Math.max(0, window.scrollY / maximum))));
+};
+syncSiteScrollProgress();
+window.addEventListener('scroll', syncSiteScrollProgress, { passive: true });
+window.addEventListener('resize', syncSiteScrollProgress, { passive: true });
