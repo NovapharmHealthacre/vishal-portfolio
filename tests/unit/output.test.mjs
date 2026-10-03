@@ -36,7 +36,7 @@ test('essential homepage content exists before JavaScript', () => {
 test('primary routes each expose a distinct official NASA observation hero', () => {
   const expectations = [
     ['ventures', 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png', 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI'],
-    ['thinking', 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif', 'Hubble · Ultra Deep Field · NASA/ESA/STScI'],
+    ['thinking', 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif', 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI'],
     ['media', 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png', 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI'],
     ['facts', 'STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png', 'Webb · First Deep Field · NASA/ESA/CSA/STScI'],
     ['contact', '324350main_11_full-1.jpg', 'Earth at Night · NASA/NOAA'],
