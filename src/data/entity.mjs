@@ -200,6 +200,20 @@ export const publicFacts = Object.freeze([
     source: 'Yakuji Nippo and Pharmaceutical Commerce', sourceDate: '2026-08-14', lastVerified: verificationDate,
     publicSafe: true, approvedWording: 'Six publisher-hosted contributions are verified.', pages: ['/media/', '/facts/'],
   },
+  {
+    id: 'P-020',
+    label: 'Independent executive record',
+    value: 'iPHEX 2026 overseas delegate record',
+    status: 'VERIFIED_CURRENT',
+    source: 'Pharmexcil / iPHEX 2026 overseas delegates list',
+    sourceUrl: 'https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026',
+    sourceDate: '2026-10-03',
+    lastVerified: verificationDate,
+    publicSafe: true,
+    approvedWording:
+      'The official iPHEX 2026 overseas delegates list identifies Vishal Om Prakash Chakravarty of NovaPharm Healthcare Ltd as Chief Executive Officer.',
+    pages: ['/facts/'],
+  },
 ]);
 
 export const statusLabels = Object.freeze({
