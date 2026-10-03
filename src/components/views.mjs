@@ -66,7 +66,6 @@ export const renderHome = (articles) => {
       </div>
       <div class="founder-feature-copy">
         <p class="eyebrow">Founder thesis</p>
-        <p class="eyebrow">Pharmaceutical entrepreneurship</p>
         <h2 id="statement-title">A medicine can be approvable and still fail to reach the market.</h2>
         <p>The real work is connecting product, regulatory pathway, manufacturer, supply, economics and channel early enough to build a route that can last.</p>
         <a class="text-link" href="/about/">The founder journey <span aria-hidden="true">→</span></a>
