@@ -19,8 +19,8 @@ export const personSchema = () => ({
   '@type': 'Person',
   '@id': person.id,
   name: person.name,
-  givenName: 'Vishal',
-  familyName: 'Chakravarty',
+  givenName: person.givenName,
+  familyName: person.familyName,
   url: `${site.origin}/about/`,
   mainEntityOfPage: { '@id': person.profileId },
   image: {
