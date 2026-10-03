@@ -129,14 +129,17 @@ jobs:
               -H 'Cache-Control: no-cache' \
               "${SITE_ORIGIN}/assets/nova-field.js?${cache_key}-${attempt}" || true)
 
-            if grep -Fq 'id="nova-field"' <<<"$home" \
+            if grep -Fq 'data-hubble-hero' <<<"$home" \
+              && grep -Fq 'data-real-cosmos' <<<"$home" \
+              && grep -Fq 'assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/' <<<"$home" \
+              && ! grep -Fq 'id="nova-field"' <<<"$home" \
               && ! grep -Fq 'Ask Vishal’s Work' <<<"$home" \
               && ! grep -Fq 'href="/gallery/"' <<<"$home" \
               && grep -Fq 'This page has moved.' <<<"$gallery" \
               && grep -Fq 'noindex,follow' <<<"$gallery" \
               && grep -Fq '<meta http-equiv="refresh" content="0; url=/about/">' <<<"$gallery" \
               && [[ "$founder_ai_status" == "404" ]] \
-              && [[ "$nova_status" == "200" ]]; then
+              && [[ "$nova_status" == "404" ]]; then
               printf '%s\n' "Refined portfolio release verified on attempt ${attempt}."
               exit 0
             fi
