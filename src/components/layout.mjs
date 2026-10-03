@@ -83,6 +83,7 @@ export const renderPage = ({
   publishedTime,
   modifiedTime,
   noIndex = false,
+  redirectTo,
 }) => {
   const canonical = absolute(path);
   const ogType = path.startsWith('/essays/') ? 'article' : ['/about/', '/facts/'].includes(path) ? 'profile' : 'website';
@@ -106,6 +107,7 @@ export const renderPage = ({
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    ${redirectTo ? `<meta http-equiv="refresh" content="0; url=${escapeHtml(absolute(redirectTo))}">` : ''}
     <meta http-equiv="Content-Security-Policy" content="${escapeHtml(csp)}">
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}">
