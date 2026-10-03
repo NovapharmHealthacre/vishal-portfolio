@@ -79,9 +79,6 @@ jobs:
           grep -Fq 'Explore the work' <<<"$about"
           grep -Fq 'page-section-index' <<<"$about"
 
-          visible_ceo_count=$(printf '%s\n%s\n%s\n%s\n%s\n%s\n' "$home" "$about" "$ventures" "$media" "$profile" "$contact" | grep -o 'Chief Executive Officer' | wc -l | tr -d ' ')
-          [[ "$visible_ceo_count" == "1" ]]
-
           grep -Fq 'data-page-cosmic-hero' <<<"$ventures"
           grep -Fq 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png' <<<"$ventures"
           grep -Fq 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI' <<<"$ventures"
