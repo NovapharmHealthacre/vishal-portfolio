@@ -4,6 +4,9 @@ Canonical founder platform: https://vishal.novapharmhealthcare.com/
 Canonical Person entity: https://vishal.novapharmhealthcare.com/#person
 Canonical personal Website entity: https://vishal.novapharmhealthcare.com/#website
 Canonical NovaPharm organisation entity: https://novapharmhealthcare.com/#organization
+Wikidata entity: https://www.wikidata.org/wiki/Q137660690
+Official NovaPharm leadership profile: https://novapharmhealthcare.com/leadership/vishal-chakravarty/
+Companies House officer record: https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments
 
 ## Identity
 
