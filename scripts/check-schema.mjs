@@ -153,6 +153,7 @@ for (const file of htmlFiles) {
     for (const sameAs of [
       'https://find-and-update.company-information.service.gov.uk/company/16716501',
       'https://www.linkedin.com/company/novapharm-healthcare/',
+      'https://www.wikidata.org/wiki/Q137660644',
     ]) {
       if (!organization.sameAs?.includes(sameAs)) failures.push(`${rel}: Organization sameAs missing ${sameAs}`);
     }
