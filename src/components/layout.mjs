@@ -153,6 +153,7 @@ export const renderPage = ({
     <link rel="stylesheet" href="/assets/site.css">
     <link rel="stylesheet" href="/assets/content-fixes.css">
     <link rel="stylesheet" href="/assets/apple-refresh.css">
+    ${routeCosmosEnabled ? '<link rel="stylesheet" href="/assets/route-cosmos.css">' : ''}
     <script src="/assets/site.js" defer></script>
     ${routeCosmosEnabled ? '<script src="/assets/route-cosmos.js" defer></script>' : ''}
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
