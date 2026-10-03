@@ -193,7 +193,7 @@ export const renderThinking = (articles) => {
     width: 3100,
     height: 3100,
     source: 'https://science.nasa.gov/asset/hubble/hubble-ultra-deep-field/',
-    credit: 'Hubble · Ultra Deep Field · NASA/ESA/STScI',
+    credit: 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI',
     meta: ['HUDF · Deep Field Survey', 'Hubble · ACS', 'Thousands of galaxies'],
   });
   const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><div class="collection-summary"><span>${articles.length} essays</span><span>Pharmaceutical strategy</span><span>Founder perspective</span></div><div class="essay-list essay-list-large">${articles.map(articleCard).join('')}</div></section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Technical articles use current authoritative sources where the subject requires them. The writing focuses on operating and commercial decisions rather than patient-specific guidance.</p></aside>`;
