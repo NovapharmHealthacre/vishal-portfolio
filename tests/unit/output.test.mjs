@@ -154,6 +154,43 @@ test('public facts expose only approved public-safe records and canonical entity
 });
 
 
+
+test('visible executive title appears once, on About only', () => {
+  const routes = [
+    'index.html',
+    'about/index.html',
+    'ventures/index.html',
+    'thinking/index.html',
+    'media/index.html',
+    'speaking-partnerships/index.html',
+    'facts/index.html',
+    'contact/index.html',
+  ];
+  const counts = routes.map((route) => {
+    const html = fs.readFileSync(path.resolve('dist', route), 'utf8');
+    const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
+    return [route, (main.match(/Chief Executive Officer/g) ?? []).length];
+  });
+  assert.deepEqual(counts.filter(([, count]) => count > 0), [['about/index.html', 1]]);
+});
+
+test('thinking is organised into four durable authority topics', () => {
+  const html = fs.readFileSync(path.resolve('dist/thinking/index.html'), 'utf8');
+  for (const label of ['Market Access', 'Manufacturing &amp; Technology Transfer', 'Supply &amp; Resilience', 'Company Building']) {
+    assert.ok(html.includes(label), label);
+  }
+  assert.match(html, /90-day cycle/);
+  assert.match(html, /180-day cycle/);
+});
+
+test('contact offers intent-based email routes without a form', () => {
+  const html = fs.readFileSync(path.resolve('dist/contact/index.html'), 'utf8');
+  assert.match(html, /Pharmaceutical%20or%20commercial%20enquiry/);
+  assert.match(html, /Manufacturing%20or%20partnership%20enquiry/);
+  assert.match(html, /Media%20or%20speaking%20enquiry/);
+  assert.doesNotMatch(html, /<form\b/i);
+});
+
 test('about page exposes a concise human-readable entity snapshot', () => {
   const html = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
   const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
@@ -214,7 +251,7 @@ test('contact output uses the approved public inbox', () => {
 test('profile keeps machine discovery in head metadata while preserving a human-facing body', () => {
   const html = fs.readFileSync(path.resolve('dist/facts/index.html'), 'utf8');
   const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
-  assert.match(main, /Founder profile/);
+  assert.match(main, /Public record/);
   assert.doesNotMatch(main, /Machine-readable fact record|href="\/facts\.json"/i);
   assert.match(html, /<link rel="alternate" type="application\/json"[^>]+href="\/facts\.json">/);
 });
