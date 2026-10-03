@@ -153,8 +153,6 @@ export const renderPage = ({
     <link rel="alternate" type="application/rss+xml" title="Thinking by Vishal Chakravarty" href="/rss.xml">
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
     <link rel="stylesheet" href="/assets/site.css">
-    <link rel="stylesheet" href="/assets/content-fixes.css">
-    <link rel="stylesheet" href="/assets/apple-refresh.css">
     ${routeCosmosEnabled ? '<link rel="stylesheet" href="/assets/route-cosmos.css">' : ''}
     <script src="/assets/site.js" defer></script>
     ${routeCosmosEnabled ? '<script src="/assets/route-cosmos.js" defer></script>' : ''}
