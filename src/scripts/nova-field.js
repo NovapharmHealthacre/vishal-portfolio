@@ -71,11 +71,11 @@ if (canvas) {
       seed = 0x41535452;
 
       const wide = state.width > 1100;
-      const starCount = wide ? 180 : 128;
-      const filamentCount = wide ? 34 : 26;
-      const tracerCount = wide ? 240 : 170;
-      const ejectaCount = wide ? 260 : 190;
-      const wispCount = wide ? 20 : 14;
+      const starCount = wide ? 156 : 112;
+      const filamentCount = wide ? 24 : 19;
+      const tracerCount = wide ? 156 : 112;
+      const ejectaCount = wide ? 178 : 132;
+      const wispCount = wide ? 12 : 9;
 
       state.stars = Array.from({ length: starCount }, (_, index) => ({
         x: random(),
@@ -231,7 +231,7 @@ if (canvas) {
     };
 
     const drawFilament = (filament, cx, cy, scale, time, intro) => {
-      const segments = 58;
+      const segments = 42;
       const colour = filament.colour;
       const visibleSegments = Math.max(3, Math.floor(segments * intro));
 
@@ -248,17 +248,14 @@ if (canvas) {
 
       context.lineCap = 'round';
       context.lineJoin = 'round';
-      context.lineWidth = filament.thickness * 5.4;
+      context.lineWidth = filament.thickness * 4.8;
       context.strokeStyle = rgba(colour, filament.alpha * 0.13 * intro);
       context.stroke();
 
-      context.lineWidth = filament.thickness * 1.45;
+      context.lineWidth = filament.thickness * 1.35;
       context.strokeStyle = rgba(colour, filament.alpha * 0.82 * intro);
       context.stroke();
 
-      context.lineWidth = Math.max(0.45, filament.thickness * 0.38);
-      context.strokeStyle = rgba(palette.ice, filament.alpha * 0.32 * intro);
-      context.stroke();
     };
 
     const drawTracers = (cx, cy, scale, time, intro) => {
@@ -326,7 +323,7 @@ if (canvas) {
 
       for (const ribbon of ribbons) {
         context.beginPath();
-        const segments = 72;
+        const segments = 52;
         const visibleSegments = Math.max(6, Math.floor(segments * intro));
 
         for (let i = 0; i <= visibleSegments; i += 1) {
@@ -454,7 +451,7 @@ if (canvas) {
 
     const tick = (time) => {
       if (!state.running) return;
-      if (time - state.lastDraw >= 32) {
+      if (time - state.lastDraw >= 42) {
         draw(time);
         state.lastDraw = time;
       }
