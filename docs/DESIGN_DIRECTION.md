@@ -105,7 +105,7 @@ Legacy responsive portrait derivatives remain only where release tooling validat
 
 The verified content and governance architecture is preserved. The front end remains generated semantic HTML, CSS and JavaScript modules rather than migrating to a client-rendered framework merely for visual similarity.
 
-This is deliberate. Apple’s WebKit engineering guidance continues to emphasise HTML, CSS and JavaScript as the foundations of the web. Swift, SwiftUI and UIKit are native Apple application technologies; they are not substitutes for browser HTML/CSS/JavaScript. OpenAI’s public web properties use a modern React/Next.js stack, but this portfolio does not require that runtime cost to achieve the relevant interaction and visual principles.
+This is deliberate. The public website is implemented with semantic HTML, CSS and modern JavaScript modules: the browser-native technologies required to reproduce the relevant interaction principles without adding a client-rendered framework only for visual similarity. Swift, SwiftUI and UIKit are native Apple application technologies, not substitutes for browser HTML/CSS/JavaScript. Framework choices on third-party websites can change and are not treated as a design dependency here.
 
 ## Explicit anti-patterns
 
