@@ -94,7 +94,7 @@ export const organisationSchema = () => ({
   url: company.officialUrl,
   description: company.description,
   founder: { '@id': person.id },
-  sameAs: [company.companiesHouseUrl, company.linkedInUrl, company.crunchbaseUrl],
+  sameAs: [company.companiesHouseUrl, company.linkedInUrl],
 });
 
 export const breadcrumbSchema = (items) => ({
