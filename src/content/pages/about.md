@@ -1,6 +1,6 @@
 ---
 title: About Vishal Chakravarty
-description: Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building, with NovaPharm Healthcare as the operating platform.
+description: Background, operating thesis and current work of Vishal Chakravarty across pharmaceutical market access, manufacturing, supply and company building.
 canonicalPath: /about/
 public: true
 ---
