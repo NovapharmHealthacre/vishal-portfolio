@@ -38,6 +38,28 @@ const articleCard = (article, index) => `
   </article>`;
 
 
+const pageSectionIndex = (html, label = 'On this page') => {
+  const sections = [...html.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)].map((match) => ({
+    id: match[1],
+    label: match[2].replace(/<[^>]+>/g, '').trim(),
+  }));
+  if (sections.length < 2) return '';
+  return `<nav class="page-section-index" aria-label="${label}"><p>${label}</p><ol>${sections
+    .map((section) => `<li><a href="#${section.id}">${section.label}</a></li>`)
+    .join('')}</ol></nav>`;
+};
+
+const routeSummary = ({ eyebrow, title, copy, facts = [] }) => `
+  <section class="route-summary" data-reveal>
+    <p class="eyebrow">${eyebrow}</p>
+    <div class="route-summary-copy">
+      <h2>${title}</h2>
+      <p>${copy}</p>
+      ${facts.length ? `<dl class="route-facts">${facts.map(([term, value]) => `<div><dt>${term}</dt><dd>${value}</dd></div>`).join('')}</dl>` : ''}
+    </div>
+  </section>`;
+
+
 const nasaRouteHero = ({
   variant,
   crumbs,
@@ -133,28 +155,28 @@ export const renderHome = (articles) => {
         <p>Vishal Chakravarty · Chief Executive Officer</p>
       </div>
       <div class="founder-feature-copy">
-        <p class="eyebrow">Founder thesis</p>
-        <h2 id="statement-title">A medicine can be approvable and still fail to reach the market.</h2>
-        <p>The real work is connecting product, regulatory pathway, manufacturer, supply, economics and channel early enough to build a route that can last.</p>
+        <p class="eyebrow">01 / Founder thesis</p>
+        <h2 id="statement-title">The route is the product.</h2>
+        <p>A medicine does not reach a market because one function succeeds. Product, regulatory pathway, manufacturer, supply, economics and channel have to work as one route.</p>
         <a class="text-link" href="/about/">The founder journey <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
     <section class="venture-feature section" id="companies" aria-labelledby="venture-title" data-reveal>
-      <div class="section-heading"><div><p class="eyebrow">NovaPharm Healthcare</p></div></div>
+      <div class="section-heading"><div><p class="eyebrow">02 / Company · NovaPharm Healthcare</p></div></div>
       <div class="venture-grid"><div><h2 id="venture-title">${escapeHtml(company.name)}</h2><p class="venture-number">UK pharmaceutical company · Established ${company.incorporationDate.slice(0, 4)}</p></div><div class="venture-copy"><p class="lead">${escapeHtml(company.description)}</p><p>${escapeHtml(company.currentFocus)}</p><div class="venture-status-pills"><span class="status-pill"><span aria-hidden="true"></span>Product & market strategy</span><span class="status-pill"><span aria-hidden="true"></span>Manufacturing & supply</span></div><a class="button button-light" href="/ventures/">Explore NovaPharm ${arrow}</a></div></div>
     </section>
 
     <section class="principles section" aria-labelledby="principles-title" data-reveal>
-      <div class="section-heading"><div><p class="eyebrow">Operating thesis</p><h2 id="principles-title">Three decisions shape the route</h2></div></div>
+      <div class="section-heading"><div><p class="eyebrow">03 / Operating system</p><h2 id="principles-title">Three decisions shape the route</h2></div></div>
       <div class="principle-list"><article><span>01</span><h3>Market access begins before approval</h3><p>Product, regulatory, manufacturing, pricing and channel decisions need one commercial sequence from the beginning.</p></article><article><span>02</span><h3>Supply is designed before launch</h3><p>Manufacturer choice, batch size, lead time and alternative routes determine whether availability can be maintained.</p></article><article><span>03</span><h3>Commercial strategy must survive operations</h3><p>A forecast is only useful when the pack, cost, cash cycle and buying route can support it in the real market.</p></article></div>
     </section>
 
-    <section class="writing section" id="essays" aria-labelledby="writing-title" data-reveal><div class="section-heading"><div><p class="eyebrow">Selected thinking</p><h2 id="writing-title">Pharmaceutical essays</h2></div><a class="text-link" href="/thinking/">All essays <span aria-hidden="true">→</span></a></div><div class="essay-list">${selected.map(articleCard).join('')}</div></section>
+    <section class="writing section" id="essays" aria-labelledby="writing-title" data-reveal><div class="section-heading"><div><p class="eyebrow">04 / Thinking</p><h2 id="writing-title">Pharmaceutical essays</h2></div><a class="text-link" href="/thinking/">All essays <span aria-hidden="true">→</span></a></div><div class="essay-list">${selected.map(articleCard).join('')}</div></section>
 
-    <section class="evidence section" aria-labelledby="evidence-title" data-reveal><p class="eyebrow">Selected record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, publisher-hosted writing and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Founder profile</span><strong>Biography, focus and official links</strong>${arrow}</a></div></div></section>
+    <section class="evidence section" aria-labelledby="evidence-title" data-reveal><p class="eyebrow">05 / Public record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, publisher-hosted writing and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Founder profile</span><strong>Biography, focus and official links</strong>${arrow}</a></div></div></section>
 
-    <section class="closing section" id="invest" aria-labelledby="closing-title" data-reveal><span id="contact" class="anchor-target" aria-hidden="true"></span><p class="eyebrow">Speaking · Editorial · Selected partnerships</p><h2 id="closing-title">For conversations around pharmaceutical market access, manufacturing, supply and cross-border growth.</h2><div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div></section>`;
+    <section class="closing section" id="invest" aria-labelledby="closing-title" data-reveal><span id="contact" class="anchor-target" aria-hidden="true"></span><p class="eyebrow">06 / Speaking · Editorial · Selected partnerships</p><h2 id="closing-title">Useful conversations start with a real operating problem.</h2><div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [websiteSchema(), personSchema(), webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } })], className: 'home-page' });
 };
 
@@ -175,7 +197,7 @@ export const renderAbout = (page) => {
     action: `<a class="page-cosmic-action" href="#profile-snapshot-title">Explore the work <span aria-hidden="true">↓</span></a>`,
     foreground: `<picture class="about-hero-portrait"><img src="/images/portrait/vishal-chakravarty-960.webp" width="960" height="960" alt="${escapeHtml(person.image.alt)}" fetchpriority="high" decoding="async"></picture>`,
   });
-  const body = `${hero}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Founder. Operator. Pharmaceutical strategist.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer</dd></div><div><dt>Company</dt><dd>NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy and founder execution</dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Chief Executive Officer</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
+  const body = `${hero}${pageSectionIndex(page.html)}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Founder. Operator. Pharmaceutical strategist.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer</dd></div><div><dt>Company</dt><dd>NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy and founder execution</dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Chief Executive Officer</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
 };
 
@@ -195,7 +217,18 @@ export const renderVentures = (page) => {
     meta: ['NGC 3324 · Carina', 'JWST · NIRCam', '7,600 light-years'],
     action: `<a class="page-cosmic-action" href="${company.officialUrl}" target="_blank" rel="noopener noreferrer">Explore NovaPharm <span aria-hidden="true">↗</span></a>`,
   });
-  const body = `${hero}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const summary = routeSummary({
+    eyebrow: 'NovaPharm / Operating model',
+    title: 'One route. Connected decisions.',
+    copy: 'NovaPharm is being built around the complete path from product opportunity to repeatable market access, with regulation, manufacturing, supply and commercial execution designed together.',
+    facts: [
+      ['Foundation', 'United Kingdom'],
+      ['Company', 'NovaPharm Healthcare Ltd'],
+      ['Established', company.incorporationDate.slice(0, 4)],
+      ['Model', 'Specialist medicines · regulated markets'],
+    ],
+  });
+  const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': company.id } }), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }])], className: 'ventures-page' });
 };
 
@@ -242,13 +275,30 @@ export const renderMedia = (page) => {
     credit: 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI',
     meta: ['M16 · Eagle Nebula', 'JWST · MIRI', 'Infrared observation'],
   });
-  const body = `${hero}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const summary = routeSummary({
+    eyebrow: 'Published record',
+    title: 'Primary sources before self-description.',
+    copy: 'Publisher-hosted work, independent essays and a concise media profile are kept together so the public record can be checked at the source.',
+    facts: [
+      ['Publishers', 'Yakuji Nippo · Pharmaceutical Commerce'],
+      ['Verified work', String(publications.length) + ' contributions'],
+      ['Focus', 'UK–EU market access · supply resilience'],
+      ['Format', 'Analysis · commentary · essays'],
+    ],
+  });
+  const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [mediaCollectionSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }])], className: 'media-page' });
 };
 
 export const renderSpeaking = (page) => {
   const meta = contentMeta(page);
-  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking · Editorial · Founder roundtables</p><h1>Conversations about<br><em>building in pharmaceuticals.</em></h1><p class="page-deck">Themes spanning market access, post-Brexit market entry, manufacturing partnerships, technology transfer, supply and founder execution.</p></section><section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const hero = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking / Editorial / Founder roundtables</p><h1>Useful conversations<br><em>start with the problem.</em></h1><p class="page-deck">Market access, manufacturing, technology transfer, supply resilience and founder execution in regulated markets.</p></section>`;
+  const summary = routeSummary({
+    eyebrow: 'Conversation design',
+    title: 'Specific questions. Operator-level detail.',
+    copy: 'The strongest formats begin with a real decision, constraint or market problem and build the conversation around what an audience can use.',
+  });
+  const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description }), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])], className: 'speaking-page' });
 };
 
@@ -267,7 +317,18 @@ export const renderFacts = (page) => {
     credit: 'Webb · First Deep Field · NASA/ESA/CSA/STScI',
     meta: ['SMACS 0723', 'JWST · NIRCam', 'Lensing galaxy cluster'],
   });
-  const body = `${hero}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const summary = routeSummary({
+    eyebrow: 'Verified profile',
+    title: 'A concise record, built to be checked.',
+    copy: 'Role, company, published work and independent public records are separated from narrative biography so people and search systems can verify the core facts quickly.',
+    facts: [
+      ['Role', 'Chief Executive Officer'],
+      ['Company', company.name],
+      ['Relationship', 'Founder'],
+      ['Record', 'Companies House · publishers · official profiles'],
+    ],
+  });
+  const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } }), personSchema(), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }])], className: 'facts-page' });
 };
 
@@ -287,7 +348,7 @@ export const renderContact = (page) => {
     meta: ['Earth · Night lights', 'Composite satellite imagery', 'Global view'],
     action: `<a class="contact-email contact-email-hero" href="mailto:${site.email}"><span>${site.email}</span>${arrow}</a>`,
   });
-  const body = `${hero}<section class="content-managed contact-content contact-content-panel section" data-reveal>${page.html}</section>`;
+  const body = `${hero}${pageSectionIndex(page.html, 'Conversation guide')}<section class="content-managed contact-content contact-content-panel section" data-reveal>${page.html}</section>`;
   return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, type: 'ContactPage', mainEntity: { '@id': person.id } }), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }])], className: 'contact-page' });
 };
 

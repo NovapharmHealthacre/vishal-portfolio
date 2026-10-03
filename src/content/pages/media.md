@@ -5,19 +5,19 @@ canonicalPath: /media/
 public: true
 ---
 
-## External publications
+## Published record
 
 Vishal contributes analysis to Yakuji Nippo and Pharmaceutical Commerce. {{EXTERNAL_PUBLICATION_COUNT}} publisher-hosted contributions are verified below.
 
-The four-part Yakuji Nippo series examines UK–EU pharmaceutical market access and compliance after Brexit. His Pharmaceutical Commerce commentary examines resilient pharmaceutical supply and the boundary between package-level traceability and upstream continuity intelligence.
+The Yakuji Nippo series examines UK–EU pharmaceutical market access and compliance after Brexit. Pharmaceutical Commerce contributions focus on resilient pharmaceutical supply and the boundary between package-level traceability and upstream continuity intelligence.
 
 Each link opens the original publisher record.
 
 {{PUBLICATION_RECORD}}
 
-## Publication themes
+## Themes
 
-The published work addresses:
+The published work covers:
 
 - separate UK and EU pharmaceutical market-access pathways;
 - post-Brexit regulatory and compliance planning;
@@ -27,7 +27,7 @@ The published work addresses:
 - onshoring, qualified redundancy and supply continuity;
 - DSCSA traceability, upstream risk and continuity intelligence.
 
-## Selected independent essays
+## Independent essays
 
 ### [Why I Chose to Build in Pharmaceuticals](/essays/why-i-chose-to-build-in-pharmaceuticals/)
 
@@ -45,23 +45,11 @@ A practical assessment of technical fit, regulatory history, batch size, analyti
 
 An operating view of concentration risk, capacity, lead time, inventory, quality agreements and contingency planning.
 
-## Founder biography
+## Media profile
 
 {{PERSON_MEDIUM_BIO}}
 
-## Media and editorial topics
-
-Vishal is available for selected interviews, commentary and editorial conversations around:
-
-- pharmaceutical entrepreneurship;
-- UK–EU market access;
-- post-Brexit pharmaceutical strategy;
-- CMO and CDMO selection;
-- technology transfer;
-- supply-chain resilience;
-- specialist medicines;
-- product and portfolio strategy;
-- building companies in regulated markets.
+Relevant interview and editorial topics include pharmaceutical entrepreneurship, UK–EU market access, post-Brexit strategy, CMO and CDMO selection, technology transfer, supply resilience, specialist medicines, portfolio strategy and building companies in regulated markets.
 
 ## Enquiries
 

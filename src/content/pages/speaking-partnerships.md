@@ -7,51 +7,39 @@ public: true
 
 Vishal is available for selected speaking, editorial and founder conversations on building pharmaceutical companies and taking products into regulated markets.
 
-## Speaking themes
+## Core themes
 
-### Pharmaceutical market access
+### Market access
 
 Why approval, manufacturing, supply, price, channel adoption and patient access need to be designed as one route.
 
-### Post-Brexit market entry
+### UK–EU market entry
 
-How pharmaceutical companies can approach the United Kingdom and European Union as a connected region with separate regulatory, supply and commercial systems.
+How companies can approach the United Kingdom and European Union as a connected region with separate regulatory, supply and commercial systems.
 
 ### CMO and CDMO strategy
 
-How to assess technical capability, regulatory history, batch size, analytical support, documentation quality, commercial fit and lifecycle supply.
+How technical capability, regulatory history, batch size, analytical support, documentation quality, commercial fit and lifecycle supply change manufacturer selection.
 
 ### Technology transfer
 
-Why product understanding, analytical methods, equipment fit, stability, packaging, validation and commercial economics must move together.
+Why product understanding, analytical methods, equipment fit, stability, packaging, validation and commercial economics need to move together.
 
-### Pharmaceutical supply resilience
+### Supply resilience
 
-How supplier concentration, manufacturing capacity, lead time, inventory, quality agreements and contingency routes shape continuity.
+How supplier concentration, capacity, lead time, inventory, quality agreements and contingency routes shape continuity.
 
-### Specialist medicines
-
-The commercial and operating case for focused products, smaller patient populations and reliable access.
-
-### Founder execution in regulated markets
+### Founder execution
 
 How founders connect product strategy, expert advice, capital, long timelines and operating decisions without losing commercial urgency.
 
 ## Editorial commentary
 
-Vishal can contribute founder and operator perspectives on:
+Relevant subjects include UK–EU pharmaceutical strategy, parallel import and market-access frameworks, manufacturing partnerships, portfolio selection, batch economics, working capital, digital operating infrastructure and cross-border company building.
 
-- UK–EU pharmaceutical strategy;
-- parallel import and market-access frameworks;
-- manufacturing partnerships;
-- product and portfolio selection;
-- batch economics and working capital;
-- digital infrastructure for pharmaceutical operations;
-- cross-border company building.
+## Formats
 
-## Founder roundtables
-
-Relevant formats include founder discussions, industry panels, private roundtables, interviews, written commentary, editorial collaboration and workshops focused on the operating decisions behind pharmaceutical market entry.
+Relevant formats include industry panels, private roundtables, interviews, written commentary, editorial collaboration and workshops centred on real operating decisions.
 
 ## Partnership conversations
 
@@ -59,4 +47,4 @@ Selected discussions may include product and market-access strategy, manufacturi
 
 ## Enquire
 
-Email [{{EMAIL}}](mailto:{{EMAIL}}) with the proposed subject, format, audience, organisation and date.
+Email [{{EMAIL}}](mailto:{{EMAIL}}) with the subject, format, audience, organisation and date.

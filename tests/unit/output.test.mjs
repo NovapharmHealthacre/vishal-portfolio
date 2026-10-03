@@ -76,6 +76,30 @@ test('route cosmos controller is built as a route-only asset', () => {
   assert.match(script, /requestAnimationFrame/);
 });
 
+test('unified design and publishing layers are shipped', () => {
+  const home = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
+  const about = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
+  const ventures = fs.readFileSync(path.resolve('dist/ventures/index.html'), 'utf8');
+  const css = fs.readFileSync(path.resolve('dist/assets/apple-refresh.css'), 'utf8');
+  const index = JSON.parse(fs.readFileSync(path.resolve('dist/content-index.json'), 'utf8'));
+  const llms = fs.readFileSync(path.resolve('dist/llms.txt'), 'utf8');
+
+  assert.match(home, /data-ui-layer="navigation"/);
+  assert.match(home, /data-content-layer/);
+  assert.doesNotMatch(home, /assets\/unified-system\.css/);
+  assert.match(about, /class="page-section-index"/);
+  assert.match(ventures, /class="route-summary"/);
+  assert.match(ventures, /One route\. Connected decisions\./);
+  assert.match(css, /Unified founder system/);
+  assert.match(css, /--u-section/);
+  assert.equal(index.schemaVersion, 1);
+  assert.equal(index.publisher.name, 'Vishal Chakravarty');
+  assert.ok(index.pages.some((page) => page.canonical.endsWith('/ventures/')));
+  assert.ok(index.essays.length >= 10);
+  assert.match(llms, /Structured content index/);
+  assert.doesNotMatch(llms, /passport|date of birth|residential address|\bvisa\b|\bimmigration\b/i);
+});
+
 test('content security policy permits only same-origin connections', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /connect-src &#39;self&#39;; frame-src &#39;none&#39;/);

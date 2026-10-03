@@ -120,6 +120,13 @@ fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 fs.cpSync(path.join(root, 'public'), dist, { recursive: true });
 write('assets/site.css', fs.readFileSync(path.join(root, 'src/styles/site.css'), 'utf8'));
+write(
+  'assets/apple-refresh.css',
+  [
+    fs.readFileSync(path.join(root, 'public/assets/apple-refresh.css'), 'utf8'),
+    fs.readFileSync(path.join(root, 'public/assets/unified-system.css'), 'utf8'),
+  ].join('\n'),
+);
 write('assets/site.js', fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8'));
 write('assets/route-cosmos.js', fs.readFileSync(path.join(root, 'src/scripts/route-cosmos.js'), 'utf8'));
 
@@ -150,6 +157,71 @@ for (const article of articles) {
 for (const [from, to] of Object.entries(legacyRedirects)) {
   write(routeFile(from), renderCompatibility(from, to));
 }
+
+
+const stripMarkup = (value) => String(value)
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+const pageSections = (html) =>
+  [...html.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)].map((match) => ({
+    id: match[1],
+    title: stripMarkup(match[2]),
+  }));
+
+const contentIndex = (pages, articles) => ({
+  schemaVersion: 1,
+  canonical: `${site.origin}/content-index.json`,
+  lastReviewed: verificationDate,
+  publisher: {
+    name: person.name,
+    profile: `${site.origin}/about/`,
+    organisation: company.name,
+  },
+  pages: Object.values(pages)
+    .filter((page) => page.public)
+    .map((page) => ({
+      title: page.title,
+      description: page.description,
+      canonical: new URL(page.canonicalPath, site.origin).href,
+      sections: pageSections(page.html),
+    })),
+  essays: articles.map((article) => ({
+    title: article.title,
+    summary: article.summary,
+    category: article.category,
+    canonical: new URL(article.canonicalPath, site.origin).href,
+    published: article.published,
+    modified: article.modified,
+  })),
+});
+
+const llmsText = (pages, articles) => `# Vishal Chakravarty
+
+> Official public website for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and founder of the company. This file is a supplemental navigation aid; canonical pages and structured data remain authoritative.
+
+## Canonical entity ids
+- Person: ${person.id}
+- Organisation: ${company.id}
+
+## Primary pages
+${Object.values(pages)
+  .filter((page) => page.public)
+  .map((page) => `- [${page.title}](${new URL(page.canonicalPath, site.origin).href}): ${page.description}`)
+  .join('\n')}
+- [Pharmaceutical Essays by Vishal Chakravarty](${site.origin}/thinking/): Original essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.
+
+## Selected essays
+${articles.slice(0, 10).map((article) => `- [${article.title}](${new URL(article.canonicalPath, site.origin).href}): ${article.summary}`).join('\n')}
+
+## Machine-readable records
+- [Verified facts](${site.origin}/facts.json)
+- [Structured content index](${site.origin}/content-index.json)
+- [RSS](${site.origin}/rss.xml)
+- [JSON Feed](${site.origin}/feed.json)
+- [Sitemap](${site.origin}/sitemap.xml)
+`;
 
 write(
   'facts.json',
@@ -214,6 +286,8 @@ write(
     2,
   ),
 );
+write('content-index.json', JSON.stringify(contentIndex(pageContent, articles), null, 2));
+write('llms.txt', llmsText(pageContent, articles));
 write('feed.json', JSON.stringify(jsonFeed(articles), null, 2));
 write('rss.xml', rssFeed(articles));
 write('sitemap.xml', sitemap(articles));
