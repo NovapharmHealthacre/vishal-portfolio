@@ -88,8 +88,8 @@ jobs:
           grep -Fq 'route-summary' <<<"$ventures"
 
           grep -Fq 'Market Access' <<<"$thinking"
-          grep -Fq 'Manufacturing & Technology Transfer' <<<"$thinking"
-          grep -Fq 'Supply & Resilience' <<<"$thinking"
+          grep -Fq 'Manufacturing &amp; Technology Transfer' <<<"$thinking"
+          grep -Fq 'Supply &amp; Resilience' <<<"$thinking"
           grep -Fq 'Company Building' <<<"$thinking"
           grep -Fq 'data-page-cosmic-hero' <<<"$thinking"
           grep -Fq 'page-cosmos-owned' <<<"$thinking"
@@ -154,7 +154,7 @@ jobs:
           The refined founder portfolio is live on the custom domain.
 
           - Homepage: new pharmaceutical founder proposition served
-          - Thinking: 10 public essays served
+          - Thinking: four-topic authority architecture and 10 public essays served
           - Cornerstone market-access essay: served and indexable
           - Founder-origin essay: served and indexable
           - Retired essay route: neutral \`noindex,follow\` compatibility page
