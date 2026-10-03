@@ -200,6 +200,7 @@ write(
         incorporated: company.incorporationDate,
         status: company.status,
         officialUrl: company.officialUrl,
+        linkedInUrl: company.linkedInUrl,
         description: company.description,
         currentFocus: company.currentFocus,
       },
