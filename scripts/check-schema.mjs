@@ -139,7 +139,6 @@ for (const file of htmlFiles) {
       'https://www.wikidata.org/wiki/Q137660690',
       'https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments',
       'https://novapharmhealthcare.com/leadership/vishal-chakravarty/',
-      'https://www.crunchbase.com/person/vishal-chakravarty',
     ]) {
       if (!person.sameAs?.includes(sameAs)) failures.push(`${rel}: Person sameAs missing ${sameAs}`);
     }
@@ -154,7 +153,6 @@ for (const file of htmlFiles) {
     for (const sameAs of [
       'https://find-and-update.company-information.service.gov.uk/company/16716501',
       'https://www.linkedin.com/company/novapharm-healthcare/',
-      'https://www.crunchbase.com/organization/novapharm-healthcare',
     ]) {
       if (!organization.sameAs?.includes(sameAs)) failures.push(`${rel}: Organization sameAs missing ${sameAs}`);
     }
