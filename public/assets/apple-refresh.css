@@ -1760,13 +1760,15 @@ a {
   }
 
   .hero-orbit {
-    right: 2vw;
-    width: 96vw;
+    right: 9vw;
+    width: 82vw;
+    transform: rotate(-10deg);
   }
 
   .hero-orbit-two {
-    right: 8vw;
-    width: 78vw;
+    right: 15vw;
+    width: 70vw;
+    transform: rotate(-10deg) scaleY(.72);
   }
 
   .founder-feature {
