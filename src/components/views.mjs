@@ -165,7 +165,7 @@ export const renderAbout = (page) => {
     crumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }],
     eyebrow: 'Founder profile / 2026',
     title: 'Vishal<br>Chakravarty.',
-    deck: 'Founder and Chief Executive Officer of NovaPharm Healthcare.<br>Building the route between medicines, regulation, manufacturing, supply and market access.',
+    deck: 'Chief Executive Officer of NovaPharm Healthcare.<br>Founder of the company. Building the route between medicines, regulation, manufacturing, supply and market access.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/01/STScI-01EVT8DP1YM9FYPF0Y33VY7ANB.tif',
     width: 6637,
     height: 3787,
