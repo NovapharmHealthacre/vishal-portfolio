@@ -87,7 +87,10 @@ jobs:
           grep -Fq 'One route. Connected decisions.' <<<"$ventures"
           grep -Fq 'route-summary' <<<"$ventures"
 
-          grep -Fq '10 essays' <<<"$thinking"
+          grep -Fq 'Market Access' <<<"$thinking"
+          grep -Fq 'Manufacturing & Technology Transfer' <<<"$thinking"
+          grep -Fq 'Supply & Resilience' <<<"$thinking"
+          grep -Fq 'Company Building' <<<"$thinking"
           grep -Fq 'data-page-cosmic-hero' <<<"$thinking"
           grep -Fq 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif' <<<"$thinking"
           grep -Fq 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI' <<<"$thinking"
