@@ -145,22 +145,25 @@ export const renderHome = (articles) => {
           class="hubble-wide"
           src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960"
           srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=640 640w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960 960w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=1600 1600w"
-          sizes="100vw"
+          sizes="(max-width: 720px) 82vw, 100vw"
           width="2400"
           height="3000"
           alt=""
           fetchpriority="high"
           decoding="async">
         <div class="hubble-close-shell">
-          <img
-            class="hubble-close"
-            src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2017/02/STScI-01EVVBRGBTS2CZP6VK5TK0W4RW.tiff?w=900"
-            width="1500"
-            height="1200"
-            alt=""
-            loading="lazy"
-            fetchpriority="low"
-            decoding="async">
+          <picture>
+            <source media="(min-width: 721px)" srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2017/02/STScI-01EVVBRGBTS2CZP6VK5TK0W4RW.tiff?w=720">
+            <img
+              class="hubble-close"
+              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+              width="1500"
+              height="1200"
+              alt=""
+              loading="lazy"
+              fetchpriority="low"
+              decoding="async">
+          </picture>
         </div>
         <div class="hubble-optics"></div>
       </div>
