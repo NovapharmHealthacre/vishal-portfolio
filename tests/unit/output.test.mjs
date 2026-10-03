@@ -31,6 +31,7 @@ test('essential homepage content exists before JavaScript', () => {
   assert.doesNotMatch(html, /Founder\s*(?:&|&amp;|and)\s*(?:Chief Executive Officer|CEO)/i);
   assert.match(html, /<nav id="site-navigation"/);
   assert.doesNotMatch(html, /assets\/route-cosmos\.js/);
+  assert.doesNotMatch(html, /assets\/route-cosmos\.css/);
   assert.doesNotMatch(html, /loading screen/i);
 });
 
@@ -50,8 +51,18 @@ test('primary routes each expose a distinct official NASA observation hero', () 
     assert.match(html, /assets\.science\.nasa\.gov/);
     assert.ok(html.includes(asset), route + ': missing expected NASA asset ' + asset);
     assert.ok(html.includes(credit), route + ': missing observation credit');
+    assert.match(html, /<link rel="stylesheet" href="\/assets\/route-cosmos\.css">/);
     assert.match(html, /<script src="\/assets\/route-cosmos\.js" defer><\/script>/);
   }
+});
+
+test('route cosmos stylesheet is shipped as a route-only asset', () => {
+  const file = path.resolve('dist/assets/route-cosmos.css');
+  assert.equal(fs.existsSync(file), true);
+  const stylesheet = fs.readFileSync(file, 'utf8');
+  assert.match(stylesheet, /page-hero-cosmic/);
+  assert.match(stylesheet, /page-hero-ventures/);
+  assert.match(stylesheet, /page-hero-contact/);
 });
 
 test('route cosmos controller is built as a route-only asset', () => {
