@@ -57,7 +57,10 @@ jobs:
             exit 1
           fi
 
+          ventures=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/ventures/?${cache_key}")
           thinking=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/thinking/?${cache_key}")
+          media=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/media/?${cache_key}")
+          contact=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/contact/?${cache_key}")
           cornerstone=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/regulatory-approval-is-not-market-access/?${cache_key}")
           founder=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/why-i-chose-to-build-in-pharmaceuticals/?${cache_key}")
           retired=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/essays/why-i-left-swiggy/?${cache_key}")
@@ -65,7 +68,22 @@ jobs:
           gallery=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/gallery/?${cache_key}")
           sitemap=$(curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' "${SITE_ORIGIN}/sitemap.xml?${cache_key}")
 
+          grep -Fq 'data-page-cosmic-hero' <<<"$ventures"
+          grep -Fq 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png' <<<"$ventures"
+          grep -Fq 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI' <<<"$ventures"
+
           grep -Fq '10 essays' <<<"$thinking"
+          grep -Fq 'data-page-cosmic-hero' <<<"$thinking"
+          grep -Fq 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif' <<<"$thinking"
+          grep -Fq 'Hubble · Ultra Deep Field · NASA/ESA/STScI' <<<"$thinking"
+
+          grep -Fq 'data-page-cosmic-hero' <<<"$media"
+          grep -Fq 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png' <<<"$media"
+          grep -Fq 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI' <<<"$media"
+
+          grep -Fq 'data-page-cosmic-hero' <<<"$contact"
+          grep -Fq '324350main_11_full-1.jpg' <<<"$contact"
+          grep -Fq 'Earth at Night · NASA/NOAA' <<<"$contact"
           grep -Fq 'Regulatory Approval Is Not Market Access' <<<"$cornerstone"
           grep -Fq 'Why I Chose to Build in Pharmaceuticals' <<<"$founder"
           grep -Fq 'noindex,follow' <<<"$retired"
@@ -75,6 +93,9 @@ jobs:
             exit 1
           fi
           grep -Fq 'Founder Profile' <<<"$profile"
+          grep -Fq 'data-page-cosmic-hero' <<<"$profile"
+          grep -Fq 'STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png' <<<"$profile"
+          grep -Fq 'Webb · First Deep Field · NASA/ESA/CSA/STScI' <<<"$profile"
           if grep -Fq 'Machine-readable fact record' <<<"$profile"; then
             echo 'Machine-facing copy was exposed on the founder profile' >&2
             exit 1
@@ -118,6 +139,11 @@ jobs:
           - Profile: human-facing copy served without machine-record promotion
           - Homepage: real NASA/ESA Hubble Supernova 1987A hero served with cinematic camera motion
           - Homepage: retired procedural Nova canvas and founder AI interface are absent
+          - Ventures: Webb Cosmic Cliffs hero served from the official NASA asset host
+          - Thinking: Hubble Ultra Deep Field hero served from the official NASA asset host
+          - Media: Webb Pillars of Creation MIRI hero served from the official NASA asset host
+          - Profile: Webb First Deep Field hero served from the official NASA asset host
+          - Contact: NASA Earth at Night hero served from the official NASA asset host
           - Gallery: retired route serves noindex,follow with a destination canonical and instant redirect to About
           - Portrait asset: high-resolution official WebP served
           - Sitemap: cornerstone route included; retired essay and gallery routes excluded
