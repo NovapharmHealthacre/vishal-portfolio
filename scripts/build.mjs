@@ -151,6 +151,66 @@ for (const [from, to] of Object.entries(legacyRedirects)) {
   write(routeFile(from), renderCompatibility(from, to));
 }
 
+
+const stripMarkup = (value) => String(value)
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+const pageSections = (html) =>
+  [...html.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)].map((match) => ({
+    id: match[1],
+    title: stripMarkup(match[2]),
+  }));
+
+const contentIndex = (pages, articles) => ({
+  schemaVersion: 1,
+  canonical: `${site.origin}/content-index.json`,
+  lastReviewed: verificationDate,
+  publisher: {
+    name: person.name,
+    profile: `${site.origin}/about/`,
+    organisation: company.name,
+  },
+  pages: Object.values(pages)
+    .filter((page) => page.public)
+    .map((page) => ({
+      title: page.title,
+      description: page.description,
+      canonical: new URL(page.canonicalPath, site.origin).href,
+      sections: pageSections(page.html),
+    })),
+  essays: articles.map((article) => ({
+    title: article.title,
+    summary: article.summary,
+    category: article.category,
+    canonical: new URL(article.canonicalPath, site.origin).href,
+    published: article.published,
+    modified: article.modified,
+  })),
+});
+
+const llmsText = (pages, articles) => `# Vishal Chakravarty
+
+> Official public website for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and founder of the company.
+
+## Primary pages
+${Object.values(pages)
+  .filter((page) => page.public)
+  .map((page) => `- [${page.title}](${new URL(page.canonicalPath, site.origin).href}): ${page.description}`)
+  .join('\n')}
+
+## Selected essays
+${articles.slice(0, 10).map((article) => `- [${article.title}](${new URL(article.canonicalPath, site.origin).href}): ${article.summary}`).join('\n')}
+
+## Machine-readable records
+- [Verified facts](${site.origin}/facts.json)
+- [Structured content index](${site.origin}/content-index.json)
+- [RSS](${site.origin}/rss.xml)
+- [JSON Feed](${site.origin}/feed.json)
+- [Sitemap](${site.origin}/sitemap.xml)
+`;
+
 write(
   'facts.json',
   JSON.stringify(
@@ -214,6 +274,8 @@ write(
     2,
   ),
 );
+write('content-index.json', JSON.stringify(contentIndex(pageContent, articles), null, 2));
+write('llms.txt', llmsText(pageContent, articles));
 write('feed.json', JSON.stringify(jsonFeed(articles), null, 2));
 write('rss.xml', rssFeed(articles));
 write('sitemap.xml', sitemap(articles));
