@@ -53,6 +53,14 @@ Vishal contributes to Yakuji Nippo and Pharmaceutical Commerce. Verified publish
 
 See [Writing and Media](/media/) for the original English and Japanese publisher links.
 
+## Independent public records
+
+The identity and executive role shown on this site can also be cross-checked against sources outside NovaPharm’s own websites:
+
+- [Companies House officer record](https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments) records Vishal Om Prakash Chakravarty as an active director of NOVAPHARM HEALTHCARE LTD.
+- [iPHEX 2026 official overseas delegates list](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026) lists Vishal Om Prakash Chakravarty, NovaPharm Healthcare Ltd, as Chief Executive Officer.
+- The [Yakuji Nippo series](https://www.yakuji.co.jp/entry136963.html) and [Pharmaceutical Commerce](https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains) publish named author profiles for Vishal Chakravarty and identify his NovaPharm role.
+
 ## Selected essays
 
 - [Why I Chose to Build in Pharmaceuticals](/essays/why-i-chose-to-build-in-pharmaceuticals/)
