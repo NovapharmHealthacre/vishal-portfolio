@@ -41,7 +41,6 @@ export const personSchema = () => ({
   hasOccupation: {
     '@type': 'Occupation',
     name: 'Chief Executive Officer',
-    occupationalCategory: 'Executive management',
   },
   worksFor: { '@id': company.id },
   description: person.shortBio,
@@ -58,10 +57,9 @@ export const profileSchema = () => ({
   dateModified: profileModifiedDate,
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
-  breadcrumb: { '@id': `${site.origin}/thinking/#breadcrumb` },
+  breadcrumb: { '@id': `${site.origin}/about/#breadcrumb` },
   mainEntity: { '@id': person.id },
   primaryImageOfPage: { '@id': person.image.id },
-  breadcrumb: { '@id': `${site.origin}/about/#breadcrumb` },
 });
 
 export const webPageSchema = ({ path, name, description, type = 'WebPage', mainEntity, primaryImage, dateModified } = {}) => ({
@@ -147,6 +145,7 @@ export const thinkingCollectionSchema = (articles) => ({
   dateModified: articles[0]?.modified ?? routeModified['/thinking/'],
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
+  breadcrumb: { '@id': `${site.origin}/thinking/#breadcrumb` },
   mainEntity: {
     '@type': 'Blog',
     '@id': `${site.origin}/thinking/#blog`,
