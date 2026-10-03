@@ -269,7 +269,7 @@ body {
 
 .page-section-index a::before {
   content: counter(section, decimal-leading-zero);
-  color: #929296;
+  color: #6e6e73;
   font-family: "SFMono-Regular", ui-monospace, Menlo, monospace;
   font-size: 10px;
   padding-top: .16rem;
@@ -370,7 +370,7 @@ body {
 }
 
 .home-page .principle-list article > span {
-  color: #929296;
+  color: #6e6e73;
   font-family: "SFMono-Regular", ui-monospace, Menlo, monospace;
   font-size: 10px;
 }
@@ -477,7 +477,7 @@ body {
 }
 
 .route-facts dt {
-  color: #929296;
+  color: #6e6e73;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: .055em;
