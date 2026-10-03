@@ -20,7 +20,11 @@ test('essential homepage content exists before JavaScript', () => {
   assert.match(html, /<meta property="og:image:type" content="image\/webp">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
   assert.match(html, /Chief Executive Officer · Founder of NovaPharm Healthcare Ltd/);
-  assert.match(html, /id="nova-field"/);
+  assert.match(html, /data-hubble-hero/);
+  assert.match(html, /data-real-cosmos/);
+  assert.match(html, /assets\.science\.nasa\.gov\/dynamicimage\/assets\/science\/missions\/hubble\/releases\/1999\/02\/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822\.tif/);
+  assert.match(html, /Hubble · Supernova 1987A · NASA\/ESA/);
+  assert.doesNotMatch(html, /id="nova-field"/);
   assert.doesNotMatch(html, /href="\/gallery\/"/);
   assert.doesNotMatch(html, /data-founder-ai/);
   assert.doesNotMatch(html, /Founder\s*(?:&|&amp;|and)\s*(?:Chief Executive Officer|CEO)/i);
@@ -31,6 +35,7 @@ test('essential homepage content exists before JavaScript', () => {
 test('content security policy permits only same-origin connections', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /connect-src &#39;self&#39;; frame-src &#39;none&#39;/);
+  assert.match(html, /img-src &#39;self&#39; data: https:\/\/assets\.science\.nasa\.gov/);
   assert.doesNotMatch(html, /connect-src (?:\*|https?:|&#39;none&#39;)/);
 });
 
