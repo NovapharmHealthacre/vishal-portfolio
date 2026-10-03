@@ -42,7 +42,7 @@ const hubbleHero = document.querySelector('[data-hubble-hero]');
 const hubbleCosmos = document.querySelector('[data-real-cosmos]');
 const hubbleReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if (hubbleHero && hubbleCosmos && !hubbleReducedMotion) {
+if (hubbleHero && hubbleCosmos && !hubbleReducedMotion && window.matchMedia('(min-width: 721px)').matches) {
   let pointerX = 0;
   let pointerY = 0;
   let targetX = 0;
