@@ -21,8 +21,8 @@ export const canonicalRoutes = Object.freeze([
 ]);
 
 export const routeModified = Object.freeze({
-  '/': '2026-10-02',
-  '/about/': '2026-10-02',
+  '/': '2026-10-03',
+  '/about/': '2026-10-03',
   '/ventures/': '2026-10-02',
   '/thinking/': '2026-10-02',
   '/media/': '2026-10-02',
@@ -51,9 +51,9 @@ export const defaultSocialImage = '/images/social/default-og.jpg';
 
 export const pageMeta = Object.freeze({
   home: {
-    title: 'Vishal Chakravarty — Chief Executive Officer',
+    title: 'Vishal Chakravarty | CEO, NovaPharm Healthcare',
     description:
-      'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, building around pharmaceutical market access, specialist medicines, manufacturing and resilient supply.',
+      'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, working across pharmaceutical market access, specialist medicines, manufacturing partnerships and resilient supply.',
     path: '/',
     modified: routeModified['/'],
   },

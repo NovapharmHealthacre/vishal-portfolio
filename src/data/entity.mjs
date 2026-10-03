@@ -18,6 +18,8 @@ export const person = Object.freeze({
   id: `${site.origin}/#person`,
   profileId: `${site.origin}/about/#profile`,
   name: 'Vishal Chakravarty',
+  givenName: 'Vishal',
+  familyName: 'Chakravarty',
   role: 'Chief Executive Officer, NovaPharm Healthcare Ltd',
   founderRelationship: 'Founder of NovaPharm Healthcare Ltd',
   jobTitle: 'Chief Executive Officer',

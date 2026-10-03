@@ -1,5 +1,5 @@
 # Vishal Chakravarty — crawler policy
-# Reviewed 2 October 2026 against current official crawler documentation.
+# Reviewed 3 October 2026 against current official crawler documentation.
 # Public search and retrieval are allowed. Automatic model-training crawlers are declined.
 # User-triggered agents may not apply robots.txt rules; their entries below document intent only.
 

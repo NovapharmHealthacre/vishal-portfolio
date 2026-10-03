@@ -167,12 +167,31 @@ write(
       },
       person: {
         name: person.name,
+        givenName: person.givenName,
+        familyName: person.familyName,
         role: person.role,
         founderRelationship: person.founderRelationship,
         jobTitle: person.jobTitle,
         proposition: person.proposition,
         sameAs: person.sameAs,
       },
+      answers: [
+        {
+          question: 'Who is Vishal Chakravarty?',
+          answer: person.shortBio,
+          source: `${site.origin}/about/`,
+        },
+        {
+          question: 'What is NovaPharm Healthcare?',
+          answer: company.description,
+          source: `${site.origin}/ventures/`,
+        },
+        {
+          question: 'What does Vishal Chakravarty work on?',
+          answer: 'Pharmaceutical market access, specialist medicines, manufacturing partnerships, technology transfer, sourcing, supply and commercial route-to-market design.',
+          source: `${site.origin}/facts/`,
+        },
+      ],
       company: {
         name: company.name,
         brandName: company.brandName,

@@ -14,6 +14,10 @@ test('production output preserves ownership and custom-domain files', () => {
 test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
+  assert.match(html, /<title>Vishal Chakravarty \| CEO, NovaPharm Healthcare<\/title>/);
+  assert.match(html, /<link rel="alternate" hreflang="en-GB" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
+  assert.match(html, /<link rel="alternate" hreflang="x-default" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
+  assert.match(html, /<meta property="og:image:type" content="image\/webp">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
   assert.match(html, /Chief Executive Officer · Founder of NovaPharm Healthcare Ltd/);
   assert.match(html, /id="nova-field"/);
@@ -35,6 +39,10 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.schemaVersion, 2);
   assert.deepEqual(facts.person.sameAs, ['https://www.linkedin.com/in/vishal-chakravarty']);
   assert.equal(facts.person.jobTitle, 'Chief Executive Officer');
+  assert.equal(facts.person.givenName, 'Vishal');
+  assert.equal(facts.person.familyName, 'Chakravarty');
+  assert.equal(facts.answers.length, 3);
+  assert.equal(facts.answers.every((answer) => answer.source.startsWith('https://vishal.novapharmhealthcare.com/')), true);
   assert.equal(facts.entityIds.person, 'https://vishal.novapharmhealthcare.com/#person');
   assert.equal(facts.entityIds.personalWebsite, 'https://vishal.novapharmhealthcare.com/#website');
   assert.equal(facts.entityIds.profilePage, 'https://vishal.novapharmhealthcare.com/about/#profile');
@@ -54,6 +62,19 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.facts.find((fact) => fact.id === 'M-004')?.value, 'Five publisher-hosted contributions');
   assert.doesNotMatch(JSON.stringify(facts), /passport|birthDate|residential address|\bvisa\b|\bimmigration\b/i);
   assert.doesNotMatch(JSON.stringify(facts), /Founder\s*(?:&|and)\s*(?:Chief Executive Officer|CEO)/i);
+});
+
+
+test('about page exposes a concise human-readable entity snapshot', () => {
+  const html = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
+  const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
+  assert.match(main, /At a glance/);
+  assert.match(main, /Chief Executive Officer/);
+  assert.match(main, /NovaPharm Healthcare Ltd/);
+  assert.match(main, /Market access, manufacturing and resilient supply/);
+  assert.match(html, /<meta property="og:type" content="profile">/);
+  assert.match(html, /<meta property="profile:first_name" content="Vishal">/);
+  assert.match(html, /<meta property="profile:last_name" content="Chakravarty">/);
 });
 
 test('media output exposes the complete verified publisher record', () => {

@@ -63,7 +63,15 @@ for (const file of htmlFiles) {
   if (!noIndex && canonical !== new URL(route, origin).href) failures.push(`${rel}: canonical does not match its generated route`);
   if ((html.match(/<h1\b/g) ?? []).length !== 1) failures.push(`${rel}: expected exactly one H1`);
   if (!/<meta property="og:image:alt" content="[^"]+"/.test(html)) failures.push(`${rel}: missing og:image:alt`);
+  if (!/<meta property="og:image:secure_url" content="https:\/\//.test(html)) failures.push(`${rel}: missing secure Open Graph image URL`);
+  if (!/<meta property="og:image:type" content="image\/(?:jpeg|png|webp)"/.test(html)) failures.push(`${rel}: missing Open Graph image type`);
   if (!/<meta name="twitter:image:alt" content="[^"]+"/.test(html)) failures.push(`${rel}: missing twitter:image:alt`);
+  const languageAlternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)];
+  for (const hreflang of ['en-GB', 'x-default']) {
+    const alternate = languageAlternates.find((match) => match[1] === hreflang);
+    if (!alternate) failures.push(`${rel}: missing ${hreflang} language alternate`);
+    else if (alternate[2] !== canonical) failures.push(`${rel}: ${hreflang} alternate must match canonical`);
+  }
 
   if (!noIndex) {
     if (titles.has(title)) failures.push(`${rel}: duplicate title with ${titles.get(title)}`);
@@ -117,12 +125,15 @@ for (const file of htmlFiles) {
   if (website) {
     if (website['@id'] !== websiteId) failures.push(`${rel}: WebSite id is not canonical`);
     if (website.publisher?.['@id'] !== personId) failures.push(`${rel}: personal WebSite publisher must be Vishal`);
+    if (website.creator?.['@id'] !== personId || website.about?.['@id'] !== personId) failures.push(`${rel}: WebSite creator/about must reference Vishal`);
   }
 
   const person = schemas.find((schema) => schema['@type'] === 'Person');
   if (person) {
     if (person['@id'] !== personId) failures.push(`${rel}: Person id is not canonical`);
     if (person.jobTitle !== 'Chief Executive Officer') failures.push(`${rel}: Person jobTitle must use the approved executive designation`);
+    if (person.givenName !== 'Vishal' || person.familyName !== 'Chakravarty') failures.push(`${rel}: Person name parts are incomplete`);
+    if (person.hasOccupation?.name !== 'Chief Executive Officer') failures.push(`${rel}: Person occupation is incomplete`);
     if (person.worksFor?.['@id'] !== organizationId) failures.push(`${rel}: Person worksFor must reference the corporate canonical id`);
   }
 
@@ -132,11 +143,21 @@ for (const file of htmlFiles) {
     if (organization.founder?.['@id'] !== personId) failures.push(`${rel}: Organization founder must reference Vishal`);
   }
 
+  if (!noIndex && route !== '/') {
+    const breadcrumb = schemas.find((schema) => schema['@type'] === 'BreadcrumbList');
+    const expectedBreadcrumbId = `${new URL(route, origin).href}#breadcrumb`;
+    if (breadcrumb?.['@id'] !== expectedBreadcrumbId) failures.push(`${rel}: BreadcrumbList id is not canonical`);
+    const pageNode = schemas.find((schema) => ['WebPage', 'ContactPage', 'CollectionPage', 'ProfilePage'].includes(schema['@type']));
+    if (pageNode && pageNode.breadcrumb?.['@id'] !== expectedBreadcrumbId) failures.push(`${rel}: page node does not reference its BreadcrumbList`);
+  }
+
   if (route === '/about/') {
     const profile = schemas.find((schema) => schema['@type'] === 'ProfilePage');
     if (profile?.['@id'] !== profileId) failures.push(`${rel}: ProfilePage id is not canonical`);
     if (profile?.url !== `${origin}/about/`) failures.push(`${rel}: ProfilePage URL does not describe this page`);
     if (profile?.mainEntity?.['@id'] !== personId) failures.push(`${rel}: ProfilePage mainEntity must reference Vishal`);
+    if (!/<meta property="og:type" content="profile"/.test(html)) failures.push(`${rel}: About page must use Open Graph profile type`);
+    if (!/<meta property="profile:first_name" content="Vishal"/.test(html) || !/<meta property="profile:last_name" content="Chakravarty"/.test(html)) failures.push(`${rel}: profile Open Graph name fields missing`);
   }
   if (route === '/facts/' && schemas.some((schema) => schema['@type'] === 'ProfilePage')) {
     failures.push(`${rel}: facts page must not emit the about-page ProfilePage node`);
@@ -147,6 +168,9 @@ for (const file of htmlFiles) {
     if (article?.author?.['@id'] !== personId) failures.push(`${rel}: Article author must reference Vishal`);
     if (article?.publisher?.['@id'] !== personId) failures.push(`${rel}: Personal essay publisher must reference Vishal`);
     if (article?.image?.width !== 1200 || article?.image?.height !== 630) failures.push(`${rel}: Article ImageObject dimensions are incomplete`);
+    if (!/<meta property="article:published_time" content="\d{4}-\d{2}-\d{2}"/.test(html)) failures.push(`${rel}: article Open Graph published time missing`);
+    if (!/<meta property="article:modified_time" content="\d{4}-\d{2}-\d{2}"/.test(html)) failures.push(`${rel}: article Open Graph modified time missing`);
+    if (!/<meta property="article:author" content="https:\/\/vishal\.novapharmhealthcare\.com\/about\/"/.test(html)) failures.push(`${rel}: article Open Graph author missing`);
   }
   if (route === '/thinking/') {
     const collection = schemas.find((schema) => schema['@type'] === 'CollectionPage');

@@ -53,3 +53,35 @@ if (novaFieldEligible) {
   if (document.readyState === 'complete') loadNovaField();
   else window.addEventListener('load', loadNovaField, { once: true });
 }
+
+
+const header = document.querySelector('[data-site-header]');
+if (header) {
+  const syncHeader = () => {
+    header.dataset.scrolled = String(window.scrollY > 8);
+  };
+  syncHeader();
+  window.addEventListener('scroll', syncHeader, { passive: true });
+}
+
+const revealItems = [...document.querySelectorAll('[data-reveal]')];
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (revealItems.length) {
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    for (const item of revealItems) item.classList.add('is-visible');
+  } else {
+    document.documentElement.classList.add('reveal-ready');
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      },
+      { rootMargin: '0px 0px -9% 0px', threshold: 0.08 },
+    );
+    for (const item of revealItems) revealObserver.observe(item);
+  }
+}

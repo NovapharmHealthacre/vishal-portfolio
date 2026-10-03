@@ -10,6 +10,8 @@ export const websiteSchema = () => ({
   description: site.description,
   inLanguage: site.language,
   publisher: { '@id': person.id },
+  creator: { '@id': person.id },
+  about: { '@id': person.id },
 });
 
 export const personSchema = () => ({
@@ -17,6 +19,8 @@ export const personSchema = () => ({
   '@type': 'Person',
   '@id': person.id,
   name: person.name,
+  givenName: person.givenName,
+  familyName: person.familyName,
   url: `${site.origin}/about/`,
   mainEntityOfPage: { '@id': person.profileId },
   image: {
@@ -34,6 +38,10 @@ export const personSchema = () => ({
     representativeOfPage: true,
   },
   jobTitle: person.jobTitle,
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Chief Executive Officer',
+  },
   worksFor: { '@id': company.id },
   description: person.shortBio,
   knowsAbout: person.knowsAbout,
@@ -49,6 +57,7 @@ export const profileSchema = () => ({
   dateModified: profileModifiedDate,
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
+  breadcrumb: { '@id': `${site.origin}/about/#breadcrumb` },
   mainEntity: { '@id': person.id },
   primaryImageOfPage: { '@id': person.image.id },
 });
@@ -63,6 +72,7 @@ export const webPageSchema = ({ path, name, description, type = 'WebPage', mainE
   dateModified: dateModified ?? routeModified[path] ?? verificationDate,
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
+  ...(path !== '/' ? { breadcrumb: { '@id': `${absolute(path)}#breadcrumb` } } : {}),
   ...(mainEntity ? { mainEntity } : {}),
   ...(primaryImage ? { primaryImageOfPage: primaryImage } : {}),
 });
@@ -89,6 +99,7 @@ export const organisationSchema = () => ({
 export const breadcrumbSchema = (items) => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
+  '@id': `${absolute(items.at(-1)?.path ?? '/')}#breadcrumb`,
   itemListElement: items.map((item, index) => ({
     '@type': 'ListItem',
     position: index + 1,
@@ -134,6 +145,7 @@ export const thinkingCollectionSchema = (articles) => ({
   dateModified: articles[0]?.modified ?? routeModified['/thinking/'],
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
+  breadcrumb: { '@id': `${site.origin}/thinking/#breadcrumb` },
   mainEntity: {
     '@type': 'Blog',
     '@id': `${site.origin}/thinking/#blog`,
@@ -153,6 +165,7 @@ export const mediaCollectionSchema = () => ({
   dateModified: routeModified['/media/'],
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
+  breadcrumb: { '@id': `${site.origin}/media/#breadcrumb` },
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: publications.length,
