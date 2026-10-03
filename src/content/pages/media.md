@@ -1,6 +1,6 @@
 ---
 title: Media and Publications
-description: Publisher-hosted writing, press profile and media resources for Vishal Chakravarty.
+description: Public industry participation, publisher-hosted writing, press profile and media resources for Vishal Chakravarty.
 canonicalPath: /media/
 public: true
 ---
