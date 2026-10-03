@@ -119,10 +119,11 @@ ${[...staticEntries, ...articleEntries].map(({ route, modified }) => `  <url>
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 fs.cpSync(path.join(root, 'public'), dist, { recursive: true });
-write('assets/site.css', fs.readFileSync(path.join(root, 'src/styles/site.css'), 'utf8'));
 write(
-  'assets/apple-refresh.css',
+  'assets/site.css',
   [
+    fs.readFileSync(path.join(root, 'src/styles/site.css'), 'utf8'),
+    fs.readFileSync(path.join(root, 'public/assets/content-fixes.css'), 'utf8'),
     fs.readFileSync(path.join(root, 'public/assets/apple-refresh.css'), 'utf8'),
     fs.readFileSync(path.join(root, 'public/assets/unified-system.css'), 'utf8'),
   ].join('\n'),

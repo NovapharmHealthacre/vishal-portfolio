@@ -1,11 +1,11 @@
 ---
 title: Speaking and Partnerships
-description: Speaking, editorial and selected partnership conversations with Vishal Chakravarty on pharmaceutical market access, manufacturing, supply and founder execution.
+description: Speaking, editorial and selected partnership conversations with Vishal Chakravarty on pharmaceutical market access, manufacturing, supply and company building.
 canonicalPath: /speaking-partnerships/
 public: true
 ---
 
-Vishal is available for selected speaking, editorial and founder conversations on building pharmaceutical companies and taking products into regulated markets.
+Vishal is available for selected speaking, editorial and operator conversations on building pharmaceutical companies and taking products into regulated markets.
 
 ## Core themes
 
@@ -29,9 +29,9 @@ Why product understanding, analytical methods, equipment fit, stability, packagi
 
 How supplier concentration, capacity, lead time, inventory, quality agreements and contingency routes shape continuity.
 
-### Founder execution
+### Company building
 
-How founders connect product strategy, expert advice, capital, long timelines and operating decisions without losing commercial urgency.
+How operators connect product strategy, expert advice, capital, long timelines and execution without losing commercial urgency.
 
 ## Editorial commentary
 

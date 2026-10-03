@@ -1,47 +1,30 @@
 ---
-title: Founder Profile — Vishal Chakravarty
-description: Biography, professional focus, NovaPharm Healthcare, selected publications and official links for Vishal Chakravarty.
+title: Public Record — Vishal Chakravarty
+description: Selected facts, company records, publisher-hosted work and independent public sources for Vishal Chakravarty.
 canonicalPath: /facts/
 public: true
 ---
 
-## At a glance
+## Identity
 
-- **Executive role:** Chief Executive Officer, NovaPharm Healthcare Ltd
-- **Governance relationship:** Founder of NovaPharm Healthcare Ltd
-- **Focus:** Pharmaceutical entrepreneurship and market access
-- **Areas of work:** Product strategy, licensing, manufacturing, technology transfer, sourcing and supply
-- **Markets:** United Kingdom, Europe and selected international regulated markets
-- **Writing:** UK–EU pharmaceutical strategy and founder execution
+- **Name:** Vishal Chakravarty
+- **Also recorded as:** Vishal Om Prakash Chakravarty
+- **Company:** NovaPharm Healthcare Ltd
+- **Focus:** Pharmaceutical market access, manufacturing, supply and company building
 
-## Biography
+## Company record
 
-{{PERSON_MEDIUM_BIO}}
+{{COMPANY_NAME}} is a UK-registered pharmaceutical company established in 2025.
 
-## Professional focus
+- **Company number:** {{COMPANY_NUMBER}}
+- **Incorporated:** {{COMPANY_INCORPORATED}}
+- **Status:** {{COMPANY_STATUS}} {{COMPANY_LEGAL_FORM}}
 
-Vishal’s work connects pharmaceutical product strategy with execution across:
+[View the official Companies House record]({{COMPANIES_HOUSE_URL}}).
 
-- market access and specialist medicines;
-- product and portfolio selection;
-- UK–EU regulatory and commercial strategy;
-- manufacturing and CMO or CDMO partnerships;
-- technology transfer and submission batches;
-- sourcing and supply-chain design;
-- commercial route-to-market planning;
-- digital operating infrastructure for regulated businesses.
+## Published elsewhere
 
-## NovaPharm Healthcare
-
-{{COMPANY_NAME}} is a UK-registered pharmaceutical company established in 2025. It is being built around market access, specialist medicines, manufacturing partnerships, licensing pathways and resilient supply across regulated markets.
-
-Vishal leads company strategy, product selection, partnerships, commercial development and operating-platform design.
-
-[Explore NovaPharm Healthcare]({{COMPANY_URL}}) or [view the company record]({{COMPANIES_HOUSE_URL}}).
-
-## External publications
-
-Vishal contributes to Yakuji Nippo and Pharmaceutical Commerce. Publisher-hosted work includes:
+Publisher-hosted work includes:
 
 - *UK and EU Pharmaceutical Market Access Pathways After Brexit*
 - *Regulatory and Compliance Considerations Post-Brexit*
@@ -50,27 +33,13 @@ Vishal contributes to Yakuji Nippo and Pharmaceutical Commerce. Publisher-hosted
 - *Why Onshoring Alone Won’t Secure Pharma Supply Chains*
 - *DSCSA Can Trace a Package. It Cannot Tell Whether the Next One Will Arrive.*
 
-See [Writing and Media](/media/) for the original English and Japanese publisher links.
+See [Media and Publications](/media/) for the original English and Japanese publisher links.
 
 ## Independent public records
 
-The identity and executive role shown on this site can also be cross-checked against sources outside NovaPharm’s own websites:
-
-- [Companies House officer record](https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments) records Vishal Om Prakash Chakravarty as an active director of NOVAPHARM HEALTHCARE LTD.
-- [iPHEX 2026 official overseas delegates list](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026) lists Vishal Om Prakash Chakravarty, NovaPharm Healthcare Ltd, as Chief Executive Officer.
-- The [Yakuji Nippo series](https://www.yakuji.co.jp/entry136963.html) and [Pharmaceutical Commerce](https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains) publish named author profiles for Vishal Chakravarty and identify his NovaPharm role.
-
-## Selected essays
-
-- [Why I Chose to Build in Pharmaceuticals](/essays/why-i-chose-to-build-in-pharmaceuticals/)
-- [Regulatory Approval Is Not Market Access](/essays/regulatory-approval-is-not-market-access/)
-- [The Route to Market Is Designed Before Launch](/essays/route-to-market-before-launch/)
-- [Choosing a CMO for Regulated Markets](/essays/choosing-a-cmo-for-regulated-markets/)
-- [Technology Transfer Starts Before the Formula Moves](/essays/technology-transfer-before-formula-moves/)
-
-## Speaking and editorial
-
-Selected conversations cover pharmaceutical market access, post-Brexit market entry, manufacturing partnerships, technology transfer, supply resilience, specialist medicines and building companies in regulated markets.
+- [Companies House officer record](https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments) independently connects Vishal Om Prakash Chakravarty with NOVAPHARM HEALTHCARE LTD.
+- [iPHEX 2026 official overseas delegates list](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026) independently connects Vishal Om Prakash Chakravarty with NovaPharm Healthcare Ltd.
+- The [Yakuji Nippo series](https://www.yakuji.co.jp/entry136963.html) and [Pharmaceutical Commerce](https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains) publish named author profiles for Vishal Chakravarty.
 
 ## Official links
 
@@ -81,8 +50,6 @@ Selected conversations cover pharmaceutical market access, post-Brexit market en
 - [Companies House]({{COMPANIES_HOUSE_URL}})
 - [Wikidata](https://www.wikidata.org/wiki/Q137660690)
 
-## Contact
+## Corrections
 
-For professional, editorial or speaking enquiries, email [{{EMAIL}}](mailto:{{EMAIL}}).
-
-Factual corrections may be sent to the same address with a supporting source where available.
+Factual corrections may be sent to [{{EMAIL}}](mailto:{{EMAIL}}) with a supporting source where available.

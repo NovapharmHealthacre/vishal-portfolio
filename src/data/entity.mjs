@@ -8,7 +8,7 @@ export const site = Object.freeze({
   language: 'en-GB',
   locale: 'en_GB',
   description:
-    'The professional platform of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, covering pharmaceutical market access, manufacturing, supply and company building.',
+    'The professional platform of Vishal Chakravarty, covering pharmaceutical market access, manufacturing, supply and company building.',
   email: 'vishal@novapharmhealthcare.com',
   correctionEmail: 'vishal@novapharmhealthcare.com',
   linkedIn: 'https://www.linkedin.com/in/vishal-chakravarty',

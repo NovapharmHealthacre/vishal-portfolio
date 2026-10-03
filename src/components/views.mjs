@@ -37,6 +37,36 @@ const articleCard = (article, index) => `
     <a class="round-link" href="${article.canonicalPath}" aria-label="Read ${escapeHtml(article.title)}"><span aria-hidden="true">↗</span></a>
   </article>`;
 
+const thinkingGroups = Object.freeze([
+  {
+    id: 'market-access',
+    label: 'Market Access',
+    categories: ['Market access', 'Regulated markets', 'Commercial strategy'],
+  },
+  {
+    id: 'manufacturing',
+    label: 'Manufacturing & Technology Transfer',
+    categories: ['Manufacturing', 'Technology transfer', 'Product economics'],
+  },
+  {
+    id: 'supply-resilience',
+    label: 'Supply & Resilience',
+    categories: ['Supply strategy'],
+  },
+  {
+    id: 'company-building',
+    label: 'Company Building',
+    categories: ['Founder execution', 'Founder perspective'],
+  },
+]);
+
+const groupedThinking = (articles) => thinkingGroups
+  .map((group) => ({
+    ...group,
+    articles: articles.filter((article) => group.categories.includes(article.category)),
+  }))
+  .filter((group) => group.articles.length);
+
 
 const pageSectionIndex = (html, label = 'On this page') => {
   const sections = [...html.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)].map((match) => ({
@@ -135,7 +165,7 @@ export const renderHome = (articles) => {
         <div class="hubble-optics"></div>
       </div>
       <div class="hero-copy">
-        <p class="eyebrow">Chief Executive Officer · Founder of NovaPharm Healthcare Ltd</p>
+        <p class="eyebrow">Pharmaceuticals · Market access · Company building</p>
         <h1 id="hero-title"><span>Vishal</span> <span>Chakravarty.</span></h1>
         <p class="hero-proposition">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
@@ -152,7 +182,7 @@ export const renderHome = (articles) => {
     <section class="founder-feature section" id="about" aria-labelledby="statement-title" data-reveal>
       <div class="founder-feature-portrait">
         ${portrait(false)}
-        <p>Vishal Chakravarty · Chief Executive Officer</p>
+        <p>Vishal Chakravarty</p>
       </div>
       <div class="founder-feature-copy">
         <p class="eyebrow">01 / Founder thesis</p>
@@ -174,7 +204,7 @@ export const renderHome = (articles) => {
 
     <section class="writing section" id="essays" aria-labelledby="writing-title" data-reveal><div class="section-heading"><div><p class="eyebrow">04 / Thinking</p><h2 id="writing-title">Pharmaceutical essays</h2></div><a class="text-link" href="/thinking/">All essays <span aria-hidden="true">→</span></a></div><div class="essay-list">${selected.map(articleCard).join('')}</div></section>
 
-    <section class="evidence section" aria-labelledby="evidence-title" data-reveal><p class="eyebrow">05 / Public record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, publisher-hosted writing and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Founder profile</span><strong>Biography, focus and official links</strong>${arrow}</a></div></div></section>
+    <section class="evidence section" aria-labelledby="evidence-title" data-reveal><p class="eyebrow">05 / Public record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, publisher-hosted writing and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Public record</span><strong>Selected facts, published work and independent sources</strong>${arrow}</a></div></div></section>
 
     <section class="closing section" id="invest" aria-labelledby="closing-title" data-reveal><span id="contact" class="anchor-target" aria-hidden="true"></span><p class="eyebrow">06 / Speaking · Editorial · Selected partnerships</p><h2 id="closing-title">Useful conversations start with a real operating problem.</h2><div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [websiteSchema(), personSchema(), webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } })], className: 'home-page' });
@@ -185,9 +215,9 @@ export const renderAbout = (page) => {
   const hero = nasaRouteHero({
     variant: 'about',
     crumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }],
-    eyebrow: 'Founder profile / 2026',
+    eyebrow: 'About / 2026',
     title: 'Vishal<br>Chakravarty.',
-    deck: 'Chief Executive Officer of NovaPharm Healthcare.<br>Founder of the company. Building the route between medicines, regulation, manufacturing, supply and market access.',
+    deck: 'Building across medicines, regulation, manufacturing, supply and market access — with the route designed as one system.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/01/STScI-01EVT8DP1YM9FYPF0Y33VY7ANB.tif',
     width: 6637,
     height: 3787,
@@ -197,7 +227,7 @@ export const renderAbout = (page) => {
     action: `<a class="page-cosmic-action" href="#profile-snapshot-title">Explore the work <span aria-hidden="true">↓</span></a>`,
     foreground: `<picture class="about-hero-portrait"><img src="/images/portrait/vishal-chakravarty-960.webp" width="960" height="960" alt="${escapeHtml(person.image.alt)}" fetchpriority="high" decoding="async"></picture>`,
   });
-  const body = `${hero}${pageSectionIndex(page.html)}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Founder. Operator. Pharmaceutical strategist.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer</dd></div><div><dt>Company</dt><dd>NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy and founder execution</dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty · Chief Executive Officer</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
+  const body = `${hero}${pageSectionIndex(page.html)}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Pharmaceutical operator and company builder.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer, NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy</dd></div><div><dt>Record</dt><dd><a href="/facts/">Public record →</a></dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
 };
 
@@ -205,8 +235,8 @@ export const renderVentures = (page) => {
   const meta = contentMeta(page);
   const hero = nasaRouteHero({
     variant: 'ventures',
-    crumbs: [{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }],
-    eyebrow: 'Ventures / 01 · NovaPharm Healthcare',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'NovaPharm', path: '/ventures/' }],
+    eyebrow: 'NovaPharm Healthcare',
     title: 'Building the route<br>from product to market.',
     deck: 'Product strategy, regulatory pathways, manufacturing, supply and commercial market entry — connected as one operating system.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01GA6KKWG229B16K4Q38CH3BXS.png',
@@ -229,7 +259,7 @@ export const renderVentures = (page) => {
     ],
   });
   const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
-  return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': company.id } }), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Ventures', path: '/ventures/' }])], className: 'ventures-page' });
+  return renderPage({ ...meta, body, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': company.id } }), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'NovaPharm', path: '/ventures/' }])], className: 'ventures-page' });
 };
 
 export const renderThinking = (articles) => {
@@ -237,7 +267,7 @@ export const renderThinking = (articles) => {
   const hero = nasaRouteHero({
     variant: 'thinking',
     crumbs: [{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }],
-    eyebrow: 'Pharmaceutical strategy · Founder execution',
+    eyebrow: 'Essays on pharmaceuticals and regulated markets',
     title: 'Essays from<br><em>the work.</em>',
     deck: 'Original writing on market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/09/STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif',
@@ -247,7 +277,8 @@ export const renderThinking = (articles) => {
     credit: 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI',
     meta: ['HUDF · Deep Field Survey', 'Hubble · ACS', 'Thousands of galaxies'],
   });
-  const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><div class="collection-summary"><span>${articles.length} essays</span><span>Pharmaceutical strategy</span><span>Founder perspective</span></div><div class="essay-list essay-list-large">${articles.map(articleCard).join('')}</div></section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Technical articles use current authoritative sources where the subject requires them. The writing focuses on operating and commercial decisions rather than patient-specific guidance.</p></aside>`;
+  const groups = groupedThinking(articles);
+  const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><nav class="thinking-topic-nav" aria-label="Essay topics">${groups.map((group) => `<a href="#${group.id}">${escapeHtml(group.label)}</a>`).join('')}</nav>${groups.map((group) => `<section class="thinking-topic" id="${group.id}" aria-labelledby="${group.id}-title"><header class="thinking-topic-header"><p class="eyebrow">Topic</p><h2 id="${group.id}-title">${escapeHtml(group.label)}</h2><span>${group.articles.length} ${group.articles.length === 1 ? 'essay' : 'essays'}</span></header><div class="essay-list essay-list-large">${group.articles.map(articleCard).join('')}</div></section>`).join('')}</section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Regulatory and market-access pieces are reviewed on a 90-day cycle. Operational pharmaceutical pieces are reviewed on a 180-day cycle. Founder essays are updated only when the substance changes.</p></aside>`;
   return renderPage({ ...meta, body, schemas: [thinkingCollectionSchema(articles), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }])], className: 'thinking-page' });
 };
 
@@ -256,7 +287,7 @@ export const renderArticle = (article, articles) => {
   const previous = articles[currentIndex + 1];
   const next = articles[currentIndex - 1];
   const related = article.related.map((slug) => articles.find((candidate) => candidate.slug === slug)).filter(Boolean);
-  const body = `<article class="article-shell"><header class="article-header">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }, { name: article.title, path: article.canonicalPath }])}<p class="eyebrow">${escapeHtml(article.category)}</p><h1>${escapeHtml(article.title)}</h1><p class="article-summary">${escapeHtml(article.summary)}</p><div class="article-byline"><span>By ${escapeHtml(article.author)}</span><span>Published ${formatDate(article.published)}</span><span>Updated ${formatDate(article.modified)}</span><span>${article.reading.minutes} min · ${article.reading.words.toLocaleString('en-GB')} words</span></div></header><div class="article-layout"><aside class="article-aside"><span>${escapeHtml(article.category)}</span><p>Founder analysis on the decisions connecting product, market, manufacturing and supply.</p>${article.sources.length ? '<a href="#sources">Sources ↓</a>' : ''}</aside><div class="article-body">${article.html}</div></div>${article.sources.length ? `<section class="article-sources section" data-reveal id="sources" aria-labelledby="sources-title"><p class="section-number">Sources</p><h2 id="sources-title">Reference points</h2><ol>${article.sources.map((source) => `<li>${externalLink(source.url, source.label)}</li>`).join('')}</ol></section>` : ''}${related.length ? `<section class="related section" data-reveal><p class="section-number">Continue reading</p><div class="essay-list">${related.map(articleCard).join('')}</div></section>` : ''}<nav class="article-pagination" aria-label="Essay pagination">${previous ? `<a href="${previous.canonicalPath}"><span>Previous</span><strong>${escapeHtml(previous.title)}</strong></a>` : '<span></span>'}${next ? `<a href="${next.canonicalPath}"><span>Next</span><strong>${escapeHtml(next.title)}</strong></a>` : '<span></span>'}</nav></article>`;
+  const body = `<article class="article-shell"><header class="article-header">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }, { name: article.title, path: article.canonicalPath }])}<p class="eyebrow">${escapeHtml(article.category)}</p><h1>${escapeHtml(article.title)}</h1><p class="article-summary">${escapeHtml(article.summary)}</p><div class="article-byline"><span>By ${escapeHtml(article.author)}</span><span>Published ${formatDate(article.published)}</span><span>Updated ${formatDate(article.modified)}</span><span>${article.reading.minutes} min · ${article.reading.words.toLocaleString('en-GB')} words</span></div></header><div class="article-layout"><aside class="article-aside"><span>${escapeHtml(article.category)}</span><p>Analysis on the decisions connecting product, market, manufacturing and supply.</p>${article.sources.length ? '<a href="#sources">Sources ↓</a>' : ''}</aside><div class="article-body">${article.html}</div></div>${article.sources.length ? `<section class="article-sources section" data-reveal id="sources" aria-labelledby="sources-title"><p class="section-number">Sources</p><h2 id="sources-title">Reference points</h2><ol>${article.sources.map((source) => `<li>${externalLink(source.url, source.label)}</li>`).join('')}</ol></section>` : ''}${related.length ? `<section class="related section" data-reveal><p class="section-number">Continue reading</p><div class="essay-list">${related.map(articleCard).join('')}</div></section>` : ''}<nav class="article-pagination" aria-label="Essay pagination">${previous ? `<a href="${previous.canonicalPath}"><span>Previous</span><strong>${escapeHtml(previous.title)}</strong></a>` : '<span></span>'}${next ? `<a href="${next.canonicalPath}"><span>Next</span><strong>${escapeHtml(next.title)}</strong></a>` : '<span></span>'}</nav></article>`;
   return renderPage({ title: `${article.title} — Vishal Chakravarty`, description: article.description, path: article.canonicalPath, socialImage: article.socialImage, socialImageAlt: `Social card for “${article.title}”, an essay by Vishal Chakravarty`, publishedTime: article.published, modifiedTime: article.modified, body, schemas: [webPageSchema({ path: article.canonicalPath, name: article.title, description: article.description, mainEntity: { '@id': `${new URL(article.canonicalPath, site.origin).href}#article` } }), articleSchema(article), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }, { name: article.title, path: article.canonicalPath }])], className: 'article-page' });
 };
 
@@ -265,9 +296,9 @@ export const renderMedia = (page) => {
   const hero = nasaRouteHero({
     variant: 'media',
     crumbs: [{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }],
-    eyebrow: 'Writing & media',
-    title: 'Published work,<br>ideas and commentary.',
-    deck: 'Selected writing on UK–EU pharmaceutical market access, post-Brexit regulation, parallel import and the operating decisions behind pharmaceutical companies.',
+    eyebrow: 'Media & publications',
+    title: 'Published<br>elsewhere.',
+    deck: 'Publisher-hosted analysis, press resources and a concise media profile — with primary sources linked directly.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/10/STScI-01GFRYYRTCTMX197BY86MBFCR9.png',
     width: 1987,
     height: 1817,
@@ -278,12 +309,12 @@ export const renderMedia = (page) => {
   const summary = routeSummary({
     eyebrow: 'Published record',
     title: 'Primary sources before self-description.',
-    copy: 'Publisher-hosted work, independent essays and a concise media profile are kept together so the public record can be checked at the source.',
+    copy: 'This page is reserved for work published elsewhere and press resources. Original essays live in Thinking; verification lives in Public record.',
     facts: [
       ['Publishers', 'Yakuji Nippo · Pharmaceutical Commerce'],
       ['Verified work', String(publications.length) + ' contributions'],
       ['Focus', 'UK–EU market access · supply resilience'],
-      ['Format', 'Analysis · commentary · essays'],
+      ['Format', 'Analysis · commentary · press resources'],
     ],
   });
   const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
@@ -292,7 +323,7 @@ export const renderMedia = (page) => {
 
 export const renderSpeaking = (page) => {
   const meta = contentMeta(page);
-  const hero = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking / Editorial / Founder roundtables</p><h1>Useful conversations<br><em>start with the problem.</em></h1><p class="page-deck">Market access, manufacturing, technology transfer, supply resilience and founder execution in regulated markets.</p></section>`;
+  const hero = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking / Editorial / Operator roundtables</p><h1>Useful conversations<br><em>start with the problem.</em></h1><p class="page-deck">Market access, manufacturing, technology transfer, supply resilience and company building in regulated markets.</p></section>`;
   const summary = routeSummary({
     eyebrow: 'Conversation design',
     title: 'Specific questions. Operator-level detail.',
@@ -306,10 +337,10 @@ export const renderFacts = (page) => {
   const meta = contentMeta(page);
   const hero = nasaRouteHero({
     variant: 'facts',
-    crumbs: [{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }],
-    eyebrow: 'Founder profile',
-    title: 'Vishal Chakravarty.',
-    deck: 'Biography, professional focus, selected publications and official links.',
+    crumbs: [{ name: 'Home', path: '/' }, { name: 'Public record', path: '/facts/' }],
+    eyebrow: 'Public record',
+    title: 'Public record.',
+    deck: 'Selected facts, published work and independent sources — separated from narrative biography.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png',
     width: 4537,
     height: 4630,
@@ -318,18 +349,18 @@ export const renderFacts = (page) => {
     meta: ['SMACS 0723', 'JWST · NIRCam', 'Lensing galaxy cluster'],
   });
   const summary = routeSummary({
-    eyebrow: 'Verified profile',
+    eyebrow: 'Verification',
     title: 'A concise record, built to be checked.',
-    copy: 'Role, company, published work and independent public records are separated from narrative biography so people and search systems can verify the core facts quickly.',
+    copy: 'Identity, company information, publisher-hosted work and independent records are kept concise so the evidence can be checked quickly.',
     facts: [
-      ['Role', 'Chief Executive Officer'],
+      ['Identity', 'Vishal Chakravarty'],
       ['Company', company.name],
-      ['Relationship', 'Founder'],
-      ['Record', 'Companies House · publishers · official profiles'],
+      ['Published', String(publications.length) + ' external contributions'],
+      ['Sources', 'Companies House · iPHEX · publishers'],
     ],
   });
   const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
-  return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } }), personSchema(), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Founder profile', path: '/facts/' }])], className: 'facts-page' });
+  return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } }), personSchema(), organisationSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Public record', path: '/facts/' }])], className: 'facts-page' });
 };
 
 export const renderContact = (page) => {
@@ -360,4 +391,4 @@ export const renderPrivacy = (page) => {
 
 export const renderCompatibility = (from, to) => renderPage({ title: 'This page has moved — Vishal Chakravarty', description: 'A previous address for content on the Vishal Chakravarty founder platform.', path: to, noIndex: true, redirectTo: to, className: 'compatibility-page', body: `<section class="utility-page"><p class="eyebrow">Updated address</p><h1>This page has moved.</h1><p>The current article or profile is available at the link below.</p><a class="button button-primary" href="${to}">Continue <span aria-hidden="true">→</span></a></section>` });
 
-export const renderNotFound = () => renderPage({ title: 'Page not found — Vishal Chakravarty', description: 'The requested page could not be found.', path: '/404.html', noIndex: true, className: 'not-found-page', body: `<section class="utility-page"><p class="eyebrow">404</p><h1>There is no page here.</h1><p>Explore the founder profile, NovaPharm Healthcare and the latest pharmaceutical essays.</p><div><a class="button button-primary" href="/">Return home</a><a class="text-link" href="/thinking/">Read the essays <span aria-hidden="true">→</span></a></div></section>` });
+export const renderNotFound = () => renderPage({ title: 'Page not found — Vishal Chakravarty', description: 'The requested page could not be found.', path: '/404.html', noIndex: true, className: 'not-found-page', body: `<section class="utility-page"><p class="eyebrow">404</p><h1>There is no page here.</h1><p>Explore About, NovaPharm Healthcare and the latest pharmaceutical essays.</p><div><a class="button button-primary" href="/">Return home</a><a class="text-link" href="/thinking/">Read the essays <span aria-hidden="true">→</span></a></div></section>` });

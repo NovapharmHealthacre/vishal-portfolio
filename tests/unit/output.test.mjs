@@ -14,12 +14,12 @@ test('production output preserves ownership and custom-domain files', () => {
 test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
-  assert.match(html, /<title>Vishal Chakravarty \| CEO, NovaPharm Healthcare<\/title>/);
+  assert.match(html, /<title>Vishal Chakravarty \| Pharmaceuticals, Market Access &amp; Company Building<\/title>/);
   assert.match(html, /<link rel="alternate" hreflang="en-GB" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
   assert.match(html, /<link rel="alternate" hreflang="x-default" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
   assert.match(html, /<meta property="og:image:type" content="image\/webp">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
-  assert.match(html, /Chief Executive Officer · Founder of NovaPharm Healthcare Ltd/);
+  assert.match(html, /Pharmaceuticals · Market access · Company building/);
   assert.match(html, /data-hubble-hero/);
   assert.match(html, /data-real-cosmos/);
   assert.match(html, /assets\.science\.nasa\.gov\/dynamicimage\/assets\/science\/missions\/hubble\/releases\/1999\/02\/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822\.tif/);
@@ -80,13 +80,16 @@ test('unified design and publishing layers are shipped', () => {
   const home = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   const about = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
   const ventures = fs.readFileSync(path.resolve('dist/ventures/index.html'), 'utf8');
-  const css = fs.readFileSync(path.resolve('dist/assets/apple-refresh.css'), 'utf8');
+  const css = fs.readFileSync(path.resolve('dist/assets/site.css'), 'utf8');
   const index = JSON.parse(fs.readFileSync(path.resolve('dist/content-index.json'), 'utf8'));
   const llms = fs.readFileSync(path.resolve('dist/llms.txt'), 'utf8');
 
   assert.match(home, /data-ui-layer="navigation"/);
   assert.match(home, /data-content-layer/);
   assert.doesNotMatch(home, /assets\/unified-system\.css/);
+  assert.doesNotMatch(home, /assets\/content-fixes\.css/);
+  assert.doesNotMatch(home, /assets\/apple-refresh\.css/);
+  assert.equal((home.match(/rel="stylesheet"/g) ?? []).length, 1);
   assert.match(about, /class="page-section-index"/);
   assert.match(ventures, /class="route-summary"/);
   assert.match(ventures, /One route\. Connected decisions\./);
@@ -154,6 +157,43 @@ test('public facts expose only approved public-safe records and canonical entity
 });
 
 
+
+test('visible executive title appears once, on About only', () => {
+  const routes = [
+    'index.html',
+    'about/index.html',
+    'ventures/index.html',
+    'thinking/index.html',
+    'media/index.html',
+    'speaking-partnerships/index.html',
+    'facts/index.html',
+    'contact/index.html',
+  ];
+  const counts = routes.map((route) => {
+    const html = fs.readFileSync(path.resolve('dist', route), 'utf8');
+    const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
+    return [route, (main.match(/Chief Executive Officer/g) ?? []).length];
+  });
+  assert.deepEqual(counts.filter(([, count]) => count > 0), [['about/index.html', 1]]);
+});
+
+test('thinking is organised into four durable authority topics', () => {
+  const html = fs.readFileSync(path.resolve('dist/thinking/index.html'), 'utf8');
+  for (const label of ['Market Access', 'Manufacturing &amp; Technology Transfer', 'Supply &amp; Resilience', 'Company Building']) {
+    assert.ok(html.includes(label), label);
+  }
+  assert.match(html, /90-day cycle/);
+  assert.match(html, /180-day cycle/);
+});
+
+test('contact offers intent-based email routes without a form', () => {
+  const html = fs.readFileSync(path.resolve('dist/contact/index.html'), 'utf8');
+  assert.match(html, /Pharmaceutical%20or%20commercial%20enquiry/);
+  assert.match(html, /Manufacturing%20or%20partnership%20enquiry/);
+  assert.match(html, /Media%20or%20speaking%20enquiry/);
+  assert.doesNotMatch(html, /<form\b/i);
+});
+
 test('about page exposes a concise human-readable entity snapshot', () => {
   const html = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
   const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
@@ -214,7 +254,7 @@ test('contact output uses the approved public inbox', () => {
 test('profile keeps machine discovery in head metadata while preserving a human-facing body', () => {
   const html = fs.readFileSync(path.resolve('dist/facts/index.html'), 'utf8');
   const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
-  assert.match(main, /Founder profile/);
+  assert.match(main, /Public record/);
   assert.doesNotMatch(main, /Machine-readable fact record|href="\/facts\.json"/i);
   assert.match(html, /<link rel="alternate" type="application\/json"[^>]+href="\/facts\.json">/);
 });

@@ -82,7 +82,7 @@ jobs:
           grep -Fq 'data-page-cosmic-hero' <<<"$ventures"
           grep -Fq 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png' <<<"$ventures"
           grep -Fq 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI' <<<"$ventures"
-          grep -Fq 'Ventures / 01 · NovaPharm Healthcare' <<<"$ventures"
+          grep -Fq 'NovaPharm Healthcare' <<<"$ventures"
           grep -Fq 'Explore NovaPharm' <<<"$ventures"
           grep -Fq 'One route. Connected decisions.' <<<"$ventures"
           grep -Fq 'route-summary' <<<"$ventures"
@@ -107,7 +107,7 @@ jobs:
             echo 'Retired essay title was exposed in production' >&2
             exit 1
           fi
-          grep -Fq 'Founder Profile' <<<"$profile"
+          grep -Fq 'Public Record' <<<"$profile"
           grep -Fq 'data-page-cosmic-hero' <<<"$profile"
           grep -Fq 'STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png' <<<"$profile"
           grep -Fq 'Webb · First Deep Field · NASA/ESA/CSA/STScI' <<<"$profile"
@@ -155,13 +155,13 @@ jobs:
           - Cornerstone market-access essay: served and indexable
           - Founder-origin essay: served and indexable
           - Retired essay route: neutral \`noindex,follow\` compatibility page
-          - Profile: human-facing copy served without machine-record promotion
+          - Public record: evidence-first copy served without executive-title repetition
           - Homepage: real NASA/ESA Hubble Supernova 1987A hero served with cinematic camera motion
           - Homepage: retired procedural Nova canvas and founder AI interface are absent
           - About: founder-first Hubble NGC 1300 hero served with the canonical portrait
           - Unified system: shared Apple/OpenAI/NASA/SpaceX-inspired UI and editorial hierarchy served
           - Structured publishing: content-index.json and llms.txt served
-          - Ventures: Webb Cosmic Cliffs hero served with the focused NovaPharm action
+          - NovaPharm: Webb Cosmic Cliffs hero served with the focused company action
           - Thinking: Hubble Ultra Deep Field hero served from the official NASA asset host
           - Media: Webb Pillars of Creation MIRI hero served from the official NASA asset host
           - Profile: Webb First Deep Field hero served from the official NASA asset host

@@ -2,10 +2,9 @@ import { site } from './entity.mjs';
 
 export const navigation = Object.freeze([
   { href: '/about/', label: 'About' },
-  { href: '/ventures/', label: 'Ventures' },
+  { href: '/ventures/', label: 'NovaPharm' },
   { href: '/thinking/', label: 'Thinking' },
   { href: '/media/', label: 'Media' },
-  { href: '/facts/', label: 'Profile' },
 ]);
 
 export const canonicalRoutes = Object.freeze([
@@ -51,9 +50,9 @@ export const defaultSocialImage = '/images/social/default-og.jpg';
 
 export const pageMeta = Object.freeze({
   home: {
-    title: 'Vishal Chakravarty | CEO, NovaPharm Healthcare',
+    title: 'Vishal Chakravarty | Pharmaceuticals, Market Access & Company Building',
     description:
-      'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, working across pharmaceutical market access, specialist medicines, manufacturing partnerships and resilient supply.',
+      'Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building, with NovaPharm Healthcare as the operating platform.',
     path: '/',
     modified: routeModified['/'],
   },

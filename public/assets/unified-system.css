@@ -549,10 +549,15 @@ body {
 }
 
 .site-footer .footer-intro h2 {
-  max-width: 13ch;
+  max-width: min(13ch, 100%);
   font-size: clamp(3.2rem, 5.7vw, 6.3rem);
   line-height: .92;
   letter-spacing: -.06em;
+  overflow-wrap: anywhere;
+}
+
+.site-footer .footer-grid > * {
+  min-width: 0;
 }
 
 .site-footer a {
@@ -687,5 +692,80 @@ body {
   .reveal-ready [data-reveal] {
     transform: none !important;
     transition: none !important;
+  }
+}
+
+
+/* Thinking topic architecture -------------------------------------------- */
+
+.thinking-topic-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-bottom: clamp(4rem, 7vw, 7rem);
+}
+
+.thinking-topic-nav a {
+  padding: .72rem 1rem;
+  border: 1px solid var(--u-line);
+  border-radius: 999px;
+  color: var(--u-ink);
+  font-size: 12px;
+  font-weight: 560;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.thinking-topic-nav a:hover {
+  background: #fff;
+  border-color: rgba(17, 17, 19, .24);
+}
+
+.thinking-topic + .thinking-topic {
+  margin-top: clamp(6rem, 9vw, 9rem);
+}
+
+.thinking-topic-header {
+  display: grid;
+  grid-template-columns: .6fr 1.8fr auto;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--u-line);
+}
+
+.thinking-topic-header .eyebrow,
+.thinking-topic-header span {
+  margin: 0;
+  color: var(--u-muted);
+}
+
+.thinking-topic-header h2 {
+  margin: 0;
+  max-width: 15ch;
+  font-size: clamp(2.6rem, 4.8vw, 5.2rem);
+  line-height: .94;
+  letter-spacing: -.055em;
+}
+
+/* First-party visual fallback if NASA media is temporarily unavailable. */
+.hubble-cosmos,
+.page-cosmos {
+  background:
+    radial-gradient(circle at 72% 36%, rgba(72, 89, 122, .26), transparent 24%),
+    radial-gradient(circle at 38% 62%, rgba(128, 78, 89, .18), transparent 30%),
+    #020204;
+}
+
+@media (max-width: 720px) {
+  .thinking-topic-header {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+    align-items: start;
+  }
+
+  .thinking-topic-header h2 {
+    font-size: clamp(2.6rem, 11vw, 4.2rem);
   }
 }
