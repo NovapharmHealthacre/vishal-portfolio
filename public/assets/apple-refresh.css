@@ -2194,3 +2194,240 @@ a {
     animation: none;
   }
 }
+
+
+/* 2026-10-03 — Astra-inspired supernova hero.
+   Original implementation using a procedural canvas field.
+   Scientific visual references: NASA/Webb imagery of Cassiopeia A and SN 1987A.
+   No NASA or OpenAI image asset is embedded or copied. */
+.home-page .site-header {
+  margin-bottom: -44px;
+}
+
+.home-page .site-header[data-scrolled="false"] {
+  color: #f5f5f7;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .18));
+  box-shadow: none;
+}
+
+.home-page .site-header[data-scrolled="false"] .brand-name,
+.home-page .site-header[data-scrolled="false"] .site-nav-list a,
+.home-page .site-header[data-scrolled="false"] .menu-toggle {
+  color: rgba(255, 255, 255, .88);
+}
+
+.home-page .site-header[data-scrolled="false"] .site-nav-list a:hover,
+.home-page .site-header[data-scrolled="false"] .site-nav-list a[aria-current="page"] {
+  color: #fff;
+}
+
+.home-page .hero-cosmic {
+  min-height: 100svh;
+  padding:
+    calc(44px + clamp(4.5rem, 10vh, 8rem))
+    max(5vw, calc((100vw - 1280px) / 2))
+    clamp(7rem, 13vh, 10rem);
+  background:
+    radial-gradient(circle at 64% 42%, rgba(109, 132, 240, .11), transparent 15%),
+    radial-gradient(circle at 64% 42%, rgba(196, 82, 161, .045), transparent 30%),
+    linear-gradient(180deg, #010104 0%, #020207 48%, #000 100%);
+}
+
+.home-page .hero-cosmic::before {
+  inset: 0;
+  background:
+    radial-gradient(circle at 64% 42%, rgba(255, 255, 255, .16) 0, rgba(215, 235, 255, .09) 2%, rgba(118, 152, 255, .035) 10%, transparent 28%),
+    radial-gradient(ellipse at 64% 43%, transparent 0 24%, rgba(96, 184, 236, .032) 35%, transparent 46%),
+    radial-gradient(ellipse at 64% 43%, transparent 0 36%, rgba(223, 126, 90, .026) 48%, transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, .012), transparent 18%, transparent 82%, rgba(0, 0, 0, .48));
+}
+
+.home-page .hero-cosmic::after {
+  height: 32%;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .18) 40%, #000 100%);
+}
+
+.home-page .nova-field {
+  opacity: 1;
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.home-page .hero-orbit {
+  display: none;
+}
+
+.home-page .hero-cosmic .hero-copy {
+  width: min(100%, 86rem);
+  max-width: 86rem;
+  margin-top: 1vh;
+}
+
+.home-page .hero-cosmic .hero-copy::before {
+  width: min(88vw, 78rem);
+  aspect-ratio: 1.55;
+  background:
+    radial-gradient(ellipse, rgba(0, 0, 0, .26) 0%, rgba(0, 0, 0, .14) 34%, transparent 70%);
+  filter: blur(10px);
+}
+
+.home-page .hero-cosmic .eyebrow {
+  color: rgba(245, 245, 247, .62);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -.012em;
+}
+
+.home-page .hero-cosmic h1 {
+  max-width: 11.2ch;
+  margin-top: clamp(1.2rem, 2.5vh, 2rem);
+  color: #f7f7f8;
+  font-size: clamp(5.6rem, 12.4vw, 12.8rem);
+  font-weight: 600;
+  letter-spacing: -.086em;
+  line-height: .82;
+  text-shadow:
+    0 1px 18px rgba(0, 0, 0, .22),
+    0 0 80px rgba(163, 196, 255, .055);
+}
+
+.home-page .hero-cosmic .hero-proposition {
+  max-width: 44rem;
+  margin-top: clamp(2rem, 3.2vh, 2.8rem);
+  color: rgba(245, 245, 247, .74);
+  font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+  font-weight: 500;
+  letter-spacing: -.032em;
+  line-height: 1.28;
+}
+
+.home-page .hero-cosmic .hero-actions {
+  gap: .8rem;
+  margin-top: 2rem;
+}
+
+.home-page .hero-cosmic .button {
+  min-width: 0;
+  min-height: 42px;
+  padding-inline: 1.05rem;
+  font-size: 14px;
+}
+
+.home-page .hero-cosmic .button-primary {
+  background: rgba(255, 255, 255, .94);
+  color: #050507;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .42) inset,
+    0 10px 34px rgba(0, 0, 0, .18);
+}
+
+.home-page .hero-cosmic .button-primary:hover {
+  background: #fff;
+}
+
+.home-page .hero-cosmic .button-ghost {
+  border-color: rgba(255, 255, 255, .18);
+  background: rgba(15, 15, 21, .34);
+  color: rgba(255, 255, 255, .88);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+}
+
+.home-page .hero-cosmic .button-ghost:hover {
+  border-color: rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .08);
+}
+
+.home-page .hero-cosmic .hero-proof {
+  bottom: clamp(1.4rem, 3vh, 2.6rem);
+  width: min(90vw, 880px);
+  color: rgba(245, 245, 247, .42);
+  font-size: 11px;
+}
+
+.home-page .hero-cosmic .hero-proof span:not(:last-child)::after {
+  color: rgba(255, 255, 255, .19);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-page .hero-cosmic .hero-copy {
+    animation: supernova-copy-in 1.05s cubic-bezier(.2, .75, .25, 1) both;
+  }
+
+  @keyframes supernova-copy-in {
+    from {
+      transform: translateY(18px) scale(.992);
+      opacity: 0;
+      filter: blur(7px);
+    }
+    to {
+      transform: none;
+      opacity: 1;
+      filter: none;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .home-page .hero-cosmic {
+    padding-inline: 5vw;
+  }
+
+  .home-page .hero-cosmic h1 {
+    max-width: 10ch;
+    font-size: clamp(4.5rem, 16vw, 8rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .home-page .hero-cosmic {
+    min-height: 100svh;
+    padding-top: calc(44px + 5rem);
+    padding-bottom: 7.6rem;
+    background:
+      radial-gradient(circle at 72% 32%, rgba(109, 132, 240, .13), transparent 18%),
+      radial-gradient(circle at 72% 32%, rgba(196, 82, 161, .05), transparent 34%),
+      linear-gradient(180deg, #010104 0%, #020207 50%, #000 100%);
+  }
+
+  .home-page .hero-cosmic::before {
+    background:
+      radial-gradient(circle at 72% 32%, rgba(255, 255, 255, .16) 0, rgba(215, 235, 255, .08) 2%, rgba(118, 152, 255, .035) 12%, transparent 30%),
+      radial-gradient(ellipse at 72% 33%, transparent 0 24%, rgba(96, 184, 236, .035) 35%, transparent 48%),
+      linear-gradient(180deg, rgba(255, 255, 255, .012), transparent 18%, transparent 82%, rgba(0, 0, 0, .5));
+  }
+
+  .home-page .hero-cosmic .hero-copy {
+    margin-top: 8vh;
+    text-align: left;
+  }
+
+  .home-page .hero-cosmic h1 {
+    max-width: 8.8ch;
+    margin-inline: 0;
+    font-size: clamp(3.8rem, 18.2vw, 5.8rem);
+    line-height: .86;
+  }
+
+  .home-page .hero-cosmic .hero-proposition {
+    max-width: 29rem;
+    margin-inline: 0;
+    color: rgba(245, 245, 247, .72);
+    font-size: 1.18rem;
+  }
+
+  .home-page .hero-cosmic .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .home-page .hero-cosmic .hero-proof {
+    justify-content: flex-start;
+    width: 90vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .hero-cosmic::before {
+    opacity: 1;
+  }
+}
