@@ -19,10 +19,15 @@ test('entity facts match the verified ledger', () => {
   assert.equal(company.incorporationDate, '2025-09-15');
   assert.equal(site.email, 'vishal@novapharmhealthcare.com');
   assert.equal(site.correctionEmail, site.email);
-  assert.deepEqual(person.sameAs, [site.linkedIn]);
-  assert.equal(publications.length, 5);
+  assert.deepEqual(person.sameAs, [
+    site.linkedIn,
+    site.wikidata,
+    site.companiesHousePerson,
+    site.companyProfile,
+  ]);
+  assert.equal(publications.length, 6);
   assert.equal(publications.filter((publication) => publication.publisher === 'Yakuji Nippo').length, 4);
-  assert.equal(publications.filter((publication) => publication.publisher === 'Pharmaceutical Commerce').length, 1);
+  assert.equal(publications.filter((publication) => publication.publisher === 'Pharmaceutical Commerce').length, 2);
   assert.equal(publications.every((publication) => publication.english.startsWith('https://')), true);
 });
 
@@ -68,6 +73,7 @@ test('schema relationships preserve personal authorship and corporate employment
 
 test('schema omits private and unsupported identity properties', () => {
   const serialised = JSON.stringify([personSchema(), organisationSchema()]);
-  assert.doesNotMatch(serialised, /nationality|birthDate|address|telephone|Wikipedia|Wikidata/);
+  assert.doesNotMatch(serialised, /nationality|birthDate|address|telephone|Wikipedia/);
+  assert.match(serialised, /https:\/\/www\.wikidata\.org\/wiki\/Q137660690/);
   assert.match(serialised, /2025-09-15/);
 });
