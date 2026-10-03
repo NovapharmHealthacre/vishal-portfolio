@@ -133,6 +133,8 @@ jobs:
               && ! grep -Fq 'Ask Vishal’s Work' <<<"$home" \
               && ! grep -Fq 'href="/gallery/"' <<<"$home" \
               && grep -Fq 'This page has moved.' <<<"$gallery" \
+              && grep -Fq 'noindex,follow' <<<"$gallery" \
+              && grep -Fq '<meta http-equiv="refresh" content="0; url=/about/">' <<<"$gallery" \
               && [[ "$founder_ai_status" == "404" ]] \
               && [[ "$nova_status" == "200" ]]; then
               printf '%s\n' "Refined portfolio release verified on attempt ${attempt}."
