@@ -1,11 +1,11 @@
 ---
 title: About Vishal Chakravarty
-description: Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, building across pharmaceutical market access, manufacturing, supply and regulated markets.
+description: Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building, with NovaPharm Healthcare as the operating platform.
 canonicalPath: /about/
 public: true
 ---
 
-{{PERSON_SHORT_BIO}}
+Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building. His focus is the complete route between product opportunity and repeatable market access.
 
 ## The thesis
 
@@ -62,7 +62,7 @@ Long pharmaceutical timelines create room to deepen product knowledge, remove de
 
 Vishal contributes analysis to Yakuji Nippo on UK–EU pharmaceutical market access and compliance. All {{PUBLISHED_INSTALLMENT_COUNT}} instalments are published in English and Japanese. He also contributes external commentary to Pharmaceutical Commerce.
 
-His independent essays focus on market access, CMO and CDMO selection, technology transfer, supply resilience, portfolio strategy and founder execution in regulated markets.
+His independent essays focus on market access, CMO and CDMO selection, technology transfer, supply resilience, portfolio strategy and company building in regulated markets.
 
 ## Current focus
 
