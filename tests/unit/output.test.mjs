@@ -42,6 +42,7 @@ test('public facts expose only approved public-safe records and canonical entity
     'https://www.wikidata.org/wiki/Q137660690',
     'https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments',
     'https://novapharmhealthcare.com/leadership/vishal-chakravarty/',
+    'https://www.crunchbase.com/person/vishal-chakravarty',
   ]);
   assert.equal(facts.person.jobTitle, 'Chief Executive Officer');
   assert.equal(facts.person.givenName, 'Vishal');
@@ -55,6 +56,7 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.entityIds.organization, 'https://novapharmhealthcare.com/#organization');
   assert.equal(facts.entityIds.organizationWebsite, 'https://novapharmhealthcare.com/#website');
   assert.equal(facts.company.linkedInUrl, 'https://www.linkedin.com/company/novapharm-healthcare/');
+  assert.equal(facts.company.crunchbaseUrl, 'https://www.crunchbase.com/organization/novapharm-healthcare');
   assert.equal(facts.facts.length, 7);
   assert.equal(facts.facts.every((fact) => fact.publicSafe === true), true);
   assert.equal(facts.person.role, 'Chief Executive Officer, NovaPharm Healthcare Ltd');
