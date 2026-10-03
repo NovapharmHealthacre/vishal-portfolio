@@ -205,17 +205,17 @@ export const publicFacts = Object.freeze([
   },
   {
     id: 'P-020',
-    label: 'Independent executive record',
+    label: 'Official iPHEX 2026 overseas delegate record',
     value: 'iPHEX 2026 overseas delegate record',
     status: 'VERIFIED_CURRENT',
     source: 'Pharmexcil / iPHEX 2026 overseas delegates list',
     sourceUrl: 'https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026',
-    sourceDate: '2026-10-03',
+    sourceDate: '2026-08-26',
     lastVerified: verificationDate,
     publicSafe: true,
     approvedWording:
       'The official iPHEX 2026 overseas delegates list identifies Vishal Om Prakash Chakravarty of NovaPharm Healthcare Ltd as Chief Executive Officer.',
-    pages: ['/facts/'],
+    pages: ['/media/', '/facts/'],
   },
 ]);
 
