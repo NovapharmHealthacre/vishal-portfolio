@@ -79,6 +79,7 @@ jobs:
           grep -Fq 'noindex,follow' <<<"$gallery"
           grep -Fq 'This page has moved.' <<<"$gallery"
           grep -Fq 'href="/about/"' <<<"$gallery"
+          grep -Fq '<meta http-equiv="refresh" content="0; url=/about/">' <<<"$gallery"
           if grep -Fq '/gallery/' <<<"$sitemap"; then
             echo 'Retired gallery route appeared in the sitemap' >&2
             exit 1
@@ -113,7 +114,7 @@ jobs:
           - Retired essay route: neutral \`noindex,follow\` compatibility page
           - Profile: human-facing copy served without machine-record promotion
           - Homepage: immersive Nova field hero served without the retired founder AI interface
-          - Gallery: retired route serves a neutral `noindex,follow` compatibility page to About
+          - Gallery: retired route serves noindex,follow with a destination canonical and instant redirect to About
           - Portrait asset: high-resolution official WebP served
           - Sitemap: cornerstone route included; retired essay and gallery routes excluded
           - Image sitemap: canonical founder portrait included
