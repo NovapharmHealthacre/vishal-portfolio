@@ -143,6 +143,10 @@ for (const file of htmlFiles) {
       if (!person.sameAs?.includes(sameAs)) failures.push(`${rel}: Person sameAs missing ${sameAs}`);
     }
     if (person.hasOccupation?.name !== 'Chief Executive Officer') failures.push(`${rel}: Person occupation is incomplete`);
+    const personSubjectUrls = (person.subjectOf ?? []).map((item) => item.url);
+    if (!personSubjectUrls.includes('https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026')) failures.push(`${rel}: Person subjectOf is missing the independent iPHEX record`);
+    if (!personSubjectUrls.includes('https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains')) failures.push(`${rel}: Person subjectOf is missing Pharmaceutical Commerce evidence`);
+    if (!personSubjectUrls.includes('https://www.yakuji.co.jp/entry136963.html')) failures.push(`${rel}: Person subjectOf is missing Yakuji Nippo evidence`);
     if (person.worksFor?.['@id'] !== organizationId) failures.push(`${rel}: Person worksFor must reference the corporate canonical id`);
   }
 
