@@ -25,6 +25,7 @@ test('essential homepage content exists before JavaScript', () => {
   assert.match(html, /assets\.science\.nasa\.gov\/dynamicimage\/assets\/science\/missions\/hubble\/releases\/1999\/02\/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822\.tif/);
   assert.match(html, /Hubble · Supernova 1987A · NASA\/ESA/);
   assert.doesNotMatch(html, /id="nova-field"/);
+  assert.equal(fs.existsSync(path.resolve('dist/assets/nova-field.js')), false);
   assert.doesNotMatch(html, /href="\/gallery\/"/);
   assert.doesNotMatch(html, /data-founder-ai/);
   assert.doesNotMatch(html, /Founder\s*(?:&|&amp;|and)\s*(?:Chief Executive Officer|CEO)/i);
