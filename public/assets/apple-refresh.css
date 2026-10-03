@@ -2107,19 +2107,15 @@ a {
 }
 
 .js.reveal-ready [data-reveal] {
-  transition:
-    opacity 720ms var(--apple-ease),
-    transform 720ms var(--apple-ease);
+  transition: transform 680ms var(--apple-ease);
 }
 
 .js.reveal-ready [data-reveal]:not(.is-visible) {
-  transform: translateY(22px);
-  opacity: 0;
+  transform: translateY(18px);
 }
 
 .js.reveal-ready [data-reveal].is-visible {
   transform: none;
-  opacity: 1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -2190,7 +2186,6 @@ a {
   .js.reveal-ready [data-reveal]:not(.is-visible),
   .js.reveal-ready [data-reveal].is-visible {
     transform: none;
-    opacity: 1;
     transition: none;
   }
 
