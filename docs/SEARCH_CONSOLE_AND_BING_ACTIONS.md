@@ -10,7 +10,7 @@ Current status: no Search Console property is present in the connected Google ac
 
 | Step | Screen / field | Value | Secret? | Action |
 |---|---|---|---|---|
-| 1 | Property selector | Domain property for `novapharmhealthcare.com` where available; retain the existing URL-prefix property for `https://vishal.novapharmhealthcare.com/` | DNS verification value may be sensitive operationally | Confirm ownership. Do not remove the existing HTML verification file. |
+| 1 | Property selector | Add `https://vishal.novapharmhealthcare.com/` as a URL-prefix property, or add the `novapharmhealthcare.com` domain property if DNS verification is preferred | DNS verification value may be sensitive operationally | Add and verify ownership. Do not remove the existing HTML verification file. |
 | 2 | Sitemaps → Add a new sitemap | `sitemap.xml` | No | Submit and record status/date. |
 | 3 | URL Inspection | Homepage | No | Test live URL, compare rendered HTML, request indexing once if needed. |
 | 4 | URL Inspection | `/about/` | No | Confirm declared and selected canonical, ProfilePage HTML and portrait. |
