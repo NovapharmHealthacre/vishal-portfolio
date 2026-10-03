@@ -179,6 +179,32 @@ export const thinkingCollectionSchema = (articles) => ({
   },
 });
 
+export const iphex2026EventSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  '@id': `${site.origin}/media/#iphex-2026-event`,
+  name: 'iPHEX 2026',
+  description:
+    'Vishal Chakravarty attended iPHEX 2026 as an overseas business delegate representing NovaPharm Healthcare Ltd, with discussions focused on pharmaceutical products, manufacturing, market access and cross-border supply.',
+  startDate: '2026-09-07',
+  endDate: '2026-09-09',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventCompleted',
+  url: 'https://www.iphex-india.com/',
+  sameAs: ['https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026'],
+  organizer: {
+    '@type': 'Organization',
+    name: 'Pharmaceuticals Export Promotion Council of India',
+    alternateName: 'Pharmexcil',
+    url: 'https://pharmexcil.com/',
+  },
+  attendee: { '@id': person.id },
+  image: [
+    absolute('/images/media/vishal-chakravarty-iphex-2026-working.webp'),
+    absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp'),
+  ],
+});
+
 export const mediaCollectionSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -189,6 +215,23 @@ export const mediaCollectionSchema = () => ({
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
   breadcrumb: { '@id': `${site.origin}/media/#breadcrumb` },
+  image: [
+    {
+      '@type': 'ImageObject',
+      url: absolute('/images/media/vishal-chakravarty-iphex-2026-working.webp'),
+      caption: 'Vishal Chakravarty reviewing meeting material during iPHEX 2026.',
+      width: 440,
+      height: 550,
+    },
+    {
+      '@type': 'ImageObject',
+      url: absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp'),
+      caption: 'Vishal Chakravarty at iPHEX 2026 beside participating-country flags.',
+      width: 500,
+      height: 333,
+    },
+  ],
+  hasPart: { '@id': `${site.origin}/media/#iphex-2026-event` },
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: publications.length,
