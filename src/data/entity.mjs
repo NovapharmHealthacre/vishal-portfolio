@@ -72,6 +72,7 @@ export const company = Object.freeze({
   companiesHouseUrl:
     'https://find-and-update.company-information.service.gov.uk/company/16716501',
   linkedInUrl: 'https://www.linkedin.com/company/novapharm-healthcare/',
+  wikidataUrl: 'https://www.wikidata.org/wiki/Q137660644',
   description:
     'A UK pharmaceutical company building market-access, licensing, manufacturing and supply capabilities for specialist medicines across regulated markets.',
   currentFocus:
