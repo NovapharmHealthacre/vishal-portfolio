@@ -1760,19 +1760,15 @@ h3 {
 /* ----- Motion: subtle, content-first ----- */
 
 .js.reveal-ready [data-reveal] {
-  transition:
-    opacity 720ms var(--cx-ease),
-    transform 820ms var(--cx-ease);
+  transition: transform 820ms var(--cx-ease);
 }
 
 .js.reveal-ready [data-reveal]:not(.is-visible) {
   transform: translateY(26px);
-  opacity: 0;
 }
 
 .js.reveal-ready [data-reveal].is-visible {
   transform: none;
-  opacity: 1;
 }
 
 /* ----- Responsive ----- */
@@ -2000,7 +1996,6 @@ h3 {
   .js.reveal-ready [data-reveal]:not(.is-visible),
   .js.reveal-ready [data-reveal].is-visible {
     transform: none;
-    opacity: 1;
     transition: none;
   }
 }
