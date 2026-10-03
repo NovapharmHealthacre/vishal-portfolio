@@ -774,6 +774,11 @@ body {
 /* iPHEX 2026 editorial field note --------------------------------------- */
 
 .media-field-note {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
   background: #0a0a0c;
   color: #f5f5f7;
   padding-top: clamp(6rem, 10vw, 10rem);
@@ -782,11 +787,20 @@ body {
 
 .media-field-note-header {
   display: grid;
+  width: 100%;
+  min-width: 0;
   grid-template-columns: minmax(0, 1.45fr) minmax(18rem, .55fr);
   gap: clamp(3rem, 7vw, 8rem);
   align-items: end;
   padding-bottom: clamp(2rem, 4vw, 4rem);
   border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.media-field-note-header > *,
+.media-field-note-grid > *,
+.media-field-note-header dl,
+.media-field-note-header dl div {
+  min-width: 0;
 }
 
 .media-field-note-header .eyebrow {
