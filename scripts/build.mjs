@@ -121,7 +121,6 @@ fs.mkdirSync(dist, { recursive: true });
 fs.cpSync(path.join(root, 'public'), dist, { recursive: true });
 write('assets/site.css', fs.readFileSync(path.join(root, 'src/styles/site.css'), 'utf8'));
 write('assets/site.js', fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8'));
-write('assets/nova-field.js', fs.readFileSync(path.join(root, 'src/scripts/nova-field.js'), 'utf8'));
 
 const articles = loadArticles(root);
 const pageContent = loadPageContent(root, contentVariables);

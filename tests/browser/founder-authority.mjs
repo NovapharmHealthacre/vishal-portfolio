@@ -186,7 +186,12 @@ try {
       await homeCheck.goto(origin, { waitUntil: 'networkidle' });
       ensure((await homeCheck.locator('a[href="/gallery/"]').count()) === 0, `${browserName}: gallery link remains on homepage`);
       ensure((await homeCheck.locator('[data-founder-ai-open], [data-founder-ai-dialog]').count()) === 0, `${browserName}: founder AI UI remains on homepage`);
-      ensure((await homeCheck.locator('#nova-field').count()) === 1, `${browserName}: immersive hero canvas missing`);
+      ensure((await homeCheck.locator('[data-real-cosmos]').count()) === 1, `${browserName}: real Hubble hero missing`);
+      ensure((await homeCheck.locator('img.hubble-wide').count()) === 1, `${browserName}: wide Hubble image missing`);
+      ensure((await homeCheck.locator('img.hubble-close').count()) === 1, `${browserName}: Hubble focal image missing`);
+      ensure((await homeCheck.locator('#nova-field').count()) === 0, `${browserName}: retired procedural nova canvas remains`);
+      const hubbleSrc = await homeCheck.locator('img.hubble-wide').getAttribute('src');
+      ensure(hubbleSrc?.startsWith('https://assets.science.nasa.gov/'), `${browserName}: Hubble source is not the official NASA asset host`);
       await homeCheck.close();
 
       for (const { route, destination } of compatibilityRoutes) {
@@ -245,6 +250,7 @@ try {
         const narrowState = await page.evaluate(() => {
           const clientWidth = document.documentElement.clientWidth;
           const offenders = [...document.querySelectorAll('body *')]
+            .filter((element) => !element.closest('[data-real-cosmos]'))
             .map((element) => {
               const rect = element.getBoundingClientRect();
               const style = getComputedStyle(element);
@@ -280,10 +286,11 @@ try {
       const reduced = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
       const reducedPage = await reduced.newPage();
       await reducedPage.goto(origin, { waitUntil: 'networkidle' });
-      ensure((await reducedPage.locator('#nova-field').count()) === 1, `${browserName}: Nova field canvas missing`);
+      ensure((await reducedPage.locator('[data-real-cosmos]').count()) === 1, `${browserName}: real Hubble hero missing under reduced motion`);
+      ensure((await reducedPage.locator('#nova-field').count()) === 0, `${browserName}: retired procedural Nova field returned under reduced motion`);
       ensure(
-        (await reducedPage.locator('#nova-field').evaluate((node) => getComputedStyle(node).display)) === 'none',
-        `${browserName}: Nova field remains visible under reduced motion`,
+        (await reducedPage.locator('.hubble-wide').evaluate((node) => getComputedStyle(node).animationName)) === 'none',
+        `${browserName}: Hubble camera animation remains active under reduced motion`,
       );
       await reduced.close();
 

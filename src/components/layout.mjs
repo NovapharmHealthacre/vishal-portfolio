@@ -94,7 +94,7 @@ export const renderPage = ({
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
-    "img-src 'self' data:",
+    "img-src 'self' data: https://assets.science.nasa.gov",
     "font-src 'self'",
     "style-src 'self'",
     `script-src 'self'${hashes.length ? ` ${hashes.map((hash) => `'${hash}'`).join(' ')}` : ''}`,

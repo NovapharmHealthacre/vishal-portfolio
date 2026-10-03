@@ -43,10 +43,31 @@ export const renderHome = (articles) => {
   const yakujiPublication = publications.find((publication) => publication.publisher === 'Yakuji Nippo');
   if (!yakujiPublication) throw new Error('Missing verified Yakuji Nippo publication record');
   const body = `
-    <section class="hero hero-cosmic" aria-labelledby="hero-title">
-      <canvas id="nova-field" class="nova-field" aria-hidden="true"></canvas>
-      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
-      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+    <section class="hero hero-cosmic hero-hubble" aria-labelledby="hero-title" data-hubble-hero>
+      <div class="hubble-cosmos" data-real-cosmos aria-hidden="true">
+        <img
+          class="hubble-wide"
+          src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960"
+          srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=640 640w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960 960w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=1600 1600w"
+          sizes="100vw"
+          width="2400"
+          height="3000"
+          alt=""
+          fetchpriority="high"
+          decoding="async">
+        <div class="hubble-close-shell">
+          <img
+            class="hubble-close"
+            src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2017/02/STScI-01EVVBRGBTS2CZP6VK5TK0W4RW.tiff?w=900"
+            width="1500"
+            height="1200"
+            alt=""
+            loading="lazy"
+            fetchpriority="low"
+            decoding="async">
+        </div>
+        <div class="hubble-optics"></div>
+      </div>
       <div class="hero-copy">
         <p class="eyebrow">Chief Executive Officer · Founder of NovaPharm Healthcare Ltd</p>
         <h1 id="hero-title"><span>Vishal</span> <span>Chakravarty.</span></h1>
@@ -56,6 +77,9 @@ export const renderHome = (articles) => {
           <a class="button button-ghost" href="/thinking/">Read the work <span aria-hidden="true">→</span></a>
         </div>
       </div>
+      <a class="hero-credit" href="https://science.nasa.gov/asset/hubble/supernova-1987a-in-the-large-magellanic-cloud/" target="_blank" rel="noopener noreferrer">
+        Hubble · Supernova 1987A · NASA/ESA
+      </a>
       <div class="hero-proof" aria-label="Areas of work"><span>Market access</span><span>Manufacturing & technology transfer</span><span>Specialist medicines & supply</span></div>
     </section>
 
