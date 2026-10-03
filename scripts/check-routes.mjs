@@ -53,6 +53,8 @@ const robots = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');
 const crawlerPolicy = new Map([
   ['Googlebot', 'Allow: /'],
   ['Bingbot', 'Allow: /'],
+  ['Applebot', 'Allow: /'],
+  ['Applebot-Extended', 'Disallow: /'],
   ['OAI-SearchBot', 'Allow: /'],
   ['ChatGPT-User', 'Allow: /'],
   ['GPTBot', 'Disallow: /'],

@@ -68,7 +68,11 @@ for (const item of feed.items) {
 }
 
 const factsHtml = fs.readFileSync(path.join(dist, 'facts', 'index.html'), 'utf8');
-if (factsHtml.includes('/facts.json')) failures.push('facts page: machine-readable JSON must not be promoted in the visitor interface');
+const factsMain = factsHtml.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? '';
+if (factsMain.includes('/facts.json')) failures.push('facts page: machine-readable JSON must not be promoted in the visitor interface');
+if (!/<link rel="alternate" type="application\/json"[^>]+href="\/facts\.json">/i.test(factsHtml)) {
+  failures.push('facts page: machine-readable public facts must remain discoverable in head metadata');
+}
 
 if (failures.length) {
   console.error(failures.join('\n'));

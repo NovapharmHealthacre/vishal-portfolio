@@ -41,7 +41,7 @@ jobs:
         run: |
           mkdir -p artifacts/lighthouse
           LH=/tmp/founder-lighthouse/node_modules/.bin/lighthouse
-          for target in "home:/" "gallery:/gallery/" "market-access:/essays/regulatory-approval-is-not-market-access/"; do
+          for target in "home:/" "about:/about/" "market-access:/essays/regulatory-approval-is-not-market-access/"; do
             name=${target%%:*}
             route=${target#*:}
             for pass in 1 2 3; do
@@ -96,7 +96,7 @@ jobs:
             summary.push({ file, finalUrl: report.finalUrl, scores });
           }
           const mobileMedians = [];
-          for (const target of ['home', 'gallery', 'market-access']) {
+          for (const target of ['home', 'about', 'market-access']) {
             const performances = summary
               .filter((entry) => entry.file.startsWith(`${target}-mobile-`))
               .map((entry) => entry.scores.performance)

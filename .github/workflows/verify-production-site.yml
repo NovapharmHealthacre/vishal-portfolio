@@ -33,8 +33,10 @@ jobs:
               -H 'Pragma: no-cache' \
               "${SITE_ORIGIN}/?${cache_key}-${attempt}" || true)
             if grep -Fq 'Building a UK-led pharmaceutical company around market access' <<<"$home" \
+              && grep -Fq 'id="nova-field"' <<<"$home" \
               && grep -Fq 'Pharmaceutical essays' <<<"$home" \
-              && ! grep -Fq 'Status before spectacle' <<<"$home"; then
+              && ! grep -Fq 'Ask Vishal’s Work' <<<"$home" \
+              && ! grep -Fq 'href="/gallery/"' <<<"$home"; then
               success=true
               break
             fi
@@ -74,52 +76,35 @@ jobs:
             echo 'Machine-facing copy was exposed on the founder profile' >&2
             exit 1
           fi
-          grep -Fq 'href="/gallery/"' <<<"$home"
-          grep -Fq 'gallery-preview' <<<"$home"
-          grep -Fq '"@type": "ImageGallery"' <<<"$gallery"
-          grep -Fq 'primaryImageOfPage' <<<"$gallery"
-          if grep -Fq 'copyrightHolder' <<<"$gallery"; then
-            echo 'Unsupported image copyright-holder metadata was exposed' >&2
+          grep -Fq 'noindex,follow' <<<"$gallery"
+          grep -Fq 'This page has moved.' <<<"$gallery"
+          grep -Fq 'href="/about/"' <<<"$gallery"
+          if grep -Fq '/gallery/' <<<"$sitemap"; then
+            echo 'Retired gallery route appeared in the sitemap' >&2
             exit 1
           fi
-          if grep -Fq 'creditText' <<<"$gallery"; then
-            echo 'Unsupported image credit metadata was exposed' >&2
-            exit 1
-          fi
-          [[ $(grep -o '<figure class="gallery-item' <<<"$gallery" | wc -l | tr -d ' ') == 11 ]]
-          [[ $(grep -o '"@type": "ImageObject"' <<<"$gallery" | wc -l | tr -d ' ') == 12 ]]
           grep -Fq '/essays/regulatory-approval-is-not-market-access/' <<<"$sitemap"
           if grep -Fq '/essays/why-i-left-swiggy/' <<<"$sitemap"; then
             echo 'Retired essay route appeared in the sitemap' >&2
             exit 1
           fi
-          [[ $(grep -o '<image:image>' <<<"$sitemap" | wc -l | tr -d ' ') == 11 ]]
+          [[ $(grep -o '<image:image>' <<<"$sitemap" | wc -l | tr -d ' ') == 1 ]]
+          grep -Fq '/images/portrait/vishal-chakravarty-1440.webp' <<<"$sitemap"
 
-          gallery_images=(
-            /images/portrait/vishal-chakravarty-1440.jpg
-            /images/gallery/vishal-chakravarty-oxblood-studio-portrait.jpg
-            /images/gallery/vishal-chakravarty-black-suit-crossed-arms.jpg
-            /images/gallery/vishal-chakravarty-studio-close-up.jpg
-            /images/gallery/vishal-chakravarty-founder-at-work.jpg
-            /images/gallery/vishal-chakravarty-light-suit-portrait.jpg
-            /images/gallery/vishal-chakravarty-monochrome-blazer-profile.jpg
-            /images/gallery/vishal-chakravarty-reflective-candid.jpg
-            /images/gallery/vishal-chakravarty-editorial-reclining-portrait.jpg
-            /images/gallery/vishal-chakravarty-black-suit-full-length.jpg
-            /images/gallery/vishal-chakravarty-evening-mirror-portrait.jpg
-          )
-          for image_path in "${gallery_images[@]}"; do
-            curl --fail --silent --show-error --location \
-              -H 'Cache-Control: no-cache' \
-              "${SITE_ORIGIN}${image_path}?${cache_key}" \
-              --output /dev/null
-            grep -Fq "$image_path" <<<"$sitemap"
-          done
+          curl --fail --silent --show-error --location \
+            -H 'Cache-Control: no-cache' \
+            "${SITE_ORIGIN}/images/portrait/vishal-chakravarty-1440.webp?${cache_key}" \
+            --output /dev/null
+
+          founder_ai_status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+            -H 'Cache-Control: no-cache' \
+            "${SITE_ORIGIN}/assets/founder-ai.js?${cache_key}")
+          [[ "$founder_ai_status" == "404" ]]
 
           cat > "$report" <<EOF
           ## Production site verified
 
-          The founder-authority release is live on the custom domain.
+          The refined founder portfolio is live on the custom domain.
 
           - Homepage: new pharmaceutical founder proposition served
           - Thinking: 10 public essays served
@@ -127,11 +112,11 @@ jobs:
           - Founder-origin essay: served and indexable
           - Retired essay route: neutral \`noindex,follow\` compatibility page
           - Profile: human-facing copy served without machine-record promotion
-          - Gallery: 11 visible portraits, 12 ImageObjects and accurate primary-image metadata
-          - Image rights: no unsupported creator or copyright-owner fields
-          - Portrait assets: high-resolution official portrait and all ten supplied image URLs served
-          - Sitemap: new cornerstone route included and retired route excluded
-          - Image sitemap: all 11 portrait URLs included
+          - Homepage: immersive Nova field hero served without the retired founder AI interface
+          - Gallery: retired route serves a neutral `noindex,follow` compatibility page to About
+          - Portrait asset: high-resolution official WebP served
+          - Sitemap: cornerstone route included; retired essay and gallery routes excluded
+          - Image sitemap: canonical founder portrait included
 
           Release: \`${RELEASE_SHA}\`
           Verified: $(date -u '+%Y-%m-%d %H:%M:%S UTC')

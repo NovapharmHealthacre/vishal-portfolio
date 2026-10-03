@@ -26,7 +26,6 @@ const navigationMarkup = (currentPath) => `
             },
           )
           .join('')}
-        <li><a href="/thinking/" data-founder-ai-open>Ask Vishal’s Work</a></li>
         <li><a class="nav-contact" href="/contact/"${currentPath === '/contact/' ? ' aria-current="page"' : ''}>Contact</a></li>
       </ul>
     </nav>
@@ -48,9 +47,7 @@ const footerMarkup = () => `
         <a href="/ventures/">Ventures</a>
         <a href="/thinking/">Thinking</a>
         <a href="/media/">Media</a>
-        <a href="/gallery/">Gallery</a>
         <a href="/facts/">Profile</a>
-        <a href="/thinking/" data-founder-ai-open>Ask Vishal’s Work</a>
         <a href="/privacy/">Privacy</a>
       </nav>
       <div class="footer-contact">
@@ -63,56 +60,6 @@ const footerMarkup = () => `
       <span>Pharmaceutical entrepreneurship · Market access · Regulated markets</span>
     </div>
   </footer>`;
-
-const founderAiMarkup = () => `
-  <dialog class="founder-ai-dialog" data-founder-ai-dialog aria-labelledby="founder-ai-title" aria-describedby="founder-ai-description">
-    <div class="founder-ai-shell">
-      <header class="founder-ai-header">
-        <div>
-          <p class="eyebrow">Approved public evidence</p>
-          <p class="founder-ai-kicker">Private, browser-based retrieval</p>
-        </div>
-        <button class="founder-ai-close" type="button" data-founder-ai-close aria-label="Close Ask Vishal’s Work">
-          <span aria-hidden="true">×</span>
-        </button>
-      </header>
-      <div class="founder-ai-layout">
-        <section class="founder-ai-controls" aria-label="Ask Vishal’s published work">
-          <h2 id="founder-ai-title">Ask Vishal’s Work</h2>
-          <p id="founder-ai-description">Search Vishal Chakravarty’s approved essays, verified biography and official public records. Every supported response quotes published evidence and links to its source.</p>
-          <p class="founder-ai-boundary"><strong>Not Vishal speaking.</strong> This is an automated evidence summary. It does not use private files, infer new personal views, or provide medical, legal, investment or personalised regulatory advice.</p>
-          <form class="founder-ai-form" data-founder-ai-form>
-            <label for="founder-ai-query">Question or topic</label>
-            <div class="founder-ai-query-row">
-              <input id="founder-ai-query" name="query" type="search" maxlength="400" autocomplete="off" spellcheck="true" placeholder="For example: how does Vishal assess CMO readiness?" required data-founder-ai-input>
-              <button class="button button-primary" type="submit">Search work</button>
-            </div>
-          </form>
-          <div class="founder-ai-topics" role="group" aria-label="Suggested topics">
-            <button type="button" data-founder-ai-topic="How does Vishal assess CMO readiness?">CMO readiness</button>
-            <button type="button" data-founder-ai-topic="What has Vishal published about market access?">Market access</button>
-            <button type="button" data-founder-ai-topic="How does Vishal think about supply resilience?">Supply resilience</button>
-          </div>
-          <p class="sr-only" aria-live="polite" data-founder-ai-status></p>
-        </section>
-        <section class="founder-ai-results" data-founder-ai-results aria-label="Evidence response" aria-live="polite" aria-atomic="false">
-          <div class="founder-ai-empty">
-            <p class="founder-ai-label">Source-first by design</p>
-            <h3>Explore the published record.</h3>
-            <p>Use a suggested topic or ask a focused question. Unsupported questions receive a clear abstention rather than an invented answer.</p>
-          </div>
-        </section>
-      </div>
-      <footer class="founder-ai-footer">
-        <p>No query is sent to an external AI provider or retained by this website.</p>
-        <div>
-          <a href="/thinking/">Read all essays</a>
-          <a href="/privacy/">Privacy</a>
-          <button type="button" data-founder-ai-copy hidden>Copy cited answer</button>
-        </div>
-      </footer>
-    </div>
-  </dialog>`;
 
 export const breadcrumbs = (items) => `
   <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -158,9 +105,14 @@ export const renderPage = ({
     <meta http-equiv="Content-Security-Policy" content="${escapeHtml(csp)}">
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}">
-    <meta name="robots" content="${noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large'}">
+    <meta name="author" content="${escapeHtml(person.name)}">
+    <meta name="robots" content="${noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
+    <meta name="googlebot" content="${noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
     <link rel="canonical" href="${canonical}">
+    <link rel="author" href="/about/">
+    <link rel="alternate" type="application/json" title="Verified public facts about ${escapeHtml(person.name)}" href="/facts.json">
     <meta property="og:site_name" content="Vishal Chakravarty">
+    <meta property="og:locale" content="en_GB">
     <meta property="og:type" content="${path.startsWith('/essays/') ? 'article' : 'website'}">
     <meta property="og:title" content="${escapeHtml(title)}">
     <meta property="og:description" content="${escapeHtml(description)}">
@@ -174,13 +126,15 @@ export const renderPage = ({
     <meta name="twitter:description" content="${escapeHtml(description)}">
     <meta name="twitter:image" content="${absolute(socialImage)}">
     <meta name="twitter:image:alt" content="${escapeHtml(socialImageAlt)}">
-    <meta name="theme-color" content="#f5f5f7">\n    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f5f5f7">
+    <meta name="color-scheme" content="light">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="alternate" type="application/rss+xml" title="Thinking by Vishal Chakravarty" href="/rss.xml">
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
     <link rel="stylesheet" href="/assets/site.css">
-    <link rel="stylesheet" href="/assets/content-fixes.css">\n    <link rel="stylesheet" href="/assets/apple-refresh.css">
+    <link rel="stylesheet" href="/assets/content-fixes.css">
+    <link rel="stylesheet" href="/assets/apple-refresh.css">
     <script src="/assets/site.js" defer></script>
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
   </head>
@@ -189,8 +143,6 @@ export const renderPage = ({
     ${navigationMarkup(path)}
     <main id="main" tabindex="-1">${body}</main>
     ${footerMarkup()}
-    ${founderAiMarkup()}
-    <script type="module" src="/assets/founder-ai.js"></script>
   </body>
 </html>`;
 };

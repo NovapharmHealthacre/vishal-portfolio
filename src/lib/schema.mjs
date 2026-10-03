@@ -1,22 +1,5 @@
 import { company, person, profileModifiedDate, publications, site, verificationDate } from '../data/entity.mjs';
-import { galleryImages, galleryLeadImage, galleryMeta } from '../data/gallery.mjs';
 import { absolute, routeModified } from '../data/site.mjs';
-
-const imageObject = (image, { representativeOfPage = false, pageId } = {}) => ({
-  '@type': 'ImageObject',
-  '@id': image.schemaId ?? `${absolute(image.path)}#image`,
-  contentUrl: absolute(image.path),
-  url: absolute(image.path),
-  name: image.name ?? image.caption,
-  caption: image.caption,
-  description: image.description,
-  width: image.width,
-  height: image.height,
-  encodingFormat: 'image/jpeg',
-  about: { '@id': person.id },
-  representativeOfPage,
-  ...(pageId ? { mainEntityOfPage: { '@id': pageId } } : {}),
-});
 
 export const websiteSchema = () => ({
   '@context': 'https://schema.org',
@@ -46,7 +29,7 @@ export const personSchema = () => ({
     description: person.image.description,
     width: person.image.width,
     height: person.image.height,
-    encodingFormat: 'image/jpeg',
+    encodingFormat: 'image/webp',
     about: { '@id': person.id },
     representativeOfPage: true,
   },
@@ -159,26 +142,6 @@ export const thinkingCollectionSchema = (articles) => ({
     publisher: { '@type': 'Person', '@id': person.id },
     blogPost: articles.map((article) => ({ '@type': 'BlogPosting', '@id': `${absolute(article.canonicalPath)}#article` })),
   },
-});
-
-export const gallerySchema = (images = galleryImages) => ({
-  '@context': 'https://schema.org',
-  '@type': 'ImageGallery',
-  '@id': `${site.origin}${galleryMeta.path}#gallery`,
-  url: `${site.origin}${galleryMeta.path}`,
-  name: galleryMeta.name,
-  description: galleryMeta.description,
-  dateModified: routeModified[galleryMeta.path],
-  inLanguage: site.language,
-  isPartOf: { '@id': site.id },
-  about: { '@id': person.id },
-  primaryImageOfPage: { '@id': galleryLeadImage.schemaId },
-  image: { '@id': galleryLeadImage.schemaId },
-  associatedMedia: [galleryLeadImage, ...images].map((image, index) =>
-    imageObject(image, {
-      representativeOfPage: index === 0,
-      pageId: `${site.origin}${galleryMeta.path}#gallery`,
-    })),
 });
 
 export const mediaCollectionSchema = () => ({

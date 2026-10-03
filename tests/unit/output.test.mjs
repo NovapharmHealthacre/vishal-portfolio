@@ -15,8 +15,10 @@ test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
-  assert.match(html, /Chief Executive Officer · Pharmaceutical entrepreneurship · Regulated markets/);
-  assert.match(html, /Founder of NovaPharm Healthcare Ltd\./);
+  assert.match(html, /Chief Executive Officer · Founder of NovaPharm Healthcare Ltd/);
+  assert.match(html, /id="nova-field"/);
+  assert.doesNotMatch(html, /href="\/gallery\/"/);
+  assert.doesNotMatch(html, /data-founder-ai/);
   assert.doesNotMatch(html, /Founder\s*(?:&|&amp;|and)\s*(?:Chief Executive Officer|CEO)/i);
   assert.match(html, /<nav id="site-navigation"/);
   assert.doesNotMatch(html, /loading screen/i);
@@ -84,10 +86,12 @@ test('contact output uses the approved public inbox', () => {
   assert.doesNotMatch(html, /vishal@novapharmhealthcare\.co\.uk/i);
 });
 
-test('profile hides machine assets while preserving the human route', () => {
+test('profile keeps machine discovery in head metadata while preserving a human-facing body', () => {
   const html = fs.readFileSync(path.resolve('dist/facts/index.html'), 'utf8');
-  assert.match(html, /Founder profile/);
-  assert.doesNotMatch(html, /Machine-readable fact record|href="\/facts\.json"/i);
+  const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
+  assert.match(main, /Founder profile/);
+  assert.doesNotMatch(main, /Machine-readable fact record|href="\/facts\.json"/i);
+  assert.match(html, /<link rel="alternate" type="application\/json"[^>]+href="\/facts\.json">/);
 });
 
 test('retired essay routes use neutral compatibility output', () => {

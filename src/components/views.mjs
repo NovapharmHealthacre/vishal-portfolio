@@ -1,11 +1,9 @@
 import { company, person, publications, site } from '../data/entity.mjs';
-import { galleryImages, galleryLeadImage, galleryMeta } from '../data/gallery.mjs';
 import { pageMeta } from '../data/site.mjs';
 import { escapeHtml, externalLink, formatDate } from '../lib/html.mjs';
 import {
   articleSchema,
   breadcrumbSchema,
-  gallerySchema,
   mediaCollectionSchema,
   organisationSchema,
   personSchema,
@@ -39,49 +37,40 @@ const articleCard = (article, index) => `
     <a class="round-link" href="${article.canonicalPath}" aria-label="Read ${escapeHtml(article.title)}"><span aria-hidden="true">↗</span></a>
   </article>`;
 
-const galleryFigure = (image, index, priority = false) => `
-  <figure class="gallery-item gallery-item-${index + 1}">
-    <a href="${image.path}" aria-label="Open ${escapeHtml(image.caption)}">
-      <img src="${image.path}" width="${image.width}" height="${image.height}" alt="${escapeHtml(image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-    </a>
-    <figcaption><strong>${escapeHtml(image.caption)}</strong><span>Vishal Chakravarty</span></figcaption>
-  </figure>`;
-
-const galleryLeadFigure = () => `
-  <figure class="gallery-item gallery-item-lead">
-    <a href="${galleryLeadImage.path}" aria-label="Open ${escapeHtml(galleryLeadImage.caption)}">
-      ${portrait(true)}
-    </a>
-    <figcaption><strong>${escapeHtml(galleryLeadImage.displayCaption)}</strong><span>Vishal Chakravarty</span></figcaption>
-  </figure>`;
-
 export const renderHome = (articles) => {
   const meta = pageMeta.home;
   const selected = articles.slice(0, 3);
-  const featuredPortraits = galleryImages.filter((image) => image.featured).slice(0, 3);
   const yakujiPublication = publications.find((publication) => publication.publisher === 'Yakuji Nippo');
   if (!yakujiPublication) throw new Error('Missing verified Yakuji Nippo publication record');
   const body = `
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero hero-cosmic" aria-labelledby="hero-title">
+      <canvas id="nova-field" class="nova-field" aria-hidden="true"></canvas>
+      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow">Chief Executive Officer · Pharmaceutical entrepreneurship · Regulated markets</p>
-        <h1 id="hero-title"><span>Vishal</span> <span>Chakravarty</span></h1>
+        <p class="eyebrow">Chief Executive Officer · Founder of NovaPharm Healthcare Ltd</p>
+        <h1 id="hero-title"><span>Vishal</span> <span>Chakravarty.</span></h1>
         <p class="hero-proposition">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
           <a class="button button-primary" href="/about/">About Vishal <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="/thinking/">Read the essays <span aria-hidden="true">→</span></a>
+          <a class="button button-ghost" href="/thinking/">Read the work <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <div class="hero-visual">
-        ${portrait(true)}
-        <div class="portrait-caption"><span>Chief Executive Officer</span><span>${escapeHtml(company.name)}</span></div>
-      </div>
-      <div class="hero-proof" aria-label="Areas of work"><span>Pharmaceutical market access</span><span>Manufacturing & technology transfer</span><span>Specialist medicines & supply</span></div>
+      <div class="hero-proof" aria-label="Areas of work"><span>Market access</span><span>Manufacturing & technology transfer</span><span>Specialist medicines & supply</span></div>
     </section>
 
-    <section class="statement section" id="about" aria-labelledby="statement-title">
-      <p class="section-number">01 / Founder thesis</p>
-      <div class="statement-grid"><h2 id="statement-title">A medicine can be approvable and still fail to reach the market.</h2><div class="statement-copy"><p>The real work is connecting product, regulatory pathway, manufacturer, supply, economics and channel early enough to build a route that can last.</p><a class="text-link" href="/about/">The founder journey <span aria-hidden="true">→</span></a></div></div>
+    <section class="founder-feature section" id="about" aria-labelledby="statement-title">
+      <div class="founder-feature-portrait">
+        ${portrait(false)}
+        <p>Vishal Chakravarty · Chief Executive Officer</p>
+      </div>
+      <div class="founder-feature-copy">
+        <p class="section-number">01 / Founder thesis</p>
+        <p class="eyebrow">Pharmaceutical entrepreneurship</p>
+        <h2 id="statement-title">A medicine can be approvable and still fail to reach the market.</h2>
+        <p>The real work is connecting product, regulatory pathway, manufacturer, supply, economics and channel early enough to build a route that can last.</p>
+        <a class="text-link" href="/about/">The founder journey <span aria-hidden="true">→</span></a>
+      </div>
     </section>
 
     <section class="venture-feature section" id="companies" aria-labelledby="venture-title">
@@ -97,11 +86,6 @@ export const renderHome = (articles) => {
     <section class="writing section" id="essays" aria-labelledby="writing-title"><div class="section-heading"><div><p class="section-number">04 / Selected thinking</p><h2 id="writing-title">Pharmaceutical essays</h2></div><a class="text-link" href="/thinking/">All essays <span aria-hidden="true">→</span></a></div><div class="essay-list">${selected.map(articleCard).join('')}</div></section>
 
     <section class="evidence section" aria-labelledby="evidence-title"><p class="section-number">05 / Selected record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, publisher-hosted writing and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Founder profile</span><strong>Biography, focus and official links</strong>${arrow}</a></div></div></section>
-
-    <section class="gallery-preview section" aria-labelledby="gallery-preview-title">
-      <div class="section-heading"><div><p class="section-number">06 / Portrait gallery</p><h2 id="gallery-preview-title">Founder portraits.</h2></div><a class="text-link" href="/gallery/">View the gallery <span aria-hidden="true">→</span></a></div>
-      <div class="gallery-preview-grid">${featuredPortraits.map((image, index) => galleryFigure(image, index)).join('')}</div>
-    </section>
 
     <section class="closing section" id="invest" aria-labelledby="closing-title"><span id="contact" class="anchor-target" aria-hidden="true"></span><p class="eyebrow">Speaking · Editorial · Selected partnerships</p><h2 id="closing-title">For conversations around pharmaceutical market access, manufacturing, supply and cross-border growth.</h2><div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [websiteSchema(), personSchema(), webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } })], className: 'home-page' });
@@ -140,26 +124,6 @@ export const renderMedia = (page) => {
   return renderPage({ ...meta, body, schemas: [mediaCollectionSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }])], className: 'media-page' });
 };
 
-export const renderGallery = () => {
-  const meta = pageMeta.gallery;
-  const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery/' }])}<p class="eyebrow">Portrait gallery</p><h1>Portraits of<br><em>Vishal Chakravarty.</em></h1><p class="page-deck">A curated selection of editorial, professional and founder-at-work portraits from Vishal’s personal founder platform.</p></section><section class="gallery-intro section"><p class="section-number">Selected portraits</p><div><h2>One founder.<br>Different frames.</h2><p>The gallery brings together formal studio portraits, professional photography and quieter candid moments. Each image is published with a stable descriptive URL and accurate context.</p></div></section><section class="gallery-grid section" aria-label="Portraits of Vishal Chakravarty">${galleryLeadFigure()}${galleryImages.map((image, index) => galleryFigure(image, index + 1, index === 0)).join('')}</section><aside class="gallery-use section"><p class="eyebrow">Editorial enquiries</p><h2>For interviews, speaking and editorial requests.</h2><p>Use the direct contact route for context, attribution or higher-resolution editorial requirements.</p><a class="button button-primary" href="/contact/">Contact Vishal ${arrow}</a></aside>`;
-  return renderPage({
-    ...meta,
-    body,
-    socialImage: galleryLeadImage.path,
-    socialImageAlt: galleryLeadImage.alt,
-    socialImageWidth: galleryLeadImage.width,
-    socialImageHeight: galleryLeadImage.height,
-    schemas: [
-      webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': `${site.origin}${galleryMeta.path}#gallery` }, primaryImage: { '@id': galleryLeadImage.schemaId } }),
-      gallerySchema(galleryImages),
-      personSchema(),
-      breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery/' }]),
-    ],
-    className: 'gallery-page',
-  });
-};
-
 export const renderSpeaking = (page) => {
   const meta = contentMeta(page);
   const body = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking · Editorial · Founder roundtables</p><h1>Conversations about<br><em>building in pharmaceuticals.</em></h1><p class="page-deck">Themes spanning market access, post-Brexit market entry, manufacturing partnerships, technology transfer, supply and founder execution.</p></section><section class="content-managed prose-page section">${page.html}</section>`;
@@ -186,4 +150,4 @@ export const renderPrivacy = (page) => {
 
 export const renderCompatibility = (from, to) => renderPage({ title: 'This page has moved — Vishal Chakravarty', description: 'A previous address for content on the Vishal Chakravarty founder platform.', path: to, noIndex: true, className: 'compatibility-page', body: `<section class="utility-page"><p class="eyebrow">Updated address</p><h1>This page has moved.</h1><p>The current article or profile is available at the link below.</p><a class="button button-primary" href="${to}">Continue <span aria-hidden="true">→</span></a></section>` });
 
-export const renderNotFound = () => renderPage({ title: 'Page not found — Vishal Chakravarty', description: 'The requested page could not be found.', path: '/404.html', noIndex: true, className: 'not-found-page', body: `<section class="utility-page"><p class="eyebrow">404</p><h1>There is no page here.</h1><p>Explore the founder profile, NovaPharm Healthcare, the portrait gallery and the latest pharmaceutical essays.</p><div><a class="button button-primary" href="/">Return home</a><a class="text-link" href="/gallery/">View portraits <span aria-hidden="true">→</span></a></div></section>` });
+export const renderNotFound = () => renderPage({ title: 'Page not found — Vishal Chakravarty', description: 'The requested page could not be found.', path: '/404.html', noIndex: true, className: 'not-found-page', body: `<section class="utility-page"><p class="eyebrow">404</p><h1>There is no page here.</h1><p>Explore the founder profile, NovaPharm Healthcare and the latest pharmaceutical essays.</p><div><a class="button button-primary" href="/">Return home</a><a class="text-link" href="/thinking/">Read the essays <span aria-hidden="true">→</span></a></div></section>` });

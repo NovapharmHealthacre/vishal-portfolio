@@ -2,7 +2,7 @@
 
 A static, content-first professional platform for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder.
 
-The core build and runtime are deliberately dependency-free. They use Node.js standard-library modules, Markdown content, a central verified entity source and generated semantic HTML. Full release QA additionally requires externally supplied Playwright/browser, axe and Lighthouse tooling as documented in `docs/QA_PLAN.md`.
+The core build and runtime are deliberately dependency-free. They use Node.js standard-library modules, Markdown content, generated semantic HTML, CSS and modern browser JavaScript. The visual system uses an original Apple/OpenAI-inspired design language and a first-party canvas-based Nova field hero; it does not ship copied proprietary code, templates, assets or font files. Full release QA additionally requires externally supplied Playwright/browser, axe and Lighthouse tooling as documented in `docs/QA_PLAN.md`.
 
 ## Requirements
 
@@ -55,8 +55,12 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs npm run test:browser
 
 ## Deployment
 
-The intended canonical origin is generated into `dist/CNAME` from `public/CNAME`. GitHub Pages must also have `vishal.novapharmhealthcare.com` saved as its custom domain; the post-merge audit found that repository setting empty. The rebuild deploys `dist/` with GitHub Pages Actions only after owner approval. See:
+The canonical origin is `https://vishal.novapharmhealthcare.com`. `public/CNAME` is copied into the generated release, and the Pages workflow deploys `dist/` and verifies the custom domain after publication. See:
 
 - `docs/DEPLOYMENT.md`
 - `docs/ROLLBACK.md`
 - `docs/NEEDS_APPROVAL.md`
+
+## Front-end architecture
+
+For this website, the production languages remain semantic HTML, modern CSS and JavaScript/ECMAScript modules. That choice matches the core web technologies Apple’s WebKit team recommends developers understand deeply and keeps the site fast, crawlable and progressively enhanced. Native Apple application technologies such as Swift, SwiftUI and UIKit are not used in a browser build; they are relevant if this portfolio later becomes a native iOS or macOS app.
