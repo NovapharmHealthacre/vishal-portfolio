@@ -30,6 +30,7 @@ test('essential homepage content exists before JavaScript', () => {
   assert.doesNotMatch(html, /data-founder-ai/);
   assert.doesNotMatch(html, /Founder\s*(?:&|&amp;|and)\s*(?:Chief Executive Officer|CEO)/i);
   assert.match(html, /<nav id="site-navigation"/);
+  assert.doesNotMatch(html, /assets\/route-cosmos\.js/);
   assert.doesNotMatch(html, /loading screen/i);
 });
 
@@ -49,7 +50,16 @@ test('primary routes each expose a distinct official NASA observation hero', () 
     assert.match(html, /assets\.science\.nasa\.gov/);
     assert.ok(html.includes(asset), route + ': missing expected NASA asset ' + asset);
     assert.ok(html.includes(credit), route + ': missing observation credit');
+    assert.match(html, /<script src="\/assets\/route-cosmos\.js" defer><\/script>/);
   }
+});
+
+test('route cosmos controller is built as a route-only asset', () => {
+  const file = path.resolve('dist/assets/route-cosmos.js');
+  assert.equal(fs.existsSync(file), true);
+  const script = fs.readFileSync(file, 'utf8');
+  assert.match(script, /data-page-cosmic-hero/);
+  assert.match(script, /requestAnimationFrame/);
 });
 
 test('content security policy permits only same-origin connections', () => {
