@@ -140,7 +140,7 @@ test('retired essay routes use neutral compatibility output', () => {
   const html = fs.readFileSync(path.resolve('dist/essays/why-i-left-swiggy/index.html'), 'utf8');
   assert.match(html, /This page has moved/);
   assert.match(html, /why-i-chose-to-build-in-pharmaceuticals/);
-  assert.match(html, /<meta http-equiv="refresh" content="0; url=https:\/\/vishal\.novapharmhealthcare\.com\/essays\/why-i-chose-to-build-in-pharmaceuticals\/">/);
+  assert.match(html, /<meta http-equiv="refresh" content="0; url=\/essays\/why-i-chose-to-build-in-pharmaceuticals\/">/);
   assert.doesNotMatch(html, /The Story Was Too Simple|This is the correction/i);
 });
 
@@ -148,7 +148,7 @@ test('retired gallery route redirects to the canonical founder profile', () => {
   const html = fs.readFileSync(path.resolve('dist/gallery/index.html'), 'utf8');
   assert.match(html, /<meta name="robots" content="noindex,follow">/);
   assert.match(html, /<link rel="canonical" href="https:\/\/vishal\.novapharmhealthcare\.com\/about\/">/);
-  assert.match(html, /<meta http-equiv="refresh" content="0; url=https:\/\/vishal\.novapharmhealthcare\.com\/about\/">/);
+  assert.match(html, /<meta http-equiv="refresh" content="0; url=\/about\/">/);
   assert.match(html, /This page has moved/);
 });
 
