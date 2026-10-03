@@ -49,6 +49,7 @@ Vishal contributes to Yakuji Nippo and Pharmaceutical Commerce. Verified publish
 - *Parallel Import Frameworks and Risk Considerations*
 - *Compliance-Driven Approaches to Cross-Border Market Entry*
 - *Why Onshoring Alone Won’t Secure Pharma Supply Chains*
+- *DSCSA Can Trace a Package. It Cannot Tell Whether the Next One Will Arrive.*
 
 See [Writing and Media](/media/) for the original English and Japanese publisher links.
 
@@ -69,7 +70,9 @@ Vishal is available for selected conversations on pharmaceutical market access, 
 - [Personal website](https://vishal.novapharmhealthcare.com/)
 - [LinkedIn]({{LINKEDIN_URL}})
 - [NovaPharm Healthcare]({{COMPANY_URL}})
+- [NovaPharm leadership profile](https://novapharmhealthcare.com/leadership/vishal-chakravarty/)
 - [Companies House]({{COMPANIES_HOUSE_URL}})
+- [Wikidata](https://www.wikidata.org/wiki/Q137660690)
 
 ## Contact
 
