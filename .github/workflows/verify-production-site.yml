@@ -75,7 +75,7 @@ jobs:
           grep -Fq '10 essays' <<<"$thinking"
           grep -Fq 'data-page-cosmic-hero' <<<"$thinking"
           grep -Fq 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif' <<<"$thinking"
-          grep -Fq 'Hubble · Ultra Deep Field · NASA/ESA/STScI' <<<"$thinking"
+          grep -Fq 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI' <<<"$thinking"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$media"
           grep -Fq 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png' <<<"$media"
