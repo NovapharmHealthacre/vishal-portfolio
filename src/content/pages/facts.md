@@ -73,6 +73,7 @@ Vishal is available for selected conversations on pharmaceutical market access, 
 - [NovaPharm leadership profile](https://novapharmhealthcare.com/leadership/vishal-chakravarty/)
 - [Companies House]({{COMPANIES_HOUSE_URL}})
 - [Wikidata](https://www.wikidata.org/wiki/Q137660690)
+- [Crunchbase](https://www.crunchbase.com/person/vishal-chakravarty)
 
 ## Contact
 
