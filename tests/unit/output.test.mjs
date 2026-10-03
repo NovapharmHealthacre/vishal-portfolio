@@ -80,7 +80,7 @@ test('unified design and publishing layers are shipped', () => {
   const home = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   const about = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
   const ventures = fs.readFileSync(path.resolve('dist/ventures/index.html'), 'utf8');
-  const css = fs.readFileSync(path.resolve('dist/assets/site.css'), 'utf8');
+  const css = fs.readFileSync(path.resolve('dist/assets/apple-refresh.css'), 'utf8');
   const index = JSON.parse(fs.readFileSync(path.resolve('dist/content-index.json'), 'utf8'));
   const llms = fs.readFileSync(path.resolve('dist/llms.txt'), 'utf8');
 
