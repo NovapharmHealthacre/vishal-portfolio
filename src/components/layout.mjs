@@ -6,7 +6,7 @@ import { escapeHtml, jsonForHtml } from '../lib/html.mjs';
 const scriptHash = (value) => `sha256-${crypto.createHash('sha256').update(value).digest('base64')}`;
 
 const navigationMarkup = (currentPath) => `
-  <header class="site-header" data-site-header>
+  <header class="site-header" data-site-header data-ui-layer="navigation">
     <a class="brand" href="/" aria-label="Vishal Chakravarty — home">
       <span class="brand-mark" aria-hidden="true">VC</span>
       <span class="brand-name">Vishal Chakravarty</span>
@@ -32,7 +32,7 @@ const navigationMarkup = (currentPath) => `
   </header>`;
 
 const footerMarkup = () => `
-  <footer class="site-footer">
+  <footer class="site-footer" data-ui-layer="footer">
     <div class="footer-intro">
       <p class="eyebrow">Vishal Chakravarty</p>
       <h2>Chief Executive Officer,<br>NovaPharm Healthcare Ltd.</h2>
@@ -123,6 +123,7 @@ export const renderPage = ({
     <link rel="alternate" hreflang="x-default" href="${canonical}">
     <link rel="author" href="/about/">
     <link rel="alternate" type="application/json" title="Verified public facts about ${escapeHtml(person.name)}" href="/facts.json">
+    <link rel="alternate" type="application/json" title="Structured public content index" href="/content-index.json">
     <meta property="og:site_name" content="Vishal Chakravarty">
     <meta property="og:locale" content="en_GB">
     <meta property="og:type" content="${ogType}">
@@ -153,6 +154,7 @@ export const renderPage = ({
     <link rel="stylesheet" href="/assets/site.css">
     <link rel="stylesheet" href="/assets/content-fixes.css">
     <link rel="stylesheet" href="/assets/apple-refresh.css">
+    <link rel="stylesheet" href="/assets/unified-system.css">
     ${routeCosmosEnabled ? '<link rel="stylesheet" href="/assets/route-cosmos.css">' : ''}
     <script src="/assets/site.js" defer></script>
     ${routeCosmosEnabled ? '<script src="/assets/route-cosmos.js" defer></script>' : ''}
@@ -161,7 +163,7 @@ export const renderPage = ({
   <body class="${escapeHtml(className)}">
     <a class="skip-link" href="#main">Skip to main content</a>
     ${navigationMarkup(path)}
-    <main id="main" tabindex="-1">${body}</main>
+    <main id="main" tabindex="-1" data-content-layer>${body}</main>
     ${footerMarkup()}
   </body>
 </html>`;
