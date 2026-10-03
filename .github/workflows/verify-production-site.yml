@@ -33,7 +33,10 @@ jobs:
               -H 'Pragma: no-cache' \
               "${SITE_ORIGIN}/?${cache_key}-${attempt}" || true)
             if grep -Fq 'Building a UK-led pharmaceutical company around market access' <<<"$home" \
-              && grep -Fq 'id="nova-field"' <<<"$home" \
+              && grep -Fq 'data-hubble-hero' <<<"$home" \
+              && grep -Fq 'data-real-cosmos' <<<"$home" \
+              && grep -Fq 'assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/' <<<"$home" \
+              && ! grep -Fq 'id="nova-field"' <<<"$home" \
               && grep -Fq 'Pharmaceutical essays' <<<"$home" \
               && ! grep -Fq 'Ask Vishal’s Work' <<<"$home" \
               && ! grep -Fq 'href="/gallery/"' <<<"$home"; then
@@ -113,7 +116,8 @@ jobs:
           - Founder-origin essay: served and indexable
           - Retired essay route: neutral \`noindex,follow\` compatibility page
           - Profile: human-facing copy served without machine-record promotion
-          - Homepage: immersive Nova field hero served without the retired founder AI interface
+          - Homepage: real NASA/ESA Hubble Supernova 1987A hero served with cinematic camera motion
+          - Homepage: retired procedural Nova canvas and founder AI interface are absent
           - Gallery: retired route serves noindex,follow with a destination canonical and instant redirect to About
           - Portrait asset: high-resolution official WebP served
           - Sitemap: cornerstone route included; retired essay and gallery routes excluded
