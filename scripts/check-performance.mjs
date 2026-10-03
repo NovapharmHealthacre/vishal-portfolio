@@ -27,14 +27,13 @@ const files = {
   contentCss: await read('assets/content-fixes.css'),
   themeCss: await read('assets/apple-refresh.css'),
   criticalJs: await read('assets/site.js'),
-  novaFieldJs: await read('assets/nova-field.js'),
   lcpAvif: await read('images/portrait/vishal-chakravarty-960.avif'),
   lcpFallback: await read('images/portrait/vishal-chakravarty-960.jpg'),
 };
 
 const measurements = {
   'Critical JavaScript (Brotli)': [brotliSize(files.criticalJs), limits.criticalJavaScriptBrotli],
-  'All homepage JavaScript including Nova field (Brotli)': [brotliSize(files.criticalJs) + brotliSize(files.novaFieldJs), limits.totalJavaScriptBrotli],
+  'All homepage JavaScript (Brotli)': [brotliSize(files.criticalJs), limits.totalJavaScriptBrotli],
   'All CSS (Brotli)': [brotliSize(files.siteCss) + brotliSize(files.contentCss) + brotliSize(files.themeCss), limits.cssBrotli],
   'Homepage HTML (Brotli)': [brotliSize(files.homepage), limits.homepageHtmlBrotli],
   'LCP portrait AVIF': [files.lcpAvif.byteLength, limits.lcpAvif],
@@ -68,6 +67,18 @@ if (/https?:\/\/[^"']+\.(?:woff2?|ttf|otf)/i.test(homepage + files.siteCss.toStr
 
 if (/<script[^>]+src=["']https?:\/\//i.test(homepage)) {
   violations.push('Third-party runtime script detected on the homepage');
+}
+
+const remoteImageHosts = [...homepage.matchAll(/<img[^>]+src=["'](https?:\/\/[^"'\s>]+)/gi)]
+  .map((match) => {
+    try { return new URL(match[1]).hostname; } catch { return ''; }
+  })
+  .filter(Boolean);
+if (remoteImageHosts.some((host) => host !== 'assets.science.nasa.gov')) {
+  violations.push(`Unexpected remote image host detected: ${[...new Set(remoteImageHosts)].join(', ')}`);
+}
+if (!remoteImageHosts.includes('assets.science.nasa.gov')) {
+  violations.push('Official NASA Hubble image host missing from homepage');
 }
 
 const assetDirectories = await readdir(path.join(dist, 'assets'));
