@@ -1,5 +1,5 @@
-export const verificationDate = '2026-08-22';
-export const profileModifiedDate = '2026-08-22';
+export const verificationDate = '2026-10-03';
+export const profileModifiedDate = '2026-10-03';
 
 export const site = Object.freeze({
   id: 'https://vishal.novapharmhealthcare.com/#website',
@@ -12,6 +12,10 @@ export const site = Object.freeze({
   email: 'vishal@novapharmhealthcare.com',
   correctionEmail: 'vishal@novapharmhealthcare.com',
   linkedIn: 'https://www.linkedin.com/in/vishal-chakravarty',
+  wikidata: 'https://www.wikidata.org/wiki/Q137660690',
+  companiesHousePerson:
+    'https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments',
+  companyProfile: 'https://novapharmhealthcare.com/leadership/vishal-chakravarty/',
 });
 
 export const person = Object.freeze({
@@ -20,6 +24,7 @@ export const person = Object.freeze({
   name: 'Vishal Chakravarty',
   givenName: 'Vishal',
   familyName: 'Chakravarty',
+  alternateName: 'Vishal Om Prakash Chakravarty',
   role: 'Chief Executive Officer, NovaPharm Healthcare Ltd',
   founderRelationship: 'Founder of NovaPharm Healthcare Ltd',
   jobTitle: 'Chief Executive Officer',
@@ -38,7 +43,7 @@ export const person = Object.freeze({
     width: 1440,
     height: 1440,
   },
-  sameAs: [site.linkedIn],
+  sameAs: [site.linkedIn, site.wikidata, site.companiesHousePerson, site.companyProfile],
   knowsAbout: [
     'Pharmaceutical entrepreneurship',
     'Pharmaceutical market access',
@@ -66,6 +71,7 @@ export const company = Object.freeze({
   officialUrl: 'https://novapharmhealthcare.com/',
   companiesHouseUrl:
     'https://find-and-update.company-information.service.gov.uk/company/16716501',
+  linkedInUrl: 'https://www.linkedin.com/company/novapharm-healthcare/',
   description:
     'A UK pharmaceutical company building market-access, licensing, manufacturing and supply capabilities for specialist medicines across regulated markets.',
   currentFocus:
@@ -145,6 +151,17 @@ export const publications = Object.freeze([
       'A supply-resilience argument for combining geographic strategy with qualified redundancy, quality maturity, concentration controls and commercially sustainable continuity planning.',
     english: 'https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains',
   },
+  {
+    publisher: 'Pharmaceutical Commerce',
+    publisherUrl: 'https://www.pharmaceuticalcommerce.com/',
+    publicationType: 'External commentary',
+    date: '2026-08-14',
+    title: 'DSCSA Can Trace a Package. It Cannot Tell Whether the Next One Will Arrive.',
+    subject: 'Pharmaceutical traceability and supply continuity',
+    abstract:
+      'An analysis of the boundary between package-level traceability and the upstream manufacturing, quality, capacity and sourcing signals needed for supply continuity.',
+    english: 'https://www.pharmaceuticalcommerce.com/view/dscsa-can-trace-a-package-it-cannot-tell-you-whether-the-next-one-will-arrive-',
+  },
 ]);
 
 export const publicFacts = Object.freeze([
@@ -179,9 +196,9 @@ export const publicFacts = Object.freeze([
     publicSafe: true, approvedWording: 'Four instalments are published in English and Japanese.', pages: ['/media/', '/facts/'],
   },
   {
-    id: 'M-004', label: 'External publication record', value: 'Five publisher-hosted contributions', status: 'VERIFIED_CURRENT',
-    source: 'Yakuji Nippo and Pharmaceutical Commerce', sourceDate: '2026-07-31', lastVerified: verificationDate,
-    publicSafe: true, approvedWording: 'Five publisher-hosted contributions are verified.', pages: ['/media/', '/facts/'],
+    id: 'M-004', label: 'External publication record', value: 'Six publisher-hosted contributions', status: 'VERIFIED_CURRENT',
+    source: 'Yakuji Nippo and Pharmaceutical Commerce', sourceDate: '2026-08-14', lastVerified: verificationDate,
+    publicSafe: true, approvedWording: 'Six publisher-hosted contributions are verified.', pages: ['/media/', '/facts/'],
   },
 ]);
 

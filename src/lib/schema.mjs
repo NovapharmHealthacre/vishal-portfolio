@@ -21,6 +21,7 @@ export const personSchema = () => ({
   name: person.name,
   givenName: person.givenName,
   familyName: person.familyName,
+  alternateName: person.alternateName,
   url: `${site.origin}/about/`,
   mainEntityOfPage: { '@id': person.profileId },
   image: {
@@ -93,7 +94,7 @@ export const organisationSchema = () => ({
   url: company.officialUrl,
   description: company.description,
   founder: { '@id': person.id },
-  sameAs: [company.companiesHouseUrl],
+  sameAs: [company.companiesHouseUrl, company.linkedInUrl],
 });
 
 export const breadcrumbSchema = (items) => ({

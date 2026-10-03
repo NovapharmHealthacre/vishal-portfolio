@@ -133,6 +133,15 @@ for (const file of htmlFiles) {
     if (person['@id'] !== personId) failures.push(`${rel}: Person id is not canonical`);
     if (person.jobTitle !== 'Chief Executive Officer') failures.push(`${rel}: Person jobTitle must use the approved executive designation`);
     if (person.givenName !== 'Vishal' || person.familyName !== 'Chakravarty') failures.push(`${rel}: Person name parts are incomplete`);
+    if (person.alternateName !== 'Vishal Om Prakash Chakravarty') failures.push(`${rel}: Person alternate identity is incomplete`);
+    for (const sameAs of [
+      'https://www.linkedin.com/in/vishal-chakravarty',
+      'https://www.wikidata.org/wiki/Q137660690',
+      'https://find-and-update.company-information.service.gov.uk/officers/GCJvCvEf20rHFbzF_T9LKAGEJic/appointments',
+      'https://novapharmhealthcare.com/leadership/vishal-chakravarty/',
+    ]) {
+      if (!person.sameAs?.includes(sameAs)) failures.push(`${rel}: Person sameAs missing ${sameAs}`);
+    }
     if (person.hasOccupation?.name !== 'Chief Executive Officer') failures.push(`${rel}: Person occupation is incomplete`);
     if (person.worksFor?.['@id'] !== organizationId) failures.push(`${rel}: Person worksFor must reference the corporate canonical id`);
   }
@@ -141,6 +150,12 @@ for (const file of htmlFiles) {
   if (organization) {
     if (organization['@id'] !== organizationId) failures.push(`${rel}: Organization id is not canonical to the company domain`);
     if (organization.founder?.['@id'] !== personId) failures.push(`${rel}: Organization founder must reference Vishal`);
+    for (const sameAs of [
+      'https://find-and-update.company-information.service.gov.uk/company/16716501',
+      'https://www.linkedin.com/company/novapharm-healthcare/',
+    ]) {
+      if (!organization.sameAs?.includes(sameAs)) failures.push(`${rel}: Organization sameAs missing ${sameAs}`);
+    }
   }
 
   if (!noIndex && route !== '/') {
