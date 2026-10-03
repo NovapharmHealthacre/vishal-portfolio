@@ -1,4 +1,4 @@
-import { company, person, profileModifiedDate, publications, site, verificationDate } from '../data/entity.mjs';
+import { company, person, profileModifiedDate, publicFacts, publications, site, verificationDate } from '../data/entity.mjs';
 import { absolute, routeModified } from '../data/site.mjs';
 
 export const websiteSchema = () => ({
@@ -47,6 +47,27 @@ export const personSchema = () => ({
   description: person.shortBio,
   knowsAbout: person.knowsAbout,
   sameAs: person.sameAs,
+  subjectOf: [
+    ...publications.map((publication) => ({
+      '@type': 'Article',
+      '@id': `${publication.english}#article`,
+      url: publication.english,
+      headline: publication.title,
+      publisher: {
+        '@type': 'Organization',
+        name: publication.publisher,
+        url: publication.publisherUrl,
+      },
+    })),
+    ...publicFacts
+      .filter((fact) => fact.id === 'P-020' && fact.sourceUrl)
+      .map((fact) => ({
+        '@type': 'WebPage',
+        '@id': `${fact.sourceUrl}#vishal-chakravarty`,
+        url: fact.sourceUrl,
+        name: fact.label,
+      })),
+  ],
 });
 
 export const profileSchema = () => ({
