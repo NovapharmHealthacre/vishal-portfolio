@@ -24,6 +24,7 @@ test('entity facts match the verified ledger', () => {
     site.wikidata,
     site.companiesHousePerson,
     site.companyProfile,
+    site.crunchbase,
   ]);
   assert.equal(publications.length, 6);
   assert.equal(publications.filter((publication) => publication.publisher === 'Yakuji Nippo').length, 4);
