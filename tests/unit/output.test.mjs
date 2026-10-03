@@ -37,6 +37,7 @@ test('essential homepage content exists before JavaScript', () => {
 
 test('primary routes each expose a distinct official NASA observation hero', () => {
   const expectations = [
+    ['about', 'STScI-01EVT8DP1YM9FYPF0Y33VY7ANB.tif', 'Hubble · NGC 1300 · NASA/ESA · Hubble Heritage Team'],
     ['ventures', 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png', 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI'],
     ['thinking', 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif', 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI'],
     ['media', 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png', 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI'],
@@ -61,6 +62,8 @@ test('route cosmos stylesheet is shipped as a route-only asset', () => {
   assert.equal(fs.existsSync(file), true);
   const stylesheet = fs.readFileSync(file, 'utf8');
   assert.match(stylesheet, /page-hero-cosmic/);
+  assert.match(stylesheet, /page-hero-about/);
+  assert.match(stylesheet, /about-hero-portrait/);
   assert.match(stylesheet, /page-hero-ventures/);
   assert.match(stylesheet, /page-hero-contact/);
 });
@@ -130,6 +133,12 @@ test('public facts expose only approved public-safe records and canonical entity
 test('about page exposes a concise human-readable entity snapshot', () => {
   const html = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf8');
   const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
+  assert.match(main, /data-page-cosmic-hero/);
+  assert.match(main, /STScI-01EVT8DP1YM9FYPF0Y33VY7ANB\.tif/);
+  assert.match(main, /about-hero-portrait/);
+  assert.match(main, /vishal-chakravarty-960\.webp/);
+  assert.match(main, /Hubble · NGC 1300 · NASA\/ESA · Hubble Heritage Team/);
+  assert.match(main, /Explore the work/);
   assert.match(main, /At a glance/);
   assert.match(main, /Chief Executive Officer/);
   assert.match(main, /NovaPharm Healthcare Ltd/);

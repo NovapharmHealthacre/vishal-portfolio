@@ -320,3 +320,152 @@
     will-change: auto;
   }
 }
+
+
+/* ==========================================================================
+   Founder-first About hero and route actions
+   ========================================================================== */
+
+.page-cosmic-action {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  width: fit-content;
+  margin-top: 2.25rem;
+  padding: .35rem 0 .7rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  color: #fff;
+  font-size: clamp(1rem, 1.35vw, 1.22rem);
+  font-weight: 540;
+  line-height: 1.1;
+  text-decoration: none;
+  transition: border-color 180ms ease, opacity 180ms ease;
+}
+
+.page-cosmic-action:hover {
+  border-color: #fff;
+  opacity: .82;
+}
+
+.page-hero-about {
+  justify-content: center;
+}
+
+.page-hero-about .page-cosmos-image {
+  object-position: 42% 50%;
+  filter: brightness(.32) saturate(.62) contrast(1.1);
+}
+
+.page-hero-about .page-cosmos-optics {
+  background:
+    radial-gradient(circle at 72% 48%, rgba(0, 0, 0, .06) 0 16%, rgba(0, 0, 0, .28) 48%, rgba(0, 0, 0, .7) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, .95) 0%, rgba(0, 0, 0, .78) 30%, rgba(0, 0, 0, .34) 58%, rgba(0, 0, 0, .2) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, .38) 0%, transparent 38%, rgba(0, 0, 0, .78) 100%);
+}
+
+.page-hero-about .page-cosmic-copy {
+  width: min(48vw, 45rem);
+}
+
+.page-hero-about .page-cosmic-copy h1 {
+  max-width: 7.4ch;
+}
+
+.page-hero-about .page-deck {
+  max-width: 39rem;
+}
+
+.about-hero-portrait {
+  position: absolute;
+  right: max(2.75vw, calc((100vw - 1520px) / 2));
+  bottom: 0;
+  z-index: 1;
+  display: block;
+  width: min(42vw, 38rem);
+  height: min(78vh, 49rem);
+  margin: 0;
+  overflow: hidden;
+  background: #f5f5f7;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 100%);
+}
+
+.about-hero-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 10%;
+  filter: grayscale(1) contrast(1.04) brightness(.96);
+}
+
+@media (max-width: 980px) {
+  .page-hero-about .page-cosmic-copy {
+    width: min(55vw, 40rem);
+  }
+
+  .about-hero-portrait {
+    right: 0;
+    width: 46vw;
+    height: min(72vh, 44rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .page-hero-about {
+    justify-content: flex-start;
+    padding-top: 8.25rem;
+    padding-bottom: 9.5rem;
+  }
+
+  .page-hero-about .page-cosmic-copy {
+    z-index: 3;
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  .page-hero-about .page-cosmic-copy h1 {
+    max-width: 7.5ch;
+  }
+
+  .page-hero-about .page-deck {
+    max-width: 88vw;
+  }
+
+  .page-hero-about .page-cosmos-image {
+    object-position: 52% 48%;
+    filter: brightness(.23) saturate(.58) contrast(1.08);
+  }
+
+  .page-hero-about .page-cosmos-optics {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, .92) 0%, rgba(0, 0, 0, .72) 35%, rgba(0, 0, 0, .26) 63%, rgba(0, 0, 0, .8) 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, .86), rgba(0, 0, 0, .24));
+  }
+
+  .about-hero-portrait {
+    right: 0;
+    bottom: 0;
+    width: 76vw;
+    height: 53vh;
+    opacity: .78;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 100%);
+  }
+
+  .page-hero-about .page-observation {
+    bottom: 1.75rem;
+    max-width: 62vw;
+  }
+
+  .page-hero-about .page-cosmic-credit {
+    right: 5vw;
+    bottom: 1.75rem;
+    max-width: 34vw;
+  }
+
+  .page-cosmic-action {
+    margin-top: 1.75rem;
+  }
+}
