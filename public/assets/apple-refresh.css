@@ -1191,8 +1191,7 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .essay-card,
-  .gallery-item img {
+  .essay-card {
     transition: none;
   }
 }
@@ -1475,7 +1474,6 @@ a {
 @media print {
   .site-header,
   .site-footer,
-  .founder-ai-dialog,
   .hero-actions,
   .round-link {
     display: none !important;
