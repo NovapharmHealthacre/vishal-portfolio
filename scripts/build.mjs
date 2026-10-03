@@ -201,6 +201,7 @@ write(
         status: company.status,
         officialUrl: company.officialUrl,
         linkedInUrl: company.linkedInUrl,
+        wikidataUrl: company.wikidataUrl,
         description: company.description,
         currentFocus: company.currentFocus,
       },
