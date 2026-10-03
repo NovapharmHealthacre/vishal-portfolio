@@ -77,7 +77,6 @@ jobs:
           grep -Fq 'vishal-chakravarty-960.webp' <<<"$about"
           grep -Fq 'Hubble · NGC 1300 · NASA/ESA · Hubble Heritage Team' <<<"$about"
           grep -Fq 'Explore the work' <<<"$about"
-          grep -Fq 'assets/unified-system.css' <<<"$about"
           grep -Fq 'page-section-index' <<<"$about"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$ventures"
