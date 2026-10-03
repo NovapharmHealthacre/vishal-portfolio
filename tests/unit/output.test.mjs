@@ -33,6 +33,25 @@ test('essential homepage content exists before JavaScript', () => {
   assert.doesNotMatch(html, /loading screen/i);
 });
 
+test('primary routes each expose a distinct official NASA observation hero', () => {
+  const expectations = [
+    ['ventures', 'STScI-01GA6KKWG229B16K4Q38CH3BXS.png', 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI'],
+    ['thinking', 'STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif', 'Hubble · Ultra Deep Field · NASA/ESA/STScI'],
+    ['media', 'STScI-01GFRYYRTCTMX197BY86MBFCR9.png', 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI'],
+    ['facts', 'STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png', 'Webb · First Deep Field · NASA/ESA/CSA/STScI'],
+    ['contact', '324350main_11_full-1.jpg', 'Earth at Night · NASA/NOAA'],
+  ];
+
+  for (const [route, asset, credit] of expectations) {
+    const html = fs.readFileSync(path.resolve('dist/' + route + '/index.html'), 'utf8');
+    assert.match(html, /data-page-cosmic-hero/);
+    assert.match(html, /data-page-cosmos/);
+    assert.match(html, /assets\.science\.nasa\.gov/);
+    assert.ok(html.includes(asset), route + ': missing expected NASA asset ' + asset);
+    assert.ok(html.includes(credit), route + ': missing observation credit');
+  }
+});
+
 test('content security policy permits only same-origin connections', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /connect-src &#39;self&#39;; frame-src &#39;none&#39;/);
