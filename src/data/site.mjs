@@ -23,12 +23,12 @@ export const canonicalRoutes = Object.freeze([
 export const routeModified = Object.freeze({
   '/': '2026-10-03',
   '/about/': '2026-10-03',
-  '/ventures/': '2026-10-02',
-  '/thinking/': '2026-10-02',
+  '/ventures/': '2026-10-03',
+  '/thinking/': '2026-10-03',
   '/media/': '2026-10-03',
-  '/speaking-partnerships/': '2026-10-02',
+  '/speaking-partnerships/': '2026-10-03',
   '/facts/': '2026-10-03',
-  '/contact/': '2026-10-02',
+  '/contact/': '2026-10-03',
   '/privacy/': '2026-10-02',
 });
 
