@@ -20,10 +20,9 @@ public: true
 
 ## Professional focus
 
-Vishal’s work sits at the intersection of pharmaceutical product strategy and execution. His principal areas of focus include:
+Vishal’s work connects pharmaceutical product strategy with execution across:
 
-- pharmaceutical market access;
-- specialist medicines;
+- market access and specialist medicines;
 - product and portfolio selection;
 - UK–EU regulatory and commercial strategy;
 - manufacturing and CMO or CDMO partnerships;
@@ -36,13 +35,13 @@ Vishal’s work sits at the intersection of pharmaceutical product strategy and 
 
 {{COMPANY_NAME}} is a UK-registered pharmaceutical company established in 2025. It is being built around market access, specialist medicines, manufacturing partnerships, licensing pathways and resilient supply across regulated markets.
 
-Vishal leads the company’s strategy, product selection, partnerships, commercial development and operating-platform design.
+Vishal leads company strategy, product selection, partnerships, commercial development and operating-platform design.
 
 [Explore NovaPharm Healthcare]({{COMPANY_URL}}) or [view the company record]({{COMPANIES_HOUSE_URL}}).
 
 ## External publications
 
-Vishal contributes to Yakuji Nippo and Pharmaceutical Commerce. Verified publisher-hosted work includes:
+Vishal contributes to Yakuji Nippo and Pharmaceutical Commerce. Publisher-hosted work includes:
 
 - *UK and EU Pharmaceutical Market Access Pathways After Brexit*
 - *Regulatory and Compliance Considerations Post-Brexit*
@@ -69,9 +68,9 @@ The identity and executive role shown on this site can also be cross-checked aga
 - [Choosing a CMO for Regulated Markets](/essays/choosing-a-cmo-for-regulated-markets/)
 - [Technology Transfer Starts Before the Formula Moves](/essays/technology-transfer-before-formula-moves/)
 
-## Speaking and editorial topics
+## Speaking and editorial
 
-Vishal is available for selected conversations on pharmaceutical market access, post-Brexit market entry, manufacturing partnerships, technology transfer, supply resilience, specialist medicines and building companies in regulated markets.
+Selected conversations cover pharmaceutical market access, post-Brexit market entry, manufacturing partnerships, technology transfer, supply resilience, specialist medicines and building companies in regulated markets.
 
 ## Official links
 
