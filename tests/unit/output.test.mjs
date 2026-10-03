@@ -19,7 +19,7 @@ test('essential homepage content exists before JavaScript', () => {
   assert.match(html, /<link rel="alternate" hreflang="x-default" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
   assert.match(html, /<meta property="og:image:type" content="image\/webp">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
-  assert.match(html, /Chief Executive Officer · Founder of NovaPharm Healthcare Ltd/);
+  assert.match(html, /Pharmaceuticals · Market access · Company building/);
   assert.match(html, /data-hubble-hero/);
   assert.match(html, /data-real-cosmos/);
   assert.match(html, /assets\.science\.nasa\.gov\/dynamicimage\/assets\/science\/missions\/hubble\/releases\/1999\/02\/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822\.tif/);
