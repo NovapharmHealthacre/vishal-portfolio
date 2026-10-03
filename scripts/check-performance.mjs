@@ -8,7 +8,7 @@ const dist = path.join(root, 'dist');
 const limits = {
   criticalJavaScriptBrotli: 15 * 1024,
   totalJavaScriptBrotli: 35 * 1024,
-  cssBrotli: 20 * 1024,
+  cssBrotli: 30 * 1024,
   homepageHtmlBrotli: 35 * 1024,
   lcpAvif: 180 * 1024,
   lcpFallback: 280 * 1024,
@@ -23,7 +23,9 @@ const brotliSize = (buffer) => brotliCompressSync(buffer, {
 
 const files = {
   homepage: await read('index.html'),
-  css: await read('assets/site.css'),
+  siteCss: await read('assets/site.css'),
+  contentCss: await read('assets/content-fixes.css'),
+  themeCss: await read('assets/apple-refresh.css'),
   criticalJs: await read('assets/site.js'),
   novaFieldJs: await read('assets/nova-field.js'),
   lcpAvif: await read('images/portrait/vishal-chakravarty-960.avif'),
@@ -33,14 +35,16 @@ const files = {
 const measurements = {
   'Critical JavaScript (Brotli)': [brotliSize(files.criticalJs), limits.criticalJavaScriptBrotli],
   'All homepage JavaScript including Nova field (Brotli)': [brotliSize(files.criticalJs) + brotliSize(files.novaFieldJs), limits.totalJavaScriptBrotli],
-  'Global CSS (Brotli)': [brotliSize(files.css), limits.cssBrotli],
+  'All CSS (Brotli)': [brotliSize(files.siteCss) + brotliSize(files.contentCss) + brotliSize(files.themeCss), limits.cssBrotli],
   'Homepage HTML (Brotli)': [brotliSize(files.homepage), limits.homepageHtmlBrotli],
   'LCP portrait AVIF': [files.lcpAvif.byteLength, limits.lcpAvif],
   'LCP portrait JPEG fallback': [files.lcpFallback.byteLength, limits.lcpFallback],
 };
 
 const initialTransfer = brotliSize(files.homepage)
-  + brotliSize(files.css)
+  + brotliSize(files.siteCss)
+  + brotliSize(files.contentCss)
+  + brotliSize(files.themeCss)
   + brotliSize(files.criticalJs)
   + files.lcpAvif.byteLength;
 measurements['Initial homepage transfer estimate'] = [initialTransfer, limits.initialTransferBrotli];
@@ -58,7 +62,7 @@ for (const [label, [actual, limit]] of Object.entries(measurements)) {
 console.log(`${domNodes <= limits.domNodes ? 'PASS' : 'FAIL'} Homepage DOM estimate: ${domNodes} / ${limits.domNodes} nodes`);
 if (domNodes > limits.domNodes) violations.push('Homepage DOM estimate exceeds its budget');
 
-if (/https?:\/\/[^"']+\.(?:woff2?|ttf|otf)/i.test(homepage + files.css.toString('utf8'))) {
+if (/https?:\/\/[^"']+\.(?:woff2?|ttf|otf)/i.test(homepage + files.siteCss.toString('utf8') + files.contentCss.toString('utf8') + files.themeCss.toString('utf8'))) {
   violations.push('Remote font reference detected');
 }
 
