@@ -34,14 +34,14 @@ const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, mil
 const sitemap = fs.readFileSync(path.resolve('dist/sitemap.xml'), 'utf8');
 const canonicalRoutes = [...sitemap.matchAll(/<loc>https:\/\/vishal\.novapharmhealthcare\.com([^<]*)<\/loc>/g)].map((match) => match[1]);
 const compatibilityRoutes = [
-  '/about.html',
-  '/companies.html',
-  '/essays.html',
-  '/publications.html',
-  '/profiles.html',
-  '/gallery/',
-  '/essays/why-i-left-swiggy/',
-  '/essays/from-swiggy-to-mhra/',
+  { route: '/about.html', destination: '/about/' },
+  { route: '/companies.html', destination: '/ventures/' },
+  { route: '/essays.html', destination: '/thinking/' },
+  { route: '/publications.html', destination: '/media/' },
+  { route: '/profiles.html', destination: '/facts/' },
+  { route: '/gallery/', destination: '/about/' },
+  { route: '/essays/why-i-left-swiggy/', destination: '/essays/why-i-chose-to-build-in-pharmaceuticals/' },
+  { route: '/essays/from-swiggy-to-mhra/', destination: '/essays/why-i-chose-to-build-in-pharmaceuticals/' },
 ];
 const screenshotRoutes = [
   '/',
@@ -189,12 +189,14 @@ try {
       ensure((await homeCheck.locator('#nova-field').count()) === 1, `${browserName}: immersive hero canvas missing`);
       await homeCheck.close();
 
-      for (const route of compatibilityRoutes) {
+      for (const { route, destination } of compatibilityRoutes) {
         const page = await desktop.newPage();
         attachConsole(page);
         const response = await page.goto(`${origin}${route}`, { waitUntil: 'domcontentloaded' });
         ensure(response?.status() === 200, `${browserName} compatibility ${route}: HTTP ${response?.status()}`);
-        await auditDocument(page, `${browserName} compatibility ${route}`, { expectNoIndex: true });
+        await page.waitForURL(`${origin}${destination}`, { timeout: 10_000 });
+        ensure(page.url() === `${origin}${destination}`, `${browserName} compatibility ${route}: redirected to ${page.url()} instead of ${destination}`);
+        await auditDocument(page, `${browserName} compatibility ${route} → ${destination}`);
         browserResult.compatibilityRoutes += 1;
         await page.close();
       }
