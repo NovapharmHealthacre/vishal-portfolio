@@ -44,7 +44,6 @@ const requiredPersonSameAs = [
   site.wikidata,
   site.companiesHousePerson,
   site.companyProfile,
-  site.crunchbase,
 ];
 if (
   person.sameAs.length !== requiredPersonSameAs.length ||
