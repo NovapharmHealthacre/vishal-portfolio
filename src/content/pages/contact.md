@@ -9,6 +9,10 @@ You can also connect through [LinkedIn]({{LINKEDIN_URL}}).
 
 ## Relevant conversations
 
+The most useful conversations usually involve a specific operating question, product, market or decision.
+
+Relevant areas include:
+
 - pharmaceutical market access and product strategy;
 - manufacturing, CMO and CDMO partnerships;
 - technology transfer and launch planning;
@@ -16,9 +20,11 @@ You can also connect through [LinkedIn]({{LINKEDIN_URL}}).
 - UK–EU and cross-border market entry;
 - founder roundtables, speaking and editorial work.
 
-## Useful context to include
+## What to include
 
-- the subject and purpose of the conversation;
+A concise first message is enough. Useful context includes:
+
+- the subject and purpose;
 - the organisation and people involved;
 - the product, market or commercial context where relevant;
 - the intended format, audience or decision timeline;
