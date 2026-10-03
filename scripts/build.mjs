@@ -101,6 +101,18 @@ const portraitImageXml = () => `
       <image:caption>${xmlEscape(person.image.description)}</image:caption>
     </image:image>`;
 
+const iphexImageXml = () => `
+    <image:image>
+      <image:loc>${xmlEscape(new URL('/images/media/vishal-chakravarty-iphex-2026-working.webp', site.origin).href)}</image:loc>
+      <image:title>Vishal Chakravarty at iPHEX 2026</image:title>
+      <image:caption>Vishal Chakravarty reviewing meeting material during iPHEX 2026.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>${xmlEscape(new URL('/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp', site.origin).href)}</image:loc>
+      <image:title>Vishal Chakravarty — iPHEX 2026 overseas delegate</image:title>
+      <image:caption>Vishal Chakravarty at iPHEX 2026 beside participating-country flags.</image:caption>
+    </image:image>`;
+
 const sitemap = (articles) => {
   const staticEntries = canonicalRoutes.map((route) => ({ route, modified: routeModified[route] }));
   const articleEntries = articles.map((article) => ({ route: article.canonicalPath, modified: article.modified }));
@@ -111,7 +123,7 @@ const sitemap = (articles) => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${[...staticEntries, ...articleEntries].map(({ route, modified }) => `  <url>
     <loc>${xmlEscape(new URL(route, site.origin).href)}</loc>
-    <lastmod>${modified}</lastmod>${route === '/about/' ? portraitImageXml() : ''}
+    <lastmod>${modified}</lastmod>${route === '/about/' ? portraitImageXml() : ''}${route === '/media/' ? iphexImageXml() : ''}
   </url>`).join('\n')}
 </urlset>`;
 };
@@ -196,6 +208,16 @@ const contentIndex = (pages, articles) => ({
     published: article.published,
     modified: article.modified,
   })),
+  appearances: [
+    {
+      name: 'iPHEX 2026',
+      type: 'Overseas business delegate',
+      dates: ['2026-09-07', '2026-09-09'],
+      canonical: `${site.origin}/media/#iphex-2026`,
+      officialRecord: 'https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026',
+      organisation: company.name,
+    },
+  ],
 });
 
 const llmsText = (pages, articles) => `# Vishal Chakravarty
@@ -215,6 +237,10 @@ ${Object.values(pages)
 
 ## Selected essays
 ${articles.slice(0, 10).map((article) => `- [${article.title}](${new URL(article.canonicalPath, site.origin).href}): ${article.summary}`).join('\n')}
+
+## Verified industry participation
+- [iPHEX 2026 field note](${site.origin}/media/#iphex-2026): Listed by the official iPHEX overseas delegates record under the United Kingdom representing NovaPharm Healthcare Ltd.
+- [Official iPHEX 2026 overseas delegate record](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026)
 
 ## Machine-readable records
 - [Verified facts](${site.origin}/facts.json)
