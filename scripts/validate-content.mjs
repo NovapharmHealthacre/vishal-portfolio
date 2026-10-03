@@ -39,7 +39,16 @@ for (const article of articles) {
   if (!fs.existsSync(path.join(root, 'public', article.socialImage.replace(/^\//, '')))) failures.push(`${article.slug}: missing social image ${article.socialImage}`);
 }
 
-if (person.sameAs.length !== 1 || person.sameAs[0] !== site.linkedIn) failures.push('Person sameAs must contain verified LinkedIn only');
+const requiredPersonSameAs = [
+  site.linkedIn,
+  site.wikidata,
+  site.companiesHousePerson,
+  site.companyProfile,
+];
+if (
+  person.sameAs.length !== requiredPersonSameAs.length ||
+  requiredPersonSameAs.some((url) => !person.sameAs.includes(url))
+) failures.push('Person sameAs must contain the approved public identity references');
 if (company.incorporationDate !== '2025-09-15') failures.push('Company incorporation date drift');
 if (publicFacts.some((fact) => !fact.id || !fact.status || !fact.source || !fact.sourceDate || !fact.lastVerified || fact.publicSafe !== true || !fact.approvedWording || !fact.pages?.length)) failures.push('Malformed public fact');
 
