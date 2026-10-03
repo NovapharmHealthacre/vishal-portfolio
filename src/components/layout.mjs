@@ -35,19 +35,18 @@ const footerMarkup = () => `
   <footer class="site-footer" data-ui-layer="footer">
     <div class="footer-intro">
       <p class="eyebrow">Vishal Chakravarty</p>
-      <h2>Chief Executive Officer,<br>NovaPharm Healthcare Ltd.</h2>
-      <p class="footer-founder-role">Founder of NovaPharm Healthcare Ltd.</p>
+      <h2>Pharmaceuticals, market access<br>and company building.</h2>
     </div>
     <div class="footer-grid">
       <div>
-        <p>${escapeHtml(person.proposition)}</p>
+        <p>Work across medicines, manufacturing, supply, regulated markets and the systems connecting them.</p>
       </div>
       <nav aria-label="Footer navigation">
         <a href="/about/">About</a>
-        <a href="/ventures/">Ventures</a>
+        <a href="/ventures/">NovaPharm</a>
         <a href="/thinking/">Thinking</a>
         <a href="/media/">Media</a>
-        <a href="/facts/">Profile</a>
+        <a href="/facts/">Public record</a>
         <a href="/privacy/">Privacy</a>
       </nav>
       <div class="footer-contact">
@@ -57,7 +56,7 @@ const footerMarkup = () => `
     </div>
     <div class="footer-base">
       <span>© ${verificationDate.slice(0, 4)} Vishal Chakravarty</span>
-      <span>Pharmaceutical entrepreneurship · Market access · Regulated markets</span>
+      <span>Pharmaceuticals · Market access · Regulated markets</span>
     </div>
   </footer>`;
 
@@ -87,6 +86,7 @@ export const renderPage = ({
 }) => {
   const canonical = absolute(path);
   const routeCosmosEnabled = ['about-page', 'ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].includes(className);
+  const nasaAssetsEnabled = routeCosmosEnabled || className === 'home-page';
   const ogType = path.startsWith('/essays/') ? 'article' : ['/about/', '/facts/'].includes(path) ? 'profile' : 'website';
   const imageType = socialImage.endsWith('.webp') ? 'image/webp' : socialImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const schemaScripts = schemas.map((schema) => jsonForHtml(schema));
@@ -149,6 +149,7 @@ export const renderPage = ({
     <meta name="color-scheme" content="light">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
+    ${nasaAssetsEnabled ? '<link rel="preconnect" href="https://assets.science.nasa.gov" crossorigin>' : ''}
     <link rel="alternate" type="application/rss+xml" title="Thinking by Vishal Chakravarty" href="/rss.xml">
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
     <link rel="stylesheet" href="/assets/site.css">
