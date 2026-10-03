@@ -54,6 +54,7 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.entityIds.profilePage, 'https://vishal.novapharmhealthcare.com/about/#profile');
   assert.equal(facts.entityIds.organization, 'https://novapharmhealthcare.com/#organization');
   assert.equal(facts.entityIds.organizationWebsite, 'https://novapharmhealthcare.com/#website');
+  assert.equal(facts.company.linkedInUrl, 'https://www.linkedin.com/company/novapharm-healthcare/');
   assert.equal(facts.facts.length, 7);
   assert.equal(facts.facts.every((fact) => fact.publicSafe === true), true);
   assert.equal(facts.person.role, 'Chief Executive Officer, NovaPharm Healthcare Ltd');
