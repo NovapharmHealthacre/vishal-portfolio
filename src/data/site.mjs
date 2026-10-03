@@ -51,9 +51,9 @@ export const defaultSocialImage = '/images/social/default-og.jpg';
 
 export const pageMeta = Object.freeze({
   home: {
-    title: 'Vishal Chakravarty | Founder & CEO, NovaPharm Healthcare',
+    title: 'Vishal Chakravarty | CEO, NovaPharm Healthcare',
     description:
-      'Vishal Chakravarty is Founder and Chief Executive Officer of NovaPharm Healthcare Ltd, working across pharmaceutical market access, specialist medicines, manufacturing partnerships and resilient supply.',
+      'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and the company’s founder, working across pharmaceutical market access, specialist medicines, manufacturing partnerships and resilient supply.',
     path: '/',
     modified: routeModified['/'],
   },
