@@ -4616,3 +4616,29 @@ h3 {
     transition: none;
   }
 }
+
+
+/* Narrow-screen integrity: editorial headings must never inherit desktop flex minimums. */
+@media (max-width: 720px) {
+  .home-page .writing .section-heading {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .home-page .writing .section-heading > *,
+  .home-page .writing .section-heading h2,
+  .home-page .writing .section-heading .eyebrow {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .home-page .writing .section-heading .text-link {
+    width: auto;
+    justify-self: start;
+  }
+}
