@@ -14,7 +14,7 @@ test('production output preserves ownership and custom-domain files', () => {
 test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
-  assert.match(html, /<title>Vishal Chakravarty \| CEO, NovaPharm Healthcare<\/title>/);
+  assert.match(html, /<title>Vishal Chakravarty \| Pharmaceuticals, Market Access &amp; Company Building<\/title>/);
   assert.match(html, /<link rel="alternate" hreflang="en-GB" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
   assert.match(html, /<link rel="alternate" hreflang="x-default" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
   assert.match(html, /<meta property="og:image:type" content="image\/webp">/);
