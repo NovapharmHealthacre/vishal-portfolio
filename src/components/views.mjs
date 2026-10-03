@@ -106,8 +106,8 @@ const nasaRouteHero = ({
   foreground = '',
 }) => `
   <section class="page-hero page-hero-cosmic page-hero-${variant}" data-page-cosmic-hero aria-labelledby="${variant}-hero-title">
-    <div class="page-cosmos" data-page-cosmos aria-hidden="true">
-      <img
+    <div class="page-cosmos${image ? '' : ' page-cosmos-owned'}" data-page-cosmos aria-hidden="true">
+      ${image ? `<img
         class="page-cosmos-image"
         src="${image}?w=1200"
         srcset="${image}?w=720 720w, ${image}?w=1200 1200w, ${image}?w=1800 1800w"
@@ -116,7 +116,7 @@ const nasaRouteHero = ({
         height="${height}"
         alt=""
         fetchpriority="high"
-        decoding="async">
+        decoding="async">` : '<div class="nova-signal-field"><span></span><span></span><span></span><span></span><span></span><span></span></div>'}
       <div class="page-cosmos-optics"></div>
     </div>
     ${foreground}
@@ -130,7 +130,7 @@ const nasaRouteHero = ({
     <div class="page-observation" aria-label="Observation details">
       ${meta.map((item) => `<span>${item}</span>`).join('')}
     </div>
-    <a class="page-cosmic-credit" href="${source}" target="_blank" rel="noopener noreferrer">${credit}</a>
+    ${source && credit ? `<a class="page-cosmic-credit" href="${source}" target="_blank" rel="noopener noreferrer">${credit}</a>` : '<span class="page-cosmic-credit page-cosmic-credit-owned">Nova signal system</span>'}
   </section>`;
 
 export const renderHome = (articles) => {
@@ -239,12 +239,12 @@ export const renderVentures = (page) => {
     eyebrow: 'NovaPharm Healthcare',
     title: 'Building the route<br>from product to market.',
     deck: 'Product strategy, regulatory pathways, manufacturing, supply and commercial market entry — connected as one operating system.',
-    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01GA6KKWG229B16K4Q38CH3BXS.png',
-    width: 14575,
-    height: 8441,
-    source: 'https://science.nasa.gov/asset/webb/cosmic-cliffs-in-the-carina-nebula-nircam-image/',
-    credit: 'Webb · Cosmic Cliffs · NASA/ESA/CSA/STScI',
-    meta: ['NGC 3324 · Carina', 'JWST · NIRCam', '7,600 light-years'],
+    image: '',
+    width: 0,
+    height: 0,
+    source: '',
+    credit: '',
+    meta: ['Product', 'Regulation', 'Manufacturing', 'Supply'],
     action: `<a class="page-cosmic-action" href="${company.officialUrl}" target="_blank" rel="noopener noreferrer">Explore NovaPharm <span aria-hidden="true">↗</span></a>`,
   });
   const summary = routeSummary({
@@ -270,12 +270,12 @@ export const renderThinking = (articles) => {
     eyebrow: 'Essays on pharmaceuticals and regulated markets',
     title: 'Essays from<br><em>the work.</em>',
     deck: 'Original writing on market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
-    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/09/STScI-01EVVM9R75RVTEHV4R6SDT34D3.tif',
-    width: 3100,
-    height: 3100,
-    source: 'https://science.nasa.gov/asset/hubble/hubble-ultra-deep-field/',
-    credit: 'Hubble · Ultra Deep Field · NASA/ESA · HUDF Team/STScI',
-    meta: ['HUDF · Deep Field Survey', 'Hubble · ACS', 'Thousands of galaxies'],
+    image: '',
+    width: 0,
+    height: 0,
+    source: '',
+    credit: '',
+    meta: ['Primary sources', 'Operator analysis', 'Regulated markets'],
   });
   const groups = groupedThinking(articles);
   const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><nav class="thinking-topic-nav" aria-label="Essay topics">${groups.map((group) => `<a href="#${group.id}">${escapeHtml(group.label)}</a>`).join('')}</nav>${groups.map((group) => `<section class="thinking-topic" id="${group.id}" aria-labelledby="${group.id}-title"><header class="thinking-topic-header"><p class="eyebrow">Topic</p><h2 id="${group.id}-title">${escapeHtml(group.label)}</h2><span>${group.articles.length} ${group.articles.length === 1 ? 'essay' : 'essays'}</span></header><div class="essay-list essay-list-large">${group.articles.map(articleCard).join('')}</div></section>`).join('')}</section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Regulatory and market-access pieces are reviewed on a 90-day cycle. Operational pharmaceutical pieces are reviewed on a 180-day cycle. Founder essays are updated only when the substance changes.</p></aside>`;
@@ -299,12 +299,12 @@ export const renderMedia = (page) => {
     eyebrow: 'Media & publications',
     title: 'Published<br>elsewhere.',
     deck: 'Publisher-hosted analysis, press resources and a concise media profile — with primary sources linked directly.',
-    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/10/STScI-01GFRYYRTCTMX197BY86MBFCR9.png',
-    width: 1987,
-    height: 1817,
-    source: 'https://science.nasa.gov/asset/webb/pillars-of-creation-miri-image/',
-    credit: 'Webb · Pillars of Creation · NASA/ESA/CSA/STScI',
-    meta: ['M16 · Eagle Nebula', 'JWST · MIRI', 'Infrared observation'],
+    image: '',
+    width: 0,
+    height: 0,
+    source: '',
+    credit: '',
+    meta: ['Publisher-hosted', 'Yakuji Nippo', 'Pharmaceutical Commerce'],
   });
   const summary = routeSummary({
     eyebrow: 'Published record',
@@ -341,12 +341,12 @@ export const renderFacts = (page) => {
     eyebrow: 'Public record',
     title: 'Public record.',
     deck: 'Selected facts, published work and independent sources — separated from narrative biography.',
-    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01G8H15R2PGEXQD7TYYBFJ3FT4.png',
-    width: 4537,
-    height: 4630,
-    source: 'https://science.nasa.gov/asset/webb/webbs-first-deep-field-nircam-compass-image/',
-    credit: 'Webb · First Deep Field · NASA/ESA/CSA/STScI',
-    meta: ['SMACS 0723', 'JWST · NIRCam', 'Lensing galaxy cluster'],
+    image: '',
+    width: 0,
+    height: 0,
+    source: '',
+    credit: '',
+    meta: ['Companies House', 'Publishers', 'Independent records'],
   });
   const summary = routeSummary({
     eyebrow: 'Verification',
@@ -371,12 +371,12 @@ export const renderContact = (page) => {
     eyebrow: 'Direct contact',
     title: 'Start a focused<br>conversation.',
     deck: 'For selected conversations across pharmaceutical market access, manufacturing, supply, company building and editorial work.',
-    image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/3/324350main_11_full-1.jpg',
-    width: 1880,
-    height: 1410,
-    source: 'https://science.nasa.gov/resource/earth-at-night/',
-    credit: 'Earth at Night · NASA/NOAA',
-    meta: ['Earth · Night lights', 'Composite satellite imagery', 'Global view'],
+    image: '',
+    width: 0,
+    height: 0,
+    source: '',
+    credit: '',
+    meta: ['Direct', 'Selected conversations', 'Email'],
     action: `<a class="contact-email contact-email-hero" href="mailto:${site.email}"><span>${site.email}</span>${arrow}</a>`,
   });
   const body = `${hero}${pageSectionIndex(page.html, 'Conversation guide')}<section class="content-managed contact-content contact-content-panel section" data-reveal>${page.html}</section>`;
