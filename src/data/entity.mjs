@@ -25,6 +25,8 @@ export const person = Object.freeze({
   givenName: 'Vishal',
   familyName: 'Chakravarty',
   alternateName: 'Vishal Om Prakash Chakravarty',
+  disambiguatingDescription:
+    'Pharmaceutical executive and founder of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company.',
   role: 'Chief Executive Officer, NovaPharm Healthcare Ltd',
   founderRelationship: 'Founder of NovaPharm Healthcare Ltd',
   jobTitle: 'Chief Executive Officer',

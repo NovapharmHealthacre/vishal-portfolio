@@ -134,6 +134,7 @@ for (const file of htmlFiles) {
     if (person.jobTitle !== 'Chief Executive Officer') failures.push(`${rel}: Person jobTitle must use the approved executive designation`);
     if (person.givenName !== 'Vishal' || person.familyName !== 'Chakravarty') failures.push(`${rel}: Person name parts are incomplete`);
     if (person.alternateName !== 'Vishal Om Prakash Chakravarty') failures.push(`${rel}: Person alternate identity is incomplete`);
+    if (person.disambiguatingDescription !== 'Pharmaceutical executive and founder of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company.') failures.push(`${rel}: Person disambiguating description is incomplete`);
     for (const sameAs of [
       'https://www.linkedin.com/in/vishal-chakravarty',
       'https://www.wikidata.org/wiki/Q137660690',

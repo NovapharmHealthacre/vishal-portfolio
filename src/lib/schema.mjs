@@ -22,6 +22,7 @@ export const personSchema = () => ({
   givenName: person.givenName,
   familyName: person.familyName,
   alternateName: person.alternateName,
+  disambiguatingDescription: person.disambiguatingDescription,
   url: `${site.origin}/about/`,
   mainEntityOfPage: { '@id': person.profileId },
   image: {

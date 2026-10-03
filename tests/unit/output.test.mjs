@@ -47,6 +47,10 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.person.givenName, 'Vishal');
   assert.equal(facts.person.familyName, 'Chakravarty');
   assert.equal(facts.person.alternateName, 'Vishal Om Prakash Chakravarty');
+  assert.equal(
+    facts.person.disambiguatingDescription,
+    'Pharmaceutical executive and founder of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company.',
+  );
   assert.equal(facts.answers.length, 3);
   assert.equal(facts.answers.every((answer) => answer.source.startsWith('https://vishal.novapharmhealthcare.com/')), true);
   assert.equal(facts.entityIds.person, 'https://vishal.novapharmhealthcare.com/#person');
