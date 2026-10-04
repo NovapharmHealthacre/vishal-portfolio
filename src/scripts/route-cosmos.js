@@ -55,6 +55,17 @@ if (routeCosmicHero && routeCosmos && !routeReducedMotion && window.matchMedia('
   }, { threshold: 0.03 });
 
   routeObserver.observe(routeCosmicHero);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      active = false;
+      cancelAnimationFrame(frame);
+      return;
+    }
+    const rect = routeCosmicHero.getBoundingClientRect();
+    active = rect.bottom > 0 && rect.top < window.innerHeight;
+    cancelAnimationFrame(frame);
+    if (active) frame = requestAnimationFrame(renderRouteCosmos);
+  });
   routeCosmicHero.addEventListener('pointermove', onRoutePointerMove, { passive: true });
   routeCosmicHero.addEventListener('pointerleave', resetRoutePointer, { passive: true });
   window.addEventListener('scroll', updateRouteScroll, { passive: true });

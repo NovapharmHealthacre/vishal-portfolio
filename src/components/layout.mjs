@@ -107,7 +107,7 @@ export const renderPage = ({
 <html class="no-js" lang="en-GB">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     ${redirectTo ? `<meta http-equiv="refresh" content="0; url=${escapeHtml(redirectTo)}">` : ''}
     <meta http-equiv="Content-Security-Policy" content="${escapeHtml(csp)}">
     <title>${escapeHtml(title)}</title>
@@ -145,8 +145,8 @@ export const renderPage = ({
     <meta name="twitter:description" content="${escapeHtml(description)}">
     <meta name="twitter:image" content="${absolute(socialImage)}">
     <meta name="twitter:image:alt" content="${escapeHtml(socialImageAlt)}">
-    <meta name="theme-color" content="#f5f5f7">
-    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#0d0d0f">
+    <meta name="color-scheme" content="dark">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
     ${nasaAssetsEnabled ? '<link rel="preconnect" href="https://assets.science.nasa.gov" crossorigin>' : ''}
