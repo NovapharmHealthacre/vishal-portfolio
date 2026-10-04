@@ -1,6 +1,6 @@
 # Performance budget
 
-Last reviewed: 12 July 2026
+Last reviewed: 4 October 2026
 
 ## Objective
 
@@ -53,20 +53,20 @@ An editorial page may exceed the HTML budget when long-form content genuinely re
 - Strip EXIF from public derivatives.
 - Lazy-load below-the-fold images and decode asynchronously where appropriate.
 
-## Canvas and motion budget
+## Cinematic hero and motion budget
 
-The regulated-systems lattice is progressive enhancement:
+Immersive hero motion is progressive enhancement:
 
-- load only after critical content and LCP resources;
-- render no critical text or links;
-- use a static CSS poster before and without JavaScript;
-- disable on narrow screens, `prefers-reduced-motion`, data-saving connections or unsupported contexts;
-- cap device pixel ratio at 1.5 and animation at approximately 25 frames per second;
-- stop when off-screen or when the document is hidden;
-- keep the small per-frame working set bounded and avoid unbounded node/particle growth;
-- fail silently to the poster after an initialization error.
+- critical text, links and evidence remain server-generated and do not depend on animation;
+- the homepage and About use real NASA/ESA source imagery with camera/parallax treatment rather than a procedural reconstruction of the astronomical subject;
+- operating routes use Nova-owned visual fields and keep route-specific motion in a separate asset;
+- disable hero motion on narrow screens and for `prefers-reduced-motion`;
+- do not initialise scroll-reveal observers on narrow screens;
+- stop requestAnimationFrame work when the hero is off-screen or the document is hidden;
+- keep per-frame work bounded and avoid unbounded DOM, canvas or particle growth;
+- fail silently to the static composition if enhancement is unavailable.
 
-The enhancement is the first feature removed or simplified when it threatens LCP, INP, battery life or thermal stability.
+Motion is the first feature simplified when it threatens LCP, INP, battery life or thermal stability.
 
 ## Measurement procedure
 
