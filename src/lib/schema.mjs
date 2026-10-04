@@ -197,12 +197,7 @@ export const iphex2026EventSchema = () => ({
   ],
   location: {
     '@type': 'Place',
-    name: 'Bharat Mandapam',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'New Delhi',
-      addressCountry: 'IN',
-    },
+    name: 'Bharat Mandapam, New Delhi, India',
   },
   organizer: {
     '@type': 'Organization',
