@@ -17,9 +17,9 @@ Each link opens the original publisher record.
 
 ## Press profile
 
-Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building. He founded NovaPharm Healthcare in 2025 and writes on the operating decisions behind regulated pharmaceutical businesses.
+Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building. He founded NovaPharm Healthcare in 2025 and writes on the operating systems behind regulated pharmaceutical businesses — how product, regulation, manufacturing, supply, economics and market access interact.
 
-Relevant interview and editorial topics include UK–EU market access, post-Brexit strategy, manufacturing partnerships, technology transfer, supply resilience, specialist medicines, portfolio strategy and building companies in regulated markets.
+Relevant interview and editorial topics include UK–EU market access, post-Brexit strategy, manufacturing partnerships, technology transfer, supply resilience, specialist medicines, portfolio strategy, first-principles operating decisions and building companies in regulated markets.
 
 ## Press resources
 
