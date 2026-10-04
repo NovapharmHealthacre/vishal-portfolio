@@ -1,10 +1,10 @@
-import { company, person, publications, site } from '../data/entity.mjs';
+import { company, person, publicAppearances, publications, site } from '../data/entity.mjs';
 import { pageMeta } from '../data/site.mjs';
 import { escapeHtml, externalLink, formatDate } from '../lib/html.mjs';
 import {
   articleSchema,
   breadcrumbSchema,
-  iphex2026EventSchema,
+  appearanceEventSchemas,
   mediaCollectionSchema,
   organisationSchema,
   personSchema,
@@ -295,6 +295,36 @@ export const renderArticle = (article, articles) => {
   return renderPage({ title: `${article.title} — Vishal Chakravarty`, description: article.description, path: article.canonicalPath, socialImage: article.socialImage, socialImageAlt: `Social card for “${article.title}”, an essay by Vishal Chakravarty`, publishedTime: article.published, modifiedTime: article.modified, body, schemas: [webPageSchema({ path: article.canonicalPath, name: article.title, description: article.description, mainEntity: { '@id': `${new URL(article.canonicalPath, site.origin).href}#article` } }), articleSchema(article), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }, { name: article.title, path: article.canonicalPath }])], className: 'article-page' });
 };
 
+
+const appearanceVisual = (appearance) => {
+  const visual = {
+    'cphi-milan-2026': ['CPHI', 'MILAN', '06—08 OCT 2026'],
+    '2030-health-co-creation': ['2030', 'HEALTH', '14 OCT · PORTCULLIS HOUSE'],
+    'business-show-london-2026': ['THE BUSINESS', 'SHOW', '11—12 NOV · LONDON'],
+  }[appearance.id] ?? [appearance.name, '', appearance.displayDate];
+  return `<div class="appearance-visual appearance-visual-${appearance.id}" aria-hidden="true"><span>${visual[0]}</span><strong>${visual[1]}</strong><small>${visual[2]}</small></div>`;
+};
+
+const appearanceCard = (appearance) => `
+  <article class="appearance-card" id="${appearance.id}">
+    ${appearanceVisual(appearance)}
+    <div class="appearance-card-body">
+      <div class="appearance-card-topline"><span class="appearance-status">${escapeHtml(appearance.statusLabel)}</span><span>${escapeHtml(appearance.kind)}</span></div>
+      <h3>${escapeHtml(appearance.name)}</h3>
+      <p>${escapeHtml(appearance.summary)}</p>
+      <dl>
+        <div><dt>Date</dt><dd>${escapeHtml(appearance.displayDate)}</dd></div>
+        <div><dt>Place</dt><dd>${escapeHtml(appearance.location)}</dd></div>
+        <div><dt>Participation</dt><dd>${escapeHtml(appearance.role)}</dd></div>
+      </dl>
+      <div class="appearance-topics">${appearance.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}</div>
+      <div class="appearance-links">
+        <a class="text-link" href="${appearance.officialUrl}" target="_blank" rel="noopener noreferrer">Official event page <span aria-hidden="true">↗</span></a>
+        ${appearance.verificationUrl && appearance.verificationUrl !== appearance.officialUrl ? `<a class="text-link" href="${appearance.verificationUrl}" target="_blank" rel="noopener noreferrer">Independent / organiser record <span aria-hidden="true">↗</span></a>` : ''}
+      </div>
+    </div>
+  </article>`;
+
 export const renderMedia = (page) => {
   const meta = contentMeta(page);
   const hero = nasaRouteHero({
@@ -351,25 +381,28 @@ export const renderMedia = (page) => {
           </div>
         </div>
       </div>
-      <figure class="media-field-note-wide">
-        <picture>
-          <source media="(min-width: 721px)" srcset="/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="500" height="333" alt="Vishal Chakravarty at iPHEX 2026 beside participating-country flags." fetchpriority="low" decoding="async">
-        </picture>
-        <figcaption>Bharat Mandapam, New Delhi — iPHEX 2026 international delegate programme.</figcaption>
-      </figure>
+
     </section>`;
-  const body = `${hero}${summary}${iphexFeature}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const upcomingAppearances = publicAppearances.filter((appearance) => appearance.status === 'confirmed');
+  const appearancesSection = `
+    <section class="media-appearances section" aria-labelledby="confirmed-appearances-title" data-reveal>
+      <header class="media-appearances-header">
+        <div><p class="eyebrow">Confirmed / Upcoming</p><h2 id="confirmed-appearances-title">Where the work goes next.</h2></div>
+        <p>Only appearances supported by an organiser confirmation or completed registration are shown here. Applications and unconfirmed invitations stay off the public record.</p>
+      </header>
+      <div class="appearance-grid">${upcomingAppearances.map(appearanceCard).join('')}</div>
+    </section>`;
+  const body = `${hero}${summary}${iphexFeature}${appearancesSection}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({
     ...meta,
     body,
-    socialImage: '/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg',
-    socialImageAlt: 'Vishal Chakravarty at iPHEX 2026 beside participating-country flags.',
-    socialImageWidth: 420,
-    socialImageHeight: 315,
+    socialImage: '/images/media/vishal-chakravarty-iphex-2026-working.webp',
+    socialImageAlt: 'Vishal Chakravarty reviewing meeting material during iPHEX 2026.',
+    socialImageWidth: 440,
+    socialImageHeight: 550,
     schemas: [
       mediaCollectionSchema(),
-      iphex2026EventSchema(),
+      ...appearanceEventSchemas(),
       breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }]),
     ],
     className: 'media-page',
