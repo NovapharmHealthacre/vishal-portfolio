@@ -41,6 +41,15 @@ See [Media and Publications](/media/) for the original English and Japanese publ
 - [iPHEX 2026 official overseas delegates list](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026) independently connects Vishal Om Prakash Chakravarty with NovaPharm Healthcare Ltd.
 - The [Yakuji Nippo series](https://www.yakuji.co.jp/entry136963.html) and [Pharmaceutical Commerce](https://www.pharmaceuticalcommerce.com/view/why-onshoring-alone-wont-secure-pharma-supply-chains) publish named author profiles for Vishal Chakravarty.
 
+## Selected industry participation
+
+- **iPHEX 2026, New Delhi — attended.** [Official overseas delegates list](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026) records Vishal Om Prakash Chakravarty under the United Kingdom representing NovaPharm Healthcare Ltd.
+- **CPHI Milan 2026 — registered attendee.** Organiser-issued registration and badge confirmation are on file for the 6–8 October event at Fiera Milano. [Official event page](https://www.cphi.com/europe/).
+- **2030 Health Co-Creation, Portcullis House — confirmed in person.** Organiser correspondence confirms the invitation and in-person attendance for the 14 October parliamentary roundtable. [Official public event listing](https://www.eventbrite.com/e/parliamentary-roundtable-2030-health-co-creation-tickets-2001419737311).
+- **The Business Show London 2026 — registered attendee.** Organiser-issued registration is on file for 11–12 November at ExCeL London. [Official event page](https://www.greatbritishbusinessshow.co.uk/).
+
+Only confirmed or completed participation is included in this public record. Applications, hosted-buyer enquiries and unconfirmed invitations are not presented as attendance.
+
 ## Official links
 
 - [Personal website](https://vishal.novapharmhealthcare.com/)

@@ -78,6 +78,8 @@ jobs:
           grep -Fq 'Hubble · NGC 1300 · NASA/ESA · Hubble Heritage Team' <<<"$about"
           grep -Fq 'Explore the work' <<<"$about"
           grep -Fq 'page-section-index' <<<"$about"
+          grep -Fq '01 / Operating thesis' <<<"$home"
+          grep -Fq 'About the work' <<<"$home"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$ventures"
           grep -Fq 'page-cosmos-owned' <<<"$ventures"
@@ -98,10 +100,18 @@ jobs:
           grep -Fq 'data-page-cosmic-hero' <<<"$media"
           grep -Fq 'page-cosmos-owned' <<<"$media"
           grep -Fq 'Nova signal system' <<<"$media"
-          grep -Fq 'Field note / iPHEX 2026' <<<"$media"
+          grep -Fq 'Industry field note / iPHEX 2026' <<<"$media"
+          grep -Fq 'Bharat Mandapam · New Delhi' <<<"$media"
+          grep -Fq 'Official iPHEX 2026 site' <<<"$media"
           grep -Fq 'overseasdelegates_participating_list_2026' <<<"$media"
           grep -Fq 'vishal-chakravarty-iphex-2026-working.webp' <<<"$media"
-          grep -Fq 'vishal-chakravarty-iphex-2026-international-delegates.webp' <<<"$media"
+          grep -Fq 'CPHI Milan 2026' <<<"$media"
+          grep -Fq '2030 Health Co-Creation' <<<"$media"
+          grep -Fq 'The Business Show London 2026' <<<"$media"
+          grep -Fq 'Confirmed in person · Invitation-only' <<<"$media"
+          grep -Fq 'Fiera Milano' <<<"$media"
+          grep -Fq 'Portcullis House' <<<"$media"
+          grep -Fq 'ExCeL London' <<<"$media"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$contact"
           grep -Fq 'page-cosmos-owned' <<<"$contact"
@@ -139,12 +149,14 @@ jobs:
             echo 'Retired essay route appeared in the sitemap' >&2
             exit 1
           fi
-          [[ $(grep -o '<image:image>' <<<"$sitemap" | wc -l | tr -d ' ') == 3 ]]
+          [[ $(grep -o '<image:image>' <<<"$sitemap" | wc -l | tr -d ' ') == 2 ]]
           grep -Fq '/images/portrait/vishal-chakravarty-1440.webp' <<<"$sitemap"
           grep -Fq '/images/media/vishal-chakravarty-iphex-2026-working.webp' <<<"$sitemap"
-          grep -Fq '/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp' <<<"$sitemap"
           grep -Fq '"appearances"' <<<"$content_index"
           grep -Fq 'iPHEX 2026' <<<"$content_index"
+          grep -Fq 'CPHI Milan 2026' <<<"$content_index"
+          grep -Fq '2030 Health Co-Creation' <<<"$content_index"
+          grep -Fq 'The Business Show London 2026' <<<"$content_index"
           grep -Fq 'Verified industry participation' <<<"$llms"
 
           curl --fail --silent --show-error --location \
@@ -155,10 +167,6 @@ jobs:
           curl --fail --silent --show-error --location \
             -H 'Cache-Control: no-cache' \
             "${SITE_ORIGIN}/images/media/vishal-chakravarty-iphex-2026-working.webp?${cache_key}" \
-            --output /dev/null
-          curl --fail --silent --show-error --location \
-            -H 'Cache-Control: no-cache' \
-            "${SITE_ORIGIN}/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp?${cache_key}" \
             --output /dev/null
 
           founder_ai_status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
@@ -184,17 +192,54 @@ jobs:
           - Structured publishing: content-index.json and llms.txt served
           - NovaPharm: first-party Nova signal hero served with the focused company action
           - Thinking: first-party Nova signal hero and topic architecture served
-          - Media: first-party Nova signal hero, iPHEX 2026 field note and verified delegate source served
+          - Media: first-party Nova signal hero, iPHEX field note and verified upcoming appearance architecture served
           - Public record: first-party Nova signal hero and evidence-first structure served
           - Contact: first-party Nova signal hero and intent-based enquiry routing served
           - Gallery: retired route serves noindex,follow with a destination canonical and instant redirect to About
           - Portrait asset: high-resolution official WebP served
           - Sitemap: cornerstone route included; retired essay and gallery routes excluded
-          - Image sitemap: canonical founder portrait and two curated iPHEX images included
+          - Image sitemap: canonical founder portrait and strongest curated iPHEX image included
 
           Release: \`${RELEASE_SHA}\`
           Verified: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
           EOF
+
+      - name: Submit canonical URLs to IndexNow
+        if: steps.smoke.outcome == 'success'
+        continue-on-error: true
+        env:
+          SITE_ORIGIN: https://vishal.novapharmhealthcare.com
+          INDEXNOW_KEY: 5ab151c5043481fb27617ef883d0cce5
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          import xml.etree.ElementTree as ET
+
+          origin = os.environ["SITE_ORIGIN"]
+          key = os.environ["INDEXNOW_KEY"]
+          with urllib.request.urlopen(f"{origin}/sitemap.xml", timeout=20) as response:
+              root = ET.fromstring(response.read())
+
+          ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [node.text for node in root.findall("s:url/s:loc", ns) if node.text]
+          payload = json.dumps({
+              "host": "vishal.novapharmhealthcare.com",
+              "key": key,
+              "keyLocation": f"{origin}/{key}.txt",
+              "urlList": urls,
+          }).encode("utf-8")
+
+          request = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=payload,
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              print(f"IndexNow submission status: {response.status}; URLs: {len(urls)}")
+          PY
 
       - name: Record verification summary
         if: always()

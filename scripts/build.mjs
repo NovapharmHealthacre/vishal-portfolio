@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadArticles, loadPageContent } from '../src/lib/content.mjs';
 import { canonicalRoutes, legacyRedirects, routeModified } from '../src/data/site.mjs';
-import { company, person, publicFacts, publications, site, verificationDate } from '../src/data/entity.mjs';
+import { company, person, publicAppearances, publicFacts, publications, site, verificationDate } from '../src/data/entity.mjs';
 import { contentVariables } from '../src/data/content-variables.mjs';
 import {
   renderAbout,
@@ -49,7 +49,7 @@ const articleSourceHtml = (article) =>
     ? `<section><h2>Sources</h2><ol>${article.sources.map((source) => `<li><a href="${xmlEscape(source.url)}" rel="noopener noreferrer">${xmlEscape(source.label)}</a></li>`).join('')}</ol></section>`
     : '';
 
-const feedDescription = 'Essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and founder execution.';
+const feedDescription = 'Essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and company building.';
 
 const jsonFeed = (articles) => ({
   version: 'https://jsonfeed.org/version/1.1',
@@ -106,11 +106,6 @@ const iphexImageXml = () => `
       <image:loc>${xmlEscape(new URL('/images/media/vishal-chakravarty-iphex-2026-working.webp', site.origin).href)}</image:loc>
       <image:title>Vishal Chakravarty at iPHEX 2026</image:title>
       <image:caption>Vishal Chakravarty reviewing meeting material during iPHEX 2026.</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>${xmlEscape(new URL('/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp', site.origin).href)}</image:loc>
-      <image:title>Vishal Chakravarty — iPHEX 2026 overseas delegate</image:title>
-      <image:caption>Vishal Chakravarty at iPHEX 2026 beside participating-country flags.</image:caption>
     </image:image>`;
 
 const sitemap = (articles) => {
@@ -208,21 +203,25 @@ const contentIndex = (pages, articles) => ({
     published: article.published,
     modified: article.modified,
   })),
-  appearances: [
-    {
-      name: 'iPHEX 2026',
-      type: 'Overseas business delegate',
-      dates: ['2026-09-07', '2026-09-09'],
-      canonical: `${site.origin}/media/#iphex-2026`,
-      officialRecord: 'https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026',
-      organisation: company.name,
-    },
-  ],
+  appearances: publicAppearances.map((appearance) => ({
+    id: appearance.id,
+    name: appearance.name,
+    type: appearance.kind,
+    status: appearance.status,
+    statusLabel: appearance.statusLabel,
+    dates: [appearance.startDate, appearance.endDate],
+    location: appearance.location,
+    participation: appearance.role,
+    canonical: `${site.origin}/media/#${appearance.id}`,
+    officialUrl: appearance.officialUrl,
+    verificationUrl: appearance.verificationUrl,
+    organisation: company.name,
+  })),
 });
 
 const llmsText = (pages, articles) => `# Vishal Chakravarty
 
-> Official public website for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and founder of the company. This file is a supplemental navigation aid; canonical pages and structured data remain authoritative.
+> Official public website for Vishal Chakravarty, covering pharmaceutical market access, manufacturing, supply and company building. This file is a supplemental navigation aid; canonical pages and structured data remain authoritative.
 
 ## Canonical entity ids
 - Person: ${person.id}
@@ -239,8 +238,7 @@ ${Object.values(pages)
 ${articles.slice(0, 10).map((article) => `- [${article.title}](${new URL(article.canonicalPath, site.origin).href}): ${article.summary}`).join('\n')}
 
 ## Verified industry participation
-- [iPHEX 2026 field note](${site.origin}/media/#iphex-2026): Listed by the official iPHEX overseas delegates record under the United Kingdom representing NovaPharm Healthcare Ltd.
-- [Official iPHEX 2026 overseas delegate record](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026)
+${publicAppearances.map((appearance) => `- [${appearance.name}](${site.origin}/media/#${appearance.id}): ${appearance.statusLabel}. ${appearance.displayDate}; ${appearance.location}. Official event: ${appearance.officialUrl}${appearance.verificationUrl ? ` Verification: ${appearance.verificationUrl}` : ''}`).join('\n')}
 
 ## Machine-readable records
 - [Verified facts](${site.origin}/facts.json)
@@ -305,6 +303,19 @@ write(
         description: company.description,
         currentFocus: company.currentFocus,
       },
+      appearances: publicAppearances.map((appearance) => ({
+        id: appearance.id,
+        name: appearance.name,
+        status: appearance.status,
+        statusLabel: appearance.statusLabel,
+        startDate: appearance.startDate,
+        endDate: appearance.endDate,
+        location: appearance.location,
+        participation: appearance.role,
+        officialUrl: appearance.officialUrl,
+        verificationUrl: appearance.verificationUrl,
+        canonical: `${site.origin}/media/#${appearance.id}`,
+      })),
       publications,
       facts: publicFacts,
       correctionContact: site.correctionEmail,

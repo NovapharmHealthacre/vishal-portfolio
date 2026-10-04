@@ -1,10 +1,10 @@
-import { company, person, publications, site } from '../data/entity.mjs';
+import { company, person, publicAppearances, publications, site } from '../data/entity.mjs';
 import { pageMeta } from '../data/site.mjs';
 import { escapeHtml, externalLink, formatDate } from '../lib/html.mjs';
 import {
   articleSchema,
   breadcrumbSchema,
-  iphex2026EventSchema,
+  appearanceEventSchemas,
   mediaCollectionSchema,
   organisationSchema,
   personSchema,
@@ -189,10 +189,10 @@ export const renderHome = (articles) => {
         <p>Vishal Chakravarty</p>
       </div>
       <div class="founder-feature-copy">
-        <p class="eyebrow">01 / Founder thesis</p>
+        <p class="eyebrow">01 / Operating thesis</p>
         <h2 id="statement-title">The route is the product.</h2>
         <p>A medicine does not reach a market because one function succeeds. Product, regulatory pathway, manufacturer, supply, economics and channel have to work as one route.</p>
-        <a class="text-link" href="/about/">The founder journey <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="/about/">About the work <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -282,7 +282,7 @@ export const renderThinking = (articles) => {
     meta: ['Primary sources', 'Operator analysis', 'Regulated markets'],
   });
   const groups = groupedThinking(articles);
-  const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><nav class="thinking-topic-nav" aria-label="Essay topics">${groups.map((group) => `<a href="#${group.id}">${escapeHtml(group.label)}</a>`).join('')}</nav>${groups.map((group) => `<section class="thinking-topic" id="${group.id}" aria-labelledby="${group.id}-title"><header class="thinking-topic-header"><p class="eyebrow">Topic</p><h2 id="${group.id}-title">${escapeHtml(group.label)}</h2><span>${group.articles.length} ${group.articles.length === 1 ? 'essay' : 'essays'}</span></header><div class="essay-list essay-list-large">${group.articles.map(articleCard).join('')}</div></section>`).join('')}</section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Regulatory and market-access pieces are reviewed on a 90-day cycle. Operational pharmaceutical pieces are reviewed on a 180-day cycle. Founder essays are updated only when the substance changes.</p></aside>`;
+  const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><nav class="thinking-topic-nav" aria-label="Essay topics">${groups.map((group) => `<a href="#${group.id}">${escapeHtml(group.label)}</a>`).join('')}</nav>${groups.map((group) => `<section class="thinking-topic" id="${group.id}" aria-labelledby="${group.id}-title"><header class="thinking-topic-header"><p class="eyebrow">Topic</p><h2 id="${group.id}-title">${escapeHtml(group.label)}</h2><span>${group.articles.length} ${group.articles.length === 1 ? 'essay' : 'essays'}</span></header><div class="essay-list essay-list-large">${group.articles.map(articleCard).join('')}</div></section>`).join('')}</section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Regulatory and market-access pieces are reviewed on a 90-day cycle. Operational pharmaceutical pieces are reviewed on a 180-day cycle. Company-building essays are updated only when the substance changes.</p></aside>`;
   return renderPage({ ...meta, body, schemas: [thinkingCollectionSchema(articles), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }])], className: 'thinking-page' });
 };
 
@@ -294,6 +294,36 @@ export const renderArticle = (article, articles) => {
   const body = `<article class="article-shell"><header class="article-header">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }, { name: article.title, path: article.canonicalPath }])}<p class="eyebrow">${escapeHtml(article.category)}</p><h1>${escapeHtml(article.title)}</h1><p class="article-summary">${escapeHtml(article.summary)}</p><div class="article-byline"><span>By ${escapeHtml(article.author)}</span><span>Published ${formatDate(article.published)}</span><span>Updated ${formatDate(article.modified)}</span><span>${article.reading.minutes} min · ${article.reading.words.toLocaleString('en-GB')} words</span></div></header><div class="article-layout"><aside class="article-aside"><span>${escapeHtml(article.category)}</span><p>Analysis on the decisions connecting product, market, manufacturing and supply.</p>${article.sources.length ? '<a href="#sources">Sources ↓</a>' : ''}</aside><div class="article-body">${article.html}</div></div>${article.sources.length ? `<section class="article-sources section" data-reveal id="sources" aria-labelledby="sources-title"><p class="section-number">Sources</p><h2 id="sources-title">Reference points</h2><ol>${article.sources.map((source) => `<li>${externalLink(source.url, source.label)}</li>`).join('')}</ol></section>` : ''}${related.length ? `<section class="related section" data-reveal><p class="section-number">Continue reading</p><div class="essay-list">${related.map(articleCard).join('')}</div></section>` : ''}<nav class="article-pagination" aria-label="Essay pagination">${previous ? `<a href="${previous.canonicalPath}"><span>Previous</span><strong>${escapeHtml(previous.title)}</strong></a>` : '<span></span>'}${next ? `<a href="${next.canonicalPath}"><span>Next</span><strong>${escapeHtml(next.title)}</strong></a>` : '<span></span>'}</nav></article>`;
   return renderPage({ title: `${article.title} — Vishal Chakravarty`, description: article.description, path: article.canonicalPath, socialImage: article.socialImage, socialImageAlt: `Social card for “${article.title}”, an essay by Vishal Chakravarty`, publishedTime: article.published, modifiedTime: article.modified, body, schemas: [webPageSchema({ path: article.canonicalPath, name: article.title, description: article.description, mainEntity: { '@id': `${new URL(article.canonicalPath, site.origin).href}#article` } }), articleSchema(article), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }, { name: article.title, path: article.canonicalPath }])], className: 'article-page' });
 };
+
+
+const appearanceVisual = (appearance) => {
+  const visual = {
+    'cphi-milan-2026': ['CPHI', 'MILAN', '06—08 OCT 2026'],
+    '2030-health-co-creation': ['2030', 'HEALTH', '14 OCT · PORTCULLIS HOUSE'],
+    'business-show-london-2026': ['THE BUSINESS', 'SHOW', '11—12 NOV · LONDON'],
+  }[appearance.id] ?? [appearance.name, '', appearance.displayDate];
+  return `<div class="appearance-visual appearance-visual-${appearance.id}" aria-hidden="true"><span>${visual[0]}</span><strong>${visual[1]}</strong><small>${visual[2]}</small></div>`;
+};
+
+const appearanceCard = (appearance) => `
+  <article class="appearance-card" id="${appearance.id}">
+    ${appearanceVisual(appearance)}
+    <div class="appearance-card-body">
+      <div class="appearance-card-topline"><span class="appearance-status">${escapeHtml(appearance.statusLabel)}</span><span>${escapeHtml(appearance.kind)}</span></div>
+      <h3>${escapeHtml(appearance.name)}</h3>
+      <p>${escapeHtml(appearance.summary)}</p>
+      <dl>
+        <div><dt>Date</dt><dd>${escapeHtml(appearance.displayDate)}</dd></div>
+        <div><dt>Place</dt><dd>${escapeHtml(appearance.location)}</dd></div>
+        <div><dt>Participation</dt><dd>${escapeHtml(appearance.role)}</dd></div>
+      </dl>
+      <div class="appearance-topics">${appearance.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}</div>
+      <div class="appearance-links">
+        <a class="text-link" href="${appearance.officialUrl}" target="_blank" rel="noopener noreferrer">Official event page <span aria-hidden="true">↗</span></a>
+        ${appearance.verificationUrl && appearance.verificationUrl !== appearance.officialUrl ? `<a class="text-link" href="${appearance.verificationUrl}" target="_blank" rel="noopener noreferrer">Independent / organiser record <span aria-hidden="true">↗</span></a>` : ''}
+      </div>
+    </div>
+  </article>`;
 
 export const renderMedia = (page) => {
   const meta = contentMeta(page);
@@ -316,54 +346,63 @@ export const renderMedia = (page) => {
     copy: 'Published analysis and selected industry participation sit here with primary-source verification. Original essays remain in Thinking; formal identity evidence remains in Public record.',
     facts: [
       ['Publishers', 'Yakuji Nippo · Pharmaceutical Commerce'],
-      ['Industry', 'iPHEX 2026'],
-      ['Focus', 'Market access · manufacturing · supply'],
-      ['Format', 'Analysis · field notes · press resources'],
+      ['Completed', 'iPHEX 2026'],
+      ['Upcoming', 'Milan · Westminster · London'],
+      ['Evidence', 'Official pages · organiser confirmations'],
     ],
   });
   const iphexFeature = `
     <section class="media-field-note section" id="iphex-2026" aria-labelledby="iphex-2026-title" data-reveal>
       <header class="media-field-note-header">
         <div>
-          <p class="eyebrow">Field note / iPHEX 2026</p>
-          <h2 id="iphex-2026-title">Three days of conversations.<br>One operating question.</h2>
+          <p class="eyebrow">Industry field note / iPHEX 2026</p>
+          <h2 id="iphex-2026-title">Three days.<br>Can the route work?</h2>
         </div>
         <dl>
           <div><dt>Event</dt><dd>iPHEX 2026</dd></div>
           <div><dt>Dates</dt><dd>7–9 September 2026</dd></div>
-          <div><dt>Location</dt><dd>New Delhi, India</dd></div>
-          <div><dt>Record</dt><dd>UK overseas delegate</dd></div>
+          <div><dt>Venue</dt><dd>Bharat Mandapam · New Delhi</dd></div>
+          <div><dt>Record</dt><dd>Official UK overseas delegate</dd></div>
         </dl>
       </header>
       <div class="media-field-note-grid">
         <figure class="media-field-note-lead">
-          <img src="/images/media/vishal-chakravarty-iphex-2026-working.webp" width="440" height="550" alt="Vishal Chakravarty reviewing meeting material during iPHEX 2026." loading="lazy" decoding="async">
-          <figcaption>Between scheduled business meetings during iPHEX 2026.</figcaption>
+          <img src="/images/media/vishal-chakravarty-iphex-2026-working.webp" width="440" height="550" alt="Vishal Chakravarty reviewing meeting material during iPHEX 2026." loading="lazy" fetchpriority="low" decoding="async">
+          <figcaption>Working between scheduled business meetings during iPHEX 2026.</figcaption>
         </figure>
         <div class="media-field-note-copy">
-          <p>The official iPHEX 2026 overseas delegates list records <strong>Vishal Om Prakash Chakravarty</strong> under the United Kingdom, representing <strong>NovaPharm Healthcare Ltd</strong>. That independent record matters more than another self-written title line.</p>
-          <p>The event compressed months of partner discovery into three days: product portfolios, specialist medicines, oncology opportunities, manufacturing routes, dossiers, UK market access and cross-border supply.</p>
-          <p>The useful conclusion was not that the market needs more product lists. It was the opposite. Quality, regulatory readiness, commercial fit and continuity of supply determine whether an opportunity can become a durable route to market.</p>
+          <p>The official iPHEX 2026 overseas delegates list records <strong>Vishal Om Prakash Chakravarty</strong> under the United Kingdom, representing <strong>NovaPharm Healthcare Ltd</strong>. The event ran from 7–9 September 2026 at Bharat Mandapam, New Delhi.</p>
+          <p>Across scheduled meetings and floor conversations, the focus was practical: product portfolios, specialist medicines, oncology opportunities, manufacturing routes, dossiers, UK market access and cross-border supply.</p>
+          <p>The useful conclusion was not that the market needs more product lists. Product choice, quality, regulatory readiness, manufacturing fit, supply continuity and channel economics have to be evaluated together if an opportunity is going to become a durable route to market.</p>
           <blockquote><p>A product list is not a strategy. The route from dossier to manufacturer to market is.</p></blockquote>
-          <a class="text-link" href="https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026" target="_blank" rel="noopener noreferrer">Official iPHEX overseas delegate record <span aria-hidden="true">↗</span></a>
+          <div class="media-field-note-links">
+            <a class="text-link" href="https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026" target="_blank" rel="noopener noreferrer">Official delegate record <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://www.iphex-india.com/" target="_blank" rel="noopener noreferrer">Official iPHEX 2026 site <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
-      <figure class="media-field-note-wide">
-        <img src="/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp" width="500" height="333" alt="Vishal Chakravarty at iPHEX 2026 beside participating-country flags." loading="lazy" decoding="async">
-        <figcaption>iPHEX 2026 brought together an international business-delegate programme around pharmaceuticals and healthcare.</figcaption>
-      </figure>
+
     </section>`;
-  const body = `${hero}${summary}${iphexFeature}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
+  const upcomingAppearances = publicAppearances.filter((appearance) => appearance.status === 'confirmed');
+  const appearancesSection = `
+    <section class="media-appearances section" aria-labelledby="confirmed-appearances-title" data-reveal>
+      <header class="media-appearances-header">
+        <div><p class="eyebrow">Confirmed / Upcoming</p><h2 id="confirmed-appearances-title">Where the work goes next.</h2></div>
+        <p>Only appearances supported by an organiser confirmation or completed registration are shown here. Applications and unconfirmed invitations stay off the public record.</p>
+      </header>
+      <div class="appearance-grid">${upcomingAppearances.map(appearanceCard).join('')}</div>
+    </section>`;
+  const body = `${hero}${summary}${iphexFeature}${appearancesSection}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({
     ...meta,
     body,
-    socialImage: '/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp',
-    socialImageAlt: 'Vishal Chakravarty at iPHEX 2026 beside participating-country flags.',
-    socialImageWidth: 500,
-    socialImageHeight: 333,
+    socialImage: '/images/media/vishal-chakravarty-iphex-2026-working.webp',
+    socialImageAlt: 'Vishal Chakravarty reviewing meeting material during iPHEX 2026.',
+    socialImageWidth: 440,
+    socialImageHeight: 550,
     schemas: [
       mediaCollectionSchema(),
-      iphex2026EventSchema(),
+      ...appearanceEventSchemas(),
       breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Media', path: '/media/' }]),
     ],
     className: 'media-page',
@@ -405,7 +444,7 @@ export const renderFacts = (page) => {
       ['Identity', 'Vishal Chakravarty'],
       ['Company', company.name],
       ['Published', String(publications.length) + ' external contributions'],
-      ['Sources', 'Companies House · iPHEX · publishers'],
+      ['Sources', 'Companies House · publishers · organisers'],
     ],
   });
   const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;

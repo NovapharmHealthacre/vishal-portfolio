@@ -27,6 +27,9 @@ test('essential homepage content exists before JavaScript', () => {
   assert.match(html, /<meta property="og:image:type" content="image\/webp">/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
   assert.match(html, /Pharmaceuticals · Market access · Company building/);
+  assert.match(html, /01 \/ Operating thesis/);
+  assert.match(html, /About the work/);
+  assert.doesNotMatch(html, /Founder thesis|The founder journey/);
   assert.match(html, /data-hubble-hero/);
   assert.match(html, /data-real-cosmos/);
   assert.match(html, /assets\.science\.nasa\.gov\/dynamicimage\/assets\/science\/missions\/hubble\/releases\/1999\/02\/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822\.tif/);
@@ -105,6 +108,7 @@ test('unified design and publishing layers are shipped', () => {
   assert.ok(index.pages.some((page) => page.canonical.endsWith('/ventures/')));
   assert.ok(index.essays.length >= 10);
   assert.match(llms, /Structured content index/);
+  assert.doesNotMatch(llms, /Chief Executive Officer of NovaPharm Healthcare Ltd and founder of the company/);
   assert.doesNotMatch(llms, /passport|date of birth|residential address|\bvisa\b|\bimmigration\b/i);
 });
 
@@ -197,6 +201,8 @@ test('contact offers intent-based email routes without a form', () => {
   assert.match(html, /Manufacturing%20or%20partnership%20enquiry/);
   assert.match(html, /Media%20or%20speaking%20enquiry/);
   assert.doesNotMatch(html, /<form\b/i);
+  const css = fs.readFileSync(path.resolve('dist/assets/site.css'), 'utf8');
+  assert.match(css, /contact-content-panel > h2:first-of-type \+ ul/);
 });
 
 test('about page exposes a concise human-readable entity snapshot', () => {
@@ -223,23 +229,46 @@ test('Media exposes the verified iPHEX 2026 field note and curated images', () =
   const contentIndex = JSON.parse(fs.readFileSync(path.resolve('dist/content-index.json'), 'utf8'));
   const llms = fs.readFileSync(path.resolve('dist/llms.txt'), 'utf8');
 
-  assert.match(html, /Field note \/ iPHEX 2026/);
+  assert.match(html, /Industry field note \/ iPHEX 2026/);
   assert.match(html, /7–9 September 2026/);
-  assert.match(html, /UK overseas delegate/);
+  assert.match(html, /Official UK overseas delegate/);
+  assert.match(html, /Bharat Mandapam · New Delhi/);
+  assert.match(html, /Official iPHEX 2026 site/);
   assert.match(html, /overseasdelegates_participating_list_2026/);
   assert.match(html, /vishal-chakravarty-iphex-2026-working\.webp/);
-  assert.match(html, /vishal-chakravarty-iphex-2026-international-delegates\.webp/);
+  assert.doesNotMatch(html, /vishal-chakravarty-iphex-2026-international-delegates\.(?:webp|jpg)/);
   assert.match(html, /OfflineEventAttendanceMode/);
   assert.match(html, /EventCompleted/);
+  assert.match(html, /Bharat Mandapam/);
   assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-working.webp')));
-  assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp')));
-  assert.equal((sitemap.match(/<image:image>/g) ?? []).length, 3);
+  assert.equal((sitemap.match(/<image:image>/g) ?? []).length, 2);
   assert.match(sitemap, /vishal-chakravarty-iphex-2026-working\.webp/);
-  assert.match(sitemap, /vishal-chakravarty-iphex-2026-international-delegates\.webp/);
+  assert.doesNotMatch(sitemap, /vishal-chakravarty-iphex-2026-international-delegates/);
   assert.equal(contentIndex.appearances?.[0]?.name, 'iPHEX 2026');
-  assert.match(contentIndex.appearances?.[0]?.officialRecord ?? '', /overseasdelegates_participating_list_2026/);
+  assert.match(contentIndex.appearances?.[0]?.verificationUrl ?? '', /overseasdelegates_participating_list_2026/);
   assert.match(llms, /Verified industry participation/);
-  assert.match(llms, /iPHEX 2026 field note/);
+  assert.match(llms, /iPHEX 2026/);
+});
+
+test('Media exposes only verified completed or confirmed appearances', () => {
+  const html = fs.readFileSync(path.resolve('dist/media/index.html'), 'utf8');
+  const facts = JSON.parse(fs.readFileSync(path.resolve('dist/facts.json'), 'utf8'));
+  const contentIndex = JSON.parse(fs.readFileSync(path.resolve('dist/content-index.json'), 'utf8'));
+
+  for (const label of ['CPHI Milan 2026', '2030 Health Co-Creation', 'The Business Show London 2026']) {
+    assert.ok(html.includes(label), label);
+  }
+  assert.match(html, /Confirmed in person · Invitation-only/);
+  assert.match(html, /Registered · Upcoming/);
+  assert.match(html, /EventScheduled/);
+  assert.match(html, /Portcullis House/);
+  assert.match(html, /Fiera Milano/);
+  assert.match(html, /ExCeL London/);
+  assert.doesNotMatch(html, /SupplySide Global|Pharmaconex 2027|India MedTech Expo 2027|CPHI Korea 2027|Autotech Egypt/);
+  assert.equal(facts.appearances.length, 4);
+  assert.equal(contentIndex.appearances.length, 4);
+  assert.equal(facts.appearances.find((item) => item.id === 'cphi-milan-2026')?.status, 'confirmed');
+  assert.equal(facts.appearances.find((item) => item.id === '2030-health-co-creation')?.participation, 'Invited participant');
 });
 
 test('media output exposes the complete verified publisher record', () => {
