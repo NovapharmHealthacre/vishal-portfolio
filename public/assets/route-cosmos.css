@@ -264,8 +264,16 @@
   .page-cosmic-copy { width: 90vw; }
 
   .page-cosmic-copy h1 {
-    max-width: 9.5ch;
-    font-size: clamp(3.55rem, 15vw, 5.35rem);
+    max-width: 11ch;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    font-size: clamp(3.45rem, 14vw, 5.2rem);
+  }
+
+  .page-hero-contact .page-cosmic-copy h1 {
+    max-width: 12ch;
+    font-size: clamp(3.25rem, 13.5vw, 5rem);
   }
 
   .page-cosmic-copy .page-deck {
@@ -426,7 +434,7 @@
   }
 
   .page-hero-about .page-cosmic-copy h1 {
-    max-width: 7.5ch;
+    max-width: 10.5ch;
   }
 
   .page-hero-about .page-deck {
