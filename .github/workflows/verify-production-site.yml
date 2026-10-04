@@ -105,7 +105,7 @@ jobs:
           grep -Fq 'Official iPHEX 2026 site' <<<"$media"
           grep -Fq 'overseasdelegates_participating_list_2026' <<<"$media"
           grep -Fq 'vishal-chakravarty-iphex-2026-working.webp' <<<"$media"
-          grep -Fq 'vishal-chakravarty-iphex-2026-international-delegates.webp' <<<"$media"
+          grep -Fq 'vishal-chakravarty-iphex-2026-international-delegates.jpg' <<<"$media"
 
           grep -Fq 'data-page-cosmic-hero' <<<"$contact"
           grep -Fq 'page-cosmos-owned' <<<"$contact"
@@ -146,7 +146,7 @@ jobs:
           [[ $(grep -o '<image:image>' <<<"$sitemap" | wc -l | tr -d ' ') == 3 ]]
           grep -Fq '/images/portrait/vishal-chakravarty-1440.webp' <<<"$sitemap"
           grep -Fq '/images/media/vishal-chakravarty-iphex-2026-working.webp' <<<"$sitemap"
-          grep -Fq '/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp' <<<"$sitemap"
+          grep -Fq '/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg' <<<"$sitemap"
           grep -Fq '"appearances"' <<<"$content_index"
           grep -Fq 'iPHEX 2026' <<<"$content_index"
           grep -Fq 'Verified industry participation' <<<"$llms"
@@ -162,7 +162,7 @@ jobs:
             --output /dev/null
           curl --fail --silent --show-error --location \
             -H 'Cache-Control: no-cache' \
-            "${SITE_ORIGIN}/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp?${cache_key}" \
+            "${SITE_ORIGIN}/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg?${cache_key}" \
             --output /dev/null
 
           founder_ai_status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
