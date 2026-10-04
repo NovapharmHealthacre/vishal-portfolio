@@ -49,7 +49,7 @@ const articleSourceHtml = (article) =>
     ? `<section><h2>Sources</h2><ol>${article.sources.map((source) => `<li><a href="${xmlEscape(source.url)}" rel="noopener noreferrer">${xmlEscape(source.label)}</a></li>`).join('')}</ol></section>`
     : '';
 
-const feedDescription = 'Essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and founder execution.';
+const feedDescription = 'Essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and company building.';
 
 const jsonFeed = (articles) => ({
   version: 'https://jsonfeed.org/version/1.1',
@@ -222,7 +222,7 @@ const contentIndex = (pages, articles) => ({
 
 const llmsText = (pages, articles) => `# Vishal Chakravarty
 
-> Official public website for Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd and founder of the company. This file is a supplemental navigation aid; canonical pages and structured data remain authoritative.
+> Official public website for Vishal Chakravarty, covering pharmaceutical market access, manufacturing, supply and company building. This file is a supplemental navigation aid; canonical pages and structured data remain authoritative.
 
 ## Canonical entity ids
 - Person: ${person.id}
