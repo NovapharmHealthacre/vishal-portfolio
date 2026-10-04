@@ -25,6 +25,11 @@ test('essential homepage content exists before JavaScript', () => {
   assert.match(html, /<link rel="alternate" hreflang="en-GB" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
   assert.match(html, /<link rel="alternate" hreflang="x-default" href="https:\/\/vishal\.novapharmhealthcare\.com\/"/);
   assert.match(html, /<meta property="og:image:type" content="image\/webp">/);
+  assert.match(html, /viewport-fit=cover/);
+  assert.match(html, /<meta name="theme-color" content="#0d0d0f">/);
+  assert.match(html, /<meta name="color-scheme" content="dark">/);
+  assert.match(html, /vishal-chakravarty-640\.avif 640w/);
+  assert.match(html, /vishal-chakravarty-1440\.jpg 1440w/);
   assert.match(html, /Building a UK-led pharmaceutical company around market access/);
   assert.match(html, /Pharmaceuticals · Market access · Company building/);
   assert.match(html, /01 \/ Operating thesis/);
@@ -82,6 +87,8 @@ test('route cosmos controller is built as a route-only asset', () => {
   const script = fs.readFileSync(file, 'utf8');
   assert.match(script, /data-page-cosmic-hero/);
   assert.match(script, /requestAnimationFrame/);
+  assert.match(script, /visibilitychange/);
+  assert.match(script, /document\.hidden/);
 });
 
 test('unified design and publishing layers are shipped', () => {
@@ -212,6 +219,9 @@ test('about page exposes a concise human-readable entity snapshot', () => {
   assert.match(main, /STScI-01EVT8DP1YM9FYPF0Y33VY7ANB\.tif/);
   assert.match(main, /about-hero-portrait/);
   assert.match(main, /vishal-chakravarty-960\.webp/);
+  assert.match(main, /<source\s+type="image\/avif"/);
+  assert.match(main, /vishal-chakravarty-1440\.avif 1440w/);
+  assert.match(main, /vishal-chakravarty-960\.jpg/);
   assert.match(main, /Hubble · NGC 1300 · NASA\/ESA · Hubble Heritage Team/);
   assert.match(main, /Explore the work/);
   assert.match(main, /At a glance/);
