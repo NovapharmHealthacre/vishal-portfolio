@@ -1,4 +1,4 @@
-import { company, person, profileModifiedDate, publicFacts, publications, site, verificationDate } from '../data/entity.mjs';
+import { company, person, profileModifiedDate, publicAppearances, publicFacts, publications, site, verificationDate } from '../data/entity.mjs';
 import { absolute, routeModified } from '../data/site.mjs';
 
 export const websiteSchema = () => ({
@@ -179,38 +179,35 @@ export const thinkingCollectionSchema = (articles) => ({
   },
 });
 
-export const iphex2026EventSchema = () => ({
+export const appearanceEventSchema = (appearance) => ({
   '@context': 'https://schema.org',
   '@type': 'Event',
-  '@id': `${site.origin}/media/#iphex-2026-event`,
-  name: 'iPHEX 2026',
-  description:
-    'Vishal Chakravarty attended iPHEX 2026 as an overseas business delegate representing NovaPharm Healthcare Ltd, with discussions focused on pharmaceutical products, manufacturing, market access and cross-border supply.',
-  startDate: '2026-09-07',
-  endDate: '2026-09-09',
+  '@id': `${site.origin}/media/#${appearance.id}-event`,
+  name: appearance.name,
+  description: appearance.summary,
+  startDate: appearance.startDate,
+  endDate: appearance.endDate,
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-  eventStatus: 'https://schema.org/EventCompleted',
-  url: 'https://www.iphex-india.com/',
-  sameAs: [
-    'https://www.iphex-india.com/',
-    'https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026',
-  ],
+  eventStatus: appearance.eventStatus,
+  url: appearance.officialUrl,
+  sameAs: [...new Set([appearance.officialUrl, appearance.verificationUrl].filter(Boolean))],
   location: {
     '@type': 'Place',
-    name: 'Bharat Mandapam, New Delhi, India',
+    name: appearance.location,
   },
   organizer: {
     '@type': 'Organization',
-    name: 'Pharmaceuticals Export Promotion Council of India',
-    alternateName: 'Pharmexcil',
-    url: 'https://pharmexcil.com/',
+    name: appearance.organizer,
+    ...(appearance.organizerUrl ? { url: appearance.organizerUrl } : {}),
   },
   attendee: { '@id': person.id },
-  image: [
-    absolute('/images/media/vishal-chakravarty-iphex-2026-working.webp'),
-    absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg'),
-  ],
+  ...(appearance.images.length ? { image: appearance.images.map((image) => absolute(image)) } : {}),
 });
+
+export const iphex2026EventSchema = () =>
+  appearanceEventSchema(publicAppearances.find((appearance) => appearance.id === 'iphex-2026'));
+
+export const appearanceEventSchemas = () => publicAppearances.map(appearanceEventSchema);
 
 export const mediaCollectionSchema = () => ({
   '@context': 'https://schema.org',
@@ -230,15 +227,8 @@ export const mediaCollectionSchema = () => ({
       width: 440,
       height: 550,
     },
-    {
-      '@type': 'ImageObject',
-      url: absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg'),
-      caption: 'Vishal Chakravarty at iPHEX 2026 beside participating-country flags.',
-      width: 420,
-      height: 315,
-    },
   ],
-  hasPart: { '@id': `${site.origin}/media/#iphex-2026-event` },
+  hasPart: publicAppearances.map((appearance) => ({ '@id': `${site.origin}/media/#${appearance.id}-event` })),
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: publications.length,
