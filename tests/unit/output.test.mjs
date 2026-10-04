@@ -18,6 +18,12 @@ test('production output preserves ownership and custom-domain files', () => {
   );
 });
 
+test('installable shell matches the dark launch experience', () => {
+  const manifest = JSON.parse(fs.readFileSync(path.resolve('dist/manifest.webmanifest'), 'utf8'));
+  assert.equal(manifest.background_color, '#0d0d0f');
+  assert.equal(manifest.theme_color, '#0d0d0f');
+});
+
 test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
