@@ -1,5 +1,5 @@
-export const verificationDate = '2026-10-03';
-export const profileModifiedDate = '2026-10-03';
+export const verificationDate = '2026-10-04';
+export const profileModifiedDate = '2026-10-04';
 
 export const site = Object.freeze({
   id: 'https://vishal.novapharmhealthcare.com/#website',
@@ -39,9 +39,9 @@ export const person = Object.freeze({
   image: {
     id: `${site.origin}/about/#portrait`,
     path: '/images/portrait/vishal-chakravarty-1440.webp',
-    name: 'Official founder portrait of Vishal Chakravarty',
+    name: 'Official portrait of Vishal Chakravarty',
     alt: 'Portrait of Vishal Chakravarty',
-    description: 'The principal professional portrait of Vishal Chakravarty, Chief Executive Officer of NovaPharm Healthcare Ltd.',
+    description: 'The principal professional portrait of Vishal Chakravarty.',
     width: 1440,
     height: 1440,
   },
@@ -55,7 +55,7 @@ export const person = Object.freeze({
     'Parallel import licensing',
     'Pharmaceutical supply-chain resilience',
     'Specialist medicines',
-    'Founder operations',
+    'Pharmaceutical company building',
   ],
 });
 
