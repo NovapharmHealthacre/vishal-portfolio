@@ -85,6 +85,10 @@ test('route cosmos stylesheet is shipped as a route-only asset', () => {
   assert.match(stylesheet, /page-hero-contact/);
   assert.match(stylesheet, /Nova-owned route visual system/);
   assert.match(stylesheet, /nova-signal-field/);
+  assert.match(stylesheet, /overflow-wrap: normal/);
+  assert.match(stylesheet, /word-break: normal/);
+  assert.match(stylesheet, /page-hero-contact \.page-cosmic-copy h1/);
+  assert.match(stylesheet, /page-hero-about \.page-cosmic-copy h1/);
 });
 
 test('global client script does not disable AVIF by user agent', () => {
