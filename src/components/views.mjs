@@ -353,7 +353,7 @@ export const renderMedia = (page) => {
       </div>
       <figure class="media-field-note-wide">
         <picture>
-          <source media="(min-width: 721px)" srcset="/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp">
+          <source media="(min-width: 721px)" srcset="/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg">
           <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="500" height="333" alt="Vishal Chakravarty at iPHEX 2026 beside participating-country flags." fetchpriority="low" decoding="async">
         </picture>
         <figcaption>Bharat Mandapam, New Delhi — iPHEX 2026 international delegate programme.</figcaption>
@@ -363,10 +363,10 @@ export const renderMedia = (page) => {
   return renderPage({
     ...meta,
     body,
-    socialImage: '/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp',
+    socialImage: '/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg',
     socialImageAlt: 'Vishal Chakravarty at iPHEX 2026 beside participating-country flags.',
-    socialImageWidth: 500,
-    socialImageHeight: 333,
+    socialImageWidth: 420,
+    socialImageHeight: 315,
     schemas: [
       mediaCollectionSchema(),
       iphex2026EventSchema(),
