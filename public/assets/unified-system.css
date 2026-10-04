@@ -1041,4 +1041,8 @@ body {
     display: grid;
     gap: 1rem;
   }
+
+  .media-field-note-wide {
+    display: none;
+  }
 }
