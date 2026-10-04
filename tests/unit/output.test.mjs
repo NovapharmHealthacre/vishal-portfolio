@@ -91,9 +91,12 @@ test('route cosmos stylesheet is shipped as a route-only asset', () => {
   assert.match(stylesheet, /page-hero-about \.page-cosmic-copy h1/);
 });
 
-test('global client script does not disable AVIF by user agent', () => {
+test('global client script keeps mobile runtime minimal', () => {
   const script = fs.readFileSync(path.resolve('dist/assets/site.js'), 'utf8');
   assert.doesNotMatch(script, /AppleWebKit|source\[type="image\/avif"\]/);
+  assert.match(script, /classList\.replace\('no-js', 'js'\)/);
+  assert.match(script, /const revealMotionAllowed/);
+  assert.match(script, /window\.matchMedia\('\(min-width: 721px\)'\)\.matches/);
 });
 
 test('route cosmos controller is built as a route-only asset', () => {
