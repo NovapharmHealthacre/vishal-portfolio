@@ -346,9 +346,9 @@ export const renderMedia = (page) => {
     copy: 'Published analysis and selected industry participation sit here with primary-source verification. Original essays remain in Thinking; formal identity evidence remains in Public record.',
     facts: [
       ['Publishers', 'Yakuji Nippo · Pharmaceutical Commerce'],
-      ['Industry', 'iPHEX 2026'],
-      ['Focus', 'Market access · manufacturing · supply'],
-      ['Format', 'Analysis · field notes · press resources'],
+      ['Completed', 'iPHEX 2026'],
+      ['Upcoming', 'Milan · Westminster · London'],
+      ['Evidence', 'Official pages · organiser confirmations'],
     ],
   });
   const iphexFeature = `
@@ -444,7 +444,7 @@ export const renderFacts = (page) => {
       ['Identity', 'Vishal Chakravarty'],
       ['Company', company.name],
       ['Published', String(publications.length) + ' external contributions'],
-      ['Sources', 'Companies House · iPHEX · publishers'],
+      ['Sources', 'Companies House · publishers · organisers'],
     ],
   });
   const body = `${hero}${summary}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
