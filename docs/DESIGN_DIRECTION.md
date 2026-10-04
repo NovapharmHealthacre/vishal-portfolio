@@ -49,8 +49,8 @@ Colour is functional. Most information surfaces remain light; the homepage hero 
 
 ## Homepage sequence
 
-1. Immersive black Nova field hero with Vishal's name, current role and verified proposition.
-2. Owner-supplied black-and-white portrait paired with the founder thesis.
+1. Immersive black Hubble hero using the verified NASA/ESA Supernova 1987A observation, with Vishal's name and verified proposition.
+2. Owner-supplied black-and-white portrait paired with the operating thesis.
 3. NovaPharm as a high-contrast feature surface.
 4. Three operating principles as calm product cards.
 5. Selected writing.
@@ -65,22 +65,20 @@ The global navigation is compact, sticky and translucent. It uses a 44px Apple-l
 
 ## Motion language
 
-- The Nova field is a first-party Canvas 2D animation using deterministic particles, orbit filaments and subtle pointer parallax.
-- Animation is progressively enhanced and loads after the essential page is already usable.
-- It pauses when off-screen or when the document is hidden.
-- It is skipped for reduced-motion, data-saver and lower-resource contexts.
-- Static CSS gradients preserve the hero composition without JavaScript.
-- No scroll hijacking, cursor followers, fake loaders or continuous animation outside the hero.
+- The homepage uses a real NASA/ESA Hubble observation with restrained camera drift, pointer parallax and scroll-linked depth; the astronomical subject itself is not procedurally redrawn.
+- About retains a distinct Hubble observation, while operating routes use Nova-owned signal-field artwork so scientific source material and first-party brand visuals remain clearly separated.
+- Motion is progressive enhancement: essential content is server-generated and usable without JavaScript.
+- Hero motion pauses when off-screen or when the document is hidden, and it is disabled for reduced-motion and narrow-screen contexts.
+- Narrow-screen pages do not initialise scroll-reveal observers; content remains immediately visible.
+- No scroll hijacking, cursor followers, fake loaders or continuous decorative animation outside deliberately immersive hero surfaces.
 
 ## Portrait
 
-The canonical rendered portrait is:
+The canonical identity image remains the owner-supplied black-and-white founder portrait, but page delivery is responsive rather than fixed-size.
 
-`/images/portrait/vishal-chakravarty-1440.webp`
+Rendered founder surfaces negotiate 640, 960 and 1440 pixel AVIF sources first, WebP second and JPEG as the standards-based fallback through `<picture>`, `srcset` and `sizes`. WebKit and other browsers choose the best supported format natively; no user-agent sniffing removes modern formats.
 
-It is the owner-supplied square black-and-white headshot, served at 1440 × 1440 on the About/founder surfaces and in structured identity metadata. The factual alt text and canonical Person identity remain intact.
-
-Legacy responsive portrait derivatives remain only where release tooling validates metadata-stripped fallbacks.
+The factual alt text, intrinsic dimensions and canonical Person identity remain intact. Social and structured-data image references remain deliberate metadata choices rather than forcing the same physical file into every viewport.
 
 ## Search, entity and generative discovery
 
@@ -103,9 +101,11 @@ Legacy responsive portrait derivatives remain only where release tooling validat
 
 ## Implementation strategy
 
-The verified content and governance architecture is preserved. The front end remains generated semantic HTML, CSS and JavaScript modules rather than migrating to a client-rendered framework merely for visual similarity.
+The verified content and governance architecture is preserved. The front end remains generated semantic HTML, CSS and small progressive JavaScript modules rather than migrating to a client-rendered framework merely for visual similarity.
 
-This is deliberate. The public website is implemented with semantic HTML, CSS and modern JavaScript modules: the browser-native technologies required to reproduce the relevant interaction principles without adding a client-rendered framework only for visual similarity. Swift, SwiftUI and UIKit are native Apple application technologies, not substitutes for browser HTML/CSS/JavaScript. Framework choices on third-party websites can change and are not treated as a design dependency here.
+This is deliberate. Apple, OpenAI, NASA and SpaceX are product and experience benchmarks, not requirements to reproduce their private infrastructure. Their complete production stacks are neither stable public specifications nor appropriate dependencies for this static publication. Languages and services are added only when a concrete capability requires them.
+
+For the present product, browser-native HTML/CSS/JavaScript plus dependency-light Node.js build tooling provides the smallest transfer, strongest no-JavaScript baseline and narrowest attack surface. Swift, SwiftUI and UIKit are native Apple application technologies, not substitutes for browser HTML/CSS/JavaScript; similarly, adding Python, Go, Rust, React or Next.js without a product requirement would add runtime or operational complexity without improving the public experience.
 
 ## Explicit anti-patterns
 
