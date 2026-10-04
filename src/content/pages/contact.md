@@ -5,6 +5,8 @@ canonicalPath: /contact/
 public: true
 ---
 
+The most useful conversations begin with a real operating problem, product route or system that needs to be designed — not a generic introduction.
+
 You can also connect through [LinkedIn]({{LINKEDIN_URL}}).
 
 ## Choose the conversation
