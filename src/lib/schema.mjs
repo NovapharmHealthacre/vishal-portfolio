@@ -164,7 +164,7 @@ export const thinkingCollectionSchema = (articles) => ({
   '@id': `${site.origin}/thinking/#page`,
   url: `${site.origin}/thinking/`,
   name: 'Thinking by Vishal Chakravarty',
-  description: 'Essays on regulated markets, pharmaceutical access, resilience and founder operations.',
+  description: 'Essays on regulated markets, pharmaceutical access, resilience and company building.',
   dateModified: articles[0]?.modified ?? routeModified['/thinking/'],
   inLanguage: site.language,
   isPartOf: { '@id': site.id },
@@ -191,7 +191,19 @@ export const iphex2026EventSchema = () => ({
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventCompleted',
   url: 'https://www.iphex-india.com/',
-  sameAs: ['https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026'],
+  sameAs: [
+    'https://www.iphex-india.com/',
+    'https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026',
+  ],
+  location: {
+    '@type': 'Place',
+    name: 'Bharat Mandapam',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'New Delhi',
+      addressCountry: 'IN',
+    },
+  },
   organizer: {
     '@type': 'Organization',
     name: 'Pharmaceuticals Export Promotion Council of India',
