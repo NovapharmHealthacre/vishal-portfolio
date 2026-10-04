@@ -188,13 +188,13 @@ jobs:
           - Structured publishing: content-index.json and llms.txt served
           - NovaPharm: first-party Nova signal hero served with the focused company action
           - Thinking: first-party Nova signal hero and topic architecture served
-          - Media: first-party Nova signal hero, iPHEX 2026 field note and verified delegate source served
+          - Media: first-party Nova signal hero, iPHEX field note and verified upcoming appearance architecture served
           - Public record: first-party Nova signal hero and evidence-first structure served
           - Contact: first-party Nova signal hero and intent-based enquiry routing served
           - Gallery: retired route serves noindex,follow with a destination canonical and instant redirect to About
           - Portrait asset: high-resolution official WebP served
           - Sitemap: cornerstone route included; retired essay and gallery routes excluded
-          - Image sitemap: canonical founder portrait and two curated iPHEX images included
+          - Image sitemap: canonical founder portrait and strongest curated iPHEX image included
 
           Release: \`${RELEASE_SHA}\`
           Verified: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
