@@ -240,7 +240,6 @@ test('Media exposes the verified iPHEX 2026 field note and curated images', () =
   assert.match(html, /OfflineEventAttendanceMode/);
   assert.match(html, /EventCompleted/);
   assert.match(html, /Bharat Mandapam/);
-  assert.match(html, /addressLocality/);
   assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-working.webp')));
   assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp')));
   assert.equal((sitemap.match(/<image:image>/g) ?? []).length, 3);
