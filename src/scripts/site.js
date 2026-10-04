@@ -101,6 +101,17 @@ if (hubbleHero && hubbleCosmos && !hubbleReducedMotion && window.matchMedia('(mi
   }, { threshold: 0.03 });
 
   observer.observe(hubbleHero);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      active = false;
+      cancelAnimationFrame(frame);
+      return;
+    }
+    const rect = hubbleHero.getBoundingClientRect();
+    active = rect.bottom > 0 && rect.top < window.innerHeight;
+    cancelAnimationFrame(frame);
+    if (active) frame = requestAnimationFrame(renderCosmos);
+  });
   hubbleHero.addEventListener('pointermove', onPointerMove, { passive: true });
   hubbleHero.addEventListener('pointerleave', resetPointer, { passive: true });
   window.addEventListener('scroll', updateScroll, { passive: true });
