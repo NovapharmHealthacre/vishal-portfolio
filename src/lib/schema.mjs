@@ -208,7 +208,7 @@ export const iphex2026EventSchema = () => ({
   attendee: { '@id': person.id },
   image: [
     absolute('/images/media/vishal-chakravarty-iphex-2026-working.webp'),
-    absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp'),
+    absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg'),
   ],
 });
 
@@ -232,10 +232,10 @@ export const mediaCollectionSchema = () => ({
     },
     {
       '@type': 'ImageObject',
-      url: absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp'),
+      url: absolute('/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg'),
       caption: 'Vishal Chakravarty at iPHEX 2026 beside participating-country flags.',
-      width: 500,
-      height: 333,
+      width: 420,
+      height: 315,
     },
   ],
   hasPart: { '@id': `${site.origin}/media/#iphex-2026-event` },
