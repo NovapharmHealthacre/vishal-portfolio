@@ -87,6 +87,11 @@ test('route cosmos stylesheet is shipped as a route-only asset', () => {
   assert.match(stylesheet, /nova-signal-field/);
 });
 
+test('global client script does not disable AVIF by user agent', () => {
+  const script = fs.readFileSync(path.resolve('dist/assets/site.js'), 'utf8');
+  assert.doesNotMatch(script, /AppleWebKit|source\[type="image\/avif"\]/);
+});
+
 test('route cosmos controller is built as a route-only asset', () => {
   const file = path.resolve('dist/assets/route-cosmos.js');
   assert.equal(fs.existsSync(file), true);
