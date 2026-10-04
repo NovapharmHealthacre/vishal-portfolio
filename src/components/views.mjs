@@ -211,7 +211,7 @@ export const renderHome = (articles) => {
       <div class="founder-feature-copy">
         <p class="eyebrow">01 / Operating thesis</p>
         <h2 id="statement-title">The route is the product.</h2>
-        <p>A medicine does not reach a market because one function succeeds. Product, regulatory pathway, manufacturer, supply, economics and channel have to work as one route.</p>
+        <p>A medicine does not reach a market because one function succeeds. Product, regulatory pathway, manufacturer, supply, economics, channel and information have to behave as one system.</p>
         <a class="text-link" href="/about/">About the work <span aria-hidden="true">→</span></a>
       </div>
     </section>
@@ -222,8 +222,8 @@ export const renderHome = (articles) => {
     </section>
 
     <section class="principles section" aria-labelledby="principles-title" data-reveal>
-      <div class="section-heading"><div><p class="eyebrow">03 / Operating system</p><h2 id="principles-title">Three decisions shape the route</h2></div></div>
-      <div class="principle-list"><article><span>01</span><h3>Market access begins before approval</h3><p>Product, regulatory, manufacturing, pricing and channel decisions need one commercial sequence from the beginning.</p></article><article><span>02</span><h3>Supply is designed before launch</h3><p>Manufacturer choice, batch size, lead time and alternative routes determine whether availability can be maintained.</p></article><article><span>03</span><h3>Commercial strategy must survive operations</h3><p>A forecast is only useful when the pack, cost, cash cycle and buying route can support it in the real market.</p></article></div>
+      <div class="section-heading"><div><p class="eyebrow">03 / Operating instincts</p><h2 id="principles-title">Three instincts shape the work</h2></div></div>
+      <div class="principle-list"><article><span>01</span><h3>Design the whole system</h3><p>Product, regulation, manufacturing, supply, economics, channel and information are designed as one experience rather than handed off as separate functions.</p></article><article><span>02</span><h3>Build infrastructure before scale</h3><p>Critical partners, supply routes, information flows, responsibilities and contingency become stronger before volume makes them harder to change.</p></article><article><span>03</span><h3>Start from first principles</h3><p>Reduce the problem to patient need, regulatory reality, technical feasibility, economics and actual demand — then rebuild from what must be true.</p></article></div>
     </section>
 
     <section class="writing section" id="essays" aria-labelledby="writing-title" data-reveal><div class="section-heading"><div><p class="eyebrow">04 / Thinking</p><h2 id="writing-title">Pharmaceutical essays</h2></div><a class="text-link" href="/thinking/">All essays <span aria-hidden="true">→</span></a></div><div class="essay-list">${selected.map(articleCard).join('')}</div></section>
@@ -241,7 +241,7 @@ export const renderAbout = (page) => {
     crumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }],
     eyebrow: 'About / 2026',
     title: 'Vishal<br>Chakravarty.',
-    deck: 'Building across medicines, regulation, manufacturing, supply and market access — with the route designed as one system.',
+    deck: 'Building across medicines, regulation, manufacturing, supply and market access — designing the route as one system and testing inherited constraints against first principles.',
     image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2005/01/STScI-01EVT8DP1YM9FYPF0Y33VY7ANB.tif',
     width: 6637,
     height: 3787,
@@ -251,7 +251,7 @@ export const renderAbout = (page) => {
     action: `<a class="page-cosmic-action" href="#profile-snapshot-title">Explore the work <span aria-hidden="true">↓</span></a>`,
     foreground: portrait(true, 'about-hero-portrait', '(max-width: 720px) 66vw, 32rem'),
   });
-  const body = `${hero}${pageSectionIndex(page.html)}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Pharmaceutical operator and company builder.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer, NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy</dd></div><div><dt>Record</dt><dd><a href="/facts/">Public record →</a></dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
+  const body = `${hero}${pageSectionIndex(page.html)}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Pharmaceutical operator and company builder.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer, NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Operating model</dt><dd>Integrated route · first principles</dd></div><div><dt>Record</dt><dd><a href="/facts/">Public record →</a></dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
 };
 
@@ -262,7 +262,7 @@ export const renderVentures = (page) => {
     crumbs: [{ name: 'Home', path: '/' }, { name: 'NovaPharm', path: '/ventures/' }],
     eyebrow: 'NovaPharm Healthcare',
     title: 'Building the route<br>from product to market.',
-    deck: 'Product strategy, regulatory pathways, manufacturing, supply and commercial market entry — connected as one operating system.',
+    deck: 'Product strategy, regulatory pathways, manufacturing, supply, commercial market entry and decision infrastructure — designed as one operating system.',
     image: '',
     width: 0,
     height: 0,
@@ -274,7 +274,7 @@ export const renderVentures = (page) => {
   const summary = routeSummary({
     eyebrow: 'NovaPharm / Operating model',
     title: 'One route. Connected decisions.',
-    copy: 'NovaPharm is being built around the complete path from product opportunity to repeatable market access, with regulation, manufacturing, supply and commercial execution designed together.',
+    copy: 'NovaPharm is being built around the complete path from product opportunity to repeatable market access, with regulation, manufacturing, supply, commercial execution and decision visibility designed together.',
     facts: [
       ['Foundation', 'United Kingdom'],
       ['Company', 'NovaPharm Healthcare Ltd'],
@@ -293,7 +293,7 @@ export const renderThinking = (articles) => {
     crumbs: [{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }],
     eyebrow: 'Essays on pharmaceuticals and regulated markets',
     title: 'Essays from<br><em>the work.</em>',
-    deck: 'Original writing on market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
+    deck: 'First-principles operator writing on market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
     image: '',
     width: 0,
     height: 0,
@@ -302,7 +302,7 @@ export const renderThinking = (articles) => {
     meta: ['Primary sources', 'Operator analysis', 'Regulated markets'],
   });
   const groups = groupedThinking(articles);
-  const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><nav class="thinking-topic-nav" aria-label="Essay topics">${groups.map((group) => `<a href="#${group.id}">${escapeHtml(group.label)}</a>`).join('')}</nav>${groups.map((group) => `<section class="thinking-topic" id="${group.id}" aria-labelledby="${group.id}-title"><header class="thinking-topic-header"><p class="eyebrow">Topic</p><h2 id="${group.id}-title">${escapeHtml(group.label)}</h2><span>${group.articles.length} ${group.articles.length === 1 ? 'essay' : 'essays'}</span></header><div class="essay-list essay-list-large">${group.articles.map(articleCard).join('')}</div></section>`).join('')}</section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Commercial questions, primary sources and an operator’s point of view.</h2><p>Regulatory and market-access pieces are reviewed on a 90-day cycle. Operational pharmaceutical pieces are reviewed on a 180-day cycle. Company-building essays are updated only when the substance changes.</p></aside>`;
+  const body = `${hero}<section class="writing-index section" data-reveal aria-labelledby="essay-collection-title"><h2 id="essay-collection-title" class="sr-only">Published essays</h2><nav class="thinking-topic-nav" aria-label="Essay topics">${groups.map((group) => `<a href="#${group.id}">${escapeHtml(group.label)}</a>`).join('')}</nav>${groups.map((group) => `<section class="thinking-topic" id="${group.id}" aria-labelledby="${group.id}-title"><header class="thinking-topic-header"><p class="eyebrow">Topic</p><h2 id="${group.id}-title">${escapeHtml(group.label)}</h2><span>${group.articles.length} ${group.articles.length === 1 ? 'essay' : 'essays'}</span></header><div class="essay-list essay-list-large">${group.articles.map(articleCard).join('')}</div></section>`).join('')}</section><aside class="editorial-policy section" data-reveal><p class="eyebrow">Editorial approach</p><h2>Start with the constraint, not the convention.</h2><p>Each essay begins with an operating question and works back to the regulatory, technical, economic or market reality underneath it. Regulatory and market-access pieces are reviewed on a 90-day cycle; operational pieces on a 180-day cycle.</p></aside>`;
   return renderPage({ ...meta, body, schemas: [thinkingCollectionSchema(articles), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Thinking', path: '/thinking/' }])], className: 'thinking-page' });
 };
 
@@ -431,7 +431,7 @@ export const renderMedia = (page) => {
 
 export const renderSpeaking = (page) => {
   const meta = contentMeta(page);
-  const hero = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking / Editorial / Operator roundtables</p><h1>Useful conversations<br><em>start with the problem.</em></h1><p class="page-deck">Market access, manufacturing, technology transfer, supply resilience and company building in regulated markets.</p></section>`;
+  const hero = `<section class="page-hero page-hero-editorial">${breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Speaking & partnerships', path: '/speaking-partnerships/' }])}<p class="eyebrow">Speaking / Editorial / Operator roundtables</p><h1>Useful conversations<br><em>start with the problem.</em></h1><p class="page-deck">Market access, manufacturing, technology transfer, supply resilience, first-principles operating systems and company building in regulated markets.</p></section>`;
   const summary = routeSummary({
     eyebrow: 'Conversation design',
     title: 'Specific questions. Operator-level detail.',
@@ -478,7 +478,7 @@ export const renderContact = (page) => {
     crumbs: [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }],
     eyebrow: 'Direct contact',
     title: 'Start a focused<br>conversation.',
-    deck: 'For selected conversations across pharmaceutical market access, manufacturing, supply, company building and editorial work.',
+    deck: 'For selected conversations where a pharmaceutical operating problem, product route or system needs to be designed — not simply discussed.',
     image: '',
     width: 0,
     height: 0,

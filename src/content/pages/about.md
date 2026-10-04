@@ -5,13 +5,15 @@ canonicalPath: /about/
 public: true
 ---
 
-Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building. His focus is the complete route between product opportunity and repeatable market access.
+Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building. His focus is the complete route between product opportunity and repeatable market access — and the infrastructure that makes that route stronger over time.
 
 ## The thesis
 
 Pharmaceuticals rewards complete execution. Product science, regulation, manufacturing, quality, supply, economics and market access all have to resolve into one route that works in the real world.
 
 That is what draws Vishal to the sector: the most valuable decisions rarely sit inside one function.
+
+The work starts from first principles rather than inherited hand-offs. Patient need, regulatory reality, technical feasibility, quality, batch economics, supply continuity and channel adoption are treated as the constraints that must be true. The operating model is then built around them.
 
 ## Before NovaPharm
 
@@ -46,9 +48,21 @@ Digital infrastructure sits underneath that work as an operating layer for produ
 
 Regulation, manufacturing, supply, price, channel and access are one commercial sequence. Delaying one part usually makes another more expensive.
 
+### Start from first principles
+
+Separate convention from constraint. A process is not kept because the industry has always done it that way; it has to survive the technical, regulatory, quality, economic and market reality of the product.
+
+### Build the infrastructure before scale
+
+Critical partners, information flows, responsibilities, fallback routes and decision visibility should become stronger before volume makes them harder to change.
+
 ### Keep strategy close to operations
 
 Forecast, batch size, lead time, pack configuration and working capital need to agree before a plan can be credible.
+
+### Protect focus
+
+Products, markets and partnerships should earn the complexity they add. Expansion follows demonstrated capability rather than ambition alone.
 
 ### Build relationships for the lifecycle
 

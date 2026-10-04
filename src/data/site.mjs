@@ -52,14 +52,14 @@ export const pageMeta = Object.freeze({
   home: {
     title: 'Vishal Chakravarty | Pharmaceuticals, Market Access & Company Building',
     description:
-      'Vishal Chakravarty works across pharmaceutical market access, manufacturing, supply and company building, with NovaPharm Healthcare as the operating platform.',
+      'Vishal Chakravarty builds across pharmaceutical market access, manufacturing, supply and company building, treating the route from product decision to patient access as one operating system.',
     path: '/',
     modified: routeModified['/'],
   },
   thinking: {
     title: 'Pharmaceutical Essays by Vishal Chakravarty',
     description:
-      'Original essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
+      'First-principles operator essays on pharmaceutical market access, manufacturing, technology transfer, supply, portfolio strategy and building in regulated markets.',
     path: '/thinking/',
     modified: routeModified['/thinking/'],
   },
