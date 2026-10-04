@@ -29,13 +29,17 @@ Why product understanding, analytical methods, equipment fit, stability, packagi
 
 How supplier concentration, capacity, lead time, inventory, quality agreements and contingency routes shape continuity.
 
+### First-principles operating systems
+
+How to decompose a regulated-market problem into technical, regulatory, quality, economic and operational truths before accepting the conventional answer.
+
 ### Company building
 
-How operators connect product strategy, expert advice, capital, long timelines and execution without losing commercial urgency.
+How operators decide what to own, what to partner, what to standardise and what to refuse — while connecting product strategy, capital, long timelines and execution without losing commercial urgency.
 
 ## Editorial commentary
 
-Relevant subjects include UK–EU pharmaceutical strategy, parallel import and market-access frameworks, manufacturing partnerships, portfolio selection, batch economics, working capital, digital operating infrastructure and cross-border company building.
+Relevant subjects include UK–EU pharmaceutical strategy, parallel import and market-access frameworks, manufacturing partnerships, portfolio selection, batch economics, working capital, digital operating infrastructure, first-principles decision design and cross-border company building.
 
 ## Formats
 
