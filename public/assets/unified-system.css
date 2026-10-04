@@ -962,3 +962,83 @@ body {
     font-size: clamp(2.2rem, 10vw, 3.8rem);
   }
 }
+
+
+/* Final interaction polish ------------------------------------------------ */
+
+.media-field-note-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .9rem 1.6rem;
+  margin-top: 2rem;
+}
+
+.media-field-note-links .text-link {
+  color: #fff;
+}
+
+.contact-content-panel > h2:first-of-type + ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  width: min(100%, 70rem);
+  max-width: none;
+  margin: 2rem 0 0;
+  padding: 1px;
+  list-style: none;
+  background: var(--u-line);
+}
+
+.contact-content-panel > h2:first-of-type + ul li {
+  margin: 0;
+  background: #fff;
+}
+
+.contact-content-panel > h2:first-of-type + ul a {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 10rem;
+  padding: 1.35rem;
+  color: var(--u-ink);
+  font-size: clamp(1.35rem, 2.2vw, 2.1rem);
+  font-weight: 580;
+  line-height: 1.04;
+  letter-spacing: -.035em;
+  text-decoration: none;
+  transition: background 180ms ease, transform 220ms var(--u-ease);
+}
+
+.contact-content-panel > h2:first-of-type + ul a::after {
+  content: "↗";
+  flex: 0 0 auto;
+  color: var(--u-muted);
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+.contact-content-panel > h2:first-of-type + ul a:hover {
+  background: #f5f5f7;
+}
+
+.contact-content-panel > h2:first-of-type + ul a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -5px;
+}
+
+@media (max-width: 720px) {
+  .contact-content-panel > h2:first-of-type + ul {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-content-panel > h2:first-of-type + ul a {
+    min-height: 7.5rem;
+    padding: 1.2rem;
+  }
+
+  .media-field-note-links {
+    display: grid;
+    gap: 1rem;
+  }
+}
