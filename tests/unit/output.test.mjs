@@ -236,19 +236,39 @@ test('Media exposes the verified iPHEX 2026 field note and curated images', () =
   assert.match(html, /Official iPHEX 2026 site/);
   assert.match(html, /overseasdelegates_participating_list_2026/);
   assert.match(html, /vishal-chakravarty-iphex-2026-working\.webp/);
-  assert.match(html, /vishal-chakravarty-iphex-2026-international-delegates\.webp/);
+  assert.doesNotMatch(html, /vishal-chakravarty-iphex-2026-international-delegates\.(?:webp|jpg)/);
   assert.match(html, /OfflineEventAttendanceMode/);
   assert.match(html, /EventCompleted/);
   assert.match(html, /Bharat Mandapam/);
   assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-working.webp')));
-  assert.ok(fs.existsSync(path.resolve('dist/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg')));
-  assert.equal((sitemap.match(/<image:image>/g) ?? []).length, 3);
+  assert.equal((sitemap.match(/<image:image>/g) ?? []).length, 2);
   assert.match(sitemap, /vishal-chakravarty-iphex-2026-working\.webp/);
-  assert.match(sitemap, /vishal-chakravarty-iphex-2026-international-delegates\.webp/);
+  assert.doesNotMatch(sitemap, /vishal-chakravarty-iphex-2026-international-delegates/);
   assert.equal(contentIndex.appearances?.[0]?.name, 'iPHEX 2026');
-  assert.match(contentIndex.appearances?.[0]?.officialRecord ?? '', /overseasdelegates_participating_list_2026/);
+  assert.match(contentIndex.appearances?.[0]?.verificationUrl ?? '', /overseasdelegates_participating_list_2026/);
   assert.match(llms, /Verified industry participation/);
-  assert.match(llms, /iPHEX 2026 field note/);
+  assert.match(llms, /iPHEX 2026/);
+});
+
+test('Media exposes only verified completed or confirmed appearances', () => {
+  const html = fs.readFileSync(path.resolve('dist/media/index.html'), 'utf8');
+  const facts = JSON.parse(fs.readFileSync(path.resolve('dist/facts.json'), 'utf8'));
+  const contentIndex = JSON.parse(fs.readFileSync(path.resolve('dist/content-index.json'), 'utf8'));
+
+  for (const label of ['CPHI Milan 2026', '2030 Health Co-Creation', 'The Business Show London 2026']) {
+    assert.ok(html.includes(label), label);
+  }
+  assert.match(html, /Confirmed in person · Invitation-only/);
+  assert.match(html, /Registered · Upcoming/);
+  assert.match(html, /EventScheduled/);
+  assert.match(html, /Portcullis House/);
+  assert.match(html, /Fiera Milano/);
+  assert.match(html, /ExCeL London/);
+  assert.doesNotMatch(html, /SupplySide Global|Pharmaconex 2027|India MedTech Expo 2027|CPHI Korea 2027|Autotech Egypt/);
+  assert.equal(facts.appearances.length, 4);
+  assert.equal(contentIndex.appearances.length, 4);
+  assert.equal(facts.appearances.find((item) => item.id === 'cphi-milan-2026')?.status, 'confirmed');
+  assert.equal(facts.appearances.find((item) => item.id === '2030-health-co-creation')?.participation, 'Invited participant');
 });
 
 test('media output exposes the complete verified publisher record', () => {
