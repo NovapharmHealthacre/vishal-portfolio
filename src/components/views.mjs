@@ -22,9 +22,29 @@ const contentMeta = (page) => ({
   path: page.canonicalPath,
 });
 
-const portrait = (priority = false) => `
-  <picture class="portrait-frame">
-    <img src="/images/portrait/vishal-chakravarty-1440.webp" width="1440" height="1440" alt="${escapeHtml(person.image.alt)}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+const portrait = (
+  priority = false,
+  className = 'portrait-frame',
+  sizes = '(max-width: 720px) 91vw, (max-width: 980px) 46vw, 34rem',
+) => `
+  <picture class="${className}">
+    <source
+      type="image/avif"
+      srcset="/images/portrait/vishal-chakravarty-640.avif 640w, /images/portrait/vishal-chakravarty-960.avif 960w, /images/portrait/vishal-chakravarty-1440.avif 1440w"
+      sizes="${sizes}">
+    <source
+      type="image/webp"
+      srcset="/images/portrait/vishal-chakravarty-640.webp 640w, /images/portrait/vishal-chakravarty-960.webp 960w, /images/portrait/vishal-chakravarty-1440.webp 1440w"
+      sizes="${sizes}">
+    <img
+      src="/images/portrait/vishal-chakravarty-960.jpg"
+      srcset="/images/portrait/vishal-chakravarty-640.jpg 640w, /images/portrait/vishal-chakravarty-960.jpg 960w, /images/portrait/vishal-chakravarty-1440.jpg 1440w"
+      sizes="${sizes}"
+      width="960"
+      height="960"
+      alt="${escapeHtml(person.image.alt)}"
+      ${priority ? 'fetchpriority="high"' : 'loading="lazy" fetchpriority="low"'}
+      decoding="async">
   </picture>`;
 
 const articleCard = (article, index) => `
@@ -229,7 +249,7 @@ export const renderAbout = (page) => {
     credit: 'Hubble · NGC 1300 · NASA/ESA · Hubble Heritage Team',
     meta: ['NGC 1300 · Eridanus', 'Hubble · ACS', '69 million light-years'],
     action: `<a class="page-cosmic-action" href="#profile-snapshot-title">Explore the work <span aria-hidden="true">↓</span></a>`,
-    foreground: `<picture class="about-hero-portrait"><img src="/images/portrait/vishal-chakravarty-960.webp" width="960" height="960" alt="${escapeHtml(person.image.alt)}" fetchpriority="high" decoding="async"></picture>`,
+    foreground: portrait(true, 'about-hero-portrait', '(max-width: 720px) 66vw, 32rem'),
   });
   const body = `${hero}${pageSectionIndex(page.html)}<section class="profile-snapshot section" aria-labelledby="profile-snapshot-title" data-reveal><div><p class="eyebrow">At a glance</p><h2 id="profile-snapshot-title">Pharmaceutical operator and company builder.</h2></div><dl><div><dt>Role</dt><dd>Chief Executive Officer, NovaPharm Healthcare Ltd</dd></div><div><dt>Focus</dt><dd>Market access, manufacturing and resilient supply</dd></div><div><dt>Writing</dt><dd>UK–EU pharmaceutical strategy</dd></div><div><dt>Record</dt><dd><a href="/facts/">Public record →</a></dd></div></dl></section><section class="profile-spread section" data-reveal><div class="profile-image">${portrait(false)}<p>Vishal Chakravarty</p></div><article class="content-managed profile-copy">${page.html}</article></section>`;
   return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [profileSchema(), personSchema(), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }])], className: 'about-page' });
