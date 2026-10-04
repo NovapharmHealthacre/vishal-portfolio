@@ -21,6 +21,8 @@ Product selection can happen before manufacturing economics are clear. Regulator
 
 NovaPharm is being built to connect those decisions earlier.
 
+The operating question is not how to bolt separate functions together after the fact. It is what complete route must exist for a medicine to reach a market, remain available and make commercial sense — then to work backwards from what must be true.
+
 ## The route
 
 **product opportunity → regulatory pathway → manufacturer → supply → market → channel → patient access**
@@ -59,16 +61,18 @@ A medicine reaches a market only when the channel can adopt, order and receive i
 
 ### Digital operating infrastructure
 
-NovaPharm is designing digital infrastructure to connect product, partner, inventory, quality and commercial information.
+NovaPharm is designing digital infrastructure to connect product, partner, regulatory, inventory, quality and commercial information into one governed operating view.
 
-The intended value is clearer decisions, stronger traceability and earlier visibility of risk.
+The intended value is clearer decisions, stronger traceability, earlier visibility of risk and less dependence on fragmented hand-offs.
 
 ## Operating principles
 
+- start with patient, regulatory, technical, quality, economic and channel realities rather than inherited process;
 - connect market access to manufacturing before the programme is locked;
-- design supply before launch rather than after demand appears;
+- keep visibility across the critical route even when specialist work is performed by qualified partners;
+- design supply and contingency before launch rather than after demand appears;
 - make the commercial model survive real batch size, lead time, cash cycle and channel constraints;
-- expand by product and operating capability, not geography alone.
+- scale demonstrated operating capability rather than complexity for its own sake.
 
 ## Geographic direction
 
