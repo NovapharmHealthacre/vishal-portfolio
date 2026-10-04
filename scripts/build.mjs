@@ -108,7 +108,7 @@ const iphexImageXml = () => `
       <image:caption>Vishal Chakravarty reviewing meeting material during iPHEX 2026.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>${xmlEscape(new URL('/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp', site.origin).href)}</image:loc>
+      <image:loc>${xmlEscape(new URL('/images/media/vishal-chakravarty-iphex-2026-international-delegates.jpg', site.origin).href)}</image:loc>
       <image:title>Vishal Chakravarty — iPHEX 2026 overseas delegate</image:title>
       <image:caption>Vishal Chakravarty at iPHEX 2026 beside participating-country flags.</image:caption>
     </image:image>`;
