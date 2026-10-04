@@ -18,6 +18,12 @@ test('production output preserves ownership and custom-domain files', () => {
   );
 });
 
+test('installable shell matches the dark launch experience', () => {
+  const manifest = JSON.parse(fs.readFileSync(path.resolve('dist/manifest.webmanifest'), 'utf8'));
+  assert.equal(manifest.background_color, '#0d0d0f');
+  assert.equal(manifest.theme_color, '#0d0d0f');
+});
+
 test('essential homepage content exists before JavaScript', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.match(html, /<h1 id="hero-title">/);
@@ -79,6 +85,18 @@ test('route cosmos stylesheet is shipped as a route-only asset', () => {
   assert.match(stylesheet, /page-hero-contact/);
   assert.match(stylesheet, /Nova-owned route visual system/);
   assert.match(stylesheet, /nova-signal-field/);
+  assert.match(stylesheet, /overflow-wrap: normal/);
+  assert.match(stylesheet, /word-break: normal/);
+  assert.match(stylesheet, /page-hero-contact \.page-cosmic-copy h1/);
+  assert.match(stylesheet, /page-hero-about \.page-cosmic-copy h1/);
+});
+
+test('global client script keeps mobile runtime minimal', () => {
+  const script = fs.readFileSync(path.resolve('dist/assets/site.js'), 'utf8');
+  assert.doesNotMatch(script, /AppleWebKit|source\[type="image\/avif"\]/);
+  assert.match(script, /classList\.replace\('no-js', 'js'\)/);
+  assert.match(script, /const revealMotionAllowed/);
+  assert.match(script, /window\.matchMedia\('\(min-width: 721px\)'\)\.matches/);
 });
 
 test('route cosmos controller is built as a route-only asset', () => {
