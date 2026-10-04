@@ -352,7 +352,10 @@ export const renderMedia = (page) => {
         </div>
       </div>
       <figure class="media-field-note-wide">
-        <img src="/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp" width="500" height="333" alt="Vishal Chakravarty at iPHEX 2026 beside participating-country flags." loading="lazy" fetchpriority="low" decoding="async">
+        <picture>
+          <source media="(min-width: 721px)" srcset="/images/media/vishal-chakravarty-iphex-2026-international-delegates.webp">
+          <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="500" height="333" alt="Vishal Chakravarty at iPHEX 2026 beside participating-country flags." loading="lazy" fetchpriority="low" decoding="async">
+        </picture>
         <figcaption>Bharat Mandapam, New Delhi — iPHEX 2026 international delegate programme.</figcaption>
       </figure>
     </section>`;
