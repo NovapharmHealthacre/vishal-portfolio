@@ -85,8 +85,9 @@ export const renderPage = ({
   redirectTo,
 }) => {
   const canonical = absolute(path);
-  const routeCosmosEnabled = ['about-page', 'ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].includes(className);
-  const nasaAssetsEnabled = className === 'home-page' || className === 'about-page';
+  const classNames = new Set(className.split(/\s+/).filter(Boolean));
+  const routeCosmosEnabled = ['about-page', 'ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].some((name) => classNames.has(name));
+  const nasaAssetsEnabled = classNames.has('home-page') || classNames.has('about-page');
   const ogType = path.startsWith('/essays/') ? 'article' : ['/about/', '/facts/'].includes(path) ? 'profile' : 'website';
   const imageType = socialImage.endsWith('.webp') ? 'image/webp' : socialImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const schemaScripts = schemas.map((schema) => jsonForHtml(schema));
