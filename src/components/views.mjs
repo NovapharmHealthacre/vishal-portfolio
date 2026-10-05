@@ -167,8 +167,18 @@ export const renderHome = (articles) => {
   ];
 
   const body = `
-    <section class="executive-hero" aria-labelledby="hero-title">
-      <div class="executive-field" aria-hidden="true">
+    <section class="executive-hero" aria-labelledby="hero-title" data-hubble-hero>
+      <div class="executive-field" data-real-cosmos aria-hidden="true">
+        <img
+          class="executive-cosmos-image"
+          src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960"
+          srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=640 640w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960 960w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=1600 1600w"
+          sizes="100vw"
+          width="2400"
+          height="3000"
+          alt=""
+          fetchpriority="high"
+          decoding="async">
         <span class="executive-orbit executive-orbit-a"></span>
         <span class="executive-orbit executive-orbit-b"></span>
         <span class="executive-orbit executive-orbit-c"></span>
@@ -197,17 +207,20 @@ export const renderHome = (articles) => {
         <div><span>03</span><strong>Manufacturing & supply</strong></div>
         <div><span>04</span><strong>Decision infrastructure</strong></div>
       </div>
+      <a class="executive-cosmos-credit" href="https://science.nasa.gov/asset/hubble/supernova-1987a-in-the-large-magellanic-cloud/" target="_blank" rel="noopener noreferrer">
+        Hubble · Supernova 1987A · NASA/ESA
+      </a>
     </section>
 
     <section class="institutional-thesis section" aria-labelledby="thesis-title" data-reveal>
       <div class="institutional-kicker">
-        <p class="eyebrow">Operating thesis</p>
-        <span>01 / The system</span>
+        <p class="eyebrow">01 / Operating thesis</p>
+        <span>The system</span>
       </div>
       <div class="institutional-thesis-copy">
         <h2 id="thesis-title">Most pharmaceutical problems are system problems.</h2>
         <p>A medicine does not reach a market because one function succeeds. Product strategy, regulation, manufacturing, supply, economics, channel and information have to work as one route.</p>
-        <a class="text-link" href="/about/">How I approach the work <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="/about/">About the work <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
