@@ -1108,12 +1108,7 @@
     .executive-cosmos-focus { display: none; }
 
     .executive-cosmos-image {
-      inset: -3% -28% 0 -18%;
-      width: 146%;
-      height: 108%;
-      opacity: .13;
-      object-position: 72% 40%;
-      mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,.7) 48%, transparent 88%);
+      display: none;
     }
 
     .executive-cosmos-credit {
@@ -1178,6 +1173,28 @@
 
     .institutional-company-facts dd {
       overflow-wrap: anywhere;
+    }
+  }
+}
+
+
+@layer motion {
+  @media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+    .page-hero > * {
+      animation: none;
+    }
+  }
+}
+
+@layer responsive {
+  @media (max-width: 720px) {
+    .institutional-home .site-header {
+      backdrop-filter: none;
+    }
+
+    .institutional-home .menu-toggle {
+      width: 3rem;
+      padding-inline: .9rem;
     }
   }
 }
