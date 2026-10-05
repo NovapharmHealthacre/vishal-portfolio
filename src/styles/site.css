@@ -614,6 +614,29 @@
     mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.22) 37%, black 72%, rgba(0,0,0,.48) 100%);
   }
 
+  .executive-cosmos-focus {
+    position: absolute;
+    top: 17%;
+    right: 5%;
+    width: min(34vw, 31rem);
+    aspect-ratio: 1.25;
+    overflow: hidden;
+    opacity: var(--focus-opacity, .08);
+    filter: saturate(.58) contrast(1.14);
+    mix-blend-mode: screen;
+    transform: translate3d(var(--focus-x, 0), var(--focus-y, 0), 0) scale(var(--focus-scale, 1.08));
+    will-change: transform, opacity;
+    mask-image: radial-gradient(ellipse at center, black 12%, rgba(0,0,0,.68) 44%, transparent 74%);
+  }
+
+  .executive-cosmos-focus picture,
+  .executive-cosmos-focus img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .executive-cosmos-focus img { object-fit: cover; }
+
   .executive-field::before,
   .executive-field::after {
     position: absolute;
@@ -1061,6 +1084,8 @@
     .executive-orbit-b { right: -14rem; }
     .executive-orbit-c,
     .executive-glow { display: none; }
+
+    .executive-cosmos-focus { display: none; }
 
     .executive-cosmos-image {
       inset: -3% -28% 0 -18%;
