@@ -184,9 +184,12 @@ export const renderHome = (articles) => {
         </div>
       </div>
       <aside class="executive-identity" aria-label="Profile">
-        <p>Vishal Chakravarty</p>
-        <strong>${escapeHtml(person.role)}</strong>
-        <span>United Kingdom · Regulated pharmaceutical markets</span>
+        ${portrait(true, 'executive-portrait', '(max-width: 720px) 36vw, 11rem')}
+        <div>
+          <p>Vishal Chakravarty</p>
+          <strong>${escapeHtml(person.founderRelationship)}</strong>
+          <span>United Kingdom · Regulated pharmaceutical markets</span>
+        </div>
       </aside>
       <div class="executive-proof" aria-label="Areas of focus">
         <div><span>01</span><strong>Market access</strong></div>
