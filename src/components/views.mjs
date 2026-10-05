@@ -170,7 +170,7 @@ export const renderHome = (articles) => {
     <section class="executive-hero" aria-labelledby="hero-title" data-hubble-hero>
       <div class="executive-field" data-real-cosmos aria-hidden="true">
         <img
-          class="executive-cosmos-image"
+          class="hubble-wide executive-cosmos-image"
           src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960"
           srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=640 640w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960 960w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=1600 1600w"
           sizes="100vw"
@@ -179,6 +179,20 @@ export const renderHome = (articles) => {
           alt=""
           fetchpriority="high"
           decoding="async">
+        <div class="executive-cosmos-focus" aria-hidden="true">
+          <picture>
+            <source media="(min-width: 721px)" srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2017/02/STScI-01EVVBRGBTS2CZP6VK5TK0W4RW.tiff?w=720">
+            <img
+              class="hubble-close"
+              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+              width="1500"
+              height="1200"
+              alt=""
+              loading="lazy"
+              fetchpriority="low"
+              decoding="async">
+          </picture>
+        </div>
         <span class="executive-orbit executive-orbit-a"></span>
         <span class="executive-orbit executive-orbit-b"></span>
         <span class="executive-orbit executive-orbit-c"></span>
