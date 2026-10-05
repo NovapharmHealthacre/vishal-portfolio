@@ -128,16 +128,17 @@ const nasaRouteHero = ({
 }) => `
   <section class="page-hero page-hero-cosmic page-hero-${variant}" data-page-cosmic-hero aria-labelledby="${variant}-hero-title">
     <div class="page-cosmos${image ? '' : ' page-cosmos-owned'}" data-page-cosmos aria-hidden="true">
-      ${image ? `<img
-        class="page-cosmos-image"
-        src="${image}?w=1200"
-        srcset="${image}?w=720 720w, ${image}?w=1200 1200w, ${image}?w=1800 1800w"
-        sizes="100vw"
-        width="${width}"
-        height="${height}"
-        alt=""
-        fetchpriority="high"
-        decoding="async">` : '<div class="nova-signal-field"><span></span><span></span><span></span><span></span><span></span><span></span></div>'}
+      ${image ? `<picture class="page-cosmos-picture">
+        <source media="(min-width: 721px)" srcset="${image}?w=720 720w, ${image}?w=1200 1200w, ${image}?w=1800 1800w" sizes="100vw">
+        <img
+          class="page-cosmos-image"
+          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+          width="${width}"
+          height="${height}"
+          alt=""
+          fetchpriority="high"
+          decoding="async">
+      </picture>` : '<div class="nova-signal-field"><span></span><span></span><span></span><span></span><span></span><span></span></div>'}
       <div class="page-cosmos-optics"></div>
     </div>
     ${foreground}
