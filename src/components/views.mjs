@@ -128,16 +128,17 @@ const nasaRouteHero = ({
 }) => `
   <section class="page-hero page-hero-cosmic page-hero-${variant}" data-page-cosmic-hero aria-labelledby="${variant}-hero-title">
     <div class="page-cosmos${image ? '' : ' page-cosmos-owned'}" data-page-cosmos aria-hidden="true">
-      ${image ? `<img
-        class="page-cosmos-image"
-        src="${image}?w=1200"
-        srcset="${image}?w=720 720w, ${image}?w=1200 1200w, ${image}?w=1800 1800w"
-        sizes="100vw"
-        width="${width}"
-        height="${height}"
-        alt=""
-        fetchpriority="high"
-        decoding="async">` : '<div class="nova-signal-field"><span></span><span></span><span></span><span></span><span></span><span></span></div>'}
+      ${image ? `<picture class="page-cosmos-picture">
+        <source media="(min-width: 721px)" srcset="${image}?w=720 720w, ${image}?w=1200 1200w, ${image}?w=1800 1800w" sizes="100vw">
+        <img
+          class="page-cosmos-image"
+          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+          width="${width}"
+          height="${height}"
+          alt=""
+          fetchpriority="high"
+          decoding="async">
+      </picture>` : '<div class="nova-signal-field"><span></span><span></span><span></span><span></span><span></span><span></span></div>'}
       <div class="page-cosmos-optics"></div>
     </div>
     ${foreground}
@@ -159,20 +160,28 @@ export const renderHome = (articles) => {
   const selected = articles.slice(0, 3);
   const yakujiPublication = publications.find((publication) => publication.publisher === 'Yakuji Nippo');
   if (!yakujiPublication) throw new Error('Missing verified Yakuji Nippo publication record');
+
+  const capabilityRows = [
+    ['01', 'Market access & portfolio strategy', 'Connect product choice, regulatory pathway, pricing logic, channel and demand before capital is committed.'],
+    ['02', 'Manufacturing & resilient supply', 'Design manufacturer choice, technology transfer, batch economics, sourcing and contingency as one operating route.'],
+    ['03', 'Pharmaceutical decision systems', 'Turn fragmented product, regulatory, supply and market signals into clearer decisions and operating visibility.'],
+  ];
+
   const body = `
-    <section class="hero hero-cosmic hero-hubble" aria-labelledby="hero-title" data-hubble-hero>
-      <div class="hubble-cosmos" data-real-cosmos aria-hidden="true">
+    <section class="executive-hero" aria-labelledby="hero-title" data-hubble-hero>
+      <div class="executive-field" data-real-cosmos aria-hidden="true">
         <img
-          class="hubble-wide"
+          class="hubble-wide executive-cosmos-image"
           src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960"
           srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=640 640w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=960 960w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1999/02/STScI-01EVVFQ1NQ9XCZD9CFGJ1FJ822.tif?w=1600 1600w"
-          sizes="(max-width: 720px) 82vw, 100vw"
+          sizes="100vw"
           width="2400"
           height="3000"
           alt=""
-          fetchpriority="high"
+          loading="lazy"
+          fetchpriority="low"
           decoding="async">
-        <div class="hubble-close-shell">
+        <div class="executive-cosmos-focus" aria-hidden="true">
           <picture>
             <source media="(min-width: 721px)" srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2017/02/STScI-01EVVBRGBTS2CZP6VK5TK0W4RW.tiff?w=720">
             <img
@@ -186,52 +195,139 @@ export const renderHome = (articles) => {
               decoding="async">
           </picture>
         </div>
-        <div class="hubble-optics"></div>
+        <span class="executive-orbit executive-orbit-a"></span>
+        <span class="executive-orbit executive-orbit-b"></span>
+        <span class="executive-orbit executive-orbit-c"></span>
+        <span class="executive-glow"></span>
       </div>
-      <div class="hero-copy">
+      <div class="executive-hero-copy">
         <p class="eyebrow">Pharmaceuticals · Market access · Company building</p>
-        <h1 id="hero-title"><span>Vishal</span> <span>Chakravarty.</span></h1>
-        <p class="hero-proposition">${escapeHtml(person.proposition)}</p>
+        <h1 id="hero-title"><span class="sr-only">Vishal Chakravarty — </span>Build the route.<br><em>See the system.</em></h1>
+        <p class="executive-deck">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/about/">About Vishal <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost" href="/thinking/">Read the work <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="/about/">Explore the work <span aria-hidden="true">↗</span></a>
+          <a class="button button-ghost" href="/thinking/">Read insights <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <a class="hero-credit" href="https://science.nasa.gov/asset/hubble/supernova-1987a-in-the-large-magellanic-cloud/" target="_blank" rel="noopener noreferrer">
+      <aside class="executive-identity" aria-label="Profile">
+        ${portrait(true, 'executive-portrait', '(max-width: 720px) 36vw, 11rem')}
+        <div>
+          <p>Vishal Chakravarty</p>
+          <strong>${escapeHtml(person.founderRelationship)}</strong>
+          <span>United Kingdom · Regulated pharmaceutical markets</span>
+        </div>
+      </aside>
+      <div class="executive-proof" aria-label="Areas of focus">
+        <div><span>01</span><strong>Market access</strong></div>
+        <div><span>02</span><strong>Specialist medicines</strong></div>
+        <div><span>03</span><strong>Manufacturing & supply</strong></div>
+        <div><span>04</span><strong>Decision infrastructure</strong></div>
+      </div>
+      <a class="executive-cosmos-credit" href="https://science.nasa.gov/asset/hubble/supernova-1987a-in-the-large-magellanic-cloud/" target="_blank" rel="noopener noreferrer">
         Hubble · Supernova 1987A · NASA/ESA
       </a>
-      <div class="hero-proof" aria-label="Areas of work"><span>Market access</span><span>Manufacturing & technology transfer</span><span>Specialist medicines & supply</span></div>
     </section>
 
-    <section class="founder-feature section" id="about" aria-labelledby="statement-title" data-reveal>
-      <div class="founder-feature-portrait">
-        ${portrait(false)}
-        <p>Vishal Chakravarty</p>
-      </div>
-      <div class="founder-feature-copy">
+    <section class="institutional-thesis section" aria-labelledby="thesis-title" data-reveal>
+      <div class="institutional-kicker">
         <p class="eyebrow">01 / Operating thesis</p>
-        <h2 id="statement-title">The route is the product.</h2>
-        <p>A medicine does not reach a market because one function succeeds. Product, regulatory pathway, manufacturer, supply, economics, channel and information have to behave as one system.</p>
+        <span>The system</span>
+      </div>
+      <div class="institutional-thesis-copy">
+        <h2 id="thesis-title">Most pharmaceutical problems are system problems.</h2>
+        <p>A medicine does not reach a market because one function succeeds. Product strategy, regulation, manufacturing, supply, economics, channel and information have to work as one route.</p>
         <a class="text-link" href="/about/">About the work <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section class="venture-feature section" id="companies" aria-labelledby="venture-title" data-reveal>
-      <div class="section-heading"><div><p class="eyebrow">02 / Company · NovaPharm Healthcare</p></div></div>
-      <div class="venture-grid"><div><h2 id="venture-title">${escapeHtml(company.name)}</h2><p class="venture-number">UK pharmaceutical company · Established ${company.incorporationDate.slice(0, 4)}</p></div><div class="venture-copy"><p class="lead">${escapeHtml(company.description)}</p><p>${escapeHtml(company.currentFocus)}</p><div class="venture-status-pills"><span class="status-pill"><span aria-hidden="true"></span>Product & market strategy</span><span class="status-pill"><span aria-hidden="true"></span>Manufacturing & supply</span></div><a class="button button-light" href="/ventures/">Explore NovaPharm ${arrow}</a></div></div>
+    <section class="institutional-capabilities section" aria-labelledby="capabilities-title" data-reveal>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Where I work</p>
+          <h2 id="capabilities-title">Three connected problems.<br>One operating view.</h2>
+        </div>
+      </div>
+      <div class="institutional-capability-list">
+        ${capabilityRows.map(([index, title, copy]) => `<article><span>${index}</span><h3>${title}</h3><p>${copy}</p><span class="capability-arrow" aria-hidden="true">↗</span></article>`).join('')}
+      </div>
     </section>
 
-    <section class="principles section" aria-labelledby="principles-title" data-reveal>
-      <div class="section-heading"><div><p class="eyebrow">03 / Operating instincts</p><h2 id="principles-title">Three instincts shape the work</h2></div></div>
-      <div class="principle-list"><article><span>01</span><h3>Design the whole system</h3><p>Product, regulation, manufacturing, supply, economics, channel and information are designed as one experience rather than handed off as separate functions.</p></article><article><span>02</span><h3>Build infrastructure before scale</h3><p>Critical partners, supply routes, information flows, responsibilities and contingency become stronger before volume makes them harder to change.</p></article><article><span>03</span><h3>Start from first principles</h3><p>Reduce the problem to patient need, regulatory reality, technical feasibility, economics and actual demand — then rebuild from what must be true.</p></article></div>
+    <section class="institutional-company" aria-labelledby="company-title" data-reveal>
+      <div class="institutional-company-inner">
+        <div>
+          <p class="eyebrow">Company · NovaPharm Healthcare</p>
+          <h2 id="company-title">Build the infrastructure before the scale arrives.</h2>
+        </div>
+        <div class="institutional-company-copy">
+          <p class="lead">${escapeHtml(company.description)}</p>
+          <p>${escapeHtml(company.currentFocus)}</p>
+          <dl class="institutional-company-facts">
+            <div><dt>Foundation</dt><dd>United Kingdom</dd></div>
+            <div><dt>Established</dt><dd>${company.incorporationDate.slice(0, 4)}</dd></div>
+            <div><dt>Model</dt><dd>Specialist medicines · regulated markets</dd></div>
+          </dl>
+          <a class="button button-dark" href="/ventures/">Explore NovaPharm ${arrow}</a>
+        </div>
+      </div>
     </section>
 
-    <section class="writing section" id="essays" aria-labelledby="writing-title" data-reveal><div class="section-heading"><div><p class="eyebrow">04 / Thinking</p><h2 id="writing-title">Pharmaceutical essays</h2></div><a class="text-link" href="/thinking/">All essays <span aria-hidden="true">→</span></a></div><div class="essay-list">${selected.map(articleCard).join('')}</div></section>
+    <section class="institutional-insights section" aria-labelledby="insights-title" data-reveal>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Insights</p>
+          <h2 id="insights-title">Ideas from the operating edge.</h2>
+        </div>
+        <a class="text-link" href="/thinking/">All insights <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="essay-list institutional-essay-list">${selected.map(articleCard).join('')}</div>
+    </section>
 
-    <section class="evidence section" aria-labelledby="evidence-title" data-reveal><p class="eyebrow">05 / Public record</p><div class="evidence-grid"><div><h2 id="evidence-title">Company, writing<br>and work.</h2><p>Official company information, publisher-hosted writing and a concise professional profile.</p></div><div class="evidence-links"><a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a><a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access series</strong>${arrow}</a><a href="/facts/"><span>Public record</span><strong>Selected facts, published work and independent sources</strong>${arrow}</a></div></div></section>
+    <section class="evidence institutional-evidence section" aria-labelledby="evidence-title" data-reveal>
+      <p class="eyebrow">Evidence, not adjectives</p>
+      <div class="evidence-grid">
+        <div>
+          <h2 id="evidence-title">A public record<br>you can inspect.</h2>
+          <p>Official company information, independent publisher-hosted analysis and a maintained record of claims and sources.</p>
+        </div>
+        <div class="evidence-links">
+          <a href="${company.companiesHouseUrl}" target="_blank" rel="noopener noreferrer"><span>Companies House</span><strong>${escapeHtml(company.name)} · Incorporated ${company.incorporationDate.slice(0, 4)}</strong>${arrow}</a>
+          <a href="${yakujiPublication.english}" target="_blank" rel="noopener noreferrer"><span>Yakuji Nippo</span><strong>UK–EU pharmaceutical market access analysis</strong>${arrow}</a>
+          <a href="/facts/"><span>Public record</span><strong>Selected facts, published work and independent sources</strong>${arrow}</a>
+        </div>
+      </div>
+    </section>
 
-    <section class="closing section" id="invest" aria-labelledby="closing-title" data-reveal><span id="contact" class="anchor-target" aria-hidden="true"></span><p class="eyebrow">06 / Speaking · Editorial · Selected partnerships</p><h2 id="closing-title">Useful conversations start with a real operating problem.</h2><div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div></section>`;
-  return renderPage({ ...meta, body, socialImage: person.image.path, socialImageAlt: person.image.alt, socialImageWidth: person.image.width, socialImageHeight: person.image.height, schemas: [websiteSchema(), personSchema(), webPageSchema({ path: meta.path, name: meta.title, description: meta.description, mainEntity: { '@id': person.id }, primaryImage: { '@id': person.image.id } })], className: 'home-page' });
+    <section class="institutional-principle section" aria-labelledby="principle-title" data-reveal>
+      <p class="eyebrow">Principle</p>
+      <h2 id="principle-title">Growth should never outrun regulatory readiness, supply resilience or the quality of the decision.</h2>
+    </section>
+
+    <section class="closing institutional-closing section" id="contact" aria-labelledby="closing-title" data-reveal>
+      <p class="eyebrow">Speaking · Editorial · Selected partnerships</p>
+      <h2 id="closing-title">Start with the problem worth solving.</h2>
+      <div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div>
+    </section>`;
+
+  return renderPage({
+    ...meta,
+    body,
+    socialImage: person.image.path,
+    socialImageAlt: person.image.alt,
+    socialImageWidth: person.image.width,
+    socialImageHeight: person.image.height,
+    schemas: [
+      websiteSchema(),
+      personSchema(),
+      webPageSchema({
+        path: meta.path,
+        name: meta.title,
+        description: meta.description,
+        mainEntity: { '@id': person.id },
+        primaryImage: { '@id': person.image.id },
+      }),
+    ],
+    className: 'home-page institutional-home',
+  });
 };
 
 export const renderAbout = (page) => {

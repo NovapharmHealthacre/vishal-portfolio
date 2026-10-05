@@ -31,7 +31,7 @@ export const person = Object.freeze({
   founderRelationship: 'Founder of NovaPharm Healthcare Ltd',
   jobTitle: 'Chief Executive Officer',
   proposition:
-    'Building a UK-led pharmaceutical company around market access, specialist medicines and resilient supply — designed as one operating system from product decision to patient access.',
+    'Building a UK-led pharmaceutical company around market access, specialist medicines and resilient supply — with manufacturing and decision systems connecting product choice to patient access as one operating route.',
   shortBio:
     'Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025 and is building it around product strategy, market access, manufacturing partnerships and resilient supply across regulated markets, with operating infrastructure connecting those decisions.',
   mediumBio:

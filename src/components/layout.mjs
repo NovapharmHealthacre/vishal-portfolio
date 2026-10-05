@@ -11,8 +11,8 @@ const navigationMarkup = (currentPath) => `
       <span class="brand-mark" aria-hidden="true">VC</span>
       <span class="brand-name">Vishal Chakravarty</span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
-      <span>Menu</span><span class="menu-glyph" aria-hidden="true"></span>
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-navigation">
+      <span class="menu-glyph" aria-hidden="true"></span>
     </button>
     <nav id="site-navigation" class="site-navigation" aria-label="Primary navigation">
       <ul class="site-nav-list">
@@ -35,16 +35,16 @@ const footerMarkup = () => `
   <footer class="site-footer" data-ui-layer="footer">
     <div class="footer-intro">
       <p class="eyebrow">Vishal Chakravarty</p>
-      <h2>Pharmaceuticals, market access<br>and company building.</h2>
+      <h2>Strategy, infrastructure<br>and intelligence for medicines.</h2>
     </div>
     <div class="footer-grid">
       <div>
-        <p>Work across medicines, manufacturing, supply, regulated markets and the systems connecting them.</p>
+        <p>Work across pharmaceutical strategy, market access, manufacturing, resilient supply and the decision systems connecting them.</p>
       </div>
       <nav aria-label="Footer navigation">
         <a href="/about/">About</a>
         <a href="/ventures/">NovaPharm</a>
-        <a href="/thinking/">Thinking</a>
+        <a href="/thinking/">Insights</a>
         <a href="/media/">Media</a>
         <a href="/facts/">Public record</a>
         <a href="/privacy/">Privacy</a>
@@ -56,7 +56,7 @@ const footerMarkup = () => `
     </div>
     <div class="footer-base">
       <span>© ${verificationDate.slice(0, 4)} Vishal Chakravarty</span>
-      <span>Pharmaceuticals · Market access · Regulated markets</span>
+      <span>Pharmaceuticals · Market access · Decision systems</span>
     </div>
   </footer>`;
 
@@ -85,8 +85,9 @@ export const renderPage = ({
   redirectTo,
 }) => {
   const canonical = absolute(path);
-  const routeCosmosEnabled = ['about-page', 'ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].includes(className);
-  const nasaAssetsEnabled = className === 'home-page' || className === 'about-page';
+  const classNames = new Set(className.split(/\s+/).filter(Boolean));
+  const routeCosmosEnabled = ['about-page', 'ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].some((name) => classNames.has(name));
+  const nasaAssetsEnabled = classNames.has('home-page') || classNames.has('about-page');
   const ogType = path.startsWith('/essays/') ? 'article' : ['/about/', '/facts/'].includes(path) ? 'profile' : 'website';
   const imageType = socialImage.endsWith('.webp') ? 'image/webp' : socialImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const schemaScripts = schemas.map((schema) => jsonForHtml(schema));
