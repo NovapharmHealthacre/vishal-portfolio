@@ -274,7 +274,7 @@ export const renderHome = (articles) => {
     <section class="institutional-insights section" aria-labelledby="insights-title" data-reveal>
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Insights</p>
+          <p class="eyebrow">Insights · Pharmaceutical essays</p>
           <h2 id="insights-title">Ideas from the operating edge.</h2>
         </div>
         <a class="text-link" href="/thinking/">All insights <span aria-hidden="true">→</span></a>
