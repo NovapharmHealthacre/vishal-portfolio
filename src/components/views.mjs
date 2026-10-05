@@ -175,7 +175,7 @@ export const renderHome = (articles) => {
         <span class="executive-glow"></span>
       </div>
       <div class="executive-hero-copy">
-        <p class="eyebrow">Pharmaceuticals · Strategy · Market access · Decision systems</p>
+        <p class="eyebrow">Pharmaceuticals · Market access · Company building</p>
         <h1 id="hero-title">Build the route.<br><em>See the system.</em></h1>
         <p class="executive-deck">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
