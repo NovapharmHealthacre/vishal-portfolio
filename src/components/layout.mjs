@@ -11,8 +11,8 @@ const navigationMarkup = (currentPath) => `
       <span class="brand-mark" aria-hidden="true">VC</span>
       <span class="brand-name">Vishal Chakravarty</span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
-      <span>Menu</span><span class="menu-glyph" aria-hidden="true"></span>
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-navigation">
+      <span class="menu-glyph" aria-hidden="true"></span>
     </button>
     <nav id="site-navigation" class="site-navigation" aria-label="Primary navigation">
       <ul class="site-nav-list">
