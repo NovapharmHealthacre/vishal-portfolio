@@ -513,6 +513,26 @@
   @media (max-width: 390px) {
     .hero-actions .button, .closing .button { width: 100%; }
     .contact-email { font-size: 1.15rem; overflow-wrap: anywhere; }
+
+    .institutional-home .institutional-thesis-copy h2,
+    .institutional-home .institutional-capabilities .section-heading h2,
+    .institutional-home .institutional-insights .section-heading h2,
+    .institutional-home .institutional-company h2,
+    .institutional-home .institutional-principle h2,
+    .institutional-home .footer-intro h2 {
+      font-size: clamp(2.55rem, 13vw, 4.35rem);
+      overflow-wrap: anywhere;
+      hyphens: auto;
+    }
+
+    .institutional-home .institutional-kicker,
+    .institutional-home .institutional-thesis-copy,
+    .institutional-home .institutional-capability-list article,
+    .institutional-home .institutional-company-inner,
+    .institutional-home .institutional-insights,
+    .institutional-home .institutional-principle {
+      min-width: 0;
+    }
   }
 }
 
