@@ -1135,11 +1135,29 @@
     }
 
     .institutional-company {
-      padding-inline: 4.5vw;
+      padding-inline: 0;
     }
 
     .institutional-company-inner {
-      width: 100%;
+      width: var(--page);
+      max-width: 100%;
+      margin-inline: auto;
+    }
+
+    .institutional-company-inner > *,
+    .institutional-company-copy,
+    .institutional-company-facts,
+    .institutional-company-facts > div {
+      min-width: 0;
+    }
+
+    .institutional-company-facts > div {
+      grid-template-columns: 1fr;
+      gap: .35rem;
+    }
+
+    .institutional-company-facts dd {
+      overflow-wrap: anywhere;
     }
   }
 }
