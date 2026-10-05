@@ -177,7 +177,8 @@ export const renderHome = (articles) => {
           width="2400"
           height="3000"
           alt=""
-          fetchpriority="high"
+          loading="lazy"
+          fetchpriority="low"
           decoding="async">
         <div class="executive-cosmos-focus" aria-hidden="true">
           <picture>
@@ -200,7 +201,7 @@ export const renderHome = (articles) => {
       </div>
       <div class="executive-hero-copy">
         <p class="eyebrow">Pharmaceuticals · Market access · Company building</p>
-        <h1 id="hero-title">Build the route.<br><em>See the system.</em></h1>
+        <h1 id="hero-title"><span class="sr-only">Vishal Chakravarty — </span>Build the route.<br><em>See the system.</em></h1>
         <p class="executive-deck">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
           <a class="button button-primary" href="/about/">Explore the work <span aria-hidden="true">↗</span></a>
