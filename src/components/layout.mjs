@@ -35,16 +35,16 @@ const footerMarkup = () => `
   <footer class="site-footer" data-ui-layer="footer">
     <div class="footer-intro">
       <p class="eyebrow">Vishal Chakravarty</p>
-      <h2>Pharmaceuticals, market access<br>and company building.</h2>
+      <h2>Strategy, infrastructure<br>and intelligence for medicines.</h2>
     </div>
     <div class="footer-grid">
       <div>
-        <p>Work across medicines, manufacturing, supply, regulated markets and the systems connecting them.</p>
+        <p>Work across pharmaceutical strategy, market access, manufacturing, resilient supply and the decision systems connecting them.</p>
       </div>
       <nav aria-label="Footer navigation">
         <a href="/about/">About</a>
         <a href="/ventures/">NovaPharm</a>
-        <a href="/thinking/">Thinking</a>
+        <a href="/thinking/">Insights</a>
         <a href="/media/">Media</a>
         <a href="/facts/">Public record</a>
         <a href="/privacy/">Privacy</a>
@@ -56,7 +56,7 @@ const footerMarkup = () => `
     </div>
     <div class="footer-base">
       <span>© ${verificationDate.slice(0, 4)} Vishal Chakravarty</span>
-      <span>Pharmaceuticals · Market access · Regulated markets</span>
+      <span>Pharmaceuticals · Market access · Decision systems</span>
     </div>
   </footer>`;
 
