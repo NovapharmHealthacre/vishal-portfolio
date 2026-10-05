@@ -678,6 +678,21 @@
     border-top: 1px solid var(--signal);
   }
 
+  .executive-portrait {
+    width: min(11rem, 42%);
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--carbon);
+  }
+
+  .executive-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.72) contrast(1.04);
+  }
+
   .executive-identity p {
     font-family: var(--serif);
     font-size: 1.4rem;
