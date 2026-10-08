@@ -155,6 +155,7 @@ export const renderPage = ({
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
     <link rel="stylesheet" href="/assets/site.css">
     ${routeCosmosEnabled ? '<link rel="stylesheet" href="/assets/route-cosmos.css">' : ''}
+    <link rel="stylesheet" href="/assets/product-grade-2026.css">
     <script src="/assets/site.js" defer></script>
     ${routeCosmosEnabled ? '<script src="/assets/route-cosmos.js" defer></script>' : ''}
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
