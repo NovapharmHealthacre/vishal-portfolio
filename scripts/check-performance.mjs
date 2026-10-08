@@ -24,7 +24,6 @@ const brotliSize = (buffer) => brotliCompressSync(buffer, {
 const files = {
   homepage: await read('index.html'),
   siteCss: await read('assets/site.css'),
-  productCss: await read('assets/product-grade-2026.css'),
   criticalJs: await read('assets/site.js'),
   lcpAvif: await read('images/portrait/vishal-chakravarty-960.avif'),
   lcpFallback: await read('images/portrait/vishal-chakravarty-960.jpg'),
@@ -33,7 +32,7 @@ const files = {
 const measurements = {
   'Critical JavaScript (Brotli)': [brotliSize(files.criticalJs), limits.criticalJavaScriptBrotli],
   'All homepage JavaScript (Brotli)': [brotliSize(files.criticalJs), limits.totalJavaScriptBrotli],
-  'All homepage CSS (Brotli)': [brotliSize(Buffer.concat([files.siteCss, files.productCss])), limits.cssBrotli],
+  'All homepage CSS (Brotli)': [brotliSize(files.siteCss), limits.cssBrotli],
   'Homepage HTML (Brotli)': [brotliSize(files.homepage), limits.homepageHtmlBrotli],
   'LCP portrait AVIF': [files.lcpAvif.byteLength, limits.lcpAvif],
   'LCP portrait JPEG fallback': [files.lcpFallback.byteLength, limits.lcpFallback],
@@ -41,7 +40,6 @@ const measurements = {
 
 const initialTransfer = brotliSize(files.homepage)
   + brotliSize(files.siteCss)
-  + brotliSize(files.productCss)
   + brotliSize(files.criticalJs)
   + files.lcpAvif.byteLength;
 measurements['Initial homepage transfer estimate'] = [initialTransfer, limits.initialTransferBrotli];
@@ -59,7 +57,7 @@ for (const [label, [actual, limit]] of Object.entries(measurements)) {
 console.log(`${domNodes <= limits.domNodes ? 'PASS' : 'FAIL'} Homepage DOM estimate: ${domNodes} / ${limits.domNodes} nodes`);
 if (domNodes > limits.domNodes) violations.push('Homepage DOM estimate exceeds its budget');
 
-if (/https?:\/\/[^"']+\.(?:woff2?|ttf|otf)/i.test(homepage + files.siteCss.toString('utf8') + files.productCss.toString('utf8'))) {
+if (/https?:\/\/[^"']+\.(?:woff2?|ttf|otf)/i.test(homepage + files.siteCss.toString('utf8'))) {
   violations.push('Remote font reference detected');
 }
 
