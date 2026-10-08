@@ -133,7 +133,6 @@ write(
     fs.readFileSync(path.join(root, 'public/assets/content-fixes.css'), 'utf8'),
     fs.readFileSync(path.join(root, 'public/assets/apple-refresh.css'), 'utf8'),
     fs.readFileSync(path.join(root, 'public/assets/unified-system.css'), 'utf8'),
-    fs.readFileSync(path.join(root, 'public/assets/product-grade-2026.css'), 'utf8'),
   ].join('\n'),
 );
 write('assets/site.js', fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8'));
