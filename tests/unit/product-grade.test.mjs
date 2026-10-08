@@ -17,6 +17,8 @@ test('theme is loaded once after baseline styles on every representative page', 
     const html = fs.readFileSync(path.join(root, route, 'index.html'), 'utf8');
     assert.equal((html.match(/rel="stylesheet"/g) ?? []).length, route === '' || route === 'privacy/' ? 1 : 2, 'Unexpected stylesheet count ' + route);
     assert.ok(html.includes('/assets/site.css'), 'Missing unified stylesheet on ' + route);
+    const cosmicIndex = html.indexOf('/assets/route-cosmos.css');
+    if (cosmicIndex >= 0) assert.ok(cosmicIndex < html.indexOf('/assets/site.css'), 'Final theme must follow NASA imagery CSS on ' + route);
   }
 });
 

@@ -15,7 +15,7 @@ All graphics and written content remain original to the portfolio; no Apple trad
 
 ## Pull request contents
 - public/assets/product-grade-2026.css is the single documented last-mile visual design system.
-- Layout loads the stylesheet last on every route, after the NASA route-specific visual CSS.
+- Build bundles product design into the single site.css; route-specific NASA CSS is loaded ahead of the final product design.
 - Performance checks now cover BOTH CSS payloads and the complete initial-transfer estimate.
 - Regression tests pin style load order and canonical/structured-identity crawlability.
 - No old URLs, factual claims, published articles, site-verification files or schema have been removed.

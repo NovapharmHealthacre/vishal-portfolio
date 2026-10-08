@@ -153,8 +153,8 @@ export const renderPage = ({
     ${nasaAssetsEnabled ? '<link rel="preconnect" href="https://assets.science.nasa.gov" crossorigin>' : ''}
     <link rel="alternate" type="application/rss+xml" title="Thinking by Vishal Chakravarty" href="/rss.xml">
     <link rel="alternate" type="application/feed+json" title="Thinking by Vishal Chakravarty" href="/feed.json">
-    <link rel="stylesheet" href="/assets/site.css">
     ${routeCosmosEnabled ? '<link rel="stylesheet" href="/assets/route-cosmos.css">' : ''}
+    <link rel="stylesheet" href="/assets/site.css">
     <script src="/assets/site.js" defer></script>
     ${routeCosmosEnabled ? '<script src="/assets/route-cosmos.js" defer></script>' : ''}
     ${schemaScripts.map((schema) => `<script type="application/ld+json">${schema}</script>`).join('\n    ')}
