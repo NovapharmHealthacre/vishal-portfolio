@@ -4,7 +4,7 @@ import path from 'node:path';
 import test from 'node:test';
 
 const root = path.resolve('dist');
-const theme = fs.readFileSync(path.join(root, 'assets/product-grade-2026.css'), 'utf8');
+const theme = fs.readFileSync(path.join(root, 'assets/site.css'), 'utf8');
 
 test('portfolio product theme includes desktop mobile and reduced-motion rules', () => {
   for (const token of ['--product-blue:', '.institutional-home .executive-hero', '.page-hero-cosmic', '.site-header', '@media (max-width: 720px)', 'prefers-reduced-motion']) {
@@ -15,12 +15,8 @@ test('portfolio product theme includes desktop mobile and reduced-motion rules',
 test('theme is loaded once after baseline styles on every representative page', () => {
   for (const route of ['', 'about/', 'ventures/', 'thinking/', 'media/', 'facts/', 'contact/', 'privacy/']) {
     const html = fs.readFileSync(path.join(root, route, 'index.html'), 'utf8');
-    const ref = '<link rel="stylesheet" href="/assets/product-grade-2026.css">';
-    assert.equal(html.split(ref).length - 1, 1, 'Theme count wrong on ' + route);
-    const index = html.indexOf(ref);
-    assert.ok(index > html.indexOf('/assets/site.css'), 'Theme before base on ' + route);
-    const cosmos = html.indexOf('/assets/route-cosmos.css');
-    if (cosmos >= 0) assert.ok(index > cosmos, 'Theme before cosmos on ' + route);
+    assert.equal((html.match(/rel="stylesheet"/g) ?? []).length, route === '' || route === 'privacy/' ? 1 : 2, 'Unexpected stylesheet count ' + route);
+    assert.ok(html.includes('/assets/site.css'), 'Missing unified stylesheet on ' + route);
   }
 });
 
@@ -33,8 +29,8 @@ test('the release preserves search indexing and identity foundations', () => {
     assert.match(html, /rel="canonical"/);
     assert.match(html, /application\/ld\+json/);
   }
-  assert.match(about, /"@type":"ProfilePage"/);
-  assert.match(home, /"@type":"Person"/);
+  assert.match(about, /"@type"\s*:\s*"ProfilePage"/);
+  assert.match(home, /"@type"\s*:\s*"Person"/);
   assert.match(robots, /User-agent: Googlebot\nAllow: \//);
   assert.match(sitemap, /https:\/\/vishal\.novapharmhealthcare\.com\/about\//);
 });
