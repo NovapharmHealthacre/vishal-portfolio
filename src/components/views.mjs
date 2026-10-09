@@ -179,8 +179,8 @@ export const renderHome = (articles) => {
           width="2400"
           height="3000"
           alt=""
-          loading="eager"
-          fetchpriority="high"
+          loading="lazy"
+          fetchpriority="low"
           decoding="async">
         <div class="executive-cosmos-focus" aria-hidden="true">
           <picture>
@@ -206,7 +206,7 @@ export const renderHome = (articles) => {
         <h1 id="hero-title">Vishal Chakravarty.</h1><p class="apple-headline-subtitle">Build the route.<br>See the system.</p>
         <p class="executive-deck">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/about/">Learn more</a>
+          <a class="button button-primary" href="/about/" aria-label="Learn more about Vishal Chakravarty">Learn more</a>
           <a class="apple-inline-link" href="/thinking/">Read insights <span aria-hidden="true">›</span></a>
         </div>
       </div>
@@ -235,10 +235,10 @@ export const renderHome = (articles) => {
         <p class="apple-eyebrow">Founder · NovaPharm Healthcare</p>
         <h2 id="founder-title">A different way to build.</h2>
         <p class="apple-flagship-subtitle">Pharmaceuticals. Infrastructure. Intelligent decisions.</p>
-        <div class="apple-action-row"><a class="button button-primary" href="/about/">Learn more</a><a class="apple-inline-link" href="/facts/">Public record <span aria-hidden="true">›</span></a></div>
+        <div class="apple-action-row"><a class="button button-primary" href="/about/" aria-label="Learn more about Vishal Chakravarty">Learn more</a><a class="apple-inline-link" href="/facts/">Public record <span aria-hidden="true">›</span></a></div>
       </div>
       <div class="apple-founder-stage">
-        ${portrait(true, 'apple-founder-portrait', '(max-width: 720px) 70vw, 480px')}
+        ${portrait(false, 'apple-founder-portrait', '(max-width: 720px) 70vw, 480px')}
         <span>Vishal Chakravarty · ${escapeHtml(person.founderRelationship)}</span>
       </div>
     </section>
@@ -258,7 +258,7 @@ export const renderHome = (articles) => {
             <div><dt>Established</dt><dd>${company.incorporationDate.slice(0, 4)}</dd></div>
             <div><dt>Model</dt><dd>Specialist medicines · regulated markets</dd></div>
           </dl>
-          <a class="button button-primary" href="/ventures/">Learn more</a>
+          <a class="button button-primary" href="/ventures/" aria-label="Learn more about NovaPharm Healthcare">Learn more</a>
         </div>
       </div>
       <div class="apple-company-visual" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -273,7 +273,7 @@ export const renderHome = (articles) => {
         </div>
       </div>
       <div class="institutional-capability-list apple-promo-grid">
-        ${capabilityRows.map(([index, title, copy]) => `<article class="apple-promo"><span class="apple-promo-index">${index}</span><h3>${title}</h3><p>${copy}</p><a class="apple-inline-link" href="/ventures/">Learn more <span aria-hidden="true">›</span></a><span class="apple-promo-art" aria-hidden="true"></span></article>`).join('')}
+        ${capabilityRows.map(([index, title, copy]) => `<article class="apple-promo"><span class="apple-promo-index">${index}</span><h3>${title}</h3><p>${copy}</p><a class="apple-inline-link" href="/ventures/" aria-label="Learn more about ${escapeHtml(title)}">Learn more <span aria-hidden="true">›</span></a><span class="apple-promo-art" aria-hidden="true"></span></article>`).join('')}
       <article class="apple-promo apple-promo-editorial"><span class="apple-promo-index">04</span><h3>Thinking in systems.</h3><p>Analysis from regulated pharmaceutical markets and company building.</p><a class="apple-inline-link" href="/thinking/">Read the essays <span aria-hidden="true">›</span></a><span class="apple-promo-art" aria-hidden="true"></span></article></div>
     </section>
 
