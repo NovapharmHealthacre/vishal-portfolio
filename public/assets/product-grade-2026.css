@@ -972,6 +972,47 @@ body {
   .institutional-home .institutional-essay-list .essay-card:last-child { grid-column: 1 / -1; min-height: 270px; }
   .apple-local-nav nav a:not(:first-child) { display: none; }
 }
+/* A fully navigable progressive-enhancement fallback at tablet/phone widths. */
+@media (max-width: 980px) {
+  .no-js .site-header,
+  .no-js .institutional-home .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 44px;
+  }
+  .no-js .site-header .site-navigation {
+    position: static;
+    order: 4;
+    display: block;
+    flex: 0 0 100%;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    padding: 6px 0 14px;
+    margin: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .no-js .site-header .site-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    height: auto;
+    gap: 5px;
+  }
+  .no-js .site-header .site-nav-list a,
+  .no-js .institutional-home .site-nav-list a {
+    min-height: 35px;
+    padding: 6px 10px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 450;
+  }
+  .no-js .global-search-toggle,
+  .no-js .menu-toggle { display: none; }
+}
+
 @media (max-width: 720px) {
   html { scroll-padding-top: 105px; }
   .site-header, .institutional-home .site-header, .home-page .site-header {
