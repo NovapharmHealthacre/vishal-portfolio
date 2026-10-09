@@ -1125,6 +1125,18 @@ body {
   .site-footer .footer-grid { grid-template-columns: 1fr; gap: 22px; }
   .site-footer .footer-base { flex-wrap: wrap; }
 }
+/* Non-JS mobile menu occupies real document height and remains legible. */
+@media (max-width: 720px) {
+  .no-js .site-header,
+  .no-js .institutional-home .site-header {
+    height: auto;
+    min-height: 48px;
+  }
+  .no-js .site-header .site-navigation {
+    background: #161617;
+  }
+}
+
 @media (max-width: 390px) {
   .institutional-home .apple-flagship h1,
   .institutional-home .apple-flagship h2 { font-size: 38px; }
