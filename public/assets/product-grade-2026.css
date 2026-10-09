@@ -628,7 +628,7 @@ body {
   transform: translateX(-50%);
   background: radial-gradient(circle,#fefefe 0%,#c1c8d5 23%,#9aa5c1 38%,#e5e7ef 55%,transparent 72%);
 }
-.institutional-home .apple-promo:nth-child(1) { background: #06090d; color: #fff; }
+.institutional-home .apple-promo-grid .apple-promo:nth-child(1) { background: #06090d; color: #fff; }
 .institutional-home .apple-promo:nth-child(1) p { color: #dedee3; }
 .institutional-home .apple-promo:nth-child(1) .apple-promo-index { color: #cacad2; }
 .institutional-home .apple-promo:nth-child(1) .apple-inline-link { color: #2997ff; }
@@ -908,6 +908,8 @@ body {
   line-height: 1.13;
   overflow-wrap: normal;
 }
+.site-footer .footer-intro .eyebrow,
+.institutional-home .site-footer .footer-intro .eyebrow { color: #595963; }
 .site-footer .footer-grid {
   grid-template-columns: 2fr 1fr 1.3fr;
   gap: 25px;
