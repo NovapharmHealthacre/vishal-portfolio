@@ -178,7 +178,7 @@ const showSearch = async () => {
           title: article.title, description: article.summary || '', href: article.canonical
         }));
         searchEntries = [...pages, ...essays].filter((entry) => {
-          try { return new URL(entry.href).origin === window.location.origin; }
+          try { return new URL(entry.href).hostname === 'vishal.novapharmhealthcare.com'; }
           catch { return false; }
         });
         return searchEntries;
