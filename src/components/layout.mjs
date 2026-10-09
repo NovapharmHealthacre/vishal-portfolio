@@ -103,7 +103,7 @@ export const renderPage = ({
     '/speaking-partnerships/': 'Partnerships',
     '/privacy/': 'Privacy',
   }[path] ?? 'Vishal Chakravarty');
-  const pageSections = [...body.matchAll(/<h2 id="([^"]+)">([\\s\\S]*?)<\\/h2>/g)]
+  const pageSections = [...body.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)]
     .slice(0, 2)
     .map((match) => ({ id: match[1], label: match[2].replace(/<[^>]+>/g, '').trim() }));
   const localNavigation = path !== '/' && !noIndex
