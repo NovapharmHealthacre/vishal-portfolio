@@ -1032,7 +1032,7 @@ body {
   .institutional-home .apple-founder-portrait { width: min(270px,69vw); height: 270px; }
   .institutional-home .apple-founder-stage > span { font-size: 10px; }
   .institutional-home .apple-flagship-company .institutional-company-copy .lead { font-size: 17px; }
-  .institutional-home .apple-company-visual { bottom: -220px; width: 730px; }
+  .institutional-home .apple-company-visual { bottom: -150px; width: min(94vw, 460px); }
   .institutional-home .apple-promos { padding: 0 0 12px; }
   .institutional-home .apple-promo-grid { grid-template-columns: 1fr; gap: 12px; }
   .institutional-home .apple-promo-grid .apple-promo,
