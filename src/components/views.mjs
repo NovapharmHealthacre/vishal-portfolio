@@ -168,7 +168,8 @@ export const renderHome = (articles) => {
   ];
 
   const body = `
-    <section class="executive-hero" aria-labelledby="hero-title" data-hubble-hero>
+
+    <section class="executive-hero apple-flagship apple-flagship-cosmos" aria-labelledby="hero-title" data-hubble-hero>
       <div class="executive-field" data-real-cosmos aria-hidden="true">
         <img
           class="hubble-wide executive-cosmos-image"
@@ -202,11 +203,11 @@ export const renderHome = (articles) => {
       </div>
       <div class="executive-hero-copy">
         <p class="eyebrow">Pharmaceuticals · Market access · Company building</p>
-        <h1 id="hero-title"><span class="sr-only">Vishal Chakravarty — </span>Build the route.<br><em>See the system.</em></h1>
+        <h1 id="hero-title">Vishal Chakravarty.</h1><p class="apple-headline-subtitle">Build the route.<br>See the system.</p>
         <p class="executive-deck">${escapeHtml(person.proposition)}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/about/">Explore the work <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost" href="/thinking/">Read insights <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="/about/" aria-label="Learn more about Vishal Chakravarty">Learn more</a>
+          <a class="apple-inline-link" href="/thinking/">Read insights <span aria-hidden="true">›</span></a>
         </div>
       </div>
       <aside class="executive-identity" aria-label="Profile">
@@ -228,7 +229,56 @@ export const renderHome = (articles) => {
       </a>
     </section>
 
-    <section class="institutional-thesis section" aria-labelledby="thesis-title" data-reveal>
+
+    <section class="apple-flagship apple-flagship-founder" aria-labelledby="founder-title">
+      <div class="apple-flagship-copy">
+        <p class="apple-eyebrow">Founder · NovaPharm Healthcare</p>
+        <h2 id="founder-title">A different way to build.</h2>
+        <p class="apple-flagship-subtitle">Pharmaceuticals. Infrastructure. Intelligent decisions.</p>
+        <div class="apple-action-row"><a class="button button-primary" href="/about/" aria-label="Learn more about Vishal Chakravarty">Learn more</a><a class="apple-inline-link" href="/facts/">Public record <span aria-hidden="true">›</span></a></div>
+      </div>
+      <div class="apple-founder-stage">
+        ${portrait(false, 'apple-founder-portrait', '(max-width: 720px) 70vw, 480px')}
+        <span>Vishal Chakravarty · ${escapeHtml(person.founderRelationship)}</span>
+      </div>
+    </section>
+
+
+    <section class="institutional-company apple-flagship apple-flagship-company" aria-labelledby="company-title" data-reveal>
+      <div class="institutional-company-inner">
+        <div>
+          <p class="eyebrow">Company · United Kingdom</p>
+          <h2 id="company-title">NovaPharm Healthcare.</h2>
+        </div>
+        <div class="institutional-company-copy">
+          <p class="lead">${escapeHtml(company.description)}</p>
+          <p>${escapeHtml(company.currentFocus)}</p>
+          <dl class="institutional-company-facts">
+            <div><dt>Foundation</dt><dd>United Kingdom</dd></div>
+            <div><dt>Established</dt><dd>${company.incorporationDate.slice(0, 4)}</dd></div>
+            <div><dt>Model</dt><dd>Specialist medicines · regulated markets</dd></div>
+          </dl>
+          <a class="button button-primary" href="/ventures/" aria-label="Learn more about NovaPharm Healthcare">Learn more</a>
+        </div>
+      </div>
+      <div class="apple-company-visual" aria-hidden="true"><span></span><span></span><span></span></div>
+    </section>
+
+
+    <section class="institutional-capabilities apple-promos section" aria-labelledby="capabilities-title" data-reveal>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Where I work</p>
+          <h2 id="capabilities-title">Three connected problems.<br>One operating view.</h2>
+        </div>
+      </div>
+      <div class="institutional-capability-list apple-promo-grid">
+        ${capabilityRows.map(([index, title, copy]) => `<article class="apple-promo"><span class="apple-promo-index">${index}</span><h3>${title}</h3><p>${copy}</p><a class="apple-inline-link" href="/ventures/" aria-label="Learn more about ${escapeHtml(title)}">Learn more <span aria-hidden="true">›</span></a><span class="apple-promo-art" aria-hidden="true"></span></article>`).join('')}
+      <article class="apple-promo apple-promo-editorial"><span class="apple-promo-index">04</span><h3>Thinking in systems.</h3><p>Analysis from regulated pharmaceutical markets and company building.</p><a class="apple-inline-link" href="/thinking/">Read the essays <span aria-hidden="true">›</span></a><span class="apple-promo-art" aria-hidden="true"></span></article></div>
+    </section>
+
+
+    <section class="institutional-thesis apple-feature section" aria-labelledby="thesis-title" data-reveal>
       <div class="institutional-kicker">
         <p class="eyebrow">01 / Operating thesis</p>
         <span>The system</span>
@@ -240,38 +290,8 @@ export const renderHome = (articles) => {
       </div>
     </section>
 
-    <section class="institutional-capabilities section" aria-labelledby="capabilities-title" data-reveal>
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Where I work</p>
-          <h2 id="capabilities-title">Three connected problems.<br>One operating view.</h2>
-        </div>
-      </div>
-      <div class="institutional-capability-list">
-        ${capabilityRows.map(([index, title, copy]) => `<article><span>${index}</span><h3>${title}</h3><p>${copy}</p><span class="capability-arrow" aria-hidden="true">↗</span></article>`).join('')}
-      </div>
-    </section>
 
-    <section class="institutional-company" aria-labelledby="company-title" data-reveal>
-      <div class="institutional-company-inner">
-        <div>
-          <p class="eyebrow">Company · NovaPharm Healthcare</p>
-          <h2 id="company-title">Build the infrastructure before the scale arrives.</h2>
-        </div>
-        <div class="institutional-company-copy">
-          <p class="lead">${escapeHtml(company.description)}</p>
-          <p>${escapeHtml(company.currentFocus)}</p>
-          <dl class="institutional-company-facts">
-            <div><dt>Foundation</dt><dd>United Kingdom</dd></div>
-            <div><dt>Established</dt><dd>${company.incorporationDate.slice(0, 4)}</dd></div>
-            <div><dt>Model</dt><dd>Specialist medicines · regulated markets</dd></div>
-          </dl>
-          <a class="button button-dark" href="/ventures/">Explore NovaPharm ${arrow}</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="institutional-insights section" aria-labelledby="insights-title" data-reveal>
+    <section class="institutional-insights apple-insights section" aria-labelledby="insights-title" data-reveal>
       <div class="section-heading">
         <div>
           <p class="eyebrow">Insights · Pharmaceutical essays</p>
@@ -282,7 +302,8 @@ export const renderHome = (articles) => {
       <div class="essay-list institutional-essay-list">${selected.map(articleCard).join('')}</div>
     </section>
 
-    <section class="evidence institutional-evidence section" aria-labelledby="evidence-title" data-reveal>
+
+    <section class="evidence institutional-evidence apple-feature section" aria-labelledby="evidence-title" data-reveal>
       <p class="eyebrow">Evidence, not adjectives</p>
       <div class="evidence-grid">
         <div>
@@ -297,16 +318,19 @@ export const renderHome = (articles) => {
       </div>
     </section>
 
-    <section class="institutional-principle section" aria-labelledby="principle-title" data-reveal>
+
+    <section class="institutional-principle apple-feature section" aria-labelledby="principle-title" data-reveal>
       <p class="eyebrow">Principle</p>
       <h2 id="principle-title">Growth should never outrun regulatory readiness, supply resilience or the quality of the decision.</h2>
     </section>
 
-    <section class="closing institutional-closing section" id="contact" aria-labelledby="closing-title" data-reveal>
+
+    <section class="closing institutional-closing apple-feature section" id="contact" aria-labelledby="closing-title" data-reveal>
       <p class="eyebrow">Speaking · Editorial · Selected partnerships</p>
       <h2 id="closing-title">Start with the problem worth solving.</h2>
       <div><a class="button button-primary" href="/speaking-partnerships/">Conversation areas ${arrow}</a><a class="text-link" href="/contact/">Contact directly <span aria-hidden="true">→</span></a></div>
-    </section>`;
+    </section>
+    `;
 
   return renderPage({
     ...meta,

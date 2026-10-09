@@ -241,6 +241,22 @@ try {
       await menu.keyboard.press('Escape');
       ensure((await button.getAttribute('aria-expanded')) === 'false', `${browserName}: mobile menu did not close with Escape`);
       await menu.close();
+
+      // Global search is a functional navigation control, not a decorative icon.
+      const searchPage = await mobile.newPage();
+      await searchPage.goto(origin, { waitUntil: 'networkidle' });
+      const searchButton = searchPage.locator('.global-search-toggle');
+      await searchButton.click();
+      ensure((await searchButton.getAttribute('aria-expanded')) === 'true', `${browserName}: search did not open`);
+      ensure(await searchPage.locator('#site-search-panel').isVisible(), `${browserName}: search panel invisible`);
+      await searchPage.locator('#site-search-input').fill('pharmaceutical');
+      await searchPage.locator('#site-search-results a').first().waitFor({ state: 'visible' });
+      const searchTarget = await searchPage.locator('#site-search-results a').first().getAttribute('href');
+      ensure(new URL(searchTarget).origin === origin.replace('127.0.0.1', 'vishal.novapharmhealthcare.com') || new URL(searchTarget).host === 'vishal.novapharmhealthcare.com',
+        `${browserName}: search returned noncanonical URL`);
+      await searchPage.keyboard.press('Escape');
+      ensure((await searchButton.getAttribute('aria-expanded')) === 'false', `${browserName}: Escape did not close search`);
+      await searchPage.close();
       await mobile.close();
 
       const narrow = await browser.newContext({ viewport: { width: 320, height: 568 }, isMobile: true, hasTouch: true });

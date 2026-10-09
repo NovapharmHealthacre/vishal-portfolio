@@ -29,6 +29,15 @@ const navigationMarkup = (currentPath) => `
         <li><a class="nav-contact" href="/contact/"${currentPath === '/contact/' ? ' aria-current="page"' : ''}>Contact</a></li>
       </ul>
     </nav>
+    <button class="global-search-toggle" type="button" aria-label="Search this website" aria-expanded="false" aria-controls="site-search-panel">
+      <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.8" stroke="currentColor" stroke-width="1.5"/><path d="m13 13 4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <section id="site-search-panel" class="site-search-panel" aria-label="Website search" hidden>
+      <label for="site-search-input">Search Vishal Chakravarty</label>
+      <input id="site-search-input" type="search" placeholder="Search this website" autocomplete="off" aria-controls="site-search-results">
+      <p class="site-search-hint">Suggested: market access, manufacturing, medicines</p>
+      <ul id="site-search-results" aria-live="polite"></ul>
+    </section>
   </header>`;
 
 const footerMarkup = () => `
@@ -84,6 +93,27 @@ export const renderPage = ({
   noIndex = false,
   redirectTo,
 }) => {
+  const pageLabel = path.startsWith('/essays/') ? 'Insights' : ({
+    '/about/': 'About',
+    '/ventures/': 'NovaPharm',
+    '/thinking/': 'Insights',
+    '/media/': 'Media',
+    '/facts/': 'Public record',
+    '/contact/': 'Contact',
+    '/speaking-partnerships/': 'Partnerships',
+    '/privacy/': 'Privacy',
+  }[path] ?? 'Vishal Chakravarty');
+  const pageSections = [...body.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)]
+    .slice(0, 2)
+    .map((match) => ({ id: match[1], label: match[2].replace(/<[^>]+>/g, '').trim() }));
+  const localNavigation = path !== '/' && !noIndex
+    ? `<div class="apple-local-nav" aria-label="Page sections">
+        <a class="apple-local-nav-title" href="${escapeHtml(path)}">${escapeHtml(pageLabel)}</a>
+        <nav aria-label="Section navigation"><a href="#main" aria-current="location">Overview</a>
+          ${pageSections.map((section) => `<a href="#${escapeHtml(section.id)}">${escapeHtml(section.label)}</a>`).join('')}
+        </nav>
+      </div>`
+    : '';
   const canonical = absolute(path);
   const classNames = new Set(className.split(/\s+/).filter(Boolean));
   const routeCosmosEnabled = ['about-page', 'ventures-page', 'thinking-page', 'media-page', 'facts-page', 'contact-page'].some((name) => classNames.has(name));
@@ -162,6 +192,7 @@ export const renderPage = ({
   <body class="${escapeHtml(className)}">
     <a class="skip-link" href="#main">Skip to main content</a>
     ${navigationMarkup(path)}
+    ${localNavigation}
     <main id="main" tabindex="-1" data-content-layer>${body}</main>
     ${footerMarkup()}
   </body>

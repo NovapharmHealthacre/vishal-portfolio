@@ -143,3 +143,97 @@ if (revealItems.length && revealMotionAllowed) {
   );
   for (const item of revealItems) revealObserver.observe(item);
 }
+
+/* Site-wide Apple-style search, backed by the site's existing public content index.
+   No vendor search, personal data collection, or third-party requests. */
+const searchToggle = document.querySelector('.global-search-toggle');
+const searchPanel = document.querySelector('#site-search-panel');
+const searchInput = document.querySelector('#site-search-input');
+const searchResults = document.querySelector('#site-search-results');
+let searchEntries = [];
+let searchRequest;
+
+const hideSearch = () => {
+  if (!searchPanel || !searchToggle) return;
+  searchPanel.hidden = true;
+  searchToggle.setAttribute('aria-expanded', 'false');
+};
+const showSearch = async () => {
+  if (!searchPanel || !searchInput || !searchToggle) return;
+  closeMenu();
+  searchPanel.hidden = false;
+  searchToggle.setAttribute('aria-expanded', 'true');
+  searchInput.focus();
+  if (!searchRequest) {
+    searchRequest = fetch('/content-index.json', { credentials: 'same-origin' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Index unavailable');
+        return response.json();
+      })
+      .then((index) => {
+        const pages = (index.pages || []).map((page) => ({
+          title: page.title, description: page.description || '', href: page.canonical
+        }));
+        const essays = (index.essays || []).map((article) => ({
+          title: article.title, description: article.summary || '', href: article.canonical
+        }));
+        searchEntries = [...pages, ...essays].filter((entry) => {
+          try { return new URL(entry.href).hostname === 'vishal.novapharmhealthcare.com'; }
+          catch { return false; }
+        });
+        return searchEntries;
+      })
+      .catch(() => {
+        if (searchResults) {
+          const item = document.createElement('li');
+          item.textContent = 'Search is temporarily unavailable. Browse the navigation above.';
+          searchResults.replaceChildren(item);
+        }
+      });
+  }
+  await searchRequest;
+  if (!searchPanel.hidden) searchInput.dispatchEvent(new Event('input'));
+};
+
+if (searchToggle && searchPanel && searchInput && searchResults) {
+  searchToggle.addEventListener('click', () => {
+    if (searchPanel.hidden) showSearch();
+    else hideSearch();
+  });
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+    searchResults.replaceChildren();
+    if (query.length < 2) return;
+    const matches = searchEntries.filter((entry) =>
+      (entry.title + ' ' + entry.description).toLowerCase().includes(query)
+    ).slice(0, 8);
+    if (!matches.length) {
+      const empty = document.createElement('li');
+      empty.textContent = 'No matching pages.';
+      searchResults.append(empty);
+      return;
+    }
+    for (const result of matches) {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = result.href;
+      link.textContent = result.title;
+      item.append(link);
+      searchResults.append(item);
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !searchPanel.hidden) {
+      hideSearch();
+      searchToggle.focus();
+    }
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      if (searchPanel.hidden) showSearch();
+      else searchInput.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!searchPanel.hidden && !searchPanel.contains(event.target) && !searchToggle.contains(event.target)) hideSearch();
+  });
+}
