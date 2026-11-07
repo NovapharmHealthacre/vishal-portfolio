@@ -1,519 +1,736 @@
 /*
- * Vishal Chakravarty — product-grade visual system, October 2026.
- *
- * Original identity, imagery and content. Informed by Apple's layout principles,
- * not a reproduction of Apple's intellectual property or brand assets.
- * Loaded LAST by scripts/build.mjs. All rules are unlayered and intentionally
- * scoped to the site's existing HTML contracts.
- */
+  NovaPharm founder portfolio — 09 Oct 2026
+  Apple.com homepage/inner-page composition, geometries and behavior are the
+  design reference. Content, graphics, trademark and implementation are ours.
+  This is loaded after the existing styles inside the single site.css.
+*/
 :root {
+  --product-blue: #0071e3;
   --product-bg: #f5f5f7;
   --product-white: #fff;
   --product-ink: #1d1d1f;
   --product-muted: #6e6e73;
-  --product-blue: #0071e3;
   --product-line: #d2d2d7;
-  --product-radius: 26px;
-  --product-width: 1200px;
-  --product-gutter: clamp(20px, 4.4vw, 80px);
-  --product-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --product-width: 1000px;
+  --product-gutter: max(22px, calc((100vw - 1000px)/2));
+  --product-font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
   --product-ease: cubic-bezier(.2,.7,.2,1);
   color-scheme: light;
 }
-html { scroll-padding-top: 74px; }
+html { scroll-padding-top: 110px; }
 body {
   min-width: 320px;
-  background: var(--product-white);
+  margin: 0;
+  background: #fff;
   color: var(--product-ink);
   font-family: var(--product-font);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-body, button, input, textarea { font-family: var(--product-font); }
-h1, h2, h3, h4 {
+:where(body, button, input) { font-family: var(--product-font); }
+:where(h1,h2,h3,h4) {
   font-family: var(--product-font);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: -.045em;
   text-wrap: balance;
 }
-p, li { text-wrap: pretty; }
-:where(a, button):focus-visible {
-  outline: 3px solid #80baff;
-  outline-offset: 4px;
-}
-:where(img, video, svg) { max-width: 100%; }
-:where(.section, .content-managed, .page-section-index, .route-summary) { min-width: 0; }
+:where(p,li) { text-wrap: pretty; }
+:where(img,svg) { max-width: 100%; }
+:where(button,a,input):focus-visible { outline: 3px solid #80bdff; outline-offset: 4px; }
+:where(.site-header, .apple-local-nav, .apple-flagship, .apple-promos, .apple-insights) { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
-/* A single, calm navigation system on EVERY route. */
-.site-header,
-.institutional-home .site-header,
-.home-page .site-header {
+/* Desktop globalnav: exact 44px structural geometry and a restrained glass surface. */
+.site-header, .institutional-home .site-header, .home-page .site-header {
   position: sticky;
+  z-index: 120;
+  top: 0;
+  left: auto;
+  right: auto;
   inset: 0 auto auto;
-  z-index: 100;
+  display: flex;
   width: 100%;
-  height: 52px;
-  min-height: 52px;
+  max-width: none;
+  height: 44px;
+  min-height: 44px;
+  gap: 0;
+  padding: 0 max(22px, calc((100vw - 1024px)/2));
   margin: 0;
-  padding-inline: max(var(--product-gutter), calc((100vw - var(--product-width)) / 2));
-  transform: none;
   border: 0;
-  border-bottom: 1px solid rgba(255,255,255,.12);
   border-radius: 0;
-  background: rgba(20,20,22,.94);
+  background: rgba(22,22,23,.93);
   box-shadow: none;
+  color: #f5f5f7;
+  transform: none;
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
-.site-header[data-scrolled="true"] { background: rgba(20,20,22,.96); }
-.site-header .brand { min-width: 0; gap: .7rem; }
-.site-header .brand-mark,
-.institutional-home .brand-mark {
-  width: 28px;
-  height: 28px;
-  flex: none;
-  border: 1px solid rgba(255,255,255,.5);
-  border-radius: 50%;
+.site-header[data-scrolled="true"], .institutional-home .site-header[data-scrolled="true"] {
+  background: rgba(22,22,23,.97);
+  border: 0;
+}
+.site-header .brand {
+  flex: 0 0 64px;
+  display: flex;
+  gap: 0;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 44px;
+}
+.site-header .brand-mark, .institutional-home .brand-mark {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #f5f5f7;
+  font-family: var(--product-font);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.07em;
+}
+.site-header .brand-name { display: none; }
+.site-header .site-navigation {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0;
+}
+.site-header .site-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 44px;
+  gap: 5px;
+  padding: 0;
+  margin: 0;
+}
+.site-header .site-nav-list a, .institutional-home .site-nav-list a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 clamp(9px, 1vw, 18px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #d5d5d7;
+  font-family: var(--product-font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -.003em;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  transition: color .18s ease;
+}
+.site-header .site-nav-list a:hover,
+.site-header .site-nav-list a[aria-current="page"] { color: #fff; background: transparent; }
+.site-header .site-nav-list a::after { display: none !important; }
+.site-header .site-nav-list .nav-contact,
+.institutional-home .site-nav-list .nav-contact {
+  margin: 0;
+  padding: 0 12px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #d5d5d7;
+}
+.site-header .site-nav-list .nav-contact:hover { background: none; color: #fff; }
+.global-search-toggle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 58px;
+  width: 58px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #d5d5d7;
+  cursor: pointer;
+}
+.global-search-toggle:hover { color: #fff; }
+.menu-toggle { color: #f5f5f7; }
+
+/* Global search is real, local, keyboard-accessible and anchored to the nav. */
+.site-search-panel {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  z-index: 130;
+  padding: 46px max(24px,calc((100vw - 740px)/2)) 55px;
+  background: rgba(22,22,23,.99);
+  box-shadow: 0 15px 30px #0005;
+  color: #f5f5f7;
+}
+.site-search-panel label {
+  display: block;
+  margin: 0 0 19px;
+  color: #bdbdc2;
+  font-family: var(--product-font);
+  font-size: 13px;
+}
+.site-search-panel input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid #68686e;
+  border-radius: 0;
   background: transparent;
   color: #fff;
   font-family: var(--product-font);
-  font-size: 10px;
-  font-weight: 650;
-  letter-spacing: -.035em;
+  font-size: clamp(24px,3vw,36px);
+  outline-offset: 6px;
 }
-.site-header .brand-name,
-.institutional-home .brand-name {
-  max-width: 210px;
-  overflow: hidden;
-  color: #f5f5f7;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -.015em;
-  text-overflow: ellipsis;
-  text-transform: none;
-  white-space: nowrap;
-}
-.site-header .site-nav-list { gap: clamp(4px, .65vw, 11px); }
-.site-header .site-nav-list a,
-.institutional-home .site-nav-list a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 9px 13px;
-  border-radius: 8px;
-  color: #d6d6db;
-  font-family: var(--product-font);
-  font-size: 12px;
-  font-weight: 450;
-  letter-spacing: .005em;
-  text-decoration: none;
-  text-transform: none;
-  transition: color .18s ease, background .18s ease;
-}
-.site-header .site-nav-list a::after { display: none; }
-.site-header .site-nav-list a:hover,
-.site-header .site-nav-list a[aria-current="page"] {
-  background: rgba(255,255,255,.09);
-  color: #fff;
-}
-.site-header .site-nav-list .nav-contact,
-.institutional-home .site-nav-list .nav-contact {
-  min-height: 30px;
-  margin-left: 8px;
-  padding: 5px 13px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--product-blue);
-  color: #fff;
-  line-height: 1.4;
-}
-.site-header .site-nav-list .nav-contact:hover {
-  background: #1684f6;
-  color: #fff;
-}
-.menu-toggle { color: #fff; }
+.site-search-panel input::placeholder { color: #86868b; }
+.site-search-hint { color: #a1a1a8; font-size: 12px; margin: 20px 0 8px; }
+.site-search-panel ul { margin: 0; padding: 0; list-style: none; }
+.site-search-panel li { margin: 0; border-bottom: 1px solid #404045; color: #d0d0d5; font-size: 14px; }
+.site-search-panel li a { display: block; padding: 13px 0; color: #f5f5f7; text-decoration: none; }
+.site-search-panel li a:hover { color: #86bffb; }
 
-/* Quiet typography and actions: generous breathing room, one clear CTA. */
-.eyebrow {
-  font-family: var(--product-font);
+/* Product/section local navigation is 52px, sticky below globalnav. */
+.apple-local-nav {
+  position: sticky;
+  z-index: 105;
+  top: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  min-height: 52px;
+  margin: 0;
+  padding: 0 var(--product-gutter);
+  border-bottom: 1px solid rgba(0,0,0,.13);
+  background: rgba(255,255,255,.94);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  backdrop-filter: saturate(180%) blur(18px);
+}
+.apple-local-nav-title {
+  flex: 0 0 auto;
+  color: #1d1d1f;
+  font-size: 20px;
+  font-weight: 630;
+  letter-spacing: -.03em;
+  text-decoration: none;
+}
+.apple-local-nav nav { display: flex; justify-content: flex-end; align-items: center; gap: 24px; min-width: 0; }
+.apple-local-nav nav a {
+  max-width: 180px;
+  overflow: hidden;
+  color: #4c4c50;
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .055em;
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.apple-local-nav nav a[aria-current="location"] { color: #1d1d1f; }
+.apple-local-nav nav a:hover { color: #0071e3; }
+
+/* Apple homepage: full-bleed flagship tiles, 12px separation, strong top headlines. */
+.home-page #main { background: #fff; }
+.institutional-home .apple-flagship {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: none;
+  height: 692px;
+  min-height: 692px;
+  overflow: hidden;
+  margin: 0 0 12px;
+  padding: 51px 24px 0;
+  text-align: center;
+}
+.institutional-home .apple-flagship h1,
+.institutional-home .apple-flagship h2 {
+  width: auto;
+  max-width: min(100%, 1060px);
+  margin: 0 auto;
+  font-family: var(--product-font);
+  font-size: clamp(52px, 5vw, 68px);
+  font-weight: 660;
+  line-height: 1.07;
+  letter-spacing: -.055em;
+  overflow-wrap: normal;
+}
+.institutional-home .apple-flagship p {
+  font-family: var(--product-font);
+  letter-spacing: -.025em;
+}
+.institutional-home .apple-flagship .eyebrow,
+.institutional-home .apple-eyebrow {
+  margin: 0 0 9px;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 540;
+  letter-spacing: .007em;
   text-transform: none;
 }
-.button,
-.button-primary,
-.button-dark,
-.button-ghost {
+.institutional-home .apple-flagship .hero-actions,
+.institutional-home .apple-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 20px;
+}
+.button, .button-primary, .button-dark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 11px 22px;
+  gap: 6px;
+  min-height: 42px;
+  padding: 10px 20px;
   border-radius: 999px;
   font-family: var(--product-font);
   font-size: 15px;
-  font-weight: 480;
-  letter-spacing: -.01em;
+  font-weight: 460;
+  line-height: 1.2;
   text-decoration: none;
-  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+  transition: background-color .18s ease, color .18s ease;
 }
-.button-primary,
-.institutional-home .button-primary,
+.button-primary, .institutional-home .button-primary,
 .institutional-home .institutional-closing .button-primary {
-  border: 1px solid var(--product-blue);
-  background: var(--product-blue);
+  border: 1px solid #0071e3;
+  background: #0071e3;
   color: #fff;
 }
-.button-primary:hover,
-.institutional-home .button-primary:hover,
+.button-primary:hover, .institutional-home .button-primary:hover,
 .institutional-home .institutional-closing .button-primary:hover {
-  border-color: #1684f6;
-  background: #1684f6;
+  border-color: #0077ed;
+  background: #0077ed;
   color: #fff;
 }
-.button-ghost { border: 1px solid rgba(255,255,255,.58); background: transparent; color: #fff; }
-.button-ghost:hover { border-color: #fff; background: rgba(255,255,255,.13); color: #fff; }
-.text-link { color: var(--product-blue); font-size: 16px; font-weight: 470; }
-.text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-a { -webkit-tap-highlight-color: transparent; }
-
-/* The hero: an actual astronomical observation, treated like a flagship visual. */
-.institutional-home .executive-hero {
-  display: grid;
-  grid-template-columns: minmax(0,1fr);
-  grid-template-rows: 1fr auto auto;
-  min-height: min(960px, calc(100svh - 52px));
-  padding: clamp(86px, 11vh, 148px) var(--product-gutter) 0;
-  overflow: hidden;
-  border: none;
-  background: #06070b;
-  color: #fff;
-}
-.institutional-home .executive-field::after {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.75), rgba(0,0,0,.24) 35%, rgba(0,0,0,.34) 68%, #07070a 98%);
-  content: "";
-  pointer-events: none;
-}
-.institutional-home .executive-cosmos-image {
-  object-position: 58% 47%;
-  opacity: .27;
-  filter: saturate(.75) contrast(1.14);
-}
-.institutional-home .executive-hero-copy {
-  position: relative;
-  z-index: 2;
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: center;
-  align-self: center;
-  width: min(100%, 1020px);
-  max-width: 1020px;
-  padding: 20px 0 42px;
-  text-align: center;
-}
-.institutional-home .executive-hero-copy .eyebrow {
-  color: #d0d1dc;
-  font-size: 13px;
-  font-weight: 500;
-}
-.institutional-home .executive-hero h1 {
-  max-width: none;
-  margin: 23px 0 0;
-  font-family: var(--product-font);
-  font-size: clamp(58px, 8.5vw, 116px);
-  font-weight: 670;
-  line-height: .99;
-  letter-spacing: -.071em;
-  overflow-wrap: normal;
-}
-.institutional-home .executive-hero h1 em {
-  color: #f5f5f7;
-  font-family: var(--product-font);
-  font-weight: 670;
-  font-style: normal;
-}
-.institutional-home .executive-deck {
-  max-width: 740px;
-  margin: clamp(19px, 3vw, 34px) auto 0;
-  color: #e1e1e8;
-  font-family: var(--product-font);
-  font-size: clamp(17px, 2vw, 23px);
-  line-height: 1.42;
-  letter-spacing: -.025em;
-}
-.institutional-home .hero-actions { justify-content: center; gap: 12px; margin-top: 30px; }
-.institutional-home .executive-identity {
-  display: flex;
-  grid-column: 1;
-  grid-row: 2;
+.apple-inline-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 5px;
   width: fit-content;
-  max-width: 100%;
-  justify-self: center;
-  margin: 0 0 30px;
-  padding: 10px 18px;
-  border: 1px solid rgba(255,255,255,.24);
-  border-radius: 100px;
-  background: rgba(20,20,24,.55);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  text-align: left;
-}
-.institutional-home .executive-portrait {
-  width: 52px;
-  min-width: 52px;
-  height: 52px;
-  margin: 0;
-  border-radius: 50%;
-}
-.institutional-home .executive-identity p {
-  margin: 0 0 1px;
-  color: #fff;
+  min-height: 40px;
+  color: #06c;
   font-family: var(--product-font);
-  font-size: 14px;
-  font-weight: 650;
+  font-size: 18px;
+  font-weight: 450;
   line-height: 1.2;
+  letter-spacing: -.015em;
+  text-decoration: none;
 }
-.institutional-home .executive-identity strong,
-.institutional-home .executive-identity span {
-  margin-top: 2px;
-  color: #cccdd5;
-  font-family: var(--product-font);
-  font-size: 11px;
-  line-height: 1.25;
+.apple-inline-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.apple-inline-link span { font-size: 24px; font-weight: 300; line-height: 1; }
+
+/* Campaign 1: real NASA space photo, original person's identity. */
+.institutional-home .apple-flagship-cosmos {
+  display: flex;
+  min-height: 692px;
+  height: 692px;
+  padding-top: 56px;
+  background: #040408;
+  color: #fff;
 }
-.institutional-home .executive-proof {
-  grid-column: 1;
-  grid-row: 3;
-  width: 100%;
-  max-width: 1100px;
-  margin-inline: auto;
-  border-color: rgba(255,255,255,.18);
+.institutional-home .apple-flagship-cosmos .executive-field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #040408;
+}
+.institutional-home .apple-flagship-cosmos .executive-field::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(0,0,0,.80) 0%,rgba(0,0,0,.28) 32%,rgba(0,0,0,.05) 66%,rgba(0,0,0,.48) 100%);
+  pointer-events: none;
+}
+.institutional-home .apple-flagship-cosmos .executive-cosmos-image {
+  opacity: .64;
+  width: 108%;
+  height: 118%;
+  object-position: 55% 52%;
+  filter: contrast(1.1) saturate(.9) brightness(.89);
+}
+.institutional-home .apple-flagship-cosmos .executive-cosmos-focus { opacity: .17; }
+.institutional-home .apple-flagship-cosmos .executive-hero-copy {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  align-self: center;
+  width: min(100%, 930px);
+  max-width: 930px;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
-.institutional-home .executive-proof > div {
-  min-height: 90px;
-  padding: 22px 12px 18px;
+.institutional-home .apple-flagship-cosmos h1 {
+  color: #fff;
+  font-size: clamp(52px, 5.4vw, 75px);
+  line-height: 1.03;
 }
-.institutional-home .executive-proof > div + div { padding-left: 12px; border-color: rgba(255,255,255,.18); }
-.institutional-home .executive-proof span { color: #9aacc9; font-size: 11px; }
-.institutional-home .executive-proof strong {
-  max-width: none;
-  margin-top: 6px;
-  color: #f5f5f7;
+.institutional-home .apple-headline-subtitle {
+  margin: 13px 0 0;
+  color: #fff;
+  font-size: clamp(26px, 2.65vw, 32px);
+  font-weight: 510;
+  line-height: 1.19;
+}
+.institutional-home .apple-flagship-cosmos .executive-deck {
+  max-width: 680px;
+  margin: 13px auto 0;
+  color: #e2e2e7;
   font-family: var(--product-font);
-  font-size: 14px;
-  font-weight: 530;
-  letter-spacing: -.02em;
-  line-height: 1.3;
+  font-size: clamp(15px, 1.45vw, 19px);
+  line-height: 1.35;
+  letter-spacing: -.012em;
 }
-.institutional-home .executive-cosmos-credit {
+.institutional-home .apple-flagship-cosmos .apple-inline-link,
+.institutional-home .apple-flagship-company .apple-inline-link { color: #2997ff; }
+.institutional-home .apple-flagship-cosmos .executive-proof,
+.institutional-home .apple-flagship-cosmos .executive-identity { display: none; }
+.institutional-home .apple-flagship-cosmos .executive-cosmos-credit {
   position: absolute;
-  right: var(--product-gutter);
-  bottom: 102px;
-  color: #d0d0d6;
+  z-index: 4;
+  right: 25px;
+  bottom: 19px;
+  color: #c9c9cf;
   font-family: var(--product-font);
   font-size: 10px;
-  letter-spacing: 0;
   text-transform: none;
+  letter-spacing: 0;
 }
 
-/* Each page section has one visual job, not a wall of equal-weight boxes. */
-.institutional-home .institutional-thesis,
-.institutional-home .institutional-capabilities,
-.institutional-home .institutional-insights,
-.institutional-home .institutional-principle,
-.institutional-home .institutional-closing {
+/* Campaign 2: founder-as-product visual; actual portrait assets and alt text. */
+.institutional-home .apple-flagship-founder {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+.apple-flagship-copy { position: relative; z-index: 2; width: min(100%, 920px); }
+.institutional-home .apple-flagship-founder h2 { max-width: 800px; }
+.institutional-home .apple-flagship-founder .apple-flagship-subtitle {
+  max-width: 800px;
+  margin: 13px auto 0;
+  font-size: clamp(20px, 2.3vw, 28px);
+  font-weight: 450;
+  line-height: 1.3;
+}
+.institutional-home .apple-founder-stage {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 440px;
+  overflow: hidden;
+}
+.institutional-home .apple-founder-stage::before {
+  position: absolute;
+  bottom: -280px;
+  left: 50%;
+  width: min(960px,95vw);
+  height: 720px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse,#d6d7db,#ececef 64%,transparent 70%);
+  transform: translateX(-50%);
+  content: "";
+}
+.institutional-home .apple-founder-portrait {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(390px,70vw);
+  height: 390px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+  background: #b7b7c0;
+  box-shadow: 0 18px 60px rgba(0,0,0,.12);
+}
+.institutional-home .apple-founder-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; filter: none; }
+.institutional-home .apple-founder-stage > span {
+  position: absolute;
+  z-index: 3;
+  bottom: 9px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(245,245,247,.84);
+  color: #333338;
+  font-size: 11px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Campaign 3: corporate flagship. No fake product renders or unverifiable data. */
+.institutional-home .apple-flagship-company {
+  display: flex;
+  background: #060607;
+  color: #f5f5f7;
+  padding: 55px 20px 0;
+}
+.institutional-home .apple-flagship-company .institutional-company-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 980px;
+  text-align: center;
+}
+.institutional-home .apple-flagship-company h2 {
+  max-width: 950px;
+  color: #fff;
+  font-size: clamp(52px, 5.7vw, 75px);
+  line-height: 1.05;
+  margin-top: 7px;
+}
+.institutional-home .apple-flagship-company .institutional-company-copy { width: min(100%, 790px); padding-top: 10px; }
+.institutional-home .apple-flagship-company .institutional-company-copy .lead {
+  max-width: 790px;
+  color: #ededf0;
+  font-family: var(--product-font);
+  font-size: clamp(17px,1.9vw,22px);
+  font-weight: 440;
+  line-height: 1.3;
+}
+.institutional-home .apple-flagship-company .institutional-company-copy > p:not(.lead),
+.institutional-home .apple-flagship-company .institutional-company-facts { display: none; }
+.institutional-home .apple-flagship-company .button-dark {
+  min-height: 42px;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border: 1px solid #0071e3;
+  border-radius: 999px;
+  background: #0071e3;
+  color: #fff;
+  font-family: var(--product-font);
+  font-size: 15px;
+}
+.institutional-home .apple-flagship-company .button-dark:hover { background: #0077ed; }
+.institutional-home .apple-company-visual {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: -410px;
+  width: min(1050px,105vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 48%, #b6c0d8 0%,#697ca4 13%,#1c335b 24%,#101521 36%,#08090c 60%,#050506 70%);
+  box-shadow: 0 -20px 95px #526d9f38, 0 0 0 1px #ffffff22;
+}
+.institutional-home .apple-company-visual span {
+  position: absolute;
+  inset: 10%;
+  border: 1px solid #c0d9ff33;
+  border-radius: 50%;
+  transform: rotateX(67deg) rotate(-20deg);
+}
+.institutional-home .apple-company-visual span:nth-child(2) { inset: 23%; transform: rotateX(60deg) rotate(48deg); }
+.institutional-home .apple-company-visual span:nth-child(3) { inset: 36%; transform: rotateX(70deg) rotate(-65deg); }
+
+/* 2-up promotional tiles: exactly the home merchandising rhythm, bespoke content. */
+.institutional-home .apple-promos {
+  width: 100%;
+  max-width: none;
+  padding: 0 12px 12px;
+  margin: 0;
+  border: 0;
+  background: #fff;
+}
+.institutional-home .apple-promos .section-heading { display: none; }
+.institutional-home .apple-promo-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: clamp(90px, 10vw, 165px) var(--product-gutter);
-}
-.institutional-home .institutional-thesis {
-  display: block;
-  background: #fff;
-  text-align: center;
-}
-.institutional-home .institutional-kicker {
-  justify-content: center;
-  gap: 16px;
+  padding: 0;
   border: 0;
 }
-.institutional-home .institutional-kicker > span { color: var(--product-muted); }
-.institutional-home .institutional-thesis-copy { max-width: 1100px; margin: 35px auto 0; }
-.institutional-home .institutional-thesis h2 {
-  max-width: 1050px;
-  margin-inline: auto;
-  color: var(--product-ink);
-  font-size: clamp(45px, 6.1vw, 85px);
-  font-weight: 650;
-  line-height: 1.04;
-  letter-spacing: -.065em;
-}
-.institutional-home .institutional-thesis-copy > p {
-  max-width: 750px;
-  margin: 30px auto;
-  color: #55555a;
-  font-family: var(--product-font);
-  font-size: clamp(19px, 2.25vw, 26px);
-  line-height: 1.44;
-  letter-spacing: -.026em;
-}
-.institutional-home .institutional-thesis .text-link { justify-content: center; }
-
-.institutional-home .institutional-capabilities {
-  background: var(--product-bg);
-}
-.institutional-home .institutional-capabilities .section-heading,
-.institutional-home .institutional-insights .section-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 30px;
-  max-width: var(--product-width);
-  margin: 0 auto 40px;
-}
-.institutional-home .institutional-capabilities .section-heading h2,
-.institutional-home .institutional-insights .section-heading h2 {
-  max-width: 850px;
-  color: var(--product-ink);
-  font-size: clamp(43px, 5vw, 70px);
-  font-weight: 650;
-  line-height: 1.06;
-  letter-spacing: -.06em;
-}
-.institutional-home .institutional-capability-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  max-width: var(--product-width);
-  margin: 0 auto;
-  border: 0;
-}
-.institutional-home .institutional-capability-list article {
+.institutional-home .apple-promo-grid .apple-promo,
+.institutional-home .apple-promo-grid .apple-promo:first-child {
   position: relative;
   isolation: isolate;
   display: flex;
   flex-direction: column;
-  min-height: 400px;
-  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  grid-column: auto;
+  gap: 0;
+  width: 100%;
+  max-width: none;
+  min-height: 565px;
+  padding: 48px 28px 0;
+  margin: 0;
   overflow: hidden;
-  padding: clamp(34px, 4vw, 60px);
   border: 0;
-  border-radius: var(--product-radius);
-  background: #fff;
-  box-shadow: 0 3px 15px rgba(0,0,0,.015);
-  transition: transform .3s var(--product-ease), box-shadow .3s var(--product-ease);
+  border-radius: 0;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  box-shadow: none;
+  text-align: center;
+  transform: none;
 }
-.institutional-home .institutional-capability-list article:first-child {
-  grid-column: 1 / -1;
-  min-height: 420px;
-  background: #12141a;
-  color: #fff;
-}
-.institutional-home .institutional-capability-list article:first-child::after {
-  position: absolute;
-  right: -7%;
-  bottom: -70%;
-  width: min(600px, 72vw);
-  aspect-ratio: 1;
-  border: 1px solid rgba(185,205,255,.26);
-  border-radius: 50%;
-  box-shadow: 0 0 0 75px rgba(185,205,255,.035), 0 0 0 155px rgba(185,205,255,.026);
-  content: "";
-  pointer-events: none;
-}
-.institutional-home .institutional-capability-list article:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 50px rgba(0,0,0,.075);
-}
-.institutional-home .institutional-capability-list article > span:first-child {
-  margin-bottom: auto;
-  color: var(--product-muted);
+.institutional-home .apple-promo .apple-promo-index {
+  margin: 0 0 10px;
+  color: #6e6e73;
   font-family: var(--product-font);
   font-size: 13px;
+  font-weight: 520;
 }
-.institutional-home .institutional-capability-list article:first-child > span:first-child { color: #b2c0de; }
-.institutional-home .institutional-capability-list h3 {
-  max-width: 680px;
+.institutional-home .apple-promo h3 {
+  z-index: 2;
+  max-width: 540px;
+  margin: 0;
   color: inherit;
   font-family: var(--product-font);
-  font-size: clamp(34px, 4.3vw, 60px);
-  font-weight: 650;
-  letter-spacing: -.056em;
-  line-height: 1.03;
+  font-size: clamp(34px,3.6vw,46px);
+  font-weight: 660;
+  line-height: 1.07;
+  letter-spacing: -.055em;
 }
-.institutional-home .institutional-capability-list p {
-  max-width: 590px;
-  color: #5c5c62;
+.institutional-home .apple-promo p {
+  z-index: 2;
+  max-width: 460px;
+  margin: 12px 0 13px;
+  color: inherit;
   font-family: var(--product-font);
-  font-size: clamp(16px, 1.5vw, 19px);
+  font-size: clamp(16px,1.6vw,20px);
+  line-height: 1.35;
+}
+.institutional-home .apple-promo .apple-inline-link { position: relative; z-index: 3; font-size: 16px; }
+.institutional-home .apple-promo .apple-promo-art {
+  position: absolute;
+  z-index: -1;
+  bottom: -170px;
+  left: 50%;
+  width: 75%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle,#fefefe 0%,#c1c8d5 23%,#9aa5c1 38%,#e5e7ef 55%,transparent 72%);
+}
+.institutional-home .apple-promo-grid .apple-promo:nth-child(1) { background: #06090d; color: #fff; }
+.institutional-home .apple-promo:nth-child(1) p { color: #dedee3; }
+.institutional-home .apple-promo:nth-child(1) .apple-promo-index { color: #cacad2; }
+.institutional-home .apple-promo:nth-child(1) .apple-inline-link { color: #2997ff; }
+.institutional-home .apple-promo:nth-child(1) .apple-promo-art {
+  background: radial-gradient(circle,#cddffc 0%,#688ac0 15%,#163057 33%,#07090e 49%,transparent 70%);
+}
+.institutional-home .apple-promo:nth-child(2) .apple-promo-art {
+  border-radius: 18px;
+  bottom: -205px;
+  background: repeating-linear-gradient(155deg,#e6e8ed 0 18px,#c9ced8 18px 32px,#f5f5f7 32px 52px);
+  transform: translateX(-50%) rotate(-18deg);
+}
+.institutional-home .apple-promo:nth-child(3) {
+  background: #10151f;
+  color: #fff;
+}
+.institutional-home .apple-promo:nth-child(3) p { color: #dedee3; }
+.institutional-home .apple-promo:nth-child(3) .apple-promo-index { color: #cacad2; }
+.institutional-home .apple-promo:nth-child(3) .apple-inline-link { color: #2997ff; }
+.institutional-home .apple-promo:nth-child(3) .apple-promo-art {
+  bottom: -250px;
+  background: repeating-radial-gradient(circle at center,transparent 0 26px,#92adce65 27px 28px,transparent 29px 50px);
+}
+.institutional-home .apple-promo:nth-child(4) .apple-promo-art {
+  bottom: -240px;
+  border-radius: 3px;
+  transform: translateX(-50%) rotate(-7deg);
+  background: linear-gradient(150deg,#ededf3,#d8dbe8);
+  box-shadow: -18px -22px 0 #fff, -38px -46px 0 #d5d8e1, 0 10px 32px #0002;
+}
+
+/* Editorial areas maintain their public content, but use Apple typography and spacing. */
+.institutional-home .apple-feature,
+.institutional-home .apple-insights {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 12px;
+  padding: 115px max(24px,calc((100vw - 1130px)/2));
+}
+.institutional-home .institutional-thesis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  text-align: center;
+}
+.institutional-home .institutional-kicker { display: flex; border: 0; justify-content: center; gap: 15px; }
+.institutional-home .institutional-thesis-copy h2 {
+  max-width: 1080px;
+  margin: 0 auto;
+  color: #1d1d1f;
+  font-size: clamp(48px,6vw,78px);
+  font-weight: 660;
+  line-height: 1.08;
+  letter-spacing: -.056em;
+}
+.institutional-home .institutional-thesis-copy > p {
+  max-width: 750px;
+  margin: 22px auto;
+  color: #515154;
+  font-family: var(--product-font);
+  font-size: clamp(18px,2vw,23px);
   line-height: 1.45;
 }
-.institutional-home .institutional-capability-list article:first-child p { color: #d0d6e2; }
-.institutional-home .capability-arrow { display: none; }
-
-.institutional-home .institutional-company {
-  padding: clamp(100px, 11vw, 172px) var(--product-gutter);
-  background: #09090b;
-  color: #fff;
+.institutional-home .apple-insights { background: #fff; color: #1d1d1f; }
+.institutional-home .apple-insights .section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  max-width: 1130px;
+  margin: 0 auto 32px;
 }
-.institutional-home .institutional-company-inner {
-  display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(0,.8fr);
-  gap: clamp(35px, 8vw, 110px);
-  align-items: center;
-  width: 100%;
-  max-width: var(--product-width);
-  margin-inline: auto;
+.institutional-home .apple-insights .section-heading h2 {
+  max-width: 750px;
+  color: #1d1d1f;
+  font-size: clamp(44px,5vw,69px);
+  font-weight: 670;
+  line-height: 1.08;
 }
-.institutional-home .institutional-company h2 {
-  max-width: 650px;
-  color: #fff;
-  font-size: clamp(50px, 6vw, 81px);
-  font-weight: 640;
-  line-height: 1;
-}
-.institutional-home .institutional-company .eyebrow { color: #b1b1bb; }
-.institutional-home .institutional-company-copy .lead {
-  color: #fff;
-  font-family: var(--product-font);
-  font-size: clamp(20px, 2vw, 26px);
-  font-weight: 520;
-  line-height: 1.4;
-}
-.institutional-home .institutional-company-copy > p:not(.lead) { color: #c4c4cc; }
-.institutional-home .institutional-company-facts { border-color: rgba(255,255,255,.18); }
-.institutional-home .institutional-company-facts > div { border-color: rgba(255,255,255,.18); }
-.institutional-home .institutional-company-facts dt { color: #b1b1bb; }
-.institutional-home .institutional-company-facts dd { color: #fff; font-family: var(--product-font); font-size: 15px; }
-.institutional-home .institutional-company .button-dark { border: 1px solid var(--product-blue); background: var(--product-blue); color: #fff; }
-.institutional-home .institutional-company .button-dark:hover { background: #1684f6; border-color: #1684f6; }
-
-.institutional-home .institutional-insights { background: #fff; }
 .institutional-home .institutional-essay-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 20px;
-  max-width: var(--product-width);
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 15px;
+  max-width: 1130px;
   margin: 0 auto;
 }
 .institutional-home .institutional-essay-list .essay-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
-  min-height: 360px;
-  padding: 33px;
+  gap: 12px;
+  min-height: 340px;
+  margin: 0;
+  padding: 28px;
   border: 0;
-  border-radius: var(--product-radius);
-  background: var(--product-bg);
+  border-radius: 0;
+  background: #f5f5f7;
+  color: #1d1d1f;
 }
 .institutional-home .institutional-essay-list .essay-index {
   color: #595963;
@@ -522,133 +739,132 @@ a { -webkit-tap-highlight-color: transparent; }
 }
 .institutional-home .institutional-essay-list .essay-card-copy { flex: 1; min-width: 0; }
 .institutional-home .institutional-essay-list .essay-card h3 {
-  color: var(--product-ink);
+  margin-top: 10px;
+  color: #1d1d1f;
   font-family: var(--product-font);
-  font-size: clamp(25px, 2.7vw, 36px);
-  font-weight: 620;
-  letter-spacing: -.046em;
-  line-height: 1.11;
-}
-.institutional-home .institutional-essay-list .essay-card h3 a:hover { color: #0066cc; }
-.institutional-home .institutional-essay-list .essay-card p { color: #515155; font-size: 15px; }
-.institutional-home .institutional-essay-list .round-link {
-  width: 40px;
-  height: 40px;
-  align-self: flex-end;
-  border: 1px solid #a9a9b0;
-  border-radius: 50%;
-  color: var(--product-ink);
-}
-.institutional-home .institutional-evidence {
-  margin: 0;
-  padding: clamp(100px, 11vw, 170px) var(--product-gutter);
-  background: #101015;
-}
-.institutional-home .institutional-evidence .evidence-grid { max-width: var(--product-width); margin-inline: auto; }
-.institutional-home .institutional-evidence h2 { font-size: clamp(47px, 5.5vw, 76px); line-height: 1.06; }
-.institutional-home .institutional-principle {
-  min-height: 60svh;
-  background: var(--product-bg);
-  text-align: center;
-}
-.institutional-home .institutional-principle h2 {
-  max-width: 1050px;
-  margin: 25px auto 0;
-  color: var(--product-ink);
-  font-size: clamp(42px, 5.6vw, 76px);
+  font-size: clamp(25px,2.3vw,34px);
   font-weight: 640;
+  line-height: 1.1;
+  letter-spacing: -.044em;
+}
+.institutional-home .institutional-essay-list .essay-card h3 a:hover { color: #06c; }
+.institutional-home .institutional-essay-list .essay-meta { color: #515159; font-size: 11px; }
+.institutional-home .institutional-essay-list .essay-card p { color: #515159; font-size: 15px; }
+.institutional-home .institutional-essay-list .round-link {
+  width: 39px;
+  height: 39px;
+  align-self: flex-end;
+  border: 1px solid #a8a8b1;
+  border-radius: 50%;
+  color: #1d1d1f;
+}
+.institutional-home .institutional-evidence { background: #121214; color: #fff; }
+.institutional-home .institutional-evidence .evidence-grid { max-width: 1130px; margin: 0 auto; }
+.institutional-home .institutional-evidence h2 {
+  color: #fff;
+  font-family: var(--product-font);
+  font-size: clamp(50px,6vw,76px);
+  font-weight: 670;
+  line-height: 1.08;
+}
+.institutional-home .institutional-evidence .evidence-links a { border-color: #ffffff39; }
+.institutional-home .institutional-evidence .evidence-links strong { color: #fff; }
+.institutional-home .institutional-principle { background: #f5f5f7; text-align: center; }
+.institutional-home .institutional-principle h2 {
+  max-width: 1120px;
+  margin: 15px auto;
+  color: #1d1d1f;
+  font-size: clamp(45px,5.5vw,74px);
+  font-weight: 670;
   line-height: 1.08;
 }
 .institutional-home .institutional-closing {
-  min-height: 55svh;
-  padding-block: clamp(100px, 10vw, 160px);
+  min-height: 420px;
+  padding-block: 105px;
   border: 0;
   background: #fff;
+  color: #1d1d1f;
   text-align: center;
 }
 .institutional-home .institutional-closing h2 {
-  max-width: 930px;
-  margin: 16px auto 25px;
-  color: var(--product-ink);
-  font-size: clamp(48px, 6vw, 84px);
-  font-weight: 650;
-  line-height: 1.04;
+  max-width: 970px;
+  margin: 15px auto 25px;
+  color: #1d1d1f;
+  font-size: clamp(47px,5.7vw,76px);
+  font-weight: 670;
+  line-height: 1.07;
 }
-.institutional-home .institutional-closing > div { justify-content: center; gap: 25px; }
+.institutional-home .institutional-closing > div { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
 
-/* Inner-route hero family retains genuine NASA imagery and provenance. */
+/* Detail pages use Apple's product-page pattern: local nav, generous hero, centered claims. */
 .page-hero-cosmic {
-  min-height: clamp(650px, 84svh, 960px);
-  padding: 125px var(--product-gutter) 115px;
+  min-height: min(790px, 87svh);
+  padding: 110px var(--product-gutter) 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.page-hero-cosmic .breadcrumbs {
-  top: 24px;
-  left: var(--product-gutter);
+.page-hero-cosmic .breadcrumbs { top: 21px; left: var(--product-gutter); }
+.page-cosmic-copy {
+  position: relative;
+  z-index: 4;
+  width: min(100%,980px);
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
 }
-.page-cosmic-copy { width: min(75vw, 900px); }
-.page-cosmic-copy h1,
-.page-hero h1,
-.page-hero-compact h1 {
-  max-width: 13ch;
+.page-cosmic-copy h1 {
+  max-width: 14ch;
+  margin: 12px auto 0;
+  color: #fff;
   font-family: var(--product-font);
-  font-size: clamp(55px, 8.2vw, 104px);
-  font-weight: 660;
-  font-style: normal;
+  font-size: clamp(55px,7vw,99px);
+  font-weight: 670;
+  line-height: 1.04;
   letter-spacing: -.066em;
-  line-height: 1.02;
 }
-.page-cosmic-copy h1 em,
-.page-hero h1 em { font-family: var(--product-font); font-style: normal; font-weight: inherit; }
+.page-cosmic-copy h1 em { font-family: var(--product-font); font-style: normal; font-weight: inherit; }
 .page-cosmic-copy .page-deck {
-  max-width: 660px;
-  color: #e2e2e8;
+  max-width: 730px;
+  margin: 20px auto 0;
+  color: #ececf2;
   font-family: var(--product-font);
-  font-size: clamp(18px, 2vw, 24px);
-  line-height: 1.46;
-  letter-spacing: -.02em;
+  font-size: clamp(19px,2.2vw,25px);
+  line-height: 1.42;
+  letter-spacing: -.018em;
 }
 .page-observation { left: var(--product-gutter); }
 .page-cosmic-credit { right: var(--product-gutter); }
-
-/* Not every inner page needs a hero the size of a landing page. */
 .page-hero-compact {
-  padding: clamp(95px, 9vw, 160px) var(--product-gutter);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  padding: clamp(100px,9vw,160px) var(--product-gutter);
   background: #f5f5f7;
-  color: var(--product-ink);
+  color: #1d1d1f;
 }
-.page-hero-compact h1 { color: var(--product-ink); }
-.page-hero-compact .page-deck { color: #515155; }
-.page-hero-compact .breadcrumbs { color: #515155; }
-
-/* Editorial inner pages should share identical margins and type scales. */
+.page-hero-compact h1 { color: #1d1d1f; font-family: var(--product-font); font-weight: 660; }
+.page-hero-compact .page-deck { color: #515155; font-family: var(--product-font); }
 .content-managed.prose-page,
 .contact-content-panel,
 .article-content,
-.route-summary {
-  max-width: 1100px;
-  margin-inline: auto;
-  font-family: var(--product-font);
-}
-.content-managed.prose-page { width: calc(100% - 2 * var(--product-gutter)); }
+.route-summary { max-width: 1100px; margin-inline: auto; font-family: var(--product-font); }
+.content-managed.prose-page { width: calc(100% - 2 * 24px); }
 .content-managed.prose-page > h2,
 .contact-content-panel > h2 {
   max-width: 17ch;
   margin: 90px 0 24px;
-  border-color: var(--product-line);
-  color: var(--product-ink);
+  padding-top: 15px;
+  border-color: #d2d2d7;
+  color: #1d1d1f;
   font-family: var(--product-font);
-  font-size: clamp(40px, 5.5vw, 69px);
+  font-size: clamp(40px,5.5vw,69px);
   font-weight: 650;
   line-height: 1.07;
-  letter-spacing: -.055em;
 }
 .content-managed.prose-page > h3,
-.contact-content-panel > h3 {
-  color: var(--product-ink);
-  font-family: var(--product-font);
-  font-weight: 620;
-  line-height: 1.13;
-}
+.contact-content-panel > h3 { color: #1d1d1f; font-family: var(--product-font); font-weight: 630; }
 .content-managed.prose-page > p,
 .content-managed.prose-page > ul,
 .content-managed.prose-page > ol,
@@ -657,225 +873,282 @@ a { -webkit-tap-highlight-color: transparent; }
 .contact-content-panel > ol {
   max-width: 760px;
   margin-left: 0;
-  color: #4c4c52;
+  color: #515155;
   font-family: var(--product-font);
-  font-size: clamp(17px, 1.6vw, 20px);
-  line-height: 1.62;
+  font-size: clamp(17px,1.6vw,20px);
+  line-height: 1.63;
 }
 .page-section-index { background: #f5f5f7; }
-.page-section-index ol a { color: var(--product-ink); }
-.page-section-index a:hover { color: var(--product-blue); }
-.route-summary { width: calc(100% - 2 * var(--product-gutter)); }
-.essay-card h3 a { text-decoration: none; }
-.essay-card h3 a:hover { color: #0066cc; }
+.page-section-index a:hover { color: #06c; }
+.route-summary { width: calc(100% - 48px); }
+.essay-card h3 a:hover { color: #06c; }
 
-/* Low-noise, readable footer across the entire portfolio. */
-.site-footer,
-.institutional-home .site-footer {
+/* Apple-style low-noise footer; content and links remain fully functional. */
+.site-footer, .institutional-home .site-footer {
+  box-sizing: border-box;
   width: 100%;
+  max-width: none;
   margin: 0;
-  padding: 95px var(--product-gutter) 20px;
-  background: #17171a;
-  color: #f5f5f7;
+  padding: 46px max(24px,calc((100vw - 1000px)/2)) 20px;
+  background: #f5f5f7;
+  color: #1d1d1f;
 }
 .site-footer .footer-intro,
 .site-footer .footer-grid,
-.site-footer .footer-base { max-width: var(--product-width); margin-inline: auto; }
-.site-footer .footer-intro { padding-bottom: 60px; }
-.site-footer .footer-intro h2,
-.institutional-home .footer-intro h2 {
-  max-width: 760px;
-  color: #fff;
+.site-footer .footer-base { max-width: 1000px; margin: 0 auto; }
+.site-footer .footer-intro { padding: 0 0 28px; }
+.site-footer .footer-intro h2, .institutional-home .footer-intro h2 {
+  max-width: 650px;
+  margin-top: 10px;
+  color: #1d1d1f;
   font-family: var(--product-font);
-  font-size: clamp(39px, 5.3vw, 69px);
-  font-weight: 650;
-  letter-spacing: -.057em;
-  line-height: 1.08;
+  font-size: clamp(27px,3.5vw,38px);
+  font-weight: 630;
+  letter-spacing: -.044em;
+  line-height: 1.13;
   overflow-wrap: normal;
 }
-.site-footer .footer-grid { gap: clamp(25px, 4vw, 65px); border-color: rgba(255,255,255,.2); }
-.site-footer .footer-grid p,
-.site-footer .footer-base { color: #a8a8b1; }
-.site-footer a { color: #e2e2e6; font-size: 14px; }
-.site-footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-.site-footer .footer-base { border-color: rgba(255,255,255,.2); text-transform: none; font-family: var(--product-font); }
-
-/* Tablet and mobile behave as separate compositions, never squeezed desktop. */
-@media (max-width: 980px) {
-  .institutional-home .institutional-company-inner { grid-template-columns: 1fr; }
-  .institutional-home .institutional-essay-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .institutional-home .institutional-essay-list .essay-card:last-child { grid-column: 1 / -1; min-height: 260px; }
-  .institutional-home .institutional-company h2 { max-width: 800px; }
+.site-footer .footer-intro .eyebrow,
+.institutional-home .site-footer .footer-intro .eyebrow { color: #595963; }
+.site-footer .footer-grid {
+  grid-template-columns: 2fr 1fr 1.3fr;
+  gap: 25px;
+  padding: 30px 0;
+  border-color: #d2d2d7;
 }
-@media (max-width: 720px) {
-  html { scroll-padding-top: 60px; }
-  .site-header,
-  .institutional-home .site-header,
-  .home-page .site-header {
-    position: sticky;
-    inset: 0 auto auto;
+.site-footer .footer-grid p, .site-footer .footer-base {
+  color: #66666b;
+  font-family: var(--product-font);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.site-footer a { color: #424245; font-family: var(--product-font); font-size: 12px; }
+.site-footer a:hover { color: #1d1d1f; text-decoration: underline; }
+.site-footer .footer-base { padding: 17px 0; border-color: #d2d2d7; text-transform: none; letter-spacing: 0; }
+
+@media (max-width: 980px) {
+  .site-header .site-navigation { display: none; }
+  .js .menu-toggle {
+    display: inline-flex;
+    order: 3;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+  }
+  .site-header .brand { flex: 1 1 auto; }
+  .site-header .global-search-toggle { order: 2; flex: 0 0 44px; width: 44px; }
+  .js .site-navigation {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    z-index: 110;
+    display: none;
+    max-height: calc(100svh - 44px);
+    overflow-y: auto;
+    padding: 15px max(25px,5vw) 35px;
+    border: 0;
+    background: rgba(22,22,23,.99);
+    box-shadow: 0 16px 30px #0004;
+  }
+  .js .site-navigation[data-open="true"] { display: block; }
+  .js .site-nav-list { display: grid; height: auto; padding: 0; gap: 0; }
+  .js .site-nav-list a, .institutional-home .site-nav-list a {
+    display: flex;
+    justify-content: flex-start;
+    min-height: 61px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ffffff24;
+    border-radius: 0;
+    color: #f5f5f7;
+    font-size: 25px;
+    font-weight: 570;
+    letter-spacing: -.035em;
+  }
+  .js .site-nav-list .nav-contact { justify-content: flex-start; margin: 0; padding: 10px 0; font-size: 25px; }
+  .institutional-home .institutional-essay-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .institutional-home .institutional-essay-list .essay-card:last-child { grid-column: 1 / -1; min-height: 270px; }
+  .apple-local-nav nav a:not(:first-child) { display: none; }
+}
+/* A fully navigable progressive-enhancement fallback at tablet/phone widths. */
+@media (max-width: 980px) {
+  .no-js .site-header,
+  .no-js .institutional-home .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 44px;
+  }
+  .no-js .site-header .site-navigation {
+    position: static;
+    order: 4;
+    display: block;
+    flex: 0 0 100%;
     width: 100%;
-    height: 52px;
-    min-height: 52px;
-    padding-inline: 20px;
-    background: rgba(20,20,22,.97);
+    height: auto;
+    max-height: none;
+    padding: 6px 0 14px;
+    margin: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .no-js .site-header .site-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    height: auto;
+    gap: 5px;
+  }
+  .no-js .site-header .site-nav-list a,
+  .no-js .institutional-home .site-nav-list a {
+    min-height: 35px;
+    padding: 6px 10px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 450;
+  }
+  .no-js .global-search-toggle,
+  .no-js .menu-toggle { display: none; }
+}
+
+@media (max-width: 720px) {
+  html { scroll-padding-top: 105px; }
+  .site-header, .institutional-home .site-header, .home-page .site-header {
+    top: 0;
+    height: 48px;
+    min-height: 48px;
+    padding-inline: 18px;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
-  .site-header .brand-name { max-width: 160px; }
-  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
-  .js .site-navigation,
-  .institutional-home .site-navigation {
-    position: absolute;
-    top: 52px;
-    left: 0;
-    right: 0;
-    max-height: calc(100svh - 52px);
-    overflow-y: auto;
-    padding: 20px 24px 32px;
-    border: 0;
-    border-bottom: 1px solid #48484d;
-    background: rgba(22,22,24,.99);
-    box-shadow: 0 15px 35px rgba(0,0,0,.27);
+  .site-header .brand, .global-search-toggle, .menu-toggle { height: 48px; }
+  .js .site-navigation { top: 48px; max-height: calc(100svh - 48px); }
+  .site-search-panel { top: 48px; padding: 30px 22px 45px; }
+  .site-search-panel input { font-size: 25px; }
+  .apple-local-nav { top: 48px; min-height: 49px; padding: 0 20px; }
+  .apple-local-nav-title { font-size: 18px; }
+  .apple-local-nav nav a { max-width: 80px; }
+  .institutional-home .apple-flagship,
+  .institutional-home .apple-flagship-cosmos,
+  .institutional-home .apple-flagship-founder,
+  .institutional-home .apple-flagship-company {
+    min-height: 570px;
+    height: 570px;
+    padding: 45px 17px 0;
+    margin-bottom: 12px;
   }
-  .js .site-navigation:not([data-open="true"]) { display: none; }
-  .js .site-navigation[data-open="true"] { display: block; }
-  .js .site-nav-list { display: grid; gap: 0; }
-  .js .site-nav-list a,
-  .institutional-home .site-nav-list a {
-    display: flex;
-    align-items: center;
-    min-height: 53px;
-    padding: 10px 2px;
-    border: 0;
-    border-bottom: 1px solid rgba(255,255,255,.14);
+  .institutional-home .apple-flagship h1,
+  .institutional-home .apple-flagship h2,
+  .institutional-home .apple-flagship-cosmos h1,
+  .institutional-home .apple-flagship-company h2 {
+    max-width: 100%;
+    font-size: clamp(38px,10.3vw,54px);
+    line-height: 1.08;
+    letter-spacing: -.057em;
+  }
+  .institutional-home .apple-headline-subtitle { font-size: clamp(22px,5.5vw,29px); line-height: 1.22; }
+  .institutional-home .apple-flagship-cosmos .executive-deck {
+    max-width: 460px;
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+  .institutional-home .apple-flagship-cosmos .executive-cosmos-image {
+    object-position: 59% 50%;
+    opacity: .53;
+  }
+  .institutional-home .apple-flagship-cosmos .executive-hero-copy { padding: 0; }
+  .institutional-home .apple-flagship .hero-actions, .institutional-home .apple-action-row {
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 15px;
+  }
+  .institutional-home .apple-flagship .button { font-size: 14px; min-height: 38px; padding: 8px 18px; }
+  .apple-inline-link { font-size: 16px; }
+  .institutional-home .apple-flagship-cosmos .executive-cosmos-credit { bottom: 12px; right: 12px; font-size: 9px; }
+  .institutional-home .apple-flagship-founder .apple-flagship-subtitle { font-size: 20px; }
+  .institutional-home .apple-founder-stage { height: 315px; }
+  .institutional-home .apple-founder-portrait { width: min(270px,69vw); height: 270px; }
+  .institutional-home .apple-founder-stage > span { font-size: 10px; }
+  .institutional-home .apple-flagship-company .institutional-company-copy .lead { font-size: 17px; }
+  .institutional-home .apple-company-visual { bottom: -150px; width: min(94vw, 460px); }
+  .institutional-home .apple-promos { padding: 0 0 12px; }
+  .institutional-home .apple-promo-grid { grid-template-columns: 1fr; gap: 12px; }
+  .institutional-home .apple-promo-grid .apple-promo,
+  .institutional-home .apple-promo-grid .apple-promo:first-child {
+    min-height: 485px;
+    padding: 42px 20px 0;
     border-radius: 0;
-    color: #f5f5f7;
-    font-size: 23px;
-    font-weight: 560;
-    letter-spacing: -.03em;
-    line-height: 1.22;
   }
-  .js .site-nav-list .nav-contact {
-    width: max-content;
-    min-height: 40px;
-    margin: 18px 0 0;
-    padding: 9px 18px;
-    border: 0;
-    border-radius: 999px;
-    font-size: 16px;
-  }
-  .institutional-home .executive-hero {
-    min-height: calc(100svh - 52px);
-    grid-template-rows: 1fr auto auto;
-    padding: 70px 20px 0;
-  }
-  .institutional-home .executive-hero-copy { align-self: center; padding: 15px 0 30px; }
-  .institutional-home .executive-hero h1 {
-    margin-top: 16px;
-    font-size: clamp(44px, 11.7vw, 78px);
-    line-height: 1.02;
-    letter-spacing: -.068em;
-  }
-  .institutional-home .executive-deck {
-    margin-top: 19px;
-    font-size: clamp(16px, 4vw, 19px);
-    line-height: 1.44;
-  }
-  .institutional-home .hero-actions { flex-wrap: wrap; gap: 10px; margin-top: 25px; }
-  .institutional-home .hero-actions .button { min-height: 42px; padding: 9px 16px; font-size: 14px; }
-  .institutional-home .executive-identity {
-    max-width: 96%;
-    margin-bottom: 19px;
-    padding: 8px 12px;
-    border-radius: 16px;
-  }
-  .institutional-home .executive-portrait { width: 44px; min-width: 44px; height: 44px; }
-  .institutional-home .executive-identity span { display: none; }
-  .institutional-home .executive-proof { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .institutional-home .executive-proof > div { min-height: 70px; padding: 12px 6px; }
-  .institutional-home .executive-proof > div + div { padding-left: 6px; }
-  .institutional-home .executive-proof > div:nth-child(3) { border-left: 0; border-top: 1px solid rgba(255,255,255,.18); }
-  .institutional-home .executive-proof > div:nth-child(4) { border-top: 1px solid rgba(255,255,255,.18); }
-  .institutional-home .executive-proof strong { font-size: 12px; }
-  .institutional-home .executive-cosmos-credit { display: none; }
-  .institutional-home .institutional-thesis,
-  .institutional-home .institutional-capabilities,
-  .institutional-home .institutional-insights,
-  .institutional-home .institutional-principle,
-  .institutional-home .institutional-closing { padding: 90px 20px; }
-  .institutional-home .institutional-thesis h2,
-  .institutional-home .institutional-capabilities .section-heading h2,
-  .institutional-home .institutional-insights .section-heading h2,
-  .institutional-home .institutional-company h2,
+  .institutional-home .apple-promo h3 { font-size: clamp(34px,9vw,44px); }
+  .institutional-home .apple-promo p { font-size: 17px; }
+  .institutional-home .apple-feature,
+  .institutional-home .apple-insights { padding: 82px 23px; }
+  .institutional-home .institutional-thesis-copy h2,
+  .institutional-home .apple-insights .section-heading h2,
   .institutional-home .institutional-principle h2,
-  .institutional-home .institutional-closing h2 {
-    font-size: clamp(40px, 9.5vw, 65px);
-    letter-spacing: -.058em;
-    line-height: 1.06;
-  }
-  .institutional-home .institutional-kicker { flex-wrap: wrap; }
-  .institutional-home .institutional-thesis-copy > p { font-size: 18px; }
-  .institutional-home .institutional-capabilities .section-heading,
-  .institutional-home .institutional-insights .section-heading { display: grid; gap: 16px; }
-  .institutional-home .institutional-capability-list { grid-template-columns: 1fr; gap: 14px; }
-  .institutional-home .institutional-capability-list article,
-  .institutional-home .institutional-capability-list article:first-child {
-    grid-column: auto;
-    min-height: 315px;
-    padding: 30px 26px;
-    border-radius: 19px;
-  }
-  .institutional-home .institutional-capability-list h3 { font-size: clamp(32px, 8.4vw, 48px); }
-  .institutional-home .institutional-capability-list p { grid-column: auto; font-size: 16px; }
-  .institutional-home .institutional-company { padding: 90px 20px; }
-  .institutional-home .institutional-company-facts > div { grid-template-columns: minmax(0,1fr); gap: 8px; }
-  .institutional-home .institutional-essay-list { grid-template-columns: minmax(0,1fr); gap: 14px; }
+  .institutional-home .institutional-closing h2,
+  .institutional-home .institutional-evidence h2 { font-size: clamp(41px,10vw,59px); line-height: 1.07; }
+  .institutional-home .apple-insights .section-heading { display: grid; gap: 10px; }
+  .institutional-home .institutional-essay-list { grid-template-columns: 1fr; gap: 12px; }
   .institutional-home .institutional-essay-list .essay-card,
   .institutional-home .institutional-essay-list .essay-card:last-child {
     grid-column: auto;
-    min-height: 290px;
-    padding: 26px;
-    border-radius: 19px;
+    min-height: 270px;
+    padding: 27px;
   }
-  .institutional-home .institutional-evidence { padding: 90px 20px; }
   .institutional-home .institutional-evidence .evidence-grid { grid-template-columns: 1fr; }
-  .institutional-home .institutional-closing > div { display: flex; flex-wrap: wrap; }
-  .page-hero-cosmic { min-height: 78svh; padding: 110px 20px 110px; }
-  .page-hero-cosmic .breadcrumbs { left: 20px; top: 24px; }
+  .institutional-home .institutional-closing { min-height: 380px; }
+  .page-hero-cosmic {
+    min-height: min(730px,80svh);
+    padding: 95px 20px 115px;
+  }
+  .page-hero-cosmic .breadcrumbs { top: 22px; left: 20px; }
   .page-cosmic-copy { width: 100%; }
-  .page-cosmic-copy h1 { max-width: 13ch; font-size: clamp(44px, 10.5vw, 67px); }
-  .page-cosmic-copy .page-deck { font-size: 17px; }
-  .page-observation { left: 20px; bottom: 25px; max-width: calc(100% - 40px); }
-  .page-cosmic-credit { right: 20px; bottom: 8px; font-size: 9px; }
-  .page-section-index { grid-template-columns: minmax(0,1fr); padding: 25px 20px; }
-  .page-section-index ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .content-managed.prose-page { width: calc(100% - 40px); }
+  .page-cosmic-copy h1 { max-width: 13ch; font-size: clamp(43px,10vw,66px); line-height: 1.06; }
+  .page-cosmic-copy .page-deck { font-size: 17px; line-height: 1.4; }
+  .page-observation { left: 20px; bottom: 23px; max-width: calc(100% - 40px); font-size: 9px; }
+  .page-cosmic-credit { right: 20px; bottom: 9px; font-size: 9px; }
+  .content-managed.prose-page > h2,
+  .contact-content-panel > h2 { font-size: clamp(35px,9vw,51px); }
   .content-managed.prose-page > p,
   .content-managed.prose-page > ul,
   .content-managed.prose-page > ol,
   .contact-content-panel > p,
   .contact-content-panel > ul,
   .contact-content-panel > ol { margin-left: 0; }
-  .content-managed.prose-page > h2,
-  .contact-content-panel > h2 { font-size: clamp(34px, 8vw, 49px); }
-  .route-summary { width: calc(100% - 40px); }
-  .site-footer,
-  .institutional-home .site-footer { padding: 70px 20px 20px; }
-  .site-footer .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+  .page-section-index { padding: 22px 20px; grid-template-columns: 1fr; }
+  .page-section-index ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .site-footer, .institutional-home .site-footer { padding: 45px 22px 20px; }
+  .site-footer .footer-grid { grid-template-columns: 1fr; gap: 22px; }
   .site-footer .footer-base { flex-wrap: wrap; }
 }
+/* Non-JS mobile menu occupies real document height and remains legible. */
+@media (max-width: 720px) {
+  .no-js .site-header,
+  .no-js .institutional-home .site-header {
+    height: auto;
+    min-height: 48px;
+  }
+  .no-js .site-header .site-navigation {
+    background: #161617;
+  }
+}
+
 @media (max-width: 390px) {
-  .site-header .brand-name { max-width: 126px; }
-  .institutional-home .executive-hero h1 { font-size: 42px; }
-  .institutional-home .executive-deck { font-size: 15px; }
-  .institutional-home .executive-hero-copy .eyebrow { font-size: 11px; }
-  .institutional-home .executive-proof strong { font-size: 11px; }
-  .page-cosmic-copy h1 { font-size: 42px; }
+  .institutional-home .apple-flagship h1,
+  .institutional-home .apple-flagship h2 { font-size: 38px; }
+  .institutional-home .apple-flagship-cosmos .executive-deck { font-size: 14px; }
+  .institutional-home .apple-flagship-cosmos .executive-cosmos-credit { font-size: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .institutional-home .institutional-capability-list article,
-  .site-header .site-nav-list a,
-  .button { transition: none; }
+  .site-header a, .global-search-toggle, .apple-inline-link, .button, .apple-flagship * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
 }

@@ -89,6 +89,17 @@ jobs:
                 return [category, score];
               }),
             );
+            // Preserve the exact failing SEO audit IDs in CI logs even when artifacts expire.
+            if (scores.seo < perRunThresholds.seo) {
+              const seoFailures = (report.categories.seo?.auditRefs ?? [])
+                .filter((auditRef) => auditRef.weight > 0)
+                .map((auditRef) => {
+                  const audit = report.audits?.[auditRef.id];
+                  return { id: auditRef.id, title: audit?.title, score: audit?.score, weight: auditRef.weight };
+                })
+                .filter((audit) => audit.score !== 1);
+              console.error('SEO audit details for ' + file + ': ' + JSON.stringify(seoFailures));
+            }
             const performance = report.categories.performance?.score ?? 0;
             if (file.endsWith('-desktop.json') && performance < desktopPerformanceMinimum) {
               failures.push(`${file}: performance ${performance.toFixed(2)} < ${desktopPerformanceMinimum.toFixed(2)}`);

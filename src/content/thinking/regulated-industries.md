@@ -4,12 +4,12 @@ description: How regulation changes product strategy, decision sequencing, suppl
 summary: Regulation is part of the operating model from the first product decision. It changes how a pharmaceutical founder sequences capital, partners, information and launch readiness.
 author: Vishal Chakravarty
 published: 2025-12-31
-modified: 2026-07-15
+modified: 2026-11-07
 category: Regulated markets
 canonicalPath: /essays/regulated-industries/
 legacyPaths: ["/essays/regulated-industries/index.html"]
 socialImage: /images/social/regulated-industries-og.jpg
-sources: [{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"ICH Q10 Pharmaceutical Quality System","url":"https://database.ich.org/sites/default/files/Q10_Guideline.pdf"}]
+sources: [{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"ICH Q10 Pharmaceutical Quality System","url":"https://database.ich.org/sites/default/files/Q10_Guideline.pdf"},{"label":"FDA-hosted ICH Q10 pharmaceutical quality system guidance","url":"https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q10-pharmaceutical-quality-system"}]
 related: ["regulatory-approval-is-not-market-access", "what-parallel-import-actually-means", "why-i-chose-to-build-in-pharmaceuticals"]
 public: true
 ---
@@ -23,6 +23,8 @@ For a founder, the challenge is to maintain commercial urgency while sequencing 
 A pharmaceutical business operates through specific permissions attached to activities, products, entities, people and sites.
 
 Company registration establishes the legal entity. A marketing authorisation covers a particular medicinal product under approved conditions. Manufacturing, assembly, import and wholesale distribution have their own requirements. The scope of each permission matters.
+
+For example, the MHRA distinguishes a manufacturer's licence for making, assembling or importing human medicines from a wholesale distribution authorisation for selling or supplying medicines to parties other than the patient. An incorporated company is not automatically authorised to undertake either regulated activity. Its proposed operating scope, site, personnel, medicines and supplier/customer relationships still require assessment against the relevant licences and GMP/GDP responsibilities. See [MHRA manufacturer and wholesaler licensing guidance](https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences) and [MHRA GMP/GDP guidance](https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice).
 
 The useful questions are precise:
 
@@ -94,6 +96,8 @@ A strong operating model defines:
 - performance review.
 
 Outsourcing physical work does not remove the need for oversight. It changes the way oversight must be designed.
+
+The ICH Q10 pharmaceutical quality system framework also places management oversight, communication, monitoring and improvement inside the lifecycle of a medicine. In outsourced operations, defining responsibilities and reviewing supplier or contractor performance is part of maintaining control; a contract or an automated dashboard alone does not discharge those duties. See the [FDA-hosted ICH Q10 guidance overview](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q10-pharmaceutical-quality-system).
 
 ## Documentation is part of the product
 
@@ -174,5 +178,7 @@ That advantage is not created by knowing the vocabulary. It is created by making
 The company becomes stronger when regulatory, manufacturing, supply and commercial thinking reinforce one another. That is the real operating challenge of building in pharmaceuticals, and it is also the opportunity.
 
 ## Editorial note
+
+**Source-check update (7 November 2026):** Activity-specific UK licence boundaries and GMP/GDP oversight were checked against MHRA guidance; the broader pharmaceutical-quality-system interpretation was cross-checked against FDA-hosted ICH Q10. This remains general founder analysis, not a determination that any particular NovaPharm activity or site is licensed.
 
 This essay is general strategic analysis. Current requirements should be confirmed against official guidance and qualified professional advice for the relevant product, activity and market.

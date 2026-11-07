@@ -4,12 +4,12 @@ description: Why pharmaceutical approval is only one condition of market access,
 summary: Approval permits a product to enter the market. Access depends on whether the entire product, manufacturing, supply, economic and channel route can work repeatedly.
 author: Vishal Chakravarty
 published: 2026-07-15
-modified: 2026-07-15
+modified: 2026-11-07
 category: Market access
 canonicalPath: /essays/regulatory-approval-is-not-market-access/
 legacyPaths: []
 socialImage: /images/social/default-og.jpg
-sources: [{"label":"MHRA guidance on applying for a licence to market a medicine in the UK","url":"https://www.gov.uk/guidance/apply-for-a-licence-to-market-a-medicine-in-the-uk"},{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"}]
+sources: [{"label":"MHRA guidance on applying for a licence to market a medicine in the UK","url":"https://www.gov.uk/guidance/apply-for-a-licence-to-market-a-medicine-in-the-uk"},{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"NICE: what is technology appraisal guidance?","url":"https://www.nice.org.uk/what-nice-does/our-guidance/about-technology-appraisal-guidance/what-is-technology-appraisal-guidance"}]
 related: ["route-to-market-before-launch", "supply-resilience-before-first-purchase-order", "why-i-chose-to-build-in-pharmaceuticals"]
 public: true
 ---
@@ -40,6 +40,8 @@ The value lies in resolving the questions together.
 A marketing authorisation establishes the legal basis for placing a medicine on the market under its approved conditions. It does not create a customer, a forecast or a channel strategy.
 
 The commercial case still has to be made.
+
+A current UK licensing application also has its own submission and evidence route: the MHRA's marketing-authorisation guidance, updated on 2 October 2026, requires submission through the MHRA Submissions Portal and identifies pathway-specific dossier requirements. An authorisation should not be interpreted as a promise of NHS adoption, commissioning or reimbursement. In England, a positive NICE technology appraisal can create a separate NHS funding duty within the published recommendation's scope and timescale; other products, indications and parts of the UK can follow different access arrangements. See [MHRA marketing-authorisation guidance](https://www.gov.uk/guidance/apply-for-a-licence-to-market-a-medicine-in-the-uk) and [NICE technology appraisal guidance](https://www.nice.org.uk/what-nice-does/our-guidance/about-technology-appraisal-guidance/what-is-technology-appraisal-guidance).
 
 That means understanding the existing treatment and supply landscape, the number and behaviour of competitors, the buying route, the reference price, expected margin, substitution dynamics, pack preferences and the reason a buyer would change supplier.
 
@@ -161,5 +163,7 @@ Regulatory approval remains a non-negotiable milestone. It should be pursued ins
 A product reaches the market only when permission, manufacturing, supply, economics and channel execution work as one system. That is the difference between an approved product and accessible medicine.
 
 ## Editorial note
+
+**Source-check update (7 November 2026):** The licensing-versus-access distinction and current UK submission process were checked against the MHRA guidance updated 2 October 2026 and NICE's published explanation of technology appraisals. This is strategic commentary, not a product-specific licence, reimbursement conclusion or regulatory sign-off.
 
 This essay is general strategic analysis. Current regulatory requirements should be confirmed against the linked official guidance and qualified professional advice where appropriate.

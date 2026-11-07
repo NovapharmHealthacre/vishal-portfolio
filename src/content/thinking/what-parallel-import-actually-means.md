@@ -4,12 +4,12 @@ description: A practical explanation of the UK parallel import licence route, pr
 summary: UK parallel import is a product-specific licensing and supply route. The economics matter, but product comparison, authorised sites, packaging, quality and lifecycle work decide whether the opportunity is viable.
 author: Vishal Chakravarty
 published: 2026-01-01
-modified: 2026-07-15
+modified: 2026-11-07
 category: Market access
 canonicalPath: /essays/what-parallel-import-actually-means/
 legacyPaths: ["/essays/what-parallel-import-actually-means/index.html"]
 socialImage: /images/social/what-parallel-import-actually-means-og.jpg
-sources: [{"label":"MHRA guidance on applying for a parallel import licence","url":"https://www.gov.uk/guidance/medicines-apply-for-a-parallel-import-licence"},{"label":"MHRA collection of approved parallel import licences","url":"https://www.gov.uk/government/collections/parallel-import-licences-lists-of-approved-products"},{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"}]
+sources: [{"label":"MHRA guidance on applying for a parallel import licence","url":"https://www.gov.uk/guidance/medicines-apply-for-a-parallel-import-licence"},{"label":"MHRA collection of approved parallel import licences","url":"https://www.gov.uk/government/collections/parallel-import-licences-lists-of-approved-products"},{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"MHRA Windsor Framework guidance for PLPI licensing and UK Only packaging","url":"https://www.gov.uk/government/publications/uk-parallel-import-licences-following-agreement-of-the-windsor-framework/uk-parallel-import-licences-following-agreement-of-the-windsor-framework"}]
 related: ["regulatory-approval-is-not-market-access", "regulated-industries", "supply-resilience-before-first-purchase-order"]
 public: true
 ---
@@ -22,7 +22,9 @@ The commercial opportunity may begin with a price difference, but the route is d
 
 The MHRA assessment is built around the imported product and the UK cross-referenced product.
 
-The key issue is whether the evidence supports the required relationship between them, including the absence of a therapeutic difference. That assessment is product-specific. It depends on the source product, its authorised market, the UK reference, the proposed presentation and the information available for the application.
+The key issue is whether the evidence supports the required relationship between them, including the absence of a therapeutic difference.
+
+The MHRA's guidance updated on 26 August 2026 distinguishes **simple**, **standard** and **complex** PLPI application categories. The category depends on common origin and particular product differences; it is not something to infer from price or therapeutic class alone. The same guidance specifies current submission documents and a one-request-for-information policy, normally giving an applicant 30 calendar days to address outstanding points. These are application-planning requirements, not grounds to claim likely approval. See [MHRA PLPI application guidance](https://www.gov.uk/guidance/medicines-apply-for-a-parallel-import-licence). That assessment is product-specific. It depends on the source product, its authorised market, the UK reference, the proposed presentation and the information available for the application.
 
 A broad statement that two products are “the same” is therefore not enough. The opportunity needs a structured comparison covering the relevant formulation, strength, pharmaceutical form, manufacturer, authorisation, pack and product information.
 
@@ -144,6 +146,8 @@ The Windsor Framework changed the medicines position from 1 January 2025. The MH
 
 This matters because older explainers may describe a route that has changed materially. A current opportunity should always begin with the latest MHRA guidance, product lists and applicable UK requirements.
 
+The current UK-wide route also carries packaging obligations. The MHRA's Windsor Framework guidance states that new packs placed on the UK market from 1 January 2025 must display **UK Only**, with specific rules for stickering or updated artwork. The applicable procedure and release controls should be confirmed for the particular approved licence and pack; a generic label change cannot replace authorised artwork and batch-release processes. See [MHRA Windsor Framework PLPI guidance](https://www.gov.uk/government/publications/uk-parallel-import-licences-following-agreement-of-the-windsor-framework/uk-parallel-import-licences-following-agreement-of-the-windsor-framework).
+
 ## A practical opportunity screen
 
 Before committing to a parallel import project, I would want clear answers to ten questions:
@@ -168,5 +172,7 @@ UK parallel import is best understood as a controlled product comparison carried
 The economics create the initial question. The quality of the product assessment, permissions, sourcing, packaging, lifecycle management and channel strategy decides whether the opportunity can become a reliable business.
 
 ## Editorial note
+
+**Source-check update (7 November 2026):** The three application categories, the one-RFI process, UK-wide PLPI position and UK Only packaging expectations were checked against MHRA guidance updated 26 August 2026 and 3 June 2025. This is not confirmation of a particular product's comparability, licence eligibility or lawful release.
 
 This essay is general strategic analysis. Current requirements and licence status should be checked directly against the linked MHRA sources and qualified professional advice.
