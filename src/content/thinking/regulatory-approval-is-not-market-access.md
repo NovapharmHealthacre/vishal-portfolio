@@ -9,7 +9,7 @@ category: Market access
 canonicalPath: /essays/regulatory-approval-is-not-market-access/
 legacyPaths: []
 socialImage: /images/social/default-og.jpg
-sources: [{"label":"MHRA guidance on applying for a licence to market a medicine in the UK","url":"https://www.gov.uk/guidance/apply-for-a-licence-to-market-a-medicine-in-the-uk"},{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"}]
+sources: [{"label":"MHRA guidance on applying for a licence to market a medicine in the UK","url":"https://www.gov.uk/guidance/apply-for-a-licence-to-market-a-medicine-in-the-uk"},{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"NICE: what is technology appraisal guidance?","url":"https://www.nice.org.uk/what-nice-does/our-guidance/about-technology-appraisal-guidance/what-is-technology-appraisal-guidance"}]
 related: ["route-to-market-before-launch", "supply-resilience-before-first-purchase-order", "why-i-chose-to-build-in-pharmaceuticals"]
 public: true
 ---
