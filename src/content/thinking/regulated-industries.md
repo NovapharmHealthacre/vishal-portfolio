@@ -9,7 +9,7 @@ category: Regulated markets
 canonicalPath: /essays/regulated-industries/
 legacyPaths: ["/essays/regulated-industries/index.html"]
 socialImage: /images/social/regulated-industries-og.jpg
-sources: [{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"ICH Q10 Pharmaceutical Quality System","url":"https://database.ich.org/sites/default/files/Q10_Guideline.pdf"}]
+sources: [{"label":"MHRA guidance on manufacturer and wholesale licences","url":"https://www.gov.uk/guidance/apply-for-manufacturer-or-wholesaler-of-medicines-licences"},{"label":"MHRA guidance on good manufacturing and distribution practice","url":"https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"},{"label":"ICH Q10 Pharmaceutical Quality System","url":"https://database.ich.org/sites/default/files/Q10_Guideline.pdf"},{"label":"FDA-hosted ICH Q10 pharmaceutical quality system guidance","url":"https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q10-pharmaceutical-quality-system"}]
 related: ["regulatory-approval-is-not-market-access", "what-parallel-import-actually-means", "why-i-chose-to-build-in-pharmaceuticals"]
 public: true
 ---
