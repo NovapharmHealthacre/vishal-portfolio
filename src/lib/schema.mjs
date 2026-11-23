@@ -115,7 +115,15 @@ export const organisationSchema = () => ({
   foundingDate: company.incorporationDate,
   url: company.officialUrl,
   description: company.description,
-  founder: { '@id': person.id },
+  founder: [
+    { '@id': person.id },
+    {
+      '@type': 'Person',
+      '@id': 'https://novapharmhealthcare.com/leadership/prabhakar-lahare/#person',
+      name: 'Prabhakar Vitthal Lahare',
+      url: 'https://novapharmhealthcare.com/leadership/prabhakar-lahare/',
+    },
+  ],
   sameAs: [company.companiesHouseUrl, company.linkedInUrl, company.wikidataUrl],
 });
 
