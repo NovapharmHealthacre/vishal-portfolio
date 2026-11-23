@@ -287,7 +287,8 @@ test('Media exposes only verified completed or confirmed appearances', () => {
     assert.ok(html.includes(label), label);
   }
   assert.match(html, /Confirmed in person · Invitation-only/);
-  assert.match(html, /Registered · Upcoming/);
+  assert.match(html, /Registered · event concluded/);
+  assert.doesNotMatch(html, /Confirmed \/ Upcoming|Registered · Upcoming|Where the work goes next/);
   assert.match(html, /EventScheduled/);
   assert.match(html, /Portcullis House/);
   assert.match(html, /Fiera Milano/);
