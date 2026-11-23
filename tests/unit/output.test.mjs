@@ -290,6 +290,14 @@ test('Media exposes only verified completed or confirmed appearances', () => {
   assert.match(html, /Registered · event concluded/);
   assert.doesNotMatch(html, /Confirmed \/ Upcoming|Registered · Upcoming|Where the work goes next/);
   assert.match(html, /EventCompleted/);
+  const eventSchemas = [...html.matchAll(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/g)]
+    .map(match => JSON.parse(match[1]))
+    .filter(schema => schema['@type'] === 'Event');
+  assert.equal(eventSchemas.length, 4);
+  assert.equal(eventSchemas.filter(schema => schema.attendee).length, 1,
+    'Only the independently verified iPHEX appearance may assert attendance');
+  assert.equal(eventSchemas.find(schema => schema.name === 'iPHEX 2026')?.attendee?.['@id'],
+    'https://vishal.novapharmhealthcare.com/#person');
   assert.match(html, /Portcullis House/);
   assert.match(html, /Fiera Milano/);
   assert.match(html, /ExCeL London/);
