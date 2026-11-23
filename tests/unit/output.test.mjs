@@ -245,6 +245,9 @@ test('about page exposes a concise human-readable entity snapshot', () => {
   assert.match(main, /At a glance/);
   assert.match(main, /Chief Executive Officer/);
   assert.match(main, /NovaPharm Healthcare Ltd/);
+  assert.match(main, /Prabhakar Vitthal Lahare/);
+  assert.match(main, /href="https:\/\/novapharmhealthcare\.com\/leadership\/vishal-chakravarty\//);
+  assert.match(main, /href="https:\/\/novapharmhealthcare\.com\/technology\//);
   assert.match(main, /Market access, manufacturing and resilient supply/);
   assert.match(html, /<meta property="og:type" content="profile">/);
   assert.match(html, /<meta property="profile:first_name" content="Vishal">/);
