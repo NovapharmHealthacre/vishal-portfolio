@@ -26,7 +26,7 @@ export const routeModified = Object.freeze({
   '/thinking/': '2026-10-04',
   '/media/': '2026-11-23',
   '/speaking-partnerships/': '2026-10-04',
-  '/facts/': '2026-10-04',
+  '/facts/': '2026-11-23',
   '/contact/': '2026-10-04',
   '/privacy/': '2026-10-02',
 });
