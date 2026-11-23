@@ -154,7 +154,14 @@ for (const file of htmlFiles) {
   const organization = schemas.find((schema) => schema['@type'] === 'Organization');
   if (organization) {
     if (organization['@id'] !== organizationId) failures.push(`${rel}: Organization id is not canonical to the company domain`);
-    if (organization.founder?.['@id'] !== personId) failures.push(`${rel}: Organization founder must reference Vishal`);
+    const founderIds = (Array.isArray(organization.founder) ? organization.founder : [organization.founder])
+      .filter(Boolean)
+      .map((founder) => founder['@id']);
+    if (founderIds.length !== 2 ||
+        founderIds[0] !== personId ||
+        founderIds[1] !== 'https://novapharmhealthcare.com/leadership/prabhakar-lahare/#person') {
+      failures.push(`${rel}: Organization founders must reference Vishal and Prabhakar as distinct canonical Persons`);
+    }
     for (const sameAs of [
       'https://find-and-update.company-information.service.gov.uk/company/16716501',
       'https://www.linkedin.com/company/novapharm-healthcare/',
