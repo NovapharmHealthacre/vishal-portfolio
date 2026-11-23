@@ -192,7 +192,7 @@ test('public facts expose only approved public-safe records and canonical entity
 
 
 
-test('visible executive title appears once, on About only', () => {
+test('visible executive title is limited to About and the factual NovaPharm leadership context', () => {
   const routes = [
     'index.html',
     'about/index.html',
@@ -208,7 +208,7 @@ test('visible executive title appears once, on About only', () => {
     const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? '';
     return [route, (main.match(/Chief Executive Officer/g) ?? []).length];
   });
-  assert.deepEqual(counts.filter(([, count]) => count > 0), [['about/index.html', 1]]);
+  assert.deepEqual(counts.filter(([, count]) => count > 0), [['about/index.html', 1], ['ventures/index.html', 1]]);
 });
 
 test('thinking is organised into four durable authority topics', () => {
@@ -286,10 +286,10 @@ test('Media exposes only verified completed or confirmed appearances', () => {
   for (const label of ['CPHI Milan 2026', '2030 Health Co-Creation', 'The Business Show London 2026']) {
     assert.ok(html.includes(label), label);
   }
-  assert.match(html, /Confirmed in person · Invitation-only/);
+  assert.match(html, /Invited in person · event concluded/);
   assert.match(html, /Registered · event concluded/);
   assert.doesNotMatch(html, /Confirmed \/ Upcoming|Registered · Upcoming|Where the work goes next/);
-  assert.match(html, /EventScheduled/);
+  assert.match(html, /EventCompleted/);
   assert.match(html, /Portcullis House/);
   assert.match(html, /Fiera Milano/);
   assert.match(html, /ExCeL London/);
