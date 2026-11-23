@@ -108,7 +108,12 @@ jobs:
           grep -Fq 'CPHI Milan 2026' <<<"$media"
           grep -Fq '2030 Health Co-Creation' <<<"$media"
           grep -Fq 'The Business Show London 2026' <<<"$media"
-          grep -Fq 'Confirmed in person · Invitation-only' <<<"$media"
+          grep -Fq 'Invited in person · event concluded' <<<"$media"
+          if grep -Fq 'Confirmed / Upcoming' <<<"$media"; then
+            echo 'Past events must not remain labeled upcoming' >&2
+            exit 1
+          fi
+          grep -Fq 'NovaPharm Intelligence' <<<"$ventures"
           grep -Fq 'Fiera Milano' <<<"$media"
           grep -Fq 'Portcullis House' <<<"$media"
           grep -Fq 'ExCeL London' <<<"$media"
