@@ -208,7 +208,7 @@ export const appearanceEventSchema = (appearance) => ({
     name: appearance.organizer,
     ...(appearance.organizerUrl ? { url: appearance.organizerUrl } : {}),
   },
-  attendee: { '@id': person.id },
+  ...(appearance.status === 'attended' ? { attendee: { '@id': person.id } } : {}),
   ...(appearance.images.length ? { image: appearance.images.map((image) => absolute(image)) } : {}),
 });
 
