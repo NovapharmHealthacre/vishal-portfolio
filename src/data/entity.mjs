@@ -133,7 +133,7 @@ export const publicAppearances = Object.freeze([
     endDate: '2026-11-12',
     displayDate: '11–12 November 2026',
     location: 'ExCeL London · London, United Kingdom',
-    role: 'Registered attendee',
+    role: 'Registered (attendance not independently verified)',
     summary:
       'Registration was recorded for a company-building event spanning AI, technology, operations, finance and growth. Physical attendance has not been independently verified.',
     officialUrl: 'https://www.greatbritishbusinessshow.co.uk/',
