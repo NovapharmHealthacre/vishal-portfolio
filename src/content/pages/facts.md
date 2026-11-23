@@ -10,7 +10,7 @@ public: true
 - **Name:** Vishal Chakravarty
 - **Also recorded as:** Vishal Om Prakash Chakravarty
 - **Company:** NovaPharm Healthcare Ltd
-- **Company role:** Chief Executive Officer and co-founder; Prabhakar Vitthal Lahare is the other founder
+- **Founder relationship:** Co-founder of NovaPharm Healthcare Ltd; Prabhakar Vitthal Lahare is the other founder
 - **Focus:** Pharmaceutical market access, manufacturing, supply and company building
 
 ## Company record
