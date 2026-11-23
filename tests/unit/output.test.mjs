@@ -290,7 +290,7 @@ test('Media exposes only verified completed or confirmed appearances', () => {
   assert.match(html, /Registered · event concluded/);
   assert.doesNotMatch(html, /Confirmed \/ Upcoming|Registered · Upcoming|Where the work goes next/);
   assert.match(html, /EventCompleted/);
-  const eventSchemas = [...html.matchAll(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/g)]
+  const eventSchemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .map(match => JSON.parse(match[1]))
     .filter(schema => schema['@type'] === 'Event');
   assert.equal(eventSchemas.length, 4);
@@ -305,7 +305,7 @@ test('Media exposes only verified completed or confirmed appearances', () => {
   assert.equal(facts.appearances.length, 4);
   assert.equal(contentIndex.appearances.length, 4);
   assert.equal(facts.appearances.find((item) => item.id === 'cphi-milan-2026')?.status, 'confirmed');
-  assert.equal(facts.appearances.find((item) => item.id === '2030-health-co-creation')?.participation, 'Invited participant');
+  assert.equal(facts.appearances.find((item) => item.id === '2030-health-co-creation')?.participation, 'Invited participant (attendance not independently verified)');
 });
 
 test('media output exposes the complete verified publisher record', () => {
