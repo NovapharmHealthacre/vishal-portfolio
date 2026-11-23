@@ -10,6 +10,7 @@ public: true
 - **Name:** Vishal Chakravarty
 - **Also recorded as:** Vishal Om Prakash Chakravarty
 - **Company:** NovaPharm Healthcare Ltd
+- **Company role:** Chief Executive Officer and co-founder; Prabhakar Vitthal Lahare is the other founder
 - **Focus:** Pharmaceutical market access, manufacturing, supply and company building
 
 ## Company record
@@ -45,7 +46,7 @@ See [Media and Publications](/media/) for the original English and Japanese publ
 
 - **iPHEX 2026, New Delhi — attended.** [Official overseas delegates list](https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026) records Vishal Om Prakash Chakravarty under the United Kingdom representing NovaPharm Healthcare Ltd.
 - **CPHI Milan 2026 — registration recorded; attendance not independently verified.** Organiser-issued registration and badge confirmation are on file for the 6–8 October event at Fiera Milano. [Official event page](https://www.cphi.com/europe/).
-- **2030 Health Co-Creation, Portcullis House — invitation confirmed; attendance not independently verified.** Organiser correspondence confirms the invitation and in-person attendance for the 14 October parliamentary roundtable. [Official public event listing](https://www.eventbrite.com/e/parliamentary-roundtable-2030-health-co-creation-tickets-2001419737311).
+- **2030 Health Co-Creation, Portcullis House — invitation confirmed; attendance not independently verified.** Organiser correspondence confirms an invitation to attend the 14 October parliamentary roundtable in person; actual attendance is not independently verified. [Official public event listing](https://www.eventbrite.com/e/parliamentary-roundtable-2030-health-co-creation-tickets-2001419737311).
 - **The Business Show London 2026 — registration recorded; attendance not independently verified.** Organiser-issued registration is on file for 11–12 November at ExCeL London. [Official event page](https://www.greatbritishbusinessshow.co.uk/).
 
 The events listed above have concluded. Registration and invitation confirmations are disclosed as such, not evidence of physical attendance. Applications, hosted-buyer enquiries and unconfirmed invitations are not presented as attendance.
