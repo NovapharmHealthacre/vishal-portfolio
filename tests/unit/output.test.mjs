@@ -159,7 +159,7 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.person.alternateName, 'Vishal Om Prakash Chakravarty');
   assert.equal(
     facts.person.disambiguatingDescription,
-    'Pharmaceutical executive and founder of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company.',
+    'Pharmaceutical executive and co-founder of NovaPharm Healthcare Ltd, a UK-registered pharmaceutical company.',
   );
   assert.equal(facts.answers.length, 3);
   assert.equal(facts.answers.every((answer) => answer.source.startsWith('https://vishal.novapharmhealthcare.com/')), true);
@@ -173,8 +173,8 @@ test('public facts expose only approved public-safe records and canonical entity
   assert.equal(facts.facts.length, 8);
   assert.equal(facts.facts.every((fact) => fact.publicSafe === true), true);
   assert.equal(facts.person.role, 'Chief Executive Officer, NovaPharm Healthcare Ltd');
-  assert.equal(facts.person.founderRelationship, 'Founder of NovaPharm Healthcare Ltd');
-  assert.equal(facts.facts.find((fact) => fact.id === 'P-017')?.approvedWording, 'Founder of NovaPharm Healthcare Ltd');
+  assert.equal(facts.person.founderRelationship, 'Co-founder of NovaPharm Healthcare Ltd');
+  assert.equal(facts.facts.find((fact) => fact.id === 'P-017')?.approvedWording, 'Co-founder of NovaPharm Healthcare Ltd');
   assert.equal(
     facts.facts.find((fact) => fact.id === 'P-008')?.approvedWording,
     'His pharmaceutical experience predates NovaPharm, including work with SyriMed between 2020 and 2025.',
