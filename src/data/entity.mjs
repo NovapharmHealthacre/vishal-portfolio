@@ -128,7 +128,7 @@ export const publicAppearances = Object.freeze([
     name: 'The Business Show London 2026',
     kind: 'Business and entrepreneurship event',
     status: 'confirmed',
-    statusLabel: 'Registered · Upcoming',
+    statusLabel: 'Registered · event concluded',
     startDate: '2026-11-11',
     endDate: '2026-11-12',
     displayDate: '11–12 November 2026',
