@@ -91,9 +91,9 @@ export const publicAppearances = Object.freeze([
     endDate: '2026-10-08',
     displayDate: '6–8 October 2026',
     location: 'Fiera Milano · Milan, Italy',
-    role: 'Registered attendee',
+    role: 'Registered (attendance not independently verified)',
     summary:
-      'A working visit focused on pharmaceutical manufacturing, development partners, finished dosage, supply-chain capability and commercial discussions for regulated markets.',
+      'Registration was recorded for a pharmaceutical industry event covering manufacturing, development partners, finished dosage, supply-chain capability and regulated-market discussions. Physical attendance has not been independently verified.',
     officialUrl: 'https://www.cphi.com/europe/',
     verificationUrl: 'https://www.cphi.com/europe/travel-hotel/',
     organizer: 'Informa Markets',
@@ -112,9 +112,9 @@ export const publicAppearances = Object.freeze([
     endDate: '2026-10-14',
     displayDate: '14 October 2026',
     location: 'Room M, Portcullis House · UK Parliament, Westminster, London',
-    role: 'Invited participant',
+    role: 'Invited participant (attendance not independently verified)',
     summary:
-      'A policy roundtable on bilateral healthcare innovation corridors, responsible AI, digital primary care, prevention, workforce development and international healthcare collaboration.',
+      'An invitation was recorded to a policy roundtable on healthcare innovation, responsible AI, digital primary care, prevention, workforce development and international collaboration. Physical attendance has not been independently verified.',
     officialUrl: 'https://www.eventbrite.com/e/parliamentary-roundtable-2030-health-co-creation-tickets-2001419737311',
     verificationUrl: 'https://genevaaisummit.swiss/fr/pre-events',
     organizer: 'BioTech Sphere Research',
@@ -135,7 +135,7 @@ export const publicAppearances = Object.freeze([
     location: 'ExCeL London · London, United Kingdom',
     role: 'Registered attendee',
     summary:
-      'A company-building visit spanning AI, technology, operations, finance, growth and the practical systems used to scale businesses.',
+      'Registration was recorded for a company-building event spanning AI, technology, operations, finance and growth. Physical attendance has not been independently verified.',
     officialUrl: 'https://www.greatbritishbusinessshow.co.uk/',
     verificationUrl: 'https://www.greatbritishbusinessshow.co.uk/visitor-information',
     organizer: 'Business Show Media',
