@@ -65,7 +65,10 @@ test('schema relationships preserve personal authorship and corporate employment
   assert.equal(website.publisher['@id'], person.id);
   assert.equal(personNode.worksFor['@id'], company.id);
   assert.equal(personNode.jobTitle, 'Chief Executive Officer');
-  assert.equal(organisation.founder['@id'], person.id);
+  assert.deepEqual(organisation.founder.map((founder) => founder['@id']), [
+    person.id,
+    'https://novapharmhealthcare.com/leadership/prabhakar-lahare/#person',
+  ]);
   assert.equal(article.author['@id'], person.id);
   assert.equal(article.publisher['@id'], person.id);
   assert.notEqual(article.publisher['@id'], company.id);

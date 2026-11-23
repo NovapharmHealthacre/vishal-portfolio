@@ -65,6 +65,16 @@ NovaPharm is designing digital infrastructure to connect product, partner, regul
 
 The intended value is clearer decisions, stronger traceability, earlier visibility of risk and less dependence on fragmented hand-offs.
 
+### NovaPharm Intelligence
+
+[NovaPharm Intelligence](https://novapharmhealthcare.com/technology/) is the medicines-intelligence initiative being developed within the NovaPharm Healthcare ecosystem. Its proposed Medicines Terminal and NOVA research layer aim to connect medicine identity, cited evidence, market context and explainable analysis, with source permissions and data provenance preserved.
+
+This is a product programme in development, not a separately registered company or evidence that every proposed module, dataset or customer entitlement is operational. [Explore the official Intelligence programme](https://novapharmhealthcare.com/technology/).
+
+### Leadership and identity
+
+Vishal Chakravarty is Chief Executive Officer and one of NovaPharm Healthcare's founders. The company's [official leadership profile](https://novapharmhealthcare.com/leadership/vishal-chakravarty/) records his executive responsibilities. Prabhakar Vitthal Lahare is the other company founder and Chief Operating Officer; [his corporate leadership profile](https://novapharmhealthcare.com/leadership/prabhakar-lahare/) gives the separate governance record.
+
 ## Operating principles
 
 - start with patient, regulatory, technical, quality, economic and channel realities rather than inherited process;

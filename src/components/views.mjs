@@ -487,7 +487,7 @@ export const renderMedia = (page) => {
     facts: [
       ['Publishers', 'Yakuji Nippo · Pharmaceutical Commerce'],
       ['Completed', 'iPHEX 2026'],
-      ['Upcoming', 'Milan · Westminster · London'],
+      ['Event records', 'Milan · Westminster · London'],
       ['Evidence', 'Official pages · organiser confirmations'],
     ],
   });
@@ -523,14 +523,14 @@ export const renderMedia = (page) => {
       </div>
 
     </section>`;
-  const upcomingAppearances = publicAppearances.filter((appearance) => appearance.status === 'confirmed');
+  const confirmedAppearances = publicAppearances.filter((appearance) => appearance.status === 'confirmed');
   const appearancesSection = `
     <section class="media-appearances section" aria-labelledby="confirmed-appearances-title" data-reveal>
       <header class="media-appearances-header">
-        <div><p class="eyebrow">Confirmed / Upcoming</p><h2 id="confirmed-appearances-title">Where the work goes next.</h2></div>
-        <p>Only appearances supported by an organiser confirmation or completed registration are shown here. Applications and unconfirmed invitations stay off the public record.</p>
+        <div><p class="eyebrow">Confirmed registration / invitation</p><h2 id="confirmed-appearances-title">Recorded industry engagements.</h2></div>
+        <p>These events have concluded. Registration or an invitation is recorded separately from verified attendance; unconfirmed applications stay off the public record.</p>
       </header>
-      <div class="appearance-grid">${upcomingAppearances.map(appearanceCard).join('')}</div>
+      <div class="appearance-grid">${confirmedAppearances.map(appearanceCard).join('')}</div>
     </section>`;
   const body = `${hero}${summary}${iphexFeature}${appearancesSection}${pageSectionIndex(page.html)}<section class="content-managed prose-page section" data-reveal>${page.html}</section>`;
   return renderPage({

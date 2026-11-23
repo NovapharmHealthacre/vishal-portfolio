@@ -25,11 +25,11 @@ The lesson was simple: the route has to be designed as one system.
 
 ## NovaPharm
 
-Vishal founded {{COMPANY_NAME}} in 2025.
+Vishal co-founded {{COMPANY_NAME}} in 2025 with Prabhakar Vitthal Lahare and serves as the company's CEO. His role and responsibilities are documented in the [official NovaPharm leadership profile](https://novapharmhealthcare.com/leadership/vishal-chakravarty/).
 
 The company is being built around specialist medicines and the connections between product selection, regulatory pathway, manufacturing, technology transfer, sourcing, supply and commercial market entry.
 
-The United Kingdom is the foundation. The longer direction is international, connecting UK standards and market access with manufacturing, development and commercial partnerships across Europe, India and selected regulated markets.
+The United Kingdom is the foundation. The longer direction is international, connecting UK standards and market access with manufacturing, development and commercial partnerships across Europe, India and selected regulated markets. [NovaPharm Intelligence](https://novapharmhealthcare.com/technology/) is a medicines-intelligence programme in development within this ecosystem, not a separately verified company or a claim of deployed capabilities.
 
 ## What the work connects
 
