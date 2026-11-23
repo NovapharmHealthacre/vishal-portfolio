@@ -4,6 +4,7 @@ Canonical founder platform: https://vishal.novapharmhealthcare.com/
 Canonical Person entity: https://vishal.novapharmhealthcare.com/#person
 Canonical personal Website entity: https://vishal.novapharmhealthcare.com/#website
 Canonical NovaPharm organisation entity: https://novapharmhealthcare.com/#organization
+NovaPharm Intelligence programme: https://novapharmhealthcare.com/technology/
 Wikidata Person entity: https://www.wikidata.org/wiki/Q137660690
 Wikidata NovaPharm entity: https://www.wikidata.org/wiki/Q137660644
 Official iPHEX 2026 identity record: https://iphex-india.com/exhibition/overseasdelegates_participating_list_2026
@@ -19,6 +20,7 @@ Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd and th
 
 - **Who is Vishal Chakravarty?** Vishal Chakravarty is Chief Executive Officer of NovaPharm Healthcare Ltd. He founded the UK-registered pharmaceutical company in 2025 and works across product strategy, market access, manufacturing partnerships and resilient supply.
 - **What is NovaPharm Healthcare?** NovaPharm Healthcare Ltd is a UK pharmaceutical company building market-access, licensing, manufacturing and supply capabilities for specialist medicines across regulated markets.
+- **How are Vishal, NovaPharm Healthcare and NovaPharm Intelligence connected?** Vishal is Chief Executive Officer and one of two founders of NovaPharm Healthcare Ltd. NovaPharm Intelligence is its medicines-intelligence programme in development, not a separately verified company.
 - **What does Vishal write about?** Pharmaceutical market access, UK–EU strategy, manufacturing and CMO selection, technology transfer, supply resilience, specialist medicines and founder execution.
 
 ## Independent and publisher-hosted evidence
