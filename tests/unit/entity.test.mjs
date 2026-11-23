@@ -33,9 +33,9 @@ test('entity facts match the verified ledger', () => {
 
 test('founder biographies express the approved pharmaceutical positioning', () => {
   assert.equal(person.role, 'Chief Executive Officer, NovaPharm Healthcare Ltd');
-  assert.equal(person.founderRelationship, 'Founder of NovaPharm Healthcare Ltd');
+  assert.equal(person.founderRelationship, 'Co-founder of NovaPharm Healthcare Ltd');
   assert.match(person.shortBio, /is Chief Executive Officer of NovaPharm Healthcare Ltd\./);
-  assert.match(person.shortBio, /He founded the UK-registered pharmaceutical company in 2025/);
+  assert.match(person.shortBio, /He co-founded the UK-registered pharmaceutical company with Prabhakar Vitthal Lahare in 2025/);
   assert.match(person.shortBio, /product strategy, market access, manufacturing partnerships and resilient supply/);
   assert.match(
     person.mediumBio,
